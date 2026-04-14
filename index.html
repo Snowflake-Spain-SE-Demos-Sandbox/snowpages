@@ -250,6 +250,7 @@
     .badge-cat.riesgo  { background: #FFF3E8; color: #D97B2A; }
     .badge-cat.nlp     { background: #EAF0FF; color: #4A6EE0; }
     .badge-cat.siniestros { background: #F0FFF4; color: #2E7D4F; }
+    .badge-cat.callcenter { background: #FFF0F5; color: #B03A6B; }
 
     .card-time {
       font-size: 12px;
@@ -452,12 +453,12 @@
     </div>
     <p class="hero-eyebrow">Sector Seguros × Snowflake</p>
     <h1 class="hero-title">Soluciones IA/ML para Seguros</h1>
-    <p class="hero-subtitle">Notebooks Snowflake listos para desplegar en equipos de seguros</p>
+    <p class="hero-subtitle">Notebooks y Prompts de Cortex Code listos para desplegar en equipos de seguros</p>
     <p class="hero-tagline">Desarrollado con Snowflake Cortex AI | Impacto inmediato</p>
   </div>
 
   <div class="stats-box">
-    <div class="stat-number">12</div>
+    <div class="stat-number">17</div>
     <div class="stat-label">Casos de Uso</div>
     <hr class="stats-divider"/>
     <div class="stat-time">8-15 min</div>
@@ -476,11 +477,12 @@
 <!-- ── FILTERS ───────────────────────────────────────────── -->
 <div class="filters-bar">
   <div class="filters-left" id="filterBtns">
-    <button class="filter-btn active" data-filter="all">Todos (12)</button>
+    <button class="filter-btn active" data-filter="all">Todos (17)</button>
     <button class="filter-btn" data-filter="fraude">Detección de Fraude (3)</button>
     <button class="filter-btn" data-filter="riesgo">Riesgo y Suscripción (4)</button>
     <button class="filter-btn" data-filter="nlp">IA y Lenguaje Natural (3)</button>
     <button class="filter-btn" data-filter="siniestros">Gestión de Siniestros (2)</button>
+    <button class="filter-btn" data-filter="callcenter">Call Center IA (5)</button>
   </div>
   <div class="search-box">
     <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round">
@@ -491,7 +493,7 @@
 </div>
 
 <!-- ── RESULTS COUNT ─────────────────────────────────────── -->
-<div class="results-count" id="resultsCount">Mostrando 12 de 12 casos de uso</div>
+<div class="results-count" id="resultsCount">Mostrando 17 de 17 casos de uso</div>
 
 <!-- ── CARDS ─────────────────────────────────────────────── -->
 <main class="cards-grid" id="cardsGrid"></main>
@@ -581,10 +583,45 @@ const USE_CASES = [
     pain:"Las oportunidades de recuperación por subrogación se pierden porque los terceros responsables no se identifican durante la tramitación. Millones en pérdidas recuperables quedan sin cobrar.",
     desc:"Modelo de clasificación ML que identifica candidatos de alta probabilidad de subrogación al cierre del siniestro, usando indicadores de culpabilidad, informes policiales y señales del tipo de cobertura.",
     features:["Puntuación de probabilidad de subrogación","Extracción de señales de culpabilidad","Estimación del importe recuperable","Derivación automática al equipo legal"]
+  },
+  {
+    id:"UC13", cat:"callcenter", catLabel:"Call Center IA", time:"12 min",
+    title:"Clasificación Automática de Llamadas",
+    pain:"Los agentes etiquetan manualmente cada llamada con el motivo de contacto, generando errores e inconsistencias que distorsionan el reporting y el routing.",
+    desc:"Pipeline NLP con CORTEX.COMPLETE que clasifica transcripciones en 6 categorías, extrae urgencia y sentimiento, y alimenta routing inteligente en tiempo real.",
+    features:["Clasificación multi-clase con LLM","Análisis de sentimiento con CORTEX.SENTIMENT","Extracción de urgencia y escalado","Dashboard de routing inteligente"]
+  },
+  {
+    id:"UC14", cat:"callcenter", catLabel:"Call Center IA", time:"13 min",
+    title:"Evaluación Automática de Agentes (QA)",
+    pain:"Solo el 2-5% de las llamadas se auditan manualmente, dejando sin supervisión el 95% de las interacciones y sin feedback a los agentes.",
+    desc:"Scoring automático de calidad usando CORTEX.COMPLETE para evaluar 5 criterios (saludo, empatía, normativa, resolución, profesionalismo) y generar ranking de agentes.",
+    features:["Scoring multi-criterio con IA","Parseo JSON con TRY_PARSE_JSON","Ranking de agentes con drill-down","Identificación de necesidades de coaching"]
+  },
+  {
+    id:"UC15", cat:"callcenter", catLabel:"Call Center IA", time:"11 min",
+    title:"Generación Automática de Resúmenes",
+    pain:"Los agentes dedican 5-8 minutos post-llamada a documentar notas CRM y enviar emails al cliente, reduciendo su disponibilidad para atender nuevas llamadas.",
+    desc:"Pipeline de generación de texto con CORTEX.COMPLETE que produce resúmenes estructurados, notas CRM y emails post-llamada automáticamente.",
+    features:["Resúmenes estructurados en JSON","Notas CRM auto-generadas","Emails post-llamada personalizados","Dashboard de documentación generada"]
+  },
+  {
+    id:"UC16", cat:"callcenter", catLabel:"Call Center IA", time:"12 min",
+    title:"Mejora de CX en Tiempo Real",
+    pain:"Las señales de frustración y riesgo de abandono no se detectan hasta que el cliente ya se ha ido, perdiendo oportunidades de retención proactiva.",
+    desc:"Motor de alertas con CORTEX.SENTIMENT que detecta frustración, urgencia y riesgo de abandono en tiempo real, priorizando intervenciones de supervisores.",
+    features:["Detección de emociones con IA","Sistema de alertas por prioridad","Correlación sentimiento-NPS","Dashboard de CX en tiempo real"]
+  },
+  {
+    id:"UC17", cat:"callcenter", catLabel:"Call Center IA", time:"13 min",
+    title:"Cumplimiento Normativo en Conversaciones",
+    pain:"Las auditorías de compliance son manuales, costosas y cubren menos del 3% de las llamadas, dejando exposición regulatoria significativa.",
+    desc:"Auditor automático con CORTEX.COMPLETE que evalúa 6 criterios normativos (RGPD, LOSSEAR, IDD) en cada llamada y genera scoring de riesgo regulatorio.",
+    features:["Auditoría de 6 criterios normativos","Detección de promesas falsas","Control de acceso a datos de terceros","Ranking de compliance por agente"]
   }
 ];
 
-const TOTAL = 12;
+const TOTAL = 17;
 
 function renderCards(list) {
   const grid = document.getElementById('cardsGrid');
@@ -592,7 +629,7 @@ function renderCards(list) {
   grid.innerHTML = '';
   count.textContent = `Mostrando ${list.length} de ${TOTAL} casos de uso`;
   list.forEach(uc => {
-    const catClass = { 'Riesgo y Suscripción':'riesgo', 'IA y Lenguaje Natural':'nlp', 'Gestión de Siniestros':'siniestros' }[uc.catLabel] || '';
+    const catClass = { 'Riesgo y Suscripción':'riesgo', 'IA y Lenguaje Natural':'nlp', 'Gestión de Siniestros':'siniestros', 'Call Center IA':'callcenter' }[uc.catLabel] || '';
     grid.innerHTML += `
       <article class="card">
         <div class="card-header">
@@ -667,7 +704,12 @@ function descargarNotebook(ucId) {
     UC09: ['notebook_uc09_quejas.ipynb','UC09_Inteligencia_Quejas_Clientes.ipynb'],
     UC10: ['notebook_uc10_asistente_poliza.ipynb','UC10_Asistente_Consultas_Poliza.ipynb'],
     UC11: ['notebook_uc11_severidad.ipynb','UC11_Prediccion_Severidad_Siniestros.ipynb'],
-    UC12: ['notebook_uc12_subrogacion.ipynb','UC12_Oportunidades_Subrogacion.ipynb']
+    UC12: ['notebook_uc12_subrogacion.ipynb','UC12_Oportunidades_Subrogacion.ipynb'],
+    UC13: ['notebook_uc13_clasificacion_llamadas.ipynb','UC13_Clasificacion_Automatica_Llamadas.ipynb'],
+    UC14: ['notebook_uc14_qa_agentes.ipynb','UC14_Evaluacion_Automatica_Agentes.ipynb'],
+    UC15: ['notebook_uc15_resumenes.ipynb','UC15_Resumenes_Automaticos.ipynb'],
+    UC16: ['notebook_uc16_cx_tiempo_real.ipynb','UC16_CX_Tiempo_Real.ipynb'],
+    UC17: ['notebook_uc17_compliance.ipynb','UC17_Compliance_Normativo.ipynb']
   };
   const nb = NB[ucId];
   if (nb) {
@@ -811,6 +853,61 @@ const GUIAS = {
     datos: ['Siniestros cerrados: Datos del incidente, culpabilidad, documentación','Resultado subrogación: Recuperado sí/no, importe','Predicciones ML: Alta Probabilidad / Revisable / Baja Probabilidad'],
     estratificacion: ['Alta Probabilidad (≥65%): Derivar inmediatamente al equipo legal','Revisable (35-65%): Revisión de documentación por perito senior','Baja Probabilidad (<35%): Archivar sin acción de recuperación'],
     como_usar: ['Ejecutar celdas secuencialmente','Se generan siniestros cerrados con datos de subrogación','El modelo identifica oportunidades de recuperación','El dashboard prioriza por importe recuperable estimado']
+  },
+  UC13: {
+    title: 'Clasificación Automática de Llamadas',
+    contexto: 'Este notebook clasifica automáticamente las llamadas del call center de seguros en categorías usando IA generativa.',
+    foco: 'Transcripciones de llamadas de seguros — clasificación de motivos de contacto para routing inteligente.',
+    reto: 'Eliminar el etiquetado manual de llamadas y mejorar la precisión del routing a departamentos especializados.',
+    objetivos: ['Generar 1.000 transcripciones sintéticas de llamadas de seguros','Clasificar motivos con SNOWFLAKE.CORTEX.COMPLETE','Extraer urgencia y sentimiento con análisis NLP','Evaluar precisión de clasificación','Dashboard interactivo de routing'],
+    funcionalidades: ['LLM: Clasificación multi-clase con mistral-large2','Sentimiento: CORTEX.SENTIMENT para scoring emocional','Datos sintéticos: 1.000 llamadas, 6 categorías, 20 agentes','Dashboard Streamlit: Métricas de routing y filtrado por motivo'],
+    datos: ['Llamadas: Transcripciones, duración, agente, fecha','Categorías: Siniestro, Cambio_Poliza, Cancelacion, Facturacion, Consulta_Cobertura, Asistencia','Enriquecimiento: Urgencia, sentimiento, requiere_escalado'],
+    estratificacion: ['Urgencia Crítica: Escalado inmediato a supervisor','Urgencia Alta: Derivación prioritaria','Urgencia Media: Cola normal con prioridad','Urgencia Baja: Autoservicio o callback'],
+    como_usar: ['Ejecutar celdas secuencialmente','Se generan 1.000 transcripciones automáticamente','Cortex AI clasifica y enriquece cada llamada','El dashboard muestra precisión y distribución por motivo']
+  },
+  UC14: {
+    title: 'Evaluación Automática de Agentes (QA)',
+    contexto: 'Este notebook automatiza la auditoría de calidad de llamadas evaluando múltiples criterios de servicio con IA.',
+    foco: 'Quality Assurance automatizado — evaluación de empatía, protocolo y resolución en cada llamada.',
+    reto: 'Escalar la auditoría de calidad al 100% de las llamadas sin aumentar el equipo de QA.',
+    objetivos: ['Generar 500 transcripciones con calidad variable','Evaluar 5 criterios por llamada con CORTEX.COMPLETE','Parsear scores JSON con TRY_PARSE_JSON','Generar ranking de agentes con áreas de mejora','Dashboard de QA con drill-down por agente'],
+    funcionalidades: ['LLM: Evaluación multi-criterio con prompts estructurados','Parsing: TRY_PARSE_JSON para extraer scores numéricos','Scoring: Media ponderada de 5 criterios (1-10)','Dashboard Streamlit: Ranking y detalle por agente'],
+    datos: ['Llamadas: 500 transcripciones, 15 agentes','Criterios: Saludo, Empatía, Cumplimiento Normativo, Resolución, Profesionalismo','Scores: 1-10 por criterio, score global calculado'],
+    estratificacion: ['Excelente (≥8): Reconocimiento y mentoring','Aceptable (6-8): Seguimiento estándar','Necesita Mejora (4-6): Plan de coaching','Crítico (<4): Formación obligatoria'],
+    como_usar: ['Ejecutar celdas secuencialmente','Se generan 500 llamadas con diferentes niveles de calidad','Cortex AI evalúa cada llamada en 5 criterios','El dashboard muestra ranking y detalle por agente']
+  },
+  UC15: {
+    title: 'Generación Automática de Resúmenes',
+    contexto: 'Este notebook automatiza la documentación post-llamada: resúmenes, notas CRM y emails personalizados.',
+    foco: 'Generación de texto — documentación automática de cada interacción para CRM y comunicación al cliente.',
+    reto: 'Reducir el tiempo de post-llamada de 5-8 minutos a cero, mejorando la disponibilidad de agentes.',
+    objetivos: ['Generar 300 transcripciones completas de llamadas','Producir resúmenes estructurados en JSON','Generar notas CRM concisas','Crear emails post-llamada personalizados','Dashboard de documentación generada'],
+    funcionalidades: ['LLM: Generación de texto con CORTEX.COMPLETE','Resúmenes: JSON estructurado (motivo, acciones, seguimiento)','Notas CRM: Formato estandarizado (MOTIVO/ACCIÓN/SEGUIMIENTO)','Emails: Comunicación personalizada post-llamada'],
+    datos: ['Llamadas: 300 transcripciones completas y detalladas','Resúmenes: JSON con motivo, acciones, seguimiento, sentimiento','Notas CRM: Texto breve para el sistema de gestión','Emails: Comunicación profesional para el cliente'],
+    estratificacion: ['Resumen JSON: Para alimentar analytics y BI','Nota CRM: Para historial del cliente en el CRM','Email post-llamada: Para comunicación inmediata al cliente'],
+    como_usar: ['Ejecutar celdas secuencialmente','Se generan 300 transcripciones detalladas','Cortex AI produce 3 tipos de documentación por llamada','El dashboard permite revisar y previsualizar la documentación generada']
+  },
+  UC16: {
+    title: 'Mejora de CX en Tiempo Real',
+    contexto: 'Este notebook detecta señales de frustración y riesgo de abandono en tiempo real para activar intervenciones proactivas.',
+    foco: 'Customer Experience — detección de emociones negativas, urgencia y riesgo de churn durante la llamada.',
+    reto: 'Identificar clientes en riesgo de abandono antes de que cuelguen y activar retención proactiva.',
+    objetivos: ['Generar 800 llamadas con diferentes niveles emocionales','Analizar sentimiento con CORTEX.SENTIMENT','Detectar emociones y urgencia con CORTEX.COMPLETE','Generar alertas priorizadas por riesgo','Dashboard de CX en tiempo real'],
+    funcionalidades: ['Sentimiento: CORTEX.SENTIMENT para scoring numérico','Emociones: Detección de ira, frustración, ansiedad, satisfacción','Alertas: 4 niveles (Crítica, Alta, Media, Baja)','Dashboard Streamlit: Monitorización en tiempo real'],
+    datos: ['Llamadas: 800 transcripciones con 8 niveles emocionales','Análisis: Emoción primaria, urgencia, riesgo de abandono','Alertas: Prioridad calculada con sentimiento + NPS histórico'],
+    estratificacion: ['Alerta Crítica: Sentimiento < -0.5 y NPS ≤ 4 — escalado inmediato','Alerta Alta: Sentimiento < -0.3 o riesgo abandono alto','Alerta Media: Sentimiento negativo moderado','Alerta Baja: Sin señales de riesgo'],
+    como_usar: ['Ejecutar celdas secuencialmente','Se generan 800 llamadas con emociones variadas','Cortex AI analiza sentimiento y emociones','El dashboard muestra alertas priorizadas en tiempo real']
+  },
+  UC17: {
+    title: 'Cumplimiento Normativo en Conversaciones',
+    contexto: 'Este notebook audita automáticamente el cumplimiento regulatorio de las llamadas evaluando criterios normativos españoles.',
+    foco: 'Compliance — detección de infracciones regulatorias (RGPD, LOSSEAR, IDD) en conversaciones de seguros.',
+    reto: 'Auditar el 100% de las llamadas frente a normativa regulatoria para evitar sanciones y multas.',
+    objetivos: ['Generar 600 llamadas con cumplimiento variable','Auditar 6 criterios normativos con CORTEX.COMPLETE','Parsear resultados y calcular scoring de compliance','Identificar agentes y patrones de riesgo','Dashboard de compliance con ranking'],
+    funcionalidades: ['LLM: Auditoría normativa con prompts especializados','Criterios: 6 checks regulatorios obligatorios','Scoring: Criterios cumplidos sobre 6 posibles','Dashboard Streamlit: Visión global y detalle por agente'],
+    datos: ['Llamadas: 600 transcripciones con cumplimiento variable','Criterios: Aviso grabación, verificación ID, info precontractual, RGPD, promesas falsas, acceso no titular','Scoring: 0-6 criterios cumplidos, nivel de riesgo (bajo/medio/alto/crítico)'],
+    estratificacion: ['Riesgo Crítico: Múltiples infracciones graves — acción inmediata','Riesgo Alto: Promesas falsas o acceso no autorizado detectado','Riesgo Medio: Faltan protocolos obligatorios','Riesgo Bajo: Cumplimiento adecuado'],
+    como_usar: ['Ejecutar celdas secuencialmente','Se generan 600 llamadas con diferentes niveles de cumplimiento','Cortex AI audita cada llamada en 6 criterios normativos','El dashboard muestra ranking de compliance y llamadas de riesgo']
   }
 };
 
@@ -998,6 +1095,65 @@ const PROMPTS = {
       { title: 'Puntuar y estimar recuperación', desc: 'Clasificar oportunidades de subrogación.', prompt: 'Puntúa test con niveles: Alta Probabilidad (>=65%), Revisable (35-65%), Baja Probabilidad (<35%). Estima importe_recuperable = importe_pagado * probabilidad_subrogacion. Muestra top 20 oportunidades por importe recuperable.' },
       { title: 'Análisis de oportunidad perdida', desc: 'Cuantificar recuperaciones no realizadas.', prompt: 'Calcula el total de importe recuperable en siniestros no subrogados con Alta Probabilidad. Agrupa por tipo_incidente y tipo_cobertura para identificar dónde se pierden más recuperaciones.' },
       { title: 'Dashboard de subrogación', desc: 'Panel para equipo legal y de recuperaciones.', prompt: 'Crea dashboard Streamlit con: KPIs (oportunidades detectadas, importe recuperable estimado, tasa éxito histórica), tabla de oportunidades priorizadas por importe, distribución por tipo de incidente, botón de descarga CSV para derivar al equipo legal.' }
+    ]
+  },
+  UC13: {
+    title: 'Clasificación Automática de Llamadas',
+    intro: 'Prompts para construir un pipeline de clasificación de motivos de llamada con Cortex AI.',
+    steps: [
+      { title: 'Configurar entorno', desc: 'Base de datos para clasificación de llamadas.', prompt: 'Crea base de datos CLASIFICACION_LLAMADAS_DB con esquema PUBLIC y warehouse COMPUTE_WH tamaño SMALL con auto-suspend 60 segundos.' },
+      { title: 'Generar transcripciones', desc: '1.000 llamadas sintéticas en 6 categorías.', prompt: 'Genera tabla "llamadas" con 1.000 registros: llamada_id, fecha, agente_id (20 agentes), duracion_seg (60-900), motivo_real (Siniestro, Cambio_Poliza, Cancelacion, Facturacion, Consulta_Cobertura, Asistencia), transcripcion (textos realistas de seguros en español, 3-4 variantes por categoría).' },
+      { title: 'Clasificar motivos con IA', desc: 'CORTEX.COMPLETE para clasificación multi-clase.', prompt: 'Crea tabla "llamadas_clasificadas" usando SNOWFLAKE.CORTEX.COMPLETE con mistral-large2 para clasificar cada transcripción en una de las 6 categorías. Compara motivo_predicho vs motivo_real.' },
+      { title: 'Enriquecer con urgencia y sentimiento', desc: 'Extraer urgencia, sentimiento y necesidad de escalado.', prompt: 'Crea tabla "llamadas_enriquecidas" añadiendo: análisis JSON con CORTEX.COMPLETE (urgencia, sentimiento, requiere_escalado, resumen_corto) y sentimiento_score con CORTEX.SENTIMENT.' },
+      { title: 'Análisis de routing', desc: 'Métricas por categoría para optimizar routing.', prompt: 'Calcula por motivo: llamadas, duración media, sentimiento medio y número de llamadas negativas (sentimiento < -0.3).' },
+      { title: 'Dashboard interactivo', desc: 'Panel de routing inteligente.', prompt: 'Crea dashboard Streamlit con: KPIs (total, categorías, duración media, sentimiento medio), gráfico de barras por motivo, exactitud de clasificación, tabla filtrable por motivo.' }
+    ]
+  },
+  UC14: {
+    title: 'Evaluación Automática de Agentes (QA)',
+    intro: 'Prompts para construir un sistema de quality assurance automatizado con IA.',
+    steps: [
+      { title: 'Configurar entorno', desc: 'Base de datos para QA de agentes.', prompt: 'Crea base de datos QA_AGENTES_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
+      { title: 'Generar llamadas de agentes', desc: '500 transcripciones con calidad variable.', prompt: 'Genera tabla "llamadas_agentes" con 500 registros: llamada_id, agente_id (15 agentes), fecha, duracion_seg, transcripcion (5 variantes: excelente con empatía y protocolo, malo sin saludo ni empatía, buena retención, pésimo servicio, excelente compliance).' },
+      { title: 'Evaluar con IA', desc: 'Scoring de 5 criterios con CORTEX.COMPLETE.', prompt: 'Crea tabla "evaluaciones" usando CORTEX.COMPLETE para evaluar cada llamada en: saludo_protocolo, empatia, cumplimiento_normativo, resolucion, profesionalismo (1-10 cada uno). Añade CORTEX.SENTIMENT.' },
+      { title: 'Parsear y calcular scores', desc: 'TRY_PARSE_JSON para extraer puntuaciones.', prompt: 'Crea tabla "scores_agentes" parseando el JSON con TRY_PARSE_JSON. Calcula score_global como media de los 5 criterios. Agrupa por agente con medias.' },
+      { title: 'Identificar coaching', desc: 'Detectar agentes que necesitan formación.', prompt: 'Clasifica agentes: Excelente (>=8), Aceptable (6-8), Necesita Mejora (4-6), Crítico (<4). Muestra llamadas bajo umbral 5.' },
+      { title: 'Dashboard QA', desc: 'Panel de quality assurance.', prompt: 'Crea dashboard Streamlit con: KPIs (evaluadas, agentes, score medio, bajo umbral), ranking de agentes con todas las métricas, detalle por agente seleccionable.' }
+    ]
+  },
+  UC15: {
+    title: 'Generación Automática de Resúmenes',
+    intro: 'Prompts para automatizar la documentación post-llamada con generación de texto por IA.',
+    steps: [
+      { title: 'Configurar entorno', desc: 'Base de datos para resúmenes.', prompt: 'Crea base de datos RESUMENES_LLAMADAS_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
+      { title: 'Generar transcripciones largas', desc: '300 llamadas completas y detalladas.', prompt: 'Genera tabla "llamadas_completas" con 300 registros: llamada_id, agente_id, cliente_id, fecha, duracion_seg, transcripcion (diálogos completos agente-cliente de seguros, 5 escenarios: siniestro auto, retención cancelación, facturación duplicada, asistencia carretera, consulta seguro vida).' },
+      { title: 'Generar resúmenes JSON', desc: 'Resúmenes estructurados con CORTEX.COMPLETE.', prompt: 'Crea tabla "resumenes" con CORTEX.COMPLETE generando JSON: motivo, resumen (50 palabras), acciones_realizadas, seguimiento_necesario, sentimiento_cliente, productos_mencionados.' },
+      { title: 'Generar notas CRM', desc: 'Notas breves para el sistema CRM.', prompt: 'Crea tabla "notas_crm" con CORTEX.COMPLETE generando notas de 3 líneas formato: MOTIVO: | ACCIÓN: | SEGUIMIENTO:.' },
+      { title: 'Generar emails post-llamada', desc: 'Emails profesionales para el cliente.', prompt: 'Crea tabla "emails_postllamada" con CORTEX.COMPLETE generando emails de máximo 100 palabras, cordiales, resumiendo lo acordado y próximos pasos.' },
+      { title: 'Dashboard de documentación', desc: 'Panel de revisión de documentación generada.', prompt: 'Crea dashboard Streamlit con: KPIs (procesadas, notas, emails), tabla de notas CRM, preview de emails seleccionable.' }
+    ]
+  },
+  UC16: {
+    title: 'Mejora de CX en Tiempo Real',
+    intro: 'Prompts para construir un sistema de detección de frustración y riesgo de abandono en tiempo real.',
+    steps: [
+      { title: 'Configurar entorno', desc: 'Base de datos para CX.', prompt: 'Crea base de datos CX_TIEMPO_REAL_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
+      { title: 'Generar llamadas emocionales', desc: '800 llamadas con 8 niveles de emoción.', prompt: 'Genera tabla "llamadas_cx" con 800 registros: llamada_id, agente_id, cliente_id, timestamp_llamada, duracion_seg, transcripcion (8 variantes emocionales: ira extrema, desesperación, amenaza de abandono, descontento moderado, consulta neutra, satisfacción, frustración repetida, confirmación positiva), nps_historico (1-10).' },
+      { title: 'Analizar sentimiento y emociones', desc: 'CORTEX.SENTIMENT + CORTEX.COMPLETE.', prompt: 'Crea tabla "analisis_cx" con: sentimiento_score (CORTEX.SENTIMENT) y análisis JSON (CORTEX.COMPLETE): emocion_primaria, nivel_urgencia, riesgo_abandono, puntos_friccion, requiere_escalado.' },
+      { title: 'Generar alertas priorizadas', desc: 'Sistema de alertas por nivel de riesgo.', prompt: 'Crea tabla "alertas_cx" parseando JSON y calculando prioridad: CRÍTICA (sentimiento<-0.5 y NPS<=4), ALTA (sentimiento<-0.3 o riesgo alto), MEDIA (sentimiento negativo), BAJA (sin riesgo). Agrupa por prioridad.' },
+      { title: 'Dashboard CX', desc: 'Panel de monitorización en tiempo real.', prompt: 'Crea dashboard Streamlit con: KPIs (analizadas, alertas críticas, riesgo abandono alto, sentimiento medio), gráficos de alertas y emociones, tabla de alertas críticas/altas.' }
+    ]
+  },
+  UC17: {
+    title: 'Cumplimiento Normativo en Conversaciones',
+    intro: 'Prompts para construir un auditor automático de compliance regulatorio en llamadas de seguros.',
+    steps: [
+      { title: 'Configurar entorno', desc: 'Base de datos para compliance.', prompt: 'Crea base de datos COMPLIANCE_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
+      { title: 'Generar llamadas con cumplimiento variable', desc: '600 llamadas con diferentes niveles normativos.', prompt: 'Genera tabla "llamadas_compliance" con 600 registros: llamada_id, agente_id, fecha, transcripcion (6 variantes: excelente compliance, venta agresiva sin información, protocolo RGPD correcto, venta defectuosa detectada, acceso datos sin verificar titular, asesoramiento IDD correcto).' },
+      { title: 'Auditar con IA', desc: 'Evaluación de 6 criterios normativos.', prompt: 'Crea tabla "auditoria_compliance" con CORTEX.COMPLETE evaluando: aviso_grabacion, verificacion_identidad, informacion_precontractual, proteccion_datos_rgpd, promesas_falsas, acceso_datos_no_titular, nivel_riesgo, infracciones_detectadas, recomendacion.' },
+      { title: 'Parsear y scoring', desc: 'Calcular score de compliance.', prompt: 'Crea tabla "scores_compliance" con TRY_PARSE_JSON. Calcula criterios_cumplidos (0-6) sumando los checks positivos y restando las infracciones. Agrupa por nivel de riesgo.' },
+      { title: 'Ranking de agentes', desc: 'Compliance por agente.', prompt: 'Calcula score medio, llamadas de riesgo, promesas falsas y accesos no autorizados por agente. Ordena por score de compliance ascendente.' },
+      { title: 'Dashboard compliance', desc: 'Panel de auditoría regulatoria.', prompt: 'Crea dashboard Streamlit con: KPIs (auditadas, riesgo crítico/alto, score medio, promesas falsas), distribución por riesgo, cumplimiento por criterio, tabla de llamadas de alto riesgo.' }
     ]
   }
 };
