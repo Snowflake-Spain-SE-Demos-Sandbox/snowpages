@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <title>Snowflake — Soluciones IA/ML para Hospitality</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    /* ── HEADER ──────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #003545, #11567F);
+      color: #fff;
+      padding: 32px 48px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .hero-left { flex: 1; }
+
+    .logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logo-snowflake {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 6px;
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .stats-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 28px;
+      text-align: center;
+      color: #1a1a1a;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .stats-box .stat-number {
+      font-size: 40px;
+      font-weight: 700;
+      color: #E65100;
+      line-height: 1;
+    }
+
+    .stats-box .stat-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .stats-box .stat-time {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+
+    .stats-box .stat-time-label {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .stats-divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 10px 0;
+    }
+
+    /* ── SECTION INTRO ───────────────────────────────────── */
+    .intro {
+      background: #fff;
+      text-align: center;
+      padding: 48px 24px 32px;
+    }
+
+    .intro h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #11567F;
+      margin-bottom: 14px;
+    }
+
+    .intro p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ── FILTERS ─────────────────────────────────────────── */
+    .filters-bar {
+      background: #fff;
+      padding: 20px 48px 0;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filters-left {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 80px;
+      border: 1.5px solid #ccc;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover { border-color: #29B5E8; color: #29B5E8; }
+
+    .filter-btn.active {
+      background: #29B5E8;
+      border-color: #29B5E8;
+      color: #fff;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #ccc;
+      border-radius: 80px;
+      padding: 7px 14px;
+      gap: 8px;
+      min-width: 200px;
+      background: #fff;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 13px;
+      color: #444;
+      width: 100%;
+      background: transparent;
+    }
+    .search-box input::placeholder { color: #aaa; }
+
+    /* ── RESULTS COUNT ────────────────────────────────────── */
+    .results-count {
+      padding: 14px 48px 8px;
+      font-size: 13px;
+      color: #666;
+      background: #f5f5f5;
+    }
+
+    /* ── CARDS GRID ──────────────────────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+      padding: 16px 48px 48px;
+      background: #f5f5f5;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #e2e2e2;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
+
+    .card-header {
+      padding: 16px 18px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-badges { display: flex; gap: 6px; align-items: center; }
+
+    .badge-id {
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-cat {
+      background: #E0F4FD;
+      color: #11567F;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .badge-cat.pricing      { background: #FFF3E0; color: #E65100; }
+    .badge-cat.experiencia   { background: #E8F5E9; color: #2E7D32; }
+    .badge-cat.operaciones   { background: #EDE7F6; color: #5E35B1; }
+    .badge-cat.distribucion  { background: #E3F2FD; color: #1565C0; }
+    .badge-cat.seguridad     { background: #FCE4EC; color: #C62828; }
+
+    .card-time {
+      font-size: 12px;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .card-title {
+      padding: 0 18px 12px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #11567F;
+      line-height: 1.3;
+    }
+
+    .pain-point {
+      margin: 0 18px 14px;
+      background: #F0F7FA;
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .pain-point-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #E65100;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .pain-point p {
+      font-size: 13px;
+      color: #2a2a2a;
+      line-height: 1.55;
+    }
+
+    .card-desc {
+      padding: 0 18px 14px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-features {
+      padding: 0 18px 16px;
+      list-style: none;
+    }
+
+    .card-features li {
+      font-size: 13px;
+      color: #444;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .card-features li::before {
+      content: '\2713';
+      color: #29B5E8;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-actions {
+      padding: 14px 18px 18px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid #f0f0f0;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 10px;
+      background: #29B5E8;
+      color: #fff;
+      border: none;
+      border-radius: 80px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+    .btn-secondary:hover { background: #11567F; }
+
+    .btn-tertiary {
+      flex: 1;
+      padding: 10px;
+      background: #003545;
+      color: #29B5E8;
+      border: none;
+      border-radius: 80px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+    .btn-tertiary:hover { background: #11567F; }
+
+    .prompt-step { margin-bottom: 18px; }
+    .prompt-step-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .prompt-step-num { background: #003545; color: #29B5E8; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .prompt-step-title { font-size: 13px; font-weight: 600; color: #333; }
+    .prompt-step-desc { font-size: 12px; color: #666; margin-bottom: 6px; line-height: 1.5; }
+    .prompt-code { position: relative; background: #003545; color: #e0e0e0; border-radius: 8px; padding: 12px 14px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+    .prompt-code .copy-btn { position: absolute; top: 6px; right: 8px; background: rgba(255,255,255,0.1); border: none; color: #aaa; font-size: 11px; padding: 3px 8px; border-radius: 4px; cursor: pointer; }
+    .prompt-code .copy-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .modal-box .prompt-intro { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #eee; }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 92%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 32px 28px;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #888;
+      line-height: 1;
+    }
+    .modal-close:hover { color: #E65100; }
+    .modal-box h2 { color: #11567F; font-size: 20px; margin-bottom: 6px; }
+    .modal-box h3 { font-size: 15px; color: #333; margin: 18px 0 8px; }
+    .modal-box p, .modal-box li { font-size: 13px; line-height: 1.7; color: #444; }
+    .modal-box ul { padding-left: 20px; margin: 6px 0; }
+    .modal-box .guide-badge { display: inline-block; background: #E0F4FD; color: #11567F; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; }
+    .modal-box .guide-footer { margin-top: 20px; padding-top: 14px; border-top: 1px solid #eee; font-size: 12px; color: #888; }
+
+    @media (max-width: 700px) {
+      .hero { flex-direction: column; padding: 24px 20px; }
+      .cards-grid { grid-template-columns: 1fr; padding: 16px 16px 48px; }
+      .filters-bar { padding: 16px 16px 0; }
+      .results-count { padding: 12px 16px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-left">
+    <div class="logos">
+      <div class="logo-snowflake">
+        <img src="bug-white.png" alt="Snowflake" width="32" height="32" />
+        Snowflake
+      </div>
+    </div>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,0.75);text-decoration:none;margin-bottom:8px;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="12,4 6,10 12,16"/></svg>Volver al &Iacute;ndice de Industrias</a>
+    <p class="hero-eyebrow">Sector Hospitality &times; Snowflake</p>
+    <h1 class="hero-title">Soluciones IA/ML para Hospitality</h1>
+    <p class="hero-subtitle">Gu&iacute;as y Prompts de Cortex Code listos para desplegar en hoteles, distribuci&oacute;n B2B y turismo</p>
+    <p class="hero-tagline">Desarrollado con Snowflake Cortex AI | Impacto inmediato</p>
+  </div>
+
+  <div class="stats-box">
+    <div class="stat-number">20</div>
+    <div class="stat-label">Casos de Uso</div>
+    <hr class="stats-divider"/>
+    <div class="stat-time">8-15 min</div>
+    <div class="stat-time-label">Tiempo de Configuraci&oacute;n</div>
+  </div>
+</header>
+
+<!-- ── INTRO ──────────────────────────────────────────────── -->
+<section class="intro">
+  <h2>Acelera tu Anal&iacute;tica con Soluciones IA Preconfiguradas para Hospitality</h2>
+  <p>Cada soluci&oacute;n incluye Cortex Code Prompts de Snowflake con datos sint&eacute;ticos, gu&iacute;as paso a paso
+     e implementaciones SQL-first con Cortex AI/ML. Incluye Feature Store y Model Registry para despliegue
+     en producci&oacute;n. Todo el procesamiento permanece dentro de Snowflake,
+     sin dependencias externas, listo para personalizar con tus propios datos.</p>
+</section>
+
+<!-- ── FILTERS ───────────────────────────────────────────── -->
+<div class="filters-bar">
+  <div class="filters-left" id="filterBtns">
+    <button class="filter-btn active" data-filter="all">Todos (20)</button>
+    <button class="filter-btn" data-filter="pricing">Revenue &amp; Pricing (4)</button>
+    <button class="filter-btn" data-filter="experiencia">Experiencia del Hu&eacute;sped (5)</button>
+    <button class="filter-btn" data-filter="operaciones">Operaciones (4)</button>
+    <button class="filter-btn" data-filter="distribucion">Distribuci&oacute;n B2B (4)</button>
+    <button class="filter-btn" data-filter="seguridad">Fraude y Seguridad (3)</button>
+  </div>
+  <div class="search-box">
+    <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round">
+      <circle cx="9" cy="9" r="7"/><line x1="15" y1="15" x2="19" y2="19"/>
+    </svg>
+    <input id="searchInput" type="text" placeholder="Buscar casos de uso&hellip;" />
+  </div>
+</div>
+
+<!-- ── RESULTS COUNT ─────────────────────────────────────── -->
+<div class="results-count" id="resultsCount">Mostrando 20 de 20 casos de uso</div>
+
+<!-- ── CARDS ─────────────────────────────────────────────── -->
+<main class="cards-grid" id="cardsGrid"></main>
+<script>
+const USE_CASES = [
+  {
+    "id": "UC01",
+    "cat": "pricing",
+    "catLabel": "Revenue & Pricing",
+    "time": "15 min",
+    "title": "Dynamic Pricing con Model Registry",
+    "pain": "Los hoteles pierden un 8-15% de ingresos usando tarifas estáticas. Las fluctuaciones de demanda por evento, estacionalidad y competencia no se reflejan en los precios publicados hasta que es demasiado tarde.",
+    "desc": "Motor de pricing dinámico que ajusta tarifas de habitación en tiempo real usando ML.CLASSIFICATION sobre demanda, competencia y eventos locales. El modelo se versiona y despliega con Snowflake Model Registry para inferencia en producción.",
+    "features": [
+      "Dynamic pricing con ML.CLASSIFICATION + Model Registry",
+      "Versionado de modelos con log_model() y deploy()",
+      "Variables: ocupación, competencia, eventos, estacionalidad, lead time",
+      "Dashboard Streamlit de Revenue Management"
+    ]
+  },
+  {
+    "id": "UC02",
+    "cat": "pricing",
+    "catLabel": "Revenue & Pricing",
+    "time": "14 min",
+    "title": "Predicción de Demanda Hotelera Multi-Horizonte",
+    "pain": "La previsión de demanda a 30, 60 y 90 días utiliza medias históricas simplistas. Los errores de forecast generan overbooking o habitaciones vacías, ambos costosos.",
+    "desc": "Modelos de forecast a 3 horizontes con ML.FORECAST integrando variables externas (eventos, vuelos, meteorología, tendencias de búsqueda). Reduce el error MAPE del 25% al 12%.",
+    "features": [
+      "Forecast multi-horizonte con ML.FORECAST",
+      "Variables externas: eventos, vuelos, meteo, búsquedas",
+      "Intervalos de confianza al 95% por segmento",
+      "Comparativa forecast vs realidad con tracking de accuracy"
+    ]
+  },
+  {
+    "id": "UC03",
+    "cat": "pricing",
+    "catLabel": "Revenue & Pricing",
+    "time": "12 min",
+    "title": "Optimización de Revenue por Ancillary Services",
+    "pain": "Los servicios complementarios (spa, restaurante, transfers, experiencias) tienen baja penetración del 15%. Los bundles se crean manualmente sin datos de propensión de compra.",
+    "desc": "Modelo de propensión de compra por servicio ancillary usando comportamiento de reserva, perfil del huésped y estancia. Genera bundles personalizados que incrementan el revenue por habitación un 22%.",
+    "features": [
+      "Propensión de compra por servicio con ML.CLASSIFICATION",
+      "Generación automática de bundles personalizados",
+      "Variables: perfil, motivo viaje, duración, historial",
+      "Integración con motor de ofertas en pre-arrival email"
+    ]
+  },
+  {
+    "id": "UC04",
+    "cat": "pricing",
+    "catLabel": "Revenue & Pricing",
+    "time": "11 min",
+    "title": "Segmentación de Valor de Cliente (CLV) con ML",
+    "pain": "Tratar a todos los huéspedes igual destruye valor. Los programas de fidelización no diferencian por valor real, y los descuentos se ofrecen sin considerar el lifetime value del cliente.",
+    "desc": "Cálculo de Customer Lifetime Value con ML combinando frecuencia, recencia, valor de estancia, servicios consumidos y probabilidad de retorno. Segmenta en tiers para acciones diferenciadas.",
+    "features": [
+      "CLV predictivo con ML.CLASSIFICATION",
+      "Segmentación automática en 4 tiers de valor",
+      "Variables: RFM, canales, servicios, fidelización",
+      "Activación de campañas diferenciadas por segmento"
+    ]
+  },
+  {
+    "id": "UC05",
+    "cat": "experiencia",
+    "catLabel": "Experiencia del Huésped",
+    "time": "15 min",
+    "title": "Mantenimiento Predictivo de Instalaciones con Model Registry",
+    "pain": "Las averías en HVAC, ascensores y fontanería generan quejas de huéspedes y compensaciones costosas. El 30% de las intervenciones de mantenimiento son reactivas y urgentes.",
+    "desc": "Predicción de fallos en instalaciones hoteleras usando sensores IoT con ML.CLASSIFICATION. Los modelos se registran en Snowflake Model Registry con versionado semántico para despliegue automatizado en producción.",
+    "features": [
+      "Predicción de fallos con ML + Model Registry",
+      "Versionado semántico de modelos con log_model()",
+      "Variables: sensores HVAC, ascensores, fontanería, edad equipo",
+      "Alertas 48h antes del fallo con coste evitado"
+    ]
+  },
+  {
+    "id": "UC06",
+    "cat": "experiencia",
+    "catLabel": "Experiencia del Huésped",
+    "time": "13 min",
+    "title": "Recomendaciones Personalizadas de Experiencias Locales",
+    "pain": "Los huéspedes reciben las mismas recomendaciones genéricas independientemente de sus preferencias. El 70% de los huéspedes quiere sugerencias personalizadas pero solo el 20% las recibe.",
+    "desc": "Motor de recomendación con Cortex AI que combina perfil del huésped, motivo de viaje, clima y oferta local para generar sugerencias contextuales de restaurantes, actividades y experiencias.",
+    "features": [
+      "Recomendaciones con CORTEX.COMPLETE contextual",
+      "Variables: perfil, motivo viaje, temporada, clima, ubicación",
+      "Generación de itinerarios personalizados por duración",
+      "Integración con concierge digital y app del hotel"
+    ]
+  },
+  {
+    "id": "UC07",
+    "cat": "experiencia",
+    "catLabel": "Experiencia del Huésped",
+    "time": "12 min",
+    "title": "Análisis de Sentimiento en Reviews Multi-Canal",
+    "pain": "Los hoteles reciben miles de reviews en 8+ plataformas sin análisis unificado. Las tendencias negativas se detectan semanas después, cuando ya han impactado en el ranking y las reservas.",
+    "desc": "Pipeline NLP que agrega reviews de todas las plataformas, clasifica sentimiento por categoría (habitación, limpieza, servicio, ubicación, restaurante) y detecta tendencias emergentes en tiempo real.",
+    "features": [
+      "Sentimiento multi-categoría con CORTEX.SENTIMENT + CORTEX.COMPLETE",
+      "Agregación de 8+ fuentes: Booking, TripAdvisor, Google, etc.",
+      "Detección de tendencias negativas emergentes",
+      "Alertas automáticas al GM por caída de categoría"
+    ]
+  },
+  {
+    "id": "UC08",
+    "cat": "experiencia",
+    "catLabel": "Experiencia del Huésped",
+    "time": "15 min",
+    "title": "Feature Store de Preferencias del Huésped",
+    "pain": "Las preferencias del huésped están dispersas en PMS, CRM, app y notas del staff. Al repetir estancia, el hotel no recuerda las preferencias expresadas previamente, generando frustración.",
+    "desc": "Feature Store centralizado en Snowflake que consolida y versiona las features de cada huésped (tipo almohada, temperatura, piso, mini-bar, alergias). Sirve features en tiempo real para personalización en check-in.",
+    "features": [
+      "Snowflake Feature Store con Entity y FeatureView",
+      "Features servidas en tiempo real para check-in",
+      "Versionado automático de preferencias por estancia",
+      "Pipeline de ingesta desde PMS, CRM, app y notas staff"
+    ]
+  },
+  {
+    "id": "UC09",
+    "cat": "experiencia",
+    "catLabel": "Experiencia del Huésped",
+    "time": "14 min",
+    "title": "Chatbot Concierge con RAG sobre Conocimiento del Hotel",
+    "pain": "El servicio de concierge tiene picos de demanda que superan la capacidad del personal. Los huéspedes esperan respuestas inmediatas 24/7 sobre servicios, horarios, entorno y recomendaciones.",
+    "desc": "Asistente conversacional RAG con Cortex Search indexando la base de conocimiento del hotel: servicios, horarios, menús, procedimientos, FAQ y guía local. Respuestas en el idioma del huésped.",
+    "features": [
+      "RAG con Cortex Search + CORTEX.COMPLETE",
+      "Base de conocimiento: servicios, menús, FAQ, guía local",
+      "Multiidioma automático con detección de idioma",
+      "Escalado a staff humano cuando confianza < umbral"
+    ]
+  },
+  {
+    "id": "UC10",
+    "cat": "operaciones",
+    "catLabel": "Operaciones",
+    "time": "13 min",
+    "title": "Optimización de Staffing por Predicción de Ocupación",
+    "pain": "El 40% de los costes hoteleros es personal. La planificación de turnos se basa en ocupación histórica sin considerar el mix de huéspedes, eventos ni patrones de consumo de servicios.",
+    "desc": "Modelo de predicción de carga de trabajo por departamento (housekeeping, recepción, F&B, mantenimiento) basado en ocupación prevista, mix de segmentos y eventos. Optimiza turnos reduciendo coste un 12%.",
+    "features": [
+      "Predicción de carga por departamento con ML.FORECAST",
+      "Variables: ocupación, segmento, eventos, día semana, festivos",
+      "Optimización de turnos con restricciones laborales",
+      "Dashboard de planificación semanal por departamento"
+    ]
+  },
+  {
+    "id": "UC11",
+    "cat": "operaciones",
+    "catLabel": "Operaciones",
+    "time": "12 min",
+    "title": "Optimización Energética del Hotel con IA",
+    "pain": "La energía representa el 6-10% de los ingresos hoteleros. Los sistemas HVAC funcionan a plena potencia en habitaciones vacías y las áreas comunes no se adaptan a la ocupación real.",
+    "desc": "Optimización del consumo energético correlacionando ocupación, meteorología, tarifas eléctricas y patrones de uso por zona. Reduce el consumo un 18% sin afectar al confort del huésped.",
+    "features": [
+      "Predicción de consumo por zona con ML",
+      "Correlación ocupación × meteo × tarifa eléctrica",
+      "Detección de anomalías en equipos HVAC",
+      "Dashboard de gestión energética con KPIs €/habitación"
+    ]
+  },
+  {
+    "id": "UC12",
+    "cat": "operaciones",
+    "catLabel": "Operaciones",
+    "time": "11 min",
+    "title": "Predicción de No-Shows y Overbooking Inteligente",
+    "pain": "La tasa media de no-show es del 5-15% pero varía enormemente por segmento, canal y temporada. El overbooking manual genera walk-outs costosos con compensaciones de 300-500€.",
+    "desc": "Modelo ML que predice la probabilidad de no-show por reserva individual considerando lead time, canal, historial, garantía y patrón del segmento. Permite overbooking calibrado con riesgo controlado.",
+    "features": [
+      "Predicción de no-show por reserva con ML.CLASSIFICATION",
+      "Variables: lead time, canal, garantía, historial, segmento",
+      "Cálculo de overbooking óptimo por noche con riesgo",
+      "Simulación de escenarios y coste de walk-out"
+    ]
+  },
+  {
+    "id": "UC13",
+    "cat": "operaciones",
+    "catLabel": "Operaciones",
+    "time": "10 min",
+    "title": "Análisis de Velocidad de Housekeeping con NLP",
+    "pain": "Los tiempos de limpieza varían un 40% entre camareras de piso sin explicación clara. Los retrasos en housekeeping generan esperas en check-in y quejas que impactan en las reviews.",
+    "desc": "Análisis de productividad de housekeeping combinando tiempos de limpieza, tipo de habitación, incidencias reportadas y análisis NLP de comentarios del staff. Identifica mejores prácticas y cuellos de botella.",
+    "features": [
+      "Análisis de productividad por camarera y tipo habitación",
+      "NLP sobre comentarios e incidencias con CORTEX.COMPLETE",
+      "Identificación de mejores prácticas y formación",
+      "Dashboard operativo con KPIs de turnaround time"
+    ]
+  },
+  {
+    "id": "UC14",
+    "cat": "distribucion",
+    "catLabel": "Distribución B2B",
+    "time": "15 min",
+    "title": "Feature Store de Rendimiento de Partners B2B",
+    "pain": "Los operadores turísticos B2B se gestionan con datos dispersos en múltiples sistemas. No hay visión unificada del rendimiento, rentabilidad y riesgo de cada partner en tiempo real.",
+    "desc": "Feature Store en Snowflake que consolida métricas de cada partner B2B: volumen de reservas, ADR, cancelaciones, velocidad de pago, reclamaciones. Sirve features para scoring y decisiones de distribución en tiempo real.",
+    "features": [
+      "Snowflake Feature Store con Entity por partner",
+      "FeatureViews: booking_metrics, financial_health, quality_score",
+      "Features servidas para scoring en tiempo real",
+      "Pipeline automático de actualización diaria desde API logs"
+    ]
+  },
+  {
+    "id": "UC15",
+    "cat": "distribucion",
+    "catLabel": "Distribución B2B",
+    "time": "13 min",
+    "title": "Predicción de Cancelaciones B2B por Canal",
+    "pain": "Las cancelaciones B2B de último momento dejan inventario sin vender. Los canales con alta tasa de cancelación ocupan inventario que podría venderse por canales más fiables.",
+    "desc": "Modelo de predicción de cancelación por reserva B2B que identifica reservas con alta probabilidad de cancelarse. Permite liberar inventario proactivamente y ajustar allocation por canal.",
+    "features": [
+      "Predicción de cancelación por reserva con ML.CLASSIFICATION",
+      "Variables: lead time, canal, historial partner, precio vs market",
+      "Liberación proactiva de inventario en riesgo",
+      "Ajuste dinámico de allocation por canal"
+    ]
+  },
+  {
+    "id": "UC16",
+    "cat": "distribucion",
+    "catLabel": "Distribución B2B",
+    "time": "12 min",
+    "title": "Detección de Disparidad de Precios en Canales",
+    "pain": "Las disparidades de precios entre canales erosionan el canal directo y violan acuerdos de paridad. El 35% de los hoteles tiene problemas de rate parity sin detectarlos a tiempo.",
+    "desc": "Sistema de monitorización de paridad de precios que compara tarifas publicadas en todos los canales de distribución. Detecta disparidades en tiempo real y genera alertas con evidencia.",
+    "features": [
+      "Monitorización de precios en múltiples canales",
+      "Detección de disparidad con alertas en tiempo real",
+      "Análisis de impacto en conversión del canal directo",
+      "Dashboard con evidencia y tendencia de paridad"
+    ]
+  },
+  {
+    "id": "UC17",
+    "cat": "distribucion",
+    "catLabel": "Distribución B2B",
+    "time": "11 min",
+    "title": "Optimización de Comisiones y Channel Mix con IA",
+    "pain": "Los hoteles pagan comisiones del 15-25% a OTAs sin optimizar el mix de canales. El coste de adquisición varía enormemente pero las decisiones de allocation no lo consideran.",
+    "desc": "Optimización del channel mix que maximiza revenue neto (después de comisiones) modelando elasticidad de demanda por canal, temporada y segmento. Reduce coste de distribución un 15%.",
+    "features": [
+      "Modelado de elasticidad de demanda por canal con ML",
+      "Optimización de allocation por canal y temporada",
+      "Cálculo de coste neto de adquisición por reserva",
+      "Simulación de escenarios: quitar OTA vs invertir en directo"
+    ]
+  },
+  {
+    "id": "UC18",
+    "cat": "seguridad",
+    "catLabel": "Fraude y Seguridad",
+    "time": "12 min",
+    "title": "Detección de Fraude en Reservas y Chargebacks",
+    "pain": "El fraude en reservas online representa el 2-4% de las transacciones. Los chargebacks cuestan al hotel el importe más una penalización del 20-40% y dañan la relación con el procesador de pagos.",
+    "desc": "Sistema ML de detección de fraude en tiempo real que analiza patrones de reserva, datos de pago, comportamiento de navegación y señales de riesgo geográfico. Reduce chargebacks un 60%.",
+    "features": [
+      "Detección de fraude en tiempo real con ML.CLASSIFICATION",
+      "Variables: IP, device fingerprint, velocidad de reserva, país",
+      "Puntuación de riesgo por transacción con estratificación",
+      "Integración con pasarela de pago para bloqueo automático"
+    ]
+  },
+  {
+    "id": "UC19",
+    "cat": "seguridad",
+    "catLabel": "Fraude y Seguridad",
+    "time": "13 min",
+    "title": "Detección de Reviews Falsas y Manipulación de Reputación",
+    "pain": "El 15-30% de las reviews online son falsas o manipuladas. Los competidores publican reviews negativas y los hoteles compran reviews positivas, erosionando la confianza del ecosistema.",
+    "desc": "Pipeline NLP que detecta reviews falsas analizando patrones lingüísticos, comportamiento del reviewer, timing y consistencia. Clasifica reviews como auténticas, sospechosas o fabricadas.",
+    "features": [
+      "Detección de reviews falsas con CORTEX.COMPLETE + ML",
+      "Variables: patrón lingüístico, historial reviewer, timing",
+      "Clasificación: Auténtica / Sospechosa / Fabricada",
+      "Dashboard de integridad de reputación con evidencia"
+    ]
+  },
+  {
+    "id": "UC20",
+    "cat": "seguridad",
+    "catLabel": "Fraude y Seguridad",
+    "time": "10 min",
+    "title": "Cumplimiento GDPR/PCI en Datos de Huéspedes",
+    "pain": "Los hoteles almacenan datos sensibles (pasaportes, tarjetas, preferencias) sin clasificación ni políticas adecuadas. Las multas GDPR pueden alcanzar el 4% de la facturación global.",
+    "desc": "Sistema de clasificación y protección de datos sensibles usando Cortex AI para identificar PII en todas las tablas, aplicar políticas de enmascaramiento y generar informes de auditoría de cumplimiento.",
+    "features": [
+      "Clasificación automática de PII con CORTEX.COMPLETE",
+      "Políticas de enmascaramiento dinámico por rol",
+      "Auditoría de acceso a datos sensibles",
+      "Dashboard de cumplimiento GDPR/PCI con score"
+    ]
+  }
+];
+const TOTAL = 20;
+
+function renderCards(list) {
+  const grid = document.getElementById('cardsGrid');
+  const count = document.getElementById('resultsCount');
+  grid.innerHTML = '';
+  count.textContent = `Mostrando ${list.length} de ${TOTAL} casos de uso`;
+  list.forEach(uc => {
+    const catClass = uc.cat;
+    grid.innerHTML += `
+      <article class="card">
+        <div class="card-header">
+          <div class="card-badges">
+            <span class="badge-id">${uc.id}</span>
+            <span class="badge-cat ${catClass}">${uc.catLabel}</span>
+          </div>
+          <span class="card-time">
+            <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2"><circle cx="10" cy="10" r="8"/><polyline points="10,5 10,10 13,13"/></svg>
+            ${uc.time}
+          </span>
+        </div>
+        <h3 class="card-title">${uc.title}</h3>
+        <div class="pain-point">
+          <div class="pain-point-label">Problema</div>
+          <p>${uc.pain}</p>
+        </div>
+        <p class="card-desc">${uc.desc}</p>
+        <ul class="card-features">
+          ${uc.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+        <div class="card-actions">
+          <a href="#" class="btn-secondary" onclick="verGuia('${uc.id}');return false;">Ver Guía</a>
+          <a href="#" class="btn-tertiary" onclick="verPrompts('${uc.id}');return false;">Cortex Code Prompts</a>
+        </div>
+      </article>`;
+  });
+}
+let activeFilter = 'all';
+let searchTerm = '';
+function applyFilters() {
+  let result = USE_CASES;
+  if (activeFilter !== 'all') result = result.filter(u => u.cat === activeFilter);
+  if (searchTerm) result = result.filter(u => u.title.toLowerCase().includes(searchTerm) || u.desc.toLowerCase().includes(searchTerm) || u.pain.toLowerCase().includes(searchTerm));
+  renderCards(result);
+}
+document.getElementById('filterBtns').addEventListener('click', e => {
+  if (!e.target.matches('.filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  activeFilter = e.target.dataset.filter;
+  applyFilters();
+});
+document.getElementById('searchInput').addEventListener('input', e => { searchTerm = e.target.value.toLowerCase().trim(); applyFilters(); });
+renderCards(USE_CASES);
+
+const GUIAS = {
+  "UC01": {
+    "title": "Dynamic Pricing con Model Registry",
+    "contexto": "Estos Cortex Code Prompts construyen un motor de pricing dinámico para habitaciones de hotel que ajusta tarifas en tiempo real y registra el modelo en Snowflake Model Registry para despliegue en producción.",
+    "foco": "Revenue Management hotelero — optimización de tarifas de habitación en función de demanda, competencia y eventos.",
+    "reto": "Incrementar el RevPAR (Revenue Per Available Room) un 12-18% mediante pricing dinámico con modelos versionados y desplegados en producción.",
+    "objetivos": [
+      "Construir modelo de pricing dinámico con ML.CLASSIFICATION",
+      "Registrar y versionar el modelo con Snowflake Model Registry (log_model)",
+      "Generar datos sintéticos de ocupación, competencia y eventos",
+      "Desplegar modelo para inferencia en producción",
+      "Construir dashboard de Revenue Management con Streamlit"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Clasificación de franja de precio óptima",
+      "Model Registry: Versionado semántico con log_model() y métricas",
+      "Datos sintéticos: 365 días × 200 habitaciones con ocupación, precios y eventos",
+      "Dashboard Streamlit: Panel de Revenue Management con forecast y recomendaciones"
+    ],
+    "datos": [
+      "Habitaciones: Tipo, capacidad, piso, vista, tarifa rack",
+      "Ocupación: Diaria con demanda real, competencia, eventos locales",
+      "Modelo versionado: Métricas de accuracy, feature importance, metadata"
+    ],
+    "estratificacion": [
+      "Alta demanda (>85% ocupación): Precio +20-35% sobre rack",
+      "Media (60-85%): Precio rack ±10%",
+      "Baja demanda (<60%): Descuento 15-30% con upselling de servicios",
+      "Último minuto (<48h, baja ocupación): Precio mínimo con restricciones"
+    ],
+    "como_usar": [
+      "Ejecutar los prompts secuencialmente en Cortex Code",
+      "El modelo se entrena y se registra en Model Registry",
+      "Se genera una versión del modelo con métricas asociadas",
+      "El dashboard permite simular cambios de precio y ver impacto"
+    ]
+  },
+  "UC02": {
+    "title": "Predicción de Demanda Hotelera Multi-Horizonte",
+    "contexto": "Estos Cortex Code Prompts construyen modelos de predicción de demanda a 30, 60 y 90 días integrando variables externas para optimizar la estrategia de revenue.",
+    "foco": "Forecasting de demanda hotelera — predicción precisa de ocupación futura por segmento y tipo de habitación.",
+    "reto": "Reducir el error de forecast (MAPE) del 25% al 12% integrando señales externas de demanda.",
+    "objetivos": [
+      "Entrenar modelos de forecast con SNOWFLAKE.ML.FORECAST",
+      "Integrar variables externas: eventos, vuelos, meteorología",
+      "Generar datos sintéticos con patrones estacionales realistas",
+      "Evaluar accuracy por horizonte y segmento",
+      "Construir dashboard de forecast con bandas de confianza"
+    ],
+    "funcionalidades": [
+      "Modelo ML: ML.FORECAST con series temporales y exógenas",
+      "Datos sintéticos: 24 meses de ocupación con estacionalidad y eventos",
+      "Forecast: 30, 60 y 90 días con intervalos de confianza al 95%",
+      "Dashboard Streamlit: Forecast interactivo por segmento y tipo"
+    ],
+    "datos": [
+      "Ocupación histórica: Diaria por tipo de habitación y segmento",
+      "Variables externas: Eventos, llegadas aeropuerto, búsquedas, meteo",
+      "Forecast: Predicciones con lower/upper bound al 95%"
+    ],
+    "estratificacion": [
+      "MAPE <10%: Forecast fiable para decisiones de pricing",
+      "MAPE 10-20%: Usar como guía con margen de seguridad",
+      "MAPE >20%: Revisar variables y recalibrar modelo"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 24 meses de datos con estacionalidad realista",
+      "El modelo se entrena con ML.FORECAST",
+      "El dashboard compara forecast vs realidad con métricas de accuracy"
+    ]
+  },
+  "UC03": {
+    "title": "Optimización de Revenue por Ancillary Services",
+    "contexto": "Estos Cortex Code Prompts construyen un motor de propensión de compra de servicios complementarios para maximizar el revenue per guest.",
+    "foco": "Ancillary revenue — predicción de propensión de compra de spa, restaurante, transfers y experiencias.",
+    "reto": "Incrementar la penetración de servicios ancillary del 15% al 35% mediante ofertas personalizadas basadas en propensión ML.",
+    "objetivos": [
+      "Entrenar modelo de propensión por servicio con ML.CLASSIFICATION",
+      "Generar datos sintéticos de huéspedes con consumo de servicios",
+      "Crear bundles personalizados basados en propensión",
+      "Calcular incremento de revenue por habitación",
+      "Construir dashboard de upselling con recomendaciones"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Propensión de compra por tipo de servicio",
+      "Datos sintéticos: 5.000 estancias con consumo de 8 servicios",
+      "Bundles: Combinaciones óptimas por perfil de huésped",
+      "Dashboard Streamlit: Panel de upselling con recomendaciones por reserva"
+    ],
+    "datos": [
+      "Reservas: Perfil, motivo viaje, duración, canal, precio",
+      "Servicios: Spa, restaurante, minibar, transfer, excursión, parking, upgrade, late checkout",
+      "Propensión: Probabilidad de compra por servicio y huésped"
+    ],
+    "estratificacion": [
+      "Alta propensión (>70%): Incluir en email pre-arrival como oferta flash",
+      "Media (40-70%): Mostrar en app durante estancia",
+      "Baja (<40%): No ofrecer activamente (evitar fatiga)"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 5.000 estancias con patrones de consumo",
+      "El modelo predice propensión por servicio",
+      "El dashboard genera bundles personalizados"
+    ]
+  },
+  "UC04": {
+    "title": "Segmentación de Valor de Cliente (CLV) con ML",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de Customer Lifetime Value predictivo para segmentar huéspedes por valor futuro.",
+    "foco": "Fidelización hotelera — segmentación por valor real del huésped para acciones de marketing diferenciadas.",
+    "reto": "Identificar el 20% de huéspedes que generan el 65% del revenue y diseñar estrategias diferenciadas por tier.",
+    "objetivos": [
+      "Calcular CLV predictivo combinando RFM y propensión de retorno",
+      "Segmentar huéspedes en 4 tiers de valor",
+      "Generar datos sintéticos de historial de estancias",
+      "Activar campañas diferenciadas por segmento",
+      "Construir dashboard de fidelización con métricas por tier"
+    ],
+    "funcionalidades": [
+      "Modelo ML: CLV predictivo con regresión y clasificación",
+      "Datos sintéticos: 3.000 huéspedes con 2 años de historial",
+      "Segmentos: Platinum (>P90), Gold (P75-P90), Silver (P50-P75), Bronze (<P50)",
+      "Dashboard Streamlit: Análisis de valor por tier con acciones recomendadas"
+    ],
+    "datos": [
+      "Huéspedes: Perfil, programa fidelidad, canal preferido",
+      "Estancias: Fechas, ADR, servicios consumidos, reviews",
+      "CLV: Valor predicho a 12 meses con probabilidad de retorno"
+    ],
+    "estratificacion": [
+      "Platinum (CLV >5.000€): Atención VIP, upgrades, contacto personalizado",
+      "Gold (2.000-5.000€): Ofertas exclusivas pre-arrival, late checkout",
+      "Silver (500-2.000€): Campañas de incremento de frecuencia",
+      "Bronze (<500€): Campañas de reactivación con incentivo"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 3.000 huéspedes con historial realista",
+      "El modelo predice CLV a 12 meses",
+      "El dashboard muestra distribución por tier y acciones"
+    ]
+  },
+  "UC05": {
+    "title": "Mantenimiento Predictivo de Instalaciones con Model Registry",
+    "contexto": "Estos Cortex Code Prompts construyen un predictor de fallos en instalaciones hoteleras con registro del modelo en Snowflake Model Registry para despliegue automatizado.",
+    "foco": "Mantenimiento hotelero — predicción de fallos en HVAC, ascensores, fontanería y equipamiento de habitaciones.",
+    "reto": "Reducir averías imprevistas un 65% y eliminar compensaciones a huéspedes por incidencias de mantenimiento.",
+    "objetivos": [
+      "Generar señales sintéticas de sensores de instalaciones",
+      "Entrenar modelo predictivo de fallos con ML.CLASSIFICATION",
+      "Registrar modelo en Model Registry con log_model() y métricas",
+      "Configurar pipeline de inferencia automática",
+      "Calcular ROI del mantenimiento predictivo"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de fallo con ML.CLASSIFICATION + Model Registry",
+      "Versionado: log_model() con métricas de accuracy y recall",
+      "Datos sintéticos: 50 equipos con 180 días de señales de sensores",
+      "Dashboard Streamlit: Panel de salud de instalaciones con alertas"
+    ],
+    "datos": [
+      "Equipos: HVAC, ascensores, calderas, bombas, generadores",
+      "Sensores: Temperatura, vibración, presión, corriente, horas uso",
+      "Modelo registrado: Versión, métricas, feature importance, metadata"
+    ],
+    "estratificacion": [
+      "Fallo Inminente (≥70%): Intervención programada antes de 24h",
+      "Riesgo Elevado (40-70%): Inspección y preparar repuestos",
+      "Normal (<40%): Monitorización estándar y mantenimiento preventivo"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 180 días de señales para 50 equipos",
+      "El modelo se entrena y registra en Model Registry",
+      "El dashboard muestra la salud de instalaciones y el coste evitado"
+    ]
+  },
+  "UC06": {
+    "title": "Recomendaciones Personalizadas de Experiencias Locales",
+    "contexto": "Estos Cortex Code Prompts construyen un motor de recomendación contextual que genera sugerencias personalizadas de actividades, restaurantes y experiencias para cada huésped.",
+    "foco": "Experiencia del huésped — recomendaciones personalizadas de actividades locales basadas en perfil y contexto.",
+    "reto": "Incrementar la satisfacción del huésped (NPS +15 puntos) y el revenue de experiencias un 30% con recomendaciones relevantes.",
+    "objetivos": [
+      "Generar catálogo de experiencias locales con atributos",
+      "Crear perfiles de huéspedes con preferencias",
+      "Implementar recomendación contextual con CORTEX.COMPLETE",
+      "Generar itinerarios personalizados por duración de estancia",
+      "Construir interfaz de concierge digital con Streamlit"
+    ],
+    "funcionalidades": [
+      "Recomendaciones con CORTEX.COMPLETE contextual",
+      "Datos sintéticos: 200 experiencias, 1.000 huéspedes, 3.000 estancias",
+      "Itinerarios: Generados automáticamente por duración y perfil",
+      "Dashboard Streamlit: Concierge digital interactivo"
+    ],
+    "datos": [
+      "Experiencias: Restaurantes, tours, museos, actividades, wellness",
+      "Huéspedes: Perfil demográfico, motivo viaje, intereses, idioma",
+      "Recomendaciones: Top 5 experiencias por huésped con score de relevancia"
+    ],
+    "estratificacion": [
+      "Relevancia alta (>80%): Recomendación principal en email pre-arrival",
+      "Relevancia media (50-80%): Incluir en app durante estancia",
+      "Relevancia baja (<50%): No mostrar para evitar ruido"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan experiencias y perfiles de huéspedes",
+      "CORTEX.COMPLETE genera recomendaciones contextuales",
+      "El dashboard permite explorar y ajustar recomendaciones"
+    ]
+  },
+  "UC07": {
+    "title": "Análisis de Sentimiento en Reviews Multi-Canal",
+    "contexto": "Estos Cortex Code Prompts construyen un pipeline NLP para agregar y analizar reviews de múltiples plataformas, detectando tendencias de sentimiento por categoría.",
+    "foco": "Reputación online — análisis unificado de reviews en Booking, TripAdvisor, Google, Expedia y canal directo.",
+    "reto": "Detectar tendencias negativas en menos de 24h (vs 2-4 semanas actual) y reducir el impacto en ranking.",
+    "objetivos": [
+      "Generar reviews sintéticas multi-plataforma con variedad",
+      "Clasificar sentimiento por categoría con CORTEX.SENTIMENT",
+      "Extraer temas recurrentes con CORTEX.COMPLETE",
+      "Detectar tendencias emergentes positivas y negativas",
+      "Generar alertas automáticas por caída de categoría"
+    ],
+    "funcionalidades": [
+      "NLP: CORTEX.SENTIMENT + CORTEX.COMPLETE para análisis multi-categoría",
+      "Datos sintéticos: 2.000 reviews de 5 plataformas en 12 meses",
+      "Categorías: Habitación, Limpieza, Servicio, Ubicación, F&B, WiFi, Precio",
+      "Dashboard Streamlit: Panel de reputación con tendencias y alertas"
+    ],
+    "datos": [
+      "Reviews: Texto, plataforma, fecha, rating, idioma, tipo huésped",
+      "Sentimiento: Score por categoría (-1 a +1)",
+      "Tendencias: Media móvil 30 días por categoría con alertas"
+    ],
+    "estratificacion": [
+      "Tendencia crítica (caída >0.3 en 30 días): Alerta al GM inmediata",
+      "Tendencia negativa (caída 0.1-0.3): Revisión semanal por departamento",
+      "Estable (±0.1): Monitorización estándar",
+      "Tendencia positiva (subida >0.1): Reconocer al equipo"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 2.000 reviews con variedad de plataformas e idiomas",
+      "Cortex AI clasifica sentimiento por categoría",
+      "El dashboard muestra tendencias y alertas en tiempo real"
+    ]
+  },
+  "UC08": {
+    "title": "Feature Store de Preferencias del Huésped",
+    "contexto": "Estos Cortex Code Prompts construyen un Feature Store en Snowflake para consolidar y servir preferencias de huéspedes en tiempo real para personalización en check-in.",
+    "foco": "Personalización hotelera — Feature Store centralizado con todas las preferencias del huésped actualizadas automáticamente.",
+    "reto": "Lograr que el 90% de los repeat guests tengan sus preferencias disponibles en check-in (vs 30% actual).",
+    "objetivos": [
+      "Crear entidades y FeatureViews con Snowflake Feature Store",
+      "Generar datos sintéticos de preferencias de múltiples fuentes",
+      "Implementar pipeline de ingesta desde PMS, CRM y app",
+      "Servir features en tiempo real para check-in",
+      "Validar consistencia y frescura de las features"
+    ],
+    "funcionalidades": [
+      "Feature Store: Entity (guest_id) + FeatureViews (room, dining, service)",
+      "Pipeline: Ingesta de PMS, CRM, app, notas staff con merge automático",
+      "Datos sintéticos: 2.000 huéspedes con 5.000 estancias y preferencias",
+      "Dashboard Streamlit: Panel de preferencias por huésped para recepción"
+    ],
+    "datos": [
+      "Preferencias de habitación: Piso, vista, tipo almohada, temperatura, minibar",
+      "Preferencias de F&B: Alergias, dieta, restaurante favorito, vino",
+      "Preferencias de servicio: Hora check-in/out, periódico, transporte"
+    ],
+    "estratificacion": [
+      "Repeat guest con features completas: Personalización automática total",
+      "Repeat guest con features parciales: Confirmar en check-in",
+      "First-time guest: Preguntas de preferencias en app pre-arrival",
+      "VIP/Platinum: Notificar a duty manager con perfil completo"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se crean las entidades y FeatureViews en Feature Store",
+      "Se generan preferencias de 2.000 huéspedes de múltiples fuentes",
+      "El dashboard simula un check-in con features servidas en tiempo real"
+    ]
+  },
+  "UC09": {
+    "title": "Chatbot Concierge con RAG sobre Conocimiento del Hotel",
+    "contexto": "Estos Cortex Code Prompts construyen un asistente conversacional RAG sobre Cortex Search que responde preguntas de huéspedes indexando la base de conocimiento completa del hotel.",
+    "foco": "Servicio al huésped 24/7 — chatbot con acceso a toda la información del hotel, servicios, menús y entorno.",
+    "reto": "Resolver el 80% de las consultas de huéspedes sin intervención humana, disponible 24/7 en 10+ idiomas.",
+    "objetivos": [
+      "Generar base de conocimiento del hotel (servicios, menús, FAQ)",
+      "Crear chunks de texto para indexación semántica",
+      "Crear Cortex Search Service sobre documentación del hotel",
+      "Implementar pipeline RAG multiidioma",
+      "Construir interfaz de chat con Streamlit"
+    ],
+    "funcionalidades": [
+      "RAG: Cortex Search + CORTEX.COMPLETE con detección de idioma",
+      "Datos sintéticos: 150 documentos de 6 tipos (FAQ, menús, servicios, tours, procedimientos, guía local)",
+      "Multiidioma: Respuestas en el idioma de la pregunta automáticamente",
+      "Dashboard Streamlit: Chat con historial y escalado a staff"
+    ],
+    "datos": [
+      "FAQ: 80 preguntas frecuentes con respuestas detalladas",
+      "Menús: Restaurante, room service, bar, eventos con alérgenos",
+      "Servicios: Spa, gym, piscina, parking, business center, transfers"
+    ],
+    "estratificacion": [
+      "Confianza alta (>0.8): Respuesta directa al huésped",
+      "Confianza media (0.5-0.8): Responder + ofrecer hablar con staff",
+      "Confianza baja (<0.5): Escalar a concierge humano directamente"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se genera base de conocimiento con 150 documentos",
+      "Se crea Cortex Search Service con indexación semántica",
+      "El dashboard permite chatear y ver chunks utilizados"
+    ]
+  },
+  "UC10": {
+    "title": "Optimización de Staffing por Predicción de Ocupación",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de predicción de carga de trabajo por departamento para optimizar la planificación de turnos.",
+    "foco": "Gestión de personal hotelero — dimensionamiento óptimo de plantilla por departamento basado en demanda prevista.",
+    "reto": "Reducir el coste de personal un 12% sin impactar la calidad de servicio, eliminando horas extra no planificadas.",
+    "objetivos": [
+      "Predecir carga de trabajo por departamento y día",
+      "Generar datos sintéticos de ocupación y consumo de servicios",
+      "Modelar ratios de personal por tipo de servicio",
+      "Optimizar turnos con restricciones laborales",
+      "Construir dashboard de planificación de turnos"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de carga con ML.FORECAST por departamento",
+      "Datos sintéticos: 12 meses, 6 departamentos, 200 empleados",
+      "Ratios: Camareras/habitación, recepcionistas/check-in, cocineros/cubierto",
+      "Dashboard Streamlit: Planificación semanal con coste y cobertura"
+    ],
+    "datos": [
+      "Ocupación: Diaria por tipo y segmento con forecast",
+      "Servicios: Check-ins, cubiertos, spa appointments por hora",
+      "Personal: Contratos, disponibilidad, coste hora, polivalencia"
+    ],
+    "estratificacion": [
+      "Déficit >20%: Contratar extra o redistribuir personal",
+      "Déficit 10-20%: Activar horas extra selectivas",
+      "Equilibrado (±10%): Planificación estándar",
+      "Exceso >10%: Reasignar a formación o tareas preventivas"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 12 meses de datos de ocupación y servicios",
+      "El modelo predice carga por departamento y día",
+      "El dashboard optimiza turnos con restricciones laborales"
+    ]
+  },
+  "UC11": {
+    "title": "Optimización Energética del Hotel con IA",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de optimización del consumo energético hotelero correlacionando ocupación, meteorología y tarifas eléctricas.",
+    "foco": "Sostenibilidad hotelera — reducción del consumo energético por habitación manteniendo el confort del huésped.",
+    "reto": "Reducir el consumo energético un 18% y el coste un 22% adaptando el consumo a la ocupación real y las tarifas.",
+    "objetivos": [
+      "Generar series temporales de consumo por zona y equipo",
+      "Correlacionar consumo con ocupación y meteorología",
+      "Detectar anomalías en equipos HVAC",
+      "Predecir consumo y optimizar según tarifa eléctrica",
+      "Calcular KPI €/habitación ocupada"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de consumo y detección de anomalías",
+      "Datos sintéticos: 90 días, 30 zonas, lecturas horarias",
+      "Correlaciones: Ocupación × meteo × tarifa × zona",
+      "Dashboard Streamlit: Panel de gestión energética con KPIs"
+    ],
+    "datos": [
+      "Zonas: Habitaciones por planta, áreas comunes, cocina, lavandería",
+      "Consumo: kWh por hora y zona con tarifa eléctrica",
+      "Indicadores: kWh/habitación ocupada, coste/m², desviación vs baseline"
+    ],
+    "estratificacion": [
+      "Anomalía crítica (>40% desviación): Investigación inmediata de equipo",
+      "Ineficiencia estructural (>P90): Plan de mejora trimestral",
+      "Pico evitable (coincidencia de arranques): Escalonar arranques",
+      "Zona vacía con consumo: Apagar o reducir HVAC automáticamente"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 90 días de consumo para 30 zonas",
+      "El modelo detecta anomalías y predice consumo",
+      "El dashboard muestra ranking de ineficiencia y alertas"
+    ]
+  },
+  "UC12": {
+    "title": "Predicción de No-Shows y Overbooking Inteligente",
+    "contexto": "Estos Cortex Code Prompts construyen un predictor de no-shows por reserva individual que permite calibrar el overbooking con riesgo controlado.",
+    "foco": "Revenue Management — maximización de ocupación mediante overbooking calibrado con predicción de no-shows.",
+    "reto": "Reducir walk-outs un 80% manteniendo ocupación óptima mediante overbooking basado en datos, no en intuición.",
+    "objetivos": [
+      "Generar datos sintéticos de reservas con no-shows realistas",
+      "Entrenar modelo de predicción de no-show por reserva",
+      "Calcular nivel óptimo de overbooking por noche",
+      "Simular escenarios de walk-out y coste asociado",
+      "Construir dashboard de overbooking con riesgo"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de no-show con ML.CLASSIFICATION",
+      "Datos sintéticos: 10.000 reservas con 8% de no-shows",
+      "Variables: lead_time, canal, garantía, historial, precio, segmento",
+      "Dashboard Streamlit: Panel de overbooking con simulación de riesgo"
+    ],
+    "datos": [
+      "Reservas: Canal, lead time, tipo garantía, tarifa, segmento",
+      "Historial huésped: No-shows previos, cancelaciones, early departures",
+      "Simulación: Escenarios de overbooking con probabilidad de walk-out"
+    ],
+    "estratificacion": [
+      "No-show probable (>60%): Incluir en cálculo de overbooking",
+      "Riesgo medio (30-60%): Marcar para confirmación activa",
+      "Bajo riesgo (<30%): Reserva firme, no computar en overbooking"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 10.000 reservas con patrones de no-show",
+      "El modelo predice probabilidad por reserva",
+      "El dashboard calcula overbooking óptimo por noche"
+    ]
+  },
+  "UC13": {
+    "title": "Análisis de Velocidad de Housekeeping con NLP",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de análisis de productividad de housekeeping combinando tiempos, incidencias y análisis NLP de comentarios del staff.",
+    "foco": "Operaciones de pisos — optimización de tiempos de limpieza y turnaround para check-in temprano.",
+    "reto": "Reducir el turnaround time un 25% e identificar mejores prácticas replicables en todo el equipo.",
+    "objetivos": [
+      "Generar datos sintéticos de tiempos de limpieza por habitación",
+      "Analizar variabilidad por camarera, tipo y turno",
+      "Clasificar incidencias de housekeeping con CORTEX.COMPLETE",
+      "Identificar mejores prácticas y necesidades de formación",
+      "Construir dashboard operativo de housekeeping"
+    ],
+    "funcionalidades": [
+      "Análisis de productividad: SQL + NLP con CORTEX.COMPLETE",
+      "Datos sintéticos: 8.000 limpiezas con incidencias y comentarios",
+      "Categorías: Checkout, stayover, VIP, suite, discapacidad",
+      "Dashboard Streamlit: Panel de housekeeping con KPIs y alertas"
+    ],
+    "datos": [
+      "Limpiezas: Camarera, habitación, tipo, hora inicio/fin, incidencias",
+      "Comentarios: Texto libre del staff sobre estado y problemas",
+      "Análisis: Tiempo medio, desviación, mejores prácticas extraídas"
+    ],
+    "estratificacion": [
+      "Tiempo >P90: Investigar causa (incidencia vs rendimiento)",
+      "Tiempo P75-P90: Coaching individual si es recurrente",
+      "Tiempo P25-P75: Rendimiento estándar",
+      "Tiempo <P25: Identificar como mejor práctica y compartir"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 8.000 registros de limpieza con comentarios",
+      "Cortex AI clasifica incidencias y extrae mejores prácticas",
+      "El dashboard muestra productividad y coaching suggestions"
+    ]
+  },
+  "UC14": {
+    "title": "Feature Store de Rendimiento de Partners B2B",
+    "contexto": "Estos Cortex Code Prompts construyen un Feature Store en Snowflake para consolidar métricas de rendimiento de partners B2B de distribución turística en tiempo real.",
+    "foco": "Distribución B2B — Feature Store centralizado con métricas de cada partner (OTA, tour operador, agencia) para scoring y decisiones.",
+    "reto": "Tener visión unificada del rendimiento de 100+ partners en tiempo real para optimizar allocation y comisiones.",
+    "objetivos": [
+      "Crear entidades y FeatureViews con Snowflake Feature Store para partners",
+      "Generar datos sintéticos de reservas B2B por canal",
+      "Implementar pipeline de actualización diaria de features",
+      "Servir features para scoring de partners en tiempo real",
+      "Construir dashboard de gestión de partners"
+    ],
+    "funcionalidades": [
+      "Feature Store: Entity (partner_id) + FeatureViews (bookings, financial, quality)",
+      "Pipeline: Actualización diaria desde logs de API y PMS",
+      "Datos sintéticos: 100 partners con 12 meses de transacciones",
+      "Dashboard Streamlit: Panel de gestión de partners con ranking"
+    ],
+    "datos": [
+      "Partners: OTAs, tour operadores, agencias, wholesalers",
+      "Métricas: ADR, volumen, cancelaciones, no-shows, lead time, pago",
+      "Quality: Reclamaciones, chargebacks, customer satisfaction"
+    ],
+    "estratificacion": [
+      "Partner Premium (score >80): Allocation prioritaria y mejor inventario",
+      "Partner Estándar (60-80): Condiciones normales",
+      "Partner en Riesgo (40-60): Revisión de condiciones y alertas",
+      "Partner Problema (<40): Restricción de inventario o desconexión"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se crean entidades y FeatureViews en Feature Store",
+      "Se generan 12 meses de datos de 100 partners",
+      "El dashboard muestra ranking y scores en tiempo real"
+    ]
+  },
+  "UC15": {
+    "title": "Predicción de Cancelaciones B2B por Canal",
+    "contexto": "Estos Cortex Code Prompts construyen un predictor de cancelaciones de reservas B2B para liberar inventario proactivamente y optimizar allocation.",
+    "foco": "Revenue Management B2B — predicción de cancelación por reserva para gestión proactiva de inventario.",
+    "reto": "Liberar el 70% del inventario que se cancelará antes de la ventana crítica de reventa, reduciendo pérdida de revenue.",
+    "objetivos": [
+      "Generar datos sintéticos de reservas B2B con cancelaciones",
+      "Entrenar modelo de predicción de cancelación por reserva",
+      "Identificar patrones de cancelación por canal y temporada",
+      "Calcular ventana óptima de liberación de inventario",
+      "Construir dashboard de gestión de cancelaciones"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de cancelación con ML.CLASSIFICATION",
+      "Datos sintéticos: 15.000 reservas B2B con 25% de cancelaciones",
+      "Variables: canal, lead_time, tarifa, garantía, historial_partner",
+      "Dashboard Streamlit: Panel de cancelaciones con acciones proactivas"
+    ],
+    "datos": [
+      "Reservas B2B: Canal, partner, fechas, tarifa, tipo habitación",
+      "Cancelaciones: Fecha, motivo, antelación, impacto en revenue",
+      "Predicción: Probabilidad de cancelación y ventana recomendada"
+    ],
+    "estratificacion": [
+      "Cancelación muy probable (>70%): Liberar y revender inmediatamente",
+      "Probable (40-70%): Confirmar con partner antes de liberar",
+      "Poco probable (<40%): Mantener reserva normalmente"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 15.000 reservas con patrones de cancelación",
+      "El modelo predice probabilidad por reserva B2B",
+      "El dashboard prioriza acciones de liberación de inventario"
+    ]
+  },
+  "UC16": {
+    "title": "Detección de Disparidad de Precios en Canales",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de monitorización de paridad de precios entre canales de distribución para proteger el canal directo.",
+    "foco": "Rate parity — detección de disparidades de precios entre OTAs, metasearch y canal directo del hotel.",
+    "reto": "Detectar el 95% de las disparidades en menos de 1 hora y reducir la fuga al canal directo un 20%.",
+    "objetivos": [
+      "Generar datos sintéticos de precios por canal y fecha",
+      "Implementar detección de disparidad con reglas y estadísticos",
+      "Calcular impacto de la disparidad en conversión del canal directo",
+      "Generar alertas con evidencia y canal infractor",
+      "Construir dashboard de rate parity"
+    ],
+    "funcionalidades": [
+      "Detección SQL: Comparación de precios entre canales con umbrales",
+      "Datos sintéticos: 10 canales × 365 días × 5 tipos de habitación",
+      "Alertas: Disparidad por canal con evidencia de precio y fecha",
+      "Dashboard Streamlit: Panel de rate parity con tendencia y alertas"
+    ],
+    "datos": [
+      "Precios: Tarifa publicada por canal, tipo, fecha (rate shopping)",
+      "Disparidades: Canal, diferencia €, diferencia %, duración",
+      "Impacto: Estimación de reservas perdidas en canal directo"
+    ],
+    "estratificacion": [
+      "Disparidad >10%: Alerta urgente y contacto con canal",
+      "Disparidad 5-10%: Alerta y monitorización diaria",
+      "Disparidad 2-5%: Registro para análisis semanal",
+      "Paridad (<2%): Sin acción"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan precios por canal con disparidades incrustadas",
+      "Las reglas SQL detectan disparidades automáticamente",
+      "El dashboard muestra alertas con evidencia y tendencia"
+    ]
+  },
+  "UC17": {
+    "title": "Optimización de Comisiones y Channel Mix con IA",
+    "contexto": "Estos Cortex Code Prompts construyen un optimizador de channel mix que maximiza el revenue neto considerando comisiones, elasticidad y estacionalidad.",
+    "foco": "Distribución hotelera — optimización del mix de canales para maximizar revenue neto después de comisiones.",
+    "reto": "Reducir el coste medio de distribución del 18% al 13% sin perder volumen total de reservas.",
+    "objetivos": [
+      "Generar datos sintéticos de reservas por canal con comisiones",
+      "Modelar elasticidad de demanda por canal",
+      "Calcular coste neto de adquisición por reserva y canal",
+      "Optimizar allocation por canal y temporada",
+      "Simular escenarios de cambio de mix"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Elasticidad de demanda por canal con ML.CLASSIFICATION",
+      "Datos sintéticos: 20.000 reservas por 10 canales con comisiones",
+      "Optimización: Channel mix que maximiza revenue neto",
+      "Dashboard Streamlit: Simulador de escenarios de distribución"
+    ],
+    "datos": [
+      "Canales: Directo, Booking, Expedia, HRS, agencias, wholesalers",
+      "Comisiones: % por canal (0% directo, 15-25% OTAs, 10-18% agencias)",
+      "Elasticidad: Variación de demanda ante cambio de allocation"
+    ],
+    "estratificacion": [
+      "Canal con ROI >5x: Incrementar allocation y presupuesto",
+      "Canal con ROI 2-5x: Mantener y optimizar",
+      "Canal con ROI 1-2x: Reducir gradualmente",
+      "Canal con ROI <1x: Evaluar desconexión con simulación de impacto"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 20.000 reservas con comisiones por canal",
+      "El modelo calcula elasticidad por canal y temporada",
+      "El dashboard simula escenarios de cambio de mix"
+    ]
+  },
+  "UC18": {
+    "title": "Detección de Fraude en Reservas y Chargebacks",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema ML de detección de fraude en reservas online que reduce chargebacks y protege el revenue del hotel.",
+    "foco": "Seguridad de pagos — detección de reservas fraudulentas y prevención de chargebacks en tiempo real.",
+    "reto": "Reducir los chargebacks un 60% manteniendo la tasa de falsos positivos por debajo del 2% para no bloquear reservas legítimas.",
+    "objetivos": [
+      "Generar datos sintéticos de reservas con fraude",
+      "Entrenar modelo de detección de fraude con ML.CLASSIFICATION",
+      "Implementar scoring en tiempo real por transacción",
+      "Definir reglas de bloqueo y verificación adicional",
+      "Construir dashboard de fraude y chargebacks"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Detección de fraude con ML.CLASSIFICATION",
+      "Datos sintéticos: 20.000 transacciones con 3% de fraude",
+      "Variables: IP, device, velocidad, país, BIN, importe, lead_time",
+      "Dashboard Streamlit: Panel de fraude con alertas y métricas"
+    ],
+    "datos": [
+      "Transacciones: Canal, importe, tarjeta (BIN), IP, device, hora",
+      "Señales de fraude: País IP ≠ país tarjeta, velocidad, device nuevo",
+      "Chargebacks: Historial con motivo, importe y resolución"
+    ],
+    "estratificacion": [
+      "Fraude muy probable (>80%): Bloquear y solicitar verificación 3DS",
+      "Sospechoso (50-80%): Aceptar con verificación manual pre-arrival",
+      "Riesgo bajo (20-50%): Aceptar con monitorización post-booking",
+      "Legítimo (<20%): Aceptar sin restricciones"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 20.000 transacciones con patrones de fraude",
+      "El modelo puntúa cada transacción en tiempo real",
+      "El dashboard muestra chargebacks evitados y ahorro"
+    ]
+  },
+  "UC19": {
+    "title": "Detección de Reviews Falsas y Manipulación de Reputación",
+    "contexto": "Estos Cortex Code Prompts construyen un pipeline NLP para detectar reviews falsas analizando patrones lingüísticos, comportamiento del reviewer y consistencia temporal.",
+    "foco": "Integridad de reputación online — detección de reviews fabricadas, compradas o manipuladas por competidores.",
+    "reto": "Identificar el 85% de las reviews falsas con menos del 5% de falsos positivos para proteger la reputación real del hotel.",
+    "objetivos": [
+      "Generar reviews sintéticas con mezcla de auténticas y falsas",
+      "Construir features lingüísticas y comportamentales",
+      "Entrenar clasificador de reviews falsas con ML",
+      "Analizar patrones temporales y de reviewer",
+      "Construir dashboard de integridad de reputación"
+    ],
+    "funcionalidades": [
+      "NLP: CORTEX.COMPLETE para análisis lingüístico + ML.CLASSIFICATION",
+      "Datos sintéticos: 3.000 reviews (20% falsas con patrones detectables)",
+      "Variables: longitud, especificidad, timing, historial_reviewer, similitud",
+      "Dashboard Streamlit: Panel de integridad con evidencia por review"
+    ],
+    "datos": [
+      "Reviews: Texto, plataforma, fecha, rating, reviewer_id",
+      "Features lingüísticas: Longitud, uso de superlativos, especificidad, diversidad léxica",
+      "Comportamiento: Reviews por reviewer, hoteles distintos, timing entre reviews"
+    ],
+    "estratificacion": [
+      "Fabricada (>80%): Reportar a plataforma con evidencia",
+      "Sospechosa (50-80%): Monitorizar reviewer y buscar patrón",
+      "Probablemente auténtica (20-50%): No acción pero registrar",
+      "Auténtica (<20%): Responder normalmente"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 3.000 reviews con patrones de falsificación",
+      "El modelo clasifica cada review con evidencia",
+      "El dashboard muestra integridad de reputación y acciones"
+    ]
+  },
+  "UC20": {
+    "title": "Cumplimiento GDPR/PCI en Datos de Huéspedes",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de clasificación y protección de datos sensibles de huéspedes para cumplimiento GDPR y PCI-DSS.",
+    "foco": "Compliance de datos — clasificación automática de PII, enmascaramiento dinámico y auditoría de acceso en datos hoteleros.",
+    "reto": "Alcanzar el 100% de cobertura en clasificación de PII y cumplir GDPR/PCI eliminando exposición de datos sensibles.",
+    "objetivos": [
+      "Generar tablas con datos de huéspedes incluyendo PII",
+      "Clasificar automáticamente columnas con PII usando Cortex AI",
+      "Aplicar políticas de enmascaramiento dinámico por rol",
+      "Auditar accesos a datos sensibles",
+      "Generar informes de cumplimiento"
+    ],
+    "funcionalidades": [
+      "NLP: CORTEX.COMPLETE para clasificación de PII automática",
+      "Datos sintéticos: 5 tablas con PII incrustado (nombres, pasaportes, tarjetas)",
+      "Políticas: Enmascaramiento dinámico por rol (recepción, marketing, BI)",
+      "Dashboard Streamlit: Panel de cumplimiento con score y auditoría"
+    ],
+    "datos": [
+      "Tablas hoteleras: Reservas, huéspedes, pagos, reviews, fidelización",
+      "PII identificado: Nombre, email, teléfono, pasaporte, tarjeta, dirección",
+      "Auditoría: Quién accedió a qué datos sensibles y cuándo"
+    ],
+    "estratificacion": [
+      "PII crítico (tarjeta, pasaporte): Enmascaramiento total excepto pagos",
+      "PII alto (nombre, email, teléfono): Enmascaramiento parcial excepto recepción",
+      "PII medio (dirección, fecha nacimiento): Visible para roles autorizados",
+      "No PII: Sin restricciones"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan tablas con PII realista incrustado",
+      "Cortex AI clasifica automáticamente las columnas con PII",
+      "El dashboard muestra el score de cumplimiento y brechas"
+    ]
+  }
+};
+
+const PROMPTS = {
+  UC01: {"title": "Dynamic Pricing con Model Registry", "intro": "Abre Cortex Code en Snowsight y ejecuta estos prompts secuencialmente. Construirás un motor de pricing dinámico y registrarás el modelo en Snowflake Model Registry para despliegue en producción.", "steps": [{"title": "Configurar entorno", "desc": "Crea la base de datos, esquema y warehouse para el proyecto.", "prompt": "Crea una base de datos llamada DYNAMIC_PRICING_DB con esquema PUBLIC y un warehouse COMPUTE_WH tamaño SMALL con auto-suspend de 60 segundos. Establece el contexto de sesión."}, {"title": "Generar catálogo de habitaciones", "desc": "200 habitaciones con tipo, capacidad y tarifa rack.", "prompt": "Genera una tabla 'habitaciones' con 200 filas: habitacion_id (HAB001..HAB200), tipo (Standard 50%, Superior 25%, Suite 15%, Premium Suite 10%), piso (1-10), vista (Ciudad 40%, Jardín 30%, Mar 20%, Interior 10%), capacidad (2-4), tarifa_rack_eur (Standard: 120-180, Superior: 200-280, Suite: 350-500, Premium: 600-900)."}, {"title": "Generar historial de ocupación", "desc": "365 días de datos de ocupación con variables externas.", "prompt": "Genera tabla 'historial_ocupacion' con 365 días: fecha, dia_semana, es_festivo, ocupacion_pct (30-98%, más alta en verano y fines de semana), adr_real (tarifa media cobrada), revpar, eventos_locales (0-3 por semana: congreso, festival, deporte), precio_competencia_1 (±10% de ADR), precio_competencia_2, temperatura_c, lead_time_medio (5-45 días), segmento_dominante (Leisure 40%, Business 35%, Grupo 15%, OTA 10%)."}, {"title": "Feature engineering para pricing", "desc": "Variables predictoras para el modelo de precio óptimo.", "prompt": "Crea tabla 'pricing_features' con: ocupacion_prevista, dia_semana_encoded, mes, es_festivo, eventos_locales, precio_comp_1, precio_comp_2, lead_time_medio, temperatura, segmento_encoded, tendencia_demanda_7d (media móvil 7 días), diff_tarifa_rack. Target: franja_precio (Descuento, Rack, Premium, Pico) basado en ADR vs rack."}, {"title": "Entrenar modelo de pricing", "desc": "ML.CLASSIFICATION para predecir franja de precio óptima.", "prompt": "Divide 80/20, entrena SNOWFLAKE.ML.CLASSIFICATION 'modelo_pricing_v1' con target franja_precio y evaluate TRUE."}, {"title": "Evaluar rendimiento", "desc": "Métricas y feature importance.", "prompt": "Ejecuta SHOW_EVALUATION_METRICS, SHOW_CONFUSION_MATRIX y SHOW_FEATURE_IMPORTANCE del modelo_pricing_v1. Interpreta qué variables más influyen en la decisión de precio."}, {"title": "Registrar modelo en Model Registry", "desc": "Versionar el modelo con log_model() en Snowflake Model Registry.", "prompt": "Usando Python en una celda del notebook: importa snowflake.ml.registry, crea un Registry object, y usa registry.log_model() para registrar modelo_pricing_v1 con model_name='dynamic_pricing_hotel', version_name='v1', metrics={'accuracy': <valor>, 'f1_weighted': <valor>}, comment='Modelo de pricing dinámico hotelero v1 - 4 franjas de precio'. Muestra las versiones registradas con registry.show_models()."}, {"title": "Inferencia con modelo registrado", "desc": "Usar el modelo desde Registry para pricing en producción.", "prompt": "Recupera el modelo desde Registry con registry.get_model('dynamic_pricing_hotel').version('v1'). Genera predicciones para los próximos 30 días usando las features previstas. Calcula el impacto en RevPAR comparando precio optimizado vs rack rate."}, {"title": "Simulación de impacto en revenue", "desc": "Calcular el uplift de revenue con pricing dinámico.", "prompt": "Crea análisis SQL que compara: revenue con tarifa rack estática vs revenue con pricing dinámico. Calcula uplift total en €, uplift % de RevPAR, y distribución por franja de precio. Muestra el impacto por mes y tipo de habitación."}, {"title": "Dashboard Revenue Management", "desc": "Panel ejecutivo de pricing dinámico.", "prompt": "Crea dashboard Streamlit con: 4 KPIs (RevPAR actual, RevPAR optimizado, uplift %, ocupación media), gráfico de precio recomendado vs rack por día (próximos 30 días), distribución de franjas de precio, comparativa con competencia, filtros por tipo de habitación."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera los comandos DROP DATABASE IF EXISTS DYNAMIC_PRICING_DB comentados para limpieza opcional."}]},
+  UC02: {"title": "Predicción de Demanda Hotelera Multi-Horizonte", "intro": "Prompts para construir modelos de forecast a 30, 60 y 90 días con ML.FORECAST integrando variables externas.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para forecast de demanda.", "prompt": "Crea base de datos FORECAST_DEMANDA_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de ocupación", "desc": "24 meses por tipo y segmento con estacionalidad.", "prompt": "Genera tabla 'ocupacion_historica' con 24 meses × 4 tipos × 4 segmentos: fecha, tipo_habitacion (Standard, Superior, Suite, Premium), segmento (Leisure, Business, Grupo, OTA), habitaciones_ocupadas, habitaciones_disponibles, adr, estacionalidad (alta Jun-Sep, media Abr-May/Oct-Nov, baja Dic-Mar)."}, {"title": "Generar variables externas", "desc": "Eventos, vuelos, búsquedas y meteorología.", "prompt": "Genera tabla 'variables_externas' con 24 meses: fecha, eventos_ciudad (0-5), llegadas_aeropuerto (1000-8000/día), indice_busquedas_google (50-150, normalizado), temperatura_max_c, lluvia_mm, festivos_nacionales, puentes."}, {"title": "Preparar datos para ML.FORECAST", "desc": "Formato requerido con series y exógenas.", "prompt": "Crea tabla 'forecast_input' con formato: serie_id (tipo_segmento), fecha (timestamp), ocupacion (target). Vincula con variables externas. Verifica que no hay gaps ni nulls."}, {"title": "Entrenar modelo forecast", "desc": "ML.FORECAST con variables exógenas.", "prompt": "Entrena SNOWFLAKE.ML.FORECAST 'predictor_demanda' con SERIES_COLNAME='serie_id', TIMESTAMP_COLNAME='fecha', TARGET_COLNAME='ocupacion', PREDICTION_INTERVAL=0.95."}, {"title": "Generar predicciones multi-horizonte", "desc": "30, 60 y 90 días con intervalos de confianza.", "prompt": "Genera predicciones con predictor_demanda!FORECAST(FORECASTING_PERIODS=>90). Extrae forecast, lower_bound, upper_bound. Segmenta en horizontes: 30d, 60d, 90d. Calcula MAPE por horizonte."}, {"title": "Tracking de accuracy", "desc": "Comparar forecast vs realidad.", "prompt": "Crea tabla 'forecast_vs_real' comparando predicciones del mes anterior con datos reales. Calcula MAPE, MAE, RMSE por tipo y segmento. Identifica series con peor accuracy."}, {"title": "Análisis de impacto de eventos", "desc": "Cuantificar el efecto de eventos en demanda.", "prompt": "Crea análisis SQL que correlaciona eventos_ciudad con ocupación incremental. Calcula el impacto medio de cada tipo de evento en habitaciones adicionales. Usa CORTEX.COMPLETE para generar recomendaciones de pricing para próximos eventos conocidos."}, {"title": "Dashboard de forecast", "desc": "Panel de demanda con bandas de confianza.", "prompt": "Crea dashboard Streamlit con: KPIs (ocupación prevista 30d, MAPE, RevPAR forecast, habitaciones disponibles), gráfico de forecast con bandas de confianza, comparativa forecast vs real, filtros por tipo y segmento."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS FORECAST_DEMANDA_DB comentado para limpieza opcional."}]},
+  UC03: {"title": "Optimización de Revenue por Ancillary Services", "intro": "Prompts para construir un motor de propensión de compra de servicios complementarios para maximizar revenue per guest.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para ancillary revenue.", "prompt": "Crea base de datos ANCILLARY_REVENUE_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de estancias", "desc": "5.000 estancias con perfil de huésped.", "prompt": "Genera tabla 'estancias' con 5.000 filas: estancia_id, huesped_id (2.000 únicos), tipo_habitacion, segmento, canal_reserva, motivo_viaje (Leisure 45%, Business 35%, Familia 15%, Pareja 5%), noches (1-14), tarifa_noche, fecha_checkin, nacionalidad (ES 30%, UK 15%, DE 12%, FR 10%, US 8%, otros 25%)."}, {"title": "Generar consumo de servicios", "desc": "8 servicios con patrones de consumo por perfil.", "prompt": "Genera tabla 'consumo_servicios' vinculada a estancias. Para cada estancia, genera consumo (0/1) de 8 servicios con probabilidades diferenciadas: spa (Pareja 60%, Leisure 25%, Business 10%), restaurante (Business 70%, todos 40%), minibar (Business 50%, Leisure 20%), transfer (todos 30%), excursion (Leisure 50%, Familia 60%), parking (Business 40%), upgrade (Pareja 40%), late_checkout (Business 45%). Incluye importe por servicio."}, {"title": "Feature engineering", "desc": "Variables de propensión por servicio.", "prompt": "Crea tabla 'features_ancillary' con: motivo_viaje_encoded, noches, tarifa_noche, nacionalidad_encoded, canal_encoded, tipo_habitacion_encoded, dia_semana_checkin, mes, repeat_guest (1 si huesped_id aparece >1 vez). Para cada servicio: target binario (consumio_spa, consumio_restaurante, etc.)."}, {"title": "Entrenar modelos de propensión", "desc": "Un clasificador por servicio principal.", "prompt": "Entrena 3 modelos ML.CLASSIFICATION: 'propension_spa' (target consumio_spa), 'propension_restaurante' (target consumio_restaurante), 'propension_excursion' (target consumio_excursion). Evaluate TRUE para los 3."}, {"title": "Puntuar y generar bundles", "desc": "Propensión por servicio y bundles personalizados.", "prompt": "Puntúa todas las estancias con los 3 modelos. Crea tabla 'recomendaciones_bundle' que para cada perfil (motivo × tipo × canal) genera el bundle óptimo: top 3 servicios con mayor propensión combinada y descuento bundle del 15%."}, {"title": "Calcular impacto en revenue", "desc": "Revenue incremental por guest con bundles.", "prompt": "Crea análisis SQL: revenue_actual_ancillary (solo servicios consumidos), revenue_potencial (si se vendieran los bundles recomendados × tasa de conversión 30%), revenue_incremental_por_habitacion. Agrupa por segmento y canal."}, {"title": "Dashboard de upselling", "desc": "Panel de recomendaciones por reserva.", "prompt": "Crea dashboard Streamlit con: KPIs (penetración ancillary actual, potencial con bundles, revenue incremental €), tabla de bundles recomendados por perfil, gráfico de propensión por servicio, filtros por motivo de viaje y canal."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS ANCILLARY_REVENUE_DB comentado para limpieza opcional."}]},
+  UC04: {"title": "Segmentación de Valor de Cliente (CLV) con ML", "intro": "Prompts para construir un sistema de Customer Lifetime Value predictivo para segmentar huéspedes por valor futuro.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para CLV.", "prompt": "Crea base de datos CLV_HOSPITALITY_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de huéspedes", "desc": "3.000 huéspedes con 2 años de estancias.", "prompt": "Genera tabla 'huespedes' con 3.000 filas: huesped_id, nombre, nacionalidad, programa_fidelidad (Platinum 5%, Gold 15%, Silver 30%, None 50%), canal_preferido, fecha_primera_estancia (últimos 5 años). Genera tabla 'estancias_historicas' con ~8.000 registros vinculados: estancia_id, huesped_id, fecha_checkin, noches, adr, servicios_consumidos_eur, review_score (1-5, nullable)."}, {"title": "Calcular métricas RFM", "desc": "Recencia, Frecuencia y Valor Monetario.", "prompt": "Crea vista 'rfm_huespedes' con: huesped_id, recencia_dias (días desde última estancia), frecuencia (total estancias en 24 meses), valor_monetario (sum adr*noches + servicios en 24 meses), adr_medio, noches_media, servicios_por_estancia, review_score_medio."}, {"title": "Feature engineering CLV", "desc": "Variables predictoras de valor futuro.", "prompt": "Crea tabla 'features_clv' con: recencia_dias, frecuencia, valor_monetario, adr_medio, noches_media, servicios_ratio, programa_fidelidad_encoded, canal_encoded, tendencia_valor_12m (creciente/estable/decreciente), meses_como_cliente. Target: tier_valor basado en quartiles de valor_monetario."}, {"title": "Entrenar modelo CLV", "desc": "Clasificador de tier de valor.", "prompt": "Divide 80/20, entrena ML.CLASSIFICATION 'modelo_clv' con target tier_valor (Platinum/Gold/Silver/Bronze) y evaluate TRUE."}, {"title": "Puntuar y segmentar", "desc": "Asignar tier predictivo a cada huésped.", "prompt": "Puntúa todos los huéspedes. Crea tabla 'segmentacion_clv' con: huesped_id, tier_actual (por quartiles históricos), tier_predicho (modelo), probabilidad_retorno, clv_12m_estimado (valor_monetario_medio × probabilidad_retorno × frecuencia_esperada)."}, {"title": "Matriz valor × riesgo", "desc": "Clasificar para acciones diferenciadas.", "prompt": "Crea vista 'matriz_accion' clasificando: Proteger (CLV alto + recencia alta = en riesgo de churn), Desarrollar (CLV alto + activo), Recuperar (CLV medio + inactivo >6 meses), Mantener (CLV bajo + activo). Cuenta huéspedes y valor por cuadrante."}, {"title": "Generar campañas con Cortex AI", "desc": "Mensajes personalizados por segmento.", "prompt": "Usa CORTEX.COMPLETE para generar 4 emails de campaña diferenciados: Proteger (oferta VIP exclusiva), Desarrollar (upgrade gratuito), Recuperar (descuento reactivación), Mantener (newsletter con contenido). Genera texto en español e inglés."}, {"title": "Dashboard de fidelización", "desc": "Panel de valor de cliente con acciones.", "prompt": "Crea dashboard Streamlit con: KPIs (CLV total, huéspedes Platinum, tasa retención, revenue en riesgo), distribución por tier con valor medio, matriz valor × riesgo, tabla de acciones por huésped seleccionable, filtros por programa y canal."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS CLV_HOSPITALITY_DB comentado para limpieza opcional."}]},
+  UC05: {"title": "Mantenimiento Predictivo de Instalaciones con Model Registry", "intro": "Prompts para construir un predictor de fallos en instalaciones hoteleras y registrar el modelo en Snowflake Model Registry con versionado semántico.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para mantenimiento predictivo.", "prompt": "Crea base de datos MANTPRED_HOTEL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar inventario de equipos", "desc": "50 equipos con características.", "prompt": "Genera tabla 'equipos_hotel' con 50 filas: equipo_id (EQ001..EQ050), tipo (HVAC 30%, Ascensor 15%, Caldera 10%, Bomba 10%, Generador 5%, Lavandería 10%, Cocina 10%, Piscina 10%), ubicacion (planta/zona), marca, antiguedad_anos (1-20), horas_operacion, ultima_revision."}, {"title": "Generar señales de sensores", "desc": "180 días de lecturas diarias por equipo.", "prompt": "Genera tabla 'sensores_hotel' con 50 equipos × 180 días = 9.000 registros: equipo_id, fecha, temperatura_c (normal: rango nominal ±5%, pre-fallo: deriva gradual +15-30% en 10 días), vibracion_mm_s (normal: 2-5, pre-fallo: 8-15), presion_bar (normal: rango ±3%, pre-fallo: caída 15-25%), corriente_a (normal: ±5%, pre-fallo: picos +20%), ruido_db (normal: 50-65, pre-fallo: 70-85)."}, {"title": "Generar historial de averías", "desc": "Averías reales para entrenar el modelo.", "prompt": "Genera tabla 'averias_hotel' con ~30 registros: averia_id, equipo_id, fecha_fallo, tipo_fallo (Motor 25%, Compresor 20%, Fuga 20%, Eléctrico 15%, Mecánico 20%), impacto_huespedes (habitaciones afectadas 0-50), coste_reparacion (200-12.000€), horas_parada, compensaciones_eur."}, {"title": "Construir features predictivas", "desc": "Variables que capturan deterioro progresivo.", "prompt": "Crea tabla 'features_mantenimiento' con: temperatura_media, vibracion, presion, corriente, ruido, tendencia_temperatura_7d, tendencia_vibracion_7d, ratio_corriente_nominal, horas_desde_revision, antiguedad_anos, tipo_equipo_encoded. Target: fallo_en_72h (TRUE si hay avería en los próximos 3 días)."}, {"title": "Entrenar modelo predictivo", "desc": "Clasificador de fallo inminente.", "prompt": "Divide 80/20, entrena SNOWFLAKE.ML.CLASSIFICATION 'predictor_fallo_hotel_v1' con target fallo_en_72h y evaluate TRUE."}, {"title": "Registrar en Model Registry", "desc": "Versionar el modelo con log_model().", "prompt": "Usando Python: importa snowflake.ml.registry, crea Registry, usa registry.log_model() para registrar con model_name='predictive_maintenance_hotel', version_name='v1', metrics={'precision': <valor>, 'recall': <valor>, 'f1': <valor>}, comment='Predictor de fallos de instalaciones hoteleras v1'. Muestra modelos registrados."}, {"title": "Inferencia en producción", "desc": "Usar el modelo registrado para alertas diarias.", "prompt": "Recupera el modelo desde Registry. Puntúa los equipos del día actual con niveles: Fallo Inminente (≥70%), Riesgo Elevado (40-70%), Normal (<40%). Calcula coste evitado si se interviene preventivamente vs reactivamente."}, {"title": "Dashboard de salud de instalaciones", "desc": "Panel con estado de cada equipo y alertas.", "prompt": "Crea dashboard Streamlit: semáforo de salud por equipo, KPIs (equipos en riesgo, coste evitado YTD, incidencias a huéspedes evitadas), gráfico de tendencia de señales para equipo seleccionado, tabla de intervenciones recomendadas con prioridad."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS MANTPRED_HOTEL_DB comentado para limpieza opcional."}]},
+  UC06: {"title": "Recomendaciones Personalizadas de Experiencias Locales", "intro": "Prompts para construir un motor de recomendación contextual de actividades, restaurantes y experiencias locales con Cortex AI.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para recomendaciones.", "prompt": "Crea base de datos RECOMENDACIONES_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar catálogo de experiencias", "desc": "200 experiencias locales con atributos.", "prompt": "Genera tabla 'experiencias_locales' con 200 filas: experiencia_id, nombre, tipo (Restaurante 30%, Tour Cultural 20%, Actividad Outdoor 15%, Wellness 10%, Museo 10%, Gastronómico 10%, Nocturno 5%), precio_medio_eur, duracion_horas, distancia_hotel_km, rating_google (3.5-5.0), tags (familiar, romántico, aventura, cultural, gastro, relax, nocturno), horario, idiomas_disponibles."}, {"title": "Generar perfiles de huéspedes", "desc": "1.000 huéspedes con preferencias.", "prompt": "Genera tabla 'huespedes_perfil' con 1.000 filas: huesped_id, nacionalidad, edad (25-70), motivo_viaje (Leisure, Business, Familia, Pareja, Grupo), noches (1-14), presupuesto_diario_actividades_eur (20-200), intereses (array de 2-4 tags), restricciones_alimentarias, movilidad_reducida (5%)."}, {"title": "Generar historial de consumo", "desc": "3.000 experiencias consumidas.", "prompt": "Genera tabla 'historial_experiencias' con 3.000 registros: huesped_id, experiencia_id, fecha, rating_huesped (1-5), completada (95% TRUE), comentario (texto breve). Los patrones de consumo deben reflejar coherencia con perfil (familias → familiar, parejas → romántico)."}, {"title": "Implementar matching de perfil", "desc": "Score de relevancia por experiencia y huésped.", "prompt": "Crea vista 'matching_scores' que calcula para cada combinación (huésped, experiencia): score_tags (overlap de intereses), score_presupuesto (1 si dentro de presupuesto), score_movilidad (1 si compatible), score_horario (1 si compatible con estancia), score_total ponderado. Filtra top 10 por huésped."}, {"title": "Generar recomendaciones con Cortex AI", "desc": "Recomendaciones personalizadas con contexto.", "prompt": "Usa CORTEX.COMPLETE para generar una recomendación textual personalizada para 5 huéspedes de ejemplo. Prompt: 'Para un huésped [perfil] que visita [ciudad] durante [noches] noches, recomienda las 3 mejores experiencias de [lista top 10] con una explicación personalizada de por qué le encantarán.' Almacena en tabla 'recomendaciones_ia'."}, {"title": "Generar itinerarios por duración", "desc": "Itinerarios optimizados por días.", "prompt": "Usa CORTEX.COMPLETE para generar itinerarios de 2, 4 y 7 días para perfil Familia, Pareja y Business. Cada itinerario incluye mañana, tarde y noche con experiencias específicas del catálogo. Almacena en tabla 'itinerarios'."}, {"title": "Dashboard concierge digital", "desc": "Interfaz de recomendaciones interactiva.", "prompt": "Crea dashboard Streamlit con: selector de perfil de huésped, top 5 recomendaciones con score y explicación, itinerario generado por duración, mapa conceptual de experiencias por tipo, filtros por presupuesto y tipo de experiencia."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS RECOMENDACIONES_DB comentado para limpieza opcional."}]},
+  UC07: {"title": "Análisis de Sentimiento en Reviews Multi-Canal", "intro": "Prompts para construir un pipeline NLP que agrega y analiza reviews de múltiples plataformas detectando tendencias de sentimiento por categoría.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para análisis de reviews.", "prompt": "Crea base de datos REVIEWS_ANALYTICS_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar reviews multi-plataforma", "desc": "2.000 reviews de 5 plataformas en 12 meses.", "prompt": "Genera tabla 'reviews' con 2.000 filas: review_id, plataforma (Booking 35%, TripAdvisor 25%, Google 20%, Expedia 10%, Directo 10%), fecha (últimos 12 meses), rating_numerico (1-5), idioma (ES 40%, EN 30%, FR 15%, DE 15%), tipo_huesped (Pareja, Familia, Business, Solo), texto_review (3-6 frases cubriendo múltiples aspectos: habitación, limpieza, servicio, ubicación, F&B, WiFi, precio). Las reviews deben tener variedad emocional: 20% muy positivas, 40% positivas, 20% neutras, 15% negativas, 5% muy negativas."}, {"title": "Sentimiento global", "desc": "Score de sentimiento por review.", "prompt": "Crea tabla 'reviews_sentimiento' añadiendo columna sentimiento_global usando CORTEX.SENTIMENT sobre texto_review. Muestra distribución por plataforma y por mes."}, {"title": "Sentimiento por categoría", "desc": "Análisis multi-categoría con Cortex AI.", "prompt": "Crea tabla 'sentimiento_categorias' usando CORTEX.COMPLETE para extraer sentimiento (-1 a +1) por 7 categorías: habitacion, limpieza, servicio, ubicacion, f_and_b, wifi, precio_valor. Prompt JSON: 'Analiza esta review de hotel y devuelve un JSON con sentimiento (-1 a +1) para cada categoría: [categorías].'"}, {"title": "Detectar tendencias", "desc": "Media móvil 30 días por categoría.", "prompt": "Crea vista 'tendencias_sentimiento' con media móvil 30 días de sentimiento por categoría. Identifica categorías con caída >0.2 en últimos 30 días vs período anterior. Marca como 'Alerta' o 'Estable'."}, {"title": "Extraer temas recurrentes", "desc": "Temas más mencionados con Cortex AI.", "prompt": "Usa CORTEX.COMPLETE para extraer los 3 temas principales de reviews negativas (sentimiento <-0.2) del último mes. Agrupa por categoría y genera resumen ejecutivo. Almacena en tabla 'temas_negativos'."}, {"title": "Generar respuestas sugeridas", "desc": "Respuestas a reviews negativas con IA.", "prompt": "Para las 10 reviews más negativas del último mes, usa CORTEX.COMPLETE para generar respuesta profesional en el idioma de la review. Almacena en tabla 'respuestas_sugeridas' con: review_id, respuesta, tono, idioma."}, {"title": "Competitive benchmarking", "desc": "Comparar sentimiento con competidores.", "prompt": "Genera tabla 'reviews_competencia' con 500 reviews de 3 competidores. Aplica el mismo análisis de sentimiento por categoría. Crea vista comparativa: nuestro hotel vs competidores por categoría."}, {"title": "Dashboard de reputación", "desc": "Panel de sentimiento multi-canal.", "prompt": "Crea dashboard Streamlit con: KPIs (rating medio, sentimiento medio, alertas activas, reviews respondidas), gráfico de tendencia por categoría (30 días), mapa de calor plataforma × categoría, tabla de alertas con acción sugerida, comparativa con competencia."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS REVIEWS_ANALYTICS_DB comentado para limpieza opcional."}]},
+  UC08: {"title": "Feature Store de Preferencias del Huésped", "intro": "Prompts para construir un Feature Store en Snowflake que consolida y sirve preferencias de huéspedes en tiempo real para personalización en check-in.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para Feature Store de huéspedes.", "prompt": "Crea base de datos FEATURE_STORE_GUESTS_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar datos de PMS", "desc": "2.000 huéspedes con historial de estancias.", "prompt": "Genera tabla 'pms_estancias' con 5.000 registros: estancia_id, huesped_id (2.000 únicos), fecha_checkin, fecha_checkout, tipo_habitacion, habitacion_asignada, piso, vista, hora_checkin_real, hora_checkout_real, notas_recepcion (texto: 'solicita almohada extra', 'alergia a frutos secos', 'piso alto')."}, {"title": "Generar datos de CRM", "desc": "Datos de contacto y programa fidelidad.", "prompt": "Genera tabla 'crm_huespedes' con 2.000 filas: huesped_id, email, telefono, idioma_preferido, programa_nivel (Platinum/Gold/Silver/None), fecha_alta, preferencia_comunicacion (email 60%, whatsapp 30%, sms 10%)."}, {"title": "Generar datos de app y minibar", "desc": "Preferencias expresadas en app y consumo.", "prompt": "Genera tabla 'app_preferencias' con ~800 registros (40% de huéspedes usan app): huesped_id, temperatura_habitacion_c (18-24), tipo_almohada (Firme/Suave/Hipoalergénica), periodico_diario (Si/No/Nombre), hora_despertar, alergias_alimentarias (texto), restriccion_dieta (Vegetariano, Vegano, Sin Gluten, Ninguna). Genera tabla 'minibar_historico' con consumo por estancia."}, {"title": "Crear Entity y FeatureViews", "desc": "Definir Feature Store con Snowflake ML.", "prompt": "Usando Python con snowflake.ml.feature_store: (1) Crea Entity 'guest' con join_keys=['huesped_id']. (2) Crea FeatureView 'room_preferences' con: tipo_habitacion_preferido (moda), piso_preferido (media), vista_preferida (moda), temperatura_preferida. (3) Crea FeatureView 'dining_preferences' con: alergias, dieta, minibar_favoritos. (4) Crea FeatureView 'service_preferences' con: hora_checkin_preferida, hora_checkout_preferida, almohada, periodico. Registra las FeatureViews."}, {"title": "Pipeline de ingesta y merge", "desc": "Consolidar datos de múltiples fuentes.", "prompt": "Crea consulta SQL que hace MERGE de preferencias de PMS (notas), CRM, app y minibar en las FeatureViews. Implementa lógica de prioridad: app > notas_recepción > historial de consumo. Muestra cobertura: % de huéspedes con features completas."}, {"title": "Servir features en tiempo real", "desc": "Recuperar preferencias para check-in.", "prompt": "Usando Python con feature_store.get_features(): recupera las features de 5 huéspedes de ejemplo. Muestra el perfil completo: preferencias de habitación, dining y servicios. Mide latencia de recuperación."}, {"title": "Validar consistencia", "desc": "Verificar calidad y frescura de features.", "prompt": "Crea consulta de auditoría: features con NULL, features desactualizadas (>12 meses sin estancia), conflictos entre fuentes. Calcula score de completitud por huésped y FeatureView."}, {"title": "Dashboard de preferencias", "desc": "Panel de personalización para recepción.", "prompt": "Crea dashboard Streamlit: buscador de huésped por ID o nombre, perfil completo con todas las preferencias, score de completitud, historial de estancias, sugerencias de personalización para próxima visita. Simula un check-in con features servidas."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS FEATURE_STORE_GUESTS_DB comentado para limpieza opcional."}]},
+  UC09: {"title": "Chatbot Concierge con RAG sobre Conocimiento del Hotel", "intro": "Prompts para construir un asistente conversacional RAG con Cortex Search que responde preguntas de huéspedes en múltiples idiomas.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para el chatbot concierge.", "prompt": "Crea base de datos CONCIERGE_RAG_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar base de conocimiento", "desc": "150 documentos del hotel en 6 categorías.", "prompt": "Genera tabla 'documentos_hotel' con 150 filas: doc_id, tipo (FAQ 35%, Menú 20%, Servicios 15%, Tours 10%, Procedimientos 10%, Guía Local 10%), titulo, area (General, Habitación, Spa, F&B, Exterior, Eventos), idioma (ES por defecto). Para cada doc genera contenido de 200-500 palabras usando CORTEX.COMPLETE: 'Genera un documento de hotel tipo [tipo] sobre [titulo] para el área [area]. Incluye horarios, precios si aplica, y detalles prácticos. 300 palabras en español.'"}, {"title": "Crear chunks para indexación", "desc": "Fragmentar en chunks de ~500 chars.", "prompt": "Crea tabla 'chunks_hotel' fragmentando cada contenido en chunks con overlap: chunk_id, doc_id, tipo, area, texto_chunk, chunk_index. ~3-5 chunks por documento."}, {"title": "Crear Cortex Search Service", "desc": "Indexación semántica sobre chunks.", "prompt": "Crea Cortex Search Service 'buscador_concierge' sobre chunks_hotel con SEARCH_COLUMN='texto_chunk', ATTRIBUTES='tipo,area'. TARGET_LAG='1 hour'."}, {"title": "Implementar búsqueda semántica", "desc": "Validar búsqueda con preguntas de prueba.", "prompt": "Ejecuta 5 búsquedas de prueba en español: '¿A qué hora abre el spa?', '¿Tienen menú vegano?', '¿Cómo llego al aeropuerto?', '¿Hay parking en el hotel?', '¿Qué excursiones recomiendan?'. Muestra top 3 chunks con score."}, {"title": "Pipeline RAG multiidioma", "desc": "Respuestas contextuales en el idioma del huésped.", "prompt": "Crea función que: (1) detecta idioma de la pregunta, (2) busca top 5 chunks con Cortex Search, (3) construye prompt con contexto, (4) genera respuesta con CORTEX.COMPLETE en el idioma detectado citando documento fuente. Prueba con preguntas en ES, EN, FR, DE."}, {"title": "Evaluar calidad de respuestas", "desc": "Validar precisión y relevancia.", "prompt": "Ejecuta 10 preguntas variadas con el pipeline completo. Para cada una: pregunta, idioma detectado, chunks usados, respuesta generada, fuente citada. Evalúa relevancia con CORTEX.COMPLETE (1-5)."}, {"title": "Dashboard del chatbot", "desc": "Interfaz de chat interactiva.", "prompt": "Crea dashboard Streamlit con: campo de pregunta con botón enviar, respuesta con cita de fuente y idioma, selector de idioma manual (override), historial de conversación, FAQ rápido por área."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS CONCIERGE_RAG_DB y DROP CORTEX SEARCH SERVICE buscador_concierge comentados para limpieza opcional."}]},
+  UC10: {"title": "Optimización de Staffing por Predicción de Ocupación", "intro": "Prompts para construir un sistema de predicción de carga de trabajo por departamento para optimizar planificación de turnos hoteleros.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para optimización de staffing.", "prompt": "Crea base de datos STAFFING_HOTEL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de ocupación y servicios", "desc": "12 meses de datos operativos.", "prompt": "Genera tabla 'operaciones_diarias' con 365 días: fecha, ocupacion_pct, checkins, checkouts, cubiertos_restaurante, spa_appointments, room_service_pedidos, eventos_en_hotel (0-3), tipo_dia (Laborable, Fin de Semana, Festivo), temporada (Alta, Media, Baja)."}, {"title": "Generar datos de personal", "desc": "200 empleados en 6 departamentos.", "prompt": "Genera tabla 'empleados' con 200 filas: empleado_id, departamento (Recepción 20%, Housekeeping 30%, F&B 25%, Spa 10%, Mantenimiento 10%, Seguridad 5%), contrato (Fijo 60%, Parcial 25%, Extra 15%), coste_hora_eur (12-25), polivalencia (1-3 departamentos), disponibilidad (Diurno 50%, Nocturno 20%, Rotativo 30%)."}, {"title": "Calcular ratios de servicio", "desc": "Personal necesario por tipo de servicio.", "prompt": "Crea tabla 'ratios_servicio' con: ratio_housekeeping (1 camarera por 14-18 habitaciones según tipo), ratio_recepcion (1 por 30 checkins), ratio_fdb (1 por 20 cubiertos), ratio_spa (1 por 8 appointments), ratio_mantenimiento (base + 1 por 100 habitaciones ocupadas)."}, {"title": "Predecir carga de trabajo", "desc": "Forecast de necesidades por departamento.", "prompt": "Usando los datos de ocupación prevista (de UC02 o simplificado), crea vista 'necesidades_personal' que calcula personal necesario por departamento y día para los próximos 14 días. Usa ratios_servicio × volumen previsto."}, {"title": "Optimizar turnos", "desc": "Asignación con restricciones laborales.", "prompt": "Crea consulta SQL de asignación que: (1) asigna empleados fijos primero, (2) cubre gaps con parciales, (3) activa extras solo si déficit >10%. Restricciones: máximo 40h/semana fijos, descanso mínimo 12h entre turnos, 2 días libres/semana."}, {"title": "Análisis de coste", "desc": "Coste de personal vs cobertura.", "prompt": "Crea vista 'coste_staffing' con: coste_actual (turnos asignados × coste_hora), coste_optimo (mínimo con cobertura 100%), ahorro_potencial, horas_extra_evitables, ratio_polivalencia_utilizado. Agrupa por departamento y semana."}, {"title": "Dashboard de planificación", "desc": "Panel de turnos con KPIs.", "prompt": "Crea dashboard Streamlit con: KPIs (coste semanal, cobertura %, horas extra, ahorro vs actual), tabla de turnos por departamento y día (próximos 14 días), gráfico de necesidades vs asignados por departamento, alertas de déficit de cobertura."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS STAFFING_HOTEL_DB comentado para limpieza opcional."}]},
+  UC11: {"title": "Optimización Energética del Hotel con IA", "intro": "Prompts para construir un sistema de optimización del consumo energético hotelero correlacionando ocupación, meteorología y tarifas.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para gestión energética.", "prompt": "Crea base de datos ENERGIA_HOTEL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar zonas y contadores", "desc": "30 zonas con potencia nominal.", "prompt": "Genera tabla 'zonas_energia' con 30 filas: zona_id, nombre (Habitaciones P1..P8, Lobby, Restaurante, Spa, Piscina, Lavandería, Cocina, Parking, Salas Reuniones, Gimnasio, Jardines), tipo_zona (Habitaciones 60%, Común 25%, Servicios 15%), potencia_nominal_kw, sistema_hvac (Individual/Central)."}, {"title": "Generar series de consumo", "desc": "90 días de lecturas horarias.", "prompt": "Genera tabla 'consumo_hotel' con 30 zonas × 90 días × 24 horas: zona_id, timestamp, consumo_kwh (ocupadas: 70-100% potencia, vacías: 15-30%, áreas comunes: proporcional a ocupación), ocupacion_zona_pct, temperatura_exterior_c, precio_kwh (Punta 0.20, Llano 0.14, Valle 0.08)."}, {"title": "Calcular KPIs energéticos", "desc": "Indicadores por zona y período.", "prompt": "Crea vista 'kpis_energia' con: zona_id, fecha, kwh_por_habitacion_ocupada, coste_por_m2, desviacion_vs_baseline_pct (baseline = media 60 primeros días), consumo_en_vacio_kwh (cuando ocupacion=0%), clasificacion (Eficiente <P25, Normal P25-P75, Ineficiente >P75)."}, {"title": "Detectar anomalías", "desc": "Consumo anormal por zona.", "prompt": "Crea vista 'anomalias_energia' con z_score por zona y hora_del_dia. Clasifica: Anomalía Crítica (|z|>3.5), Atención (2.5<|z|<3.5), Normal. Identifica patrones: zona vacía con consumo alto, picos nocturnos sin ocupación."}, {"title": "Predecir consumo con ML", "desc": "Modelo de predicción a 24h.", "prompt": "Crea features: hora, dia_semana, ocupacion_prevista, temperatura_exterior, tipo_zona_encoded. Entrena ML.CLASSIFICATION para predecir consumo_alto (>P80 de la zona). Evalúa con métricas."}, {"title": "Optimización por tarifa", "desc": "Mover consumo a horas valle.", "prompt": "Crea análisis de ahorro: equipos flexibles (lavandería, piscina, carga) que pueden operar en valle. Calcula ahorro si se mueve 40% del consumo flexible de punta a valle. Muestra ahorro mensual estimado en €."}, {"title": "Dashboard gestión energética", "desc": "Panel de consumo con alertas.", "prompt": "Crea dashboard Streamlit: KPIs (consumo total kWh, coste €, kWh/hab ocupada, anomalías), gráfico consumo por hora (actual vs baseline), ranking de zonas por eficiencia, alertas de anomalías, filtros por zona y período."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS ENERGIA_HOTEL_DB comentado para limpieza opcional."}]},
+  UC12: {"title": "Predicción de No-Shows y Overbooking Inteligente", "intro": "Prompts para construir un predictor de no-shows por reserva individual que permite calibrar el overbooking con riesgo controlado.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para overbooking inteligente.", "prompt": "Crea base de datos OVERBOOKING_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de reservas", "desc": "10.000 reservas con no-shows.", "prompt": "Genera tabla 'reservas_historicas' con 10.000 filas: reserva_id, huesped_id, fecha_reserva, fecha_checkin, noches, tipo_habitacion, canal (Directo 25%, Booking 30%, Expedia 15%, Agencia 15%, Corporativo 15%), tarifa_noche, garantia (Tarjeta 60%, Prepago 20%, Sin garantía 20%), lead_time_dias (0-180), es_noshow (8% global, pero: sin_garantia 25%, tarjeta 5%, prepago 2%)."}, {"title": "Generar historial del huésped", "desc": "Comportamiento pasado por huésped.", "prompt": "Genera tabla 'historial_huesped' con métricas por huesped_id: total_reservas, noshows_previos, cancelaciones_previas, noches_totales, adr_medio, es_fidelizado, ultima_estancia_dias."}, {"title": "Feature engineering", "desc": "Variables predictoras de no-show.", "prompt": "Crea tabla 'features_noshow' con: lead_time_dias, canal_encoded, garantia_encoded, tarifa_vs_media_pct, dia_semana_checkin, mes, noches, tipo_habitacion_encoded, noshows_previos, cancelaciones_previas, es_fidelizado, ultima_estancia_dias. Target: es_noshow."}, {"title": "Entrenar modelo", "desc": "Clasificador de no-show.", "prompt": "Divide 80/20, entrena ML.CLASSIFICATION 'predictor_noshow' con target es_noshow y evaluate TRUE. Muestra feature importance."}, {"title": "Puntuar reservas activas", "desc": "Predicción por reserva futura.", "prompt": "Genera tabla 'reservas_futuras' con 500 reservas para próximos 30 días. Puntúa con el modelo: No-show probable (>60%), Riesgo medio (30-60%), Bajo riesgo (<30%). Calcula total de no-shows esperados por noche."}, {"title": "Calcular overbooking óptimo", "desc": "Nivel de overbooking con riesgo controlado.", "prompt": "Crea consulta SQL que por cada noche: sum(probabilidad_noshow) de reservas activas = habitaciones adicionales vendibles. Aplica factor de seguridad 0.8 para limitar riesgo de walk-out. Calcula: overbooking_recomendado, probabilidad_walk_out, coste_esperado_walk_out (500€/walk-out)."}, {"title": "Simulación de escenarios", "desc": "Impacto de distintos niveles de overbooking.", "prompt": "Crea análisis SQL que simula 3 escenarios: (1) Sin overbooking, (2) Overbooking conservador (50% de esperado), (3) Overbooking agresivo (100% de esperado). Para cada uno: ocupación media, revenue adicional, walk-outs, coste de compensación, revenue neto."}, {"title": "Dashboard de overbooking", "desc": "Panel de gestión con riesgo.", "prompt": "Crea dashboard Streamlit: KPIs (no-shows esperados hoy, overbooking recomendado, probabilidad walk-out, revenue adicional), gráfico de overbooking recomendado por noche (próximos 30 días), tabla de reservas con probabilidad de no-show, simulador de escenarios."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS OVERBOOKING_DB comentado para limpieza opcional."}]},
+  UC13: {"title": "Análisis de Velocidad de Housekeeping con NLP", "intro": "Prompts para analizar productividad de housekeeping combinando tiempos de limpieza, incidencias y análisis NLP de comentarios del staff.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para análisis de housekeeping.", "prompt": "Crea base de datos HOUSEKEEPING_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar registros de limpieza", "desc": "8.000 limpiezas con tiempos y camareras.", "prompt": "Genera tabla 'limpiezas' con 8.000 filas: limpieza_id, habitacion_id (HAB001..HAB200), camarera_id (CAM01..CAM25), tipo_limpieza (Checkout 45%, Stayover 40%, VIP 10%, Suite 5%), fecha, hora_inicio, hora_fin, tiempo_minutos (Checkout: 35-55 min, Stayover: 20-35, VIP: 50-70, Suite: 60-90, con variación por camarera), incidencia (15% con texto: 'minibar roto', 'mancha en alfombra', 'toalla faltante')."}, {"title": "Generar comentarios del staff", "desc": "Notas de camareras sobre estado.", "prompt": "Genera tabla 'notas_housekeeping' con ~1.200 registros vinculados a limpiezas con incidencia: limpieza_id, camarera_id, texto_nota (frases como 'Huésped dejó habitación muy desordenada', 'Necesita mantenimiento del grifo', 'Manchas que no salen en la moqueta', 'Todo perfecto, huésped ordenado')."}, {"title": "Análisis de productividad", "desc": "Métricas por camarera y tipo.", "prompt": "Crea vista 'productividad_housekeeping' con: camarera_id, tipo_limpieza, tiempo_medio_min, desviacion_std, percentil (P25, P50, P75, P90), total_limpiezas, tasa_incidencias. Rankea por tiempo_medio ascendente."}, {"title": "Clasificar incidencias con NLP", "desc": "Categorizar notas con Cortex AI.", "prompt": "Crea tabla 'incidencias_clasificadas' usando CORTEX.COMPLETE para clasificar cada texto_nota en: Mantenimiento, Limpieza Profunda, Material Faltante, Estado del Huésped, Otro. Extraer también: urgencia (Alta/Media/Baja), departamento_responsable (Housekeeping/Mantenimiento/Compras)."}, {"title": "Identificar mejores prácticas", "desc": "Qué hacen diferente las más eficientes.", "prompt": "Usa CORTEX.COMPLETE para analizar: '¿Qué patrones diferencian a las camareras top 5 (más rápidas sin incidencias) de las bottom 5?' Contexto: tiempos por tipo, incidencias, turnos. Genera 5 mejores prácticas concretas."}, {"title": "Análisis de turnaround", "desc": "Tiempo hasta habitación lista.", "prompt": "Crea vista 'turnaround_analysis' con: tiempo desde checkout del huésped hasta habitación marcada como lista. Identifica habitaciones que tardaron >2h y causa (cola de limpieza, incidencia, falta de personal). Calcula impacto en check-in temprano."}, {"title": "Dashboard housekeeping", "desc": "Panel operativo con KPIs.", "prompt": "Crea dashboard Streamlit: KPIs (tiempo medio, incidencias hoy, turnaround medio, camareras activas), ranking de productividad por camarera, distribución de incidencias por tipo, timeline de limpiezas del día, alertas de turnaround >2h."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS HOUSEKEEPING_DB comentado para limpieza opcional."}]},
+  UC14: {"title": "Feature Store de Rendimiento de Partners B2B", "intro": "Prompts para construir un Feature Store en Snowflake que consolida métricas de rendimiento de partners B2B de distribución turística.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para Feature Store de partners.", "prompt": "Crea base de datos FEATURE_STORE_PARTNERS_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar maestro de partners", "desc": "100 partners B2B con atributos.", "prompt": "Genera tabla 'partners_b2b' con 100 filas: partner_id (PTR001..PTR100), nombre, tipo (OTA 35%, Tour Operador 25%, Agencia 20%, Wholesaler 15%, Corporativo 5%), pais, contrato_desde (últimos 1-8 años), comision_pct (10-25%), allocation_habitaciones (5-50), tier_actual (Premium/Estándar/Básico)."}, {"title": "Generar transacciones B2B", "desc": "12 meses de reservas por partner.", "prompt": "Genera tabla 'transacciones_b2b' con ~25.000 registros: transaccion_id, partner_id, fecha_reserva, fecha_checkin, noches, tipo_habitacion, tarifa_noche, estado (Confirmada 70%, Cancelada 20%, No-show 5%, Modificada 5%), fecha_pago (nullable), dias_pago (30-90)."}, {"title": "Generar datos de calidad", "desc": "Reclamaciones y satisfacción.", "prompt": "Genera tabla 'calidad_partners' con ~500 registros: incidencia_id, partner_id, fecha, tipo (Reclamación huésped 40%, Chargeback 20%, Disparidad precio 15%, Error reserva 15%, SLA incumplido 10%), severidad (Alta/Media/Baja), resuelta (85% TRUE)."}, {"title": "Crear Entity y FeatureViews", "desc": "Feature Store con métricas por partner.", "prompt": "Usando Python con snowflake.ml.feature_store: (1) Crea Entity 'partner' con join_keys=['partner_id']. (2) Crea FeatureView 'booking_metrics' con: reservas_mes, adr_medio, noches_medias, cancelacion_pct, noshow_pct, lead_time_medio. (3) Crea FeatureView 'financial_health' con: dias_pago_medio, revenue_anual, comision_total, pagos_pendientes. (4) Crea FeatureView 'quality_score' con: reclamaciones_mes, chargebacks, disparidades, sla_cumplimiento_pct. Registra FeatureViews."}, {"title": "Pipeline de actualización", "desc": "Actualizar features diariamente.", "prompt": "Crea consultas SQL que calculan las métricas de cada FeatureView a partir de transacciones y calidad. Implementa lógica de ventana deslizante: métricas de últimos 30 días, 90 días y 12 meses. Muestra features actualizadas para 5 partners de ejemplo."}, {"title": "Scoring de partners", "desc": "Puntuación compuesta para ranking.", "prompt": "Crea vista 'partner_score' con: score_booking (volumen + ADR, 40%), score_financiero (pago a tiempo + sin chargebacks, 30%), score_calidad (sin reclamaciones + SLA, 30%), score_total. Clasifica: Premium (>80), Estándar (60-80), Básico (40-60), En Riesgo (<40)."}, {"title": "Servir features para decisiones", "desc": "Features en tiempo real para allocation.", "prompt": "Usa feature_store.get_features() para recuperar scores y métricas de partners candidatos para un período de alta demanda. Demuestra cómo las features informan la decisión de allocation: más inventario a Premium, restricción a En Riesgo."}, {"title": "Dashboard de partners", "desc": "Panel de gestión de distribución B2B.", "prompt": "Crea dashboard Streamlit: KPIs (partners activos, revenue B2B, cancelación media, partners en riesgo), ranking de partners por score, gráfico de evolución de métricas por partner seleccionado, alertas de deterioro, filtros por tipo y tier."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS FEATURE_STORE_PARTNERS_DB comentado para limpieza opcional."}]},
+  UC15: {"title": "Predicción de Cancelaciones B2B por Canal", "intro": "Prompts para construir un predictor de cancelaciones de reservas B2B para liberar inventario proactivamente.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para predicción de cancelaciones.", "prompt": "Crea base de datos CANCELACIONES_B2B_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar reservas B2B", "desc": "15.000 reservas con cancelaciones.", "prompt": "Genera tabla 'reservas_b2b' con 15.000 filas: reserva_id, partner_id (PTR001..PTR100), canal (OTA 35%, Tour Op 25%, Agencia 20%, Wholesale 15%, Corp 5%), fecha_reserva, fecha_checkin, noches, tipo_habitacion, tarifa_noche, garantia (Prepago 30%, Deposit 25%, Tarjeta 25%, Sin garantía 20%), es_cancelada (25% global, variando: sin_garantia 50%, prepago 10%, deposit 20%, tarjeta 30%)."}, {"title": "Feature engineering", "desc": "Variables predictoras de cancelación.", "prompt": "Crea tabla 'features_cancelacion' con: lead_time_dias, canal_encoded, garantia_encoded, tarifa_vs_media_canal, noches, tipo_habitacion_encoded, partner_cancelacion_historica_pct, mes_checkin, dia_semana_checkin, es_temporada_alta. Target: es_cancelada."}, {"title": "Entrenar modelo", "desc": "Clasificador de cancelación B2B.", "prompt": "Divide 80/20, entrena ML.CLASSIFICATION 'predictor_cancelacion_b2b' con target es_cancelada y evaluate TRUE."}, {"title": "Puntuar reservas activas", "desc": "Predicción por reserva futura.", "prompt": "Genera tabla 'reservas_activas' con 2.000 reservas futuras. Puntúa: Cancelación muy probable (>70%), Probable (40-70%), Poco probable (<40%). Calcula inventario recuperable por noche."}, {"title": "Calcular ventana de liberación", "desc": "Cuándo liberar inventario.", "prompt": "Crea análisis SQL: para reservas con cancelación >70%, calcula la ventana óptima de liberación considerando lead_time y probabilidad de reventa. Más lead_time = más tiempo para revender. Calcula revenue recuperable."}, {"title": "Análisis de patrones por canal", "desc": "Identificar canales problemáticos.", "prompt": "Crea análisis de cancelación por canal y partner: tasa, antelación media, impacto en revenue. Identifica partners con tasa >40% y genera recomendación de acción (restricción, deposit obligatorio, reducción allocation)."}, {"title": "Dashboard de cancelaciones", "desc": "Panel de gestión proactiva.", "prompt": "Crea dashboard Streamlit: KPIs (cancelaciones previstas 30d, inventario recuperable, revenue en riesgo, partners problemáticos), gráfico de cancelaciones previstas por noche, tabla de reservas en riesgo con acción recomendada, ranking de canales por tasa cancelación."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS CANCELACIONES_B2B_DB comentado para limpieza opcional."}]},
+  UC16: {"title": "Detección de Disparidad de Precios en Canales", "intro": "Prompts para construir un sistema de monitorización de paridad de precios entre canales de distribución para proteger el canal directo.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para rate parity.", "prompt": "Crea base de datos RATE_PARITY_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar precios por canal", "desc": "10 canales × 365 días × 5 tipos.", "prompt": "Genera tabla 'precios_canal' con ~18.000 filas: fecha (365 días), canal (Directo, Booking, Expedia, HRS, Agoda, Hotels.com, TripAdvisor, Kayak, Trivago, Google Hotels), tipo_habitacion (Standard, Superior, Suite, Premium, Family), precio_publicado_eur, disponibilidad (TRUE/FALSE). Insertar disparidades: 15% de registros con precio inferior al directo (-5% a -20%)."}, {"title": "Detectar disparidades", "desc": "Comparar cada canal con el directo.", "prompt": "Crea vista 'disparidades_detectadas' comparando precio de cada canal con el Directo para cada fecha y tipo. Marca disparidad si canal < directo - 2%. Incluye: canal, fecha, tipo, precio_directo, precio_canal, diferencia_eur, diferencia_pct, severidad (Leve 2-5%, Moderada 5-10%, Grave >10%)."}, {"title": "Análisis temporal", "desc": "Tendencia de disparidades en el tiempo.", "prompt": "Crea vista 'tendencia_parity' con: semana, canal, total_disparidades, disparidad_media_pct, tipo_mas_afectado, dias_consecutivos_con_disparidad. Identifica canales crónicamente infractores."}, {"title": "Calcular impacto en canal directo", "desc": "Reservas perdidas por disparidad.", "prompt": "Genera tabla 'impacto_disparidad' estimando: por cada 1% de disparidad, el canal directo pierde un 3% de conversión (ratio estándar de la industria). Calcula reservas_perdidas_estimadas, revenue_directo_perdido, comisiones_pagadas_innecesariamente."}, {"title": "Alertas automáticas", "desc": "Sistema de alertas por disparidad.", "prompt": "Crea tabla 'alertas_parity' que agrupa disparidades: por canal y severidad, con fecha detección, duración, tipo habitación afectado, evidencia (precios comparados). Genera acción recomendada: contactar canal, revisar extranet, escalar a account manager."}, {"title": "Benchmarking de paridad", "desc": "Score de paridad por canal.", "prompt": "Crea vista 'parity_score' con: canal, dias_con_paridad / dias_total × 100 = parity_score. Ranking de canales por parity score. Comparar mes actual vs anterior."}, {"title": "Dashboard rate parity", "desc": "Panel de monitorización de precios.", "prompt": "Crea dashboard Streamlit: KPIs (parity score global, alertas activas, revenue perdido estimado, peor canal), gráfico de parity score por canal (últimos 90 días), tabla de alertas activas con evidencia, comparativa de precios por fecha y tipo seleccionables."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS RATE_PARITY_DB comentado para limpieza opcional."}]},
+  UC17: {"title": "Optimización de Comisiones y Channel Mix con IA", "intro": "Prompts para construir un optimizador de channel mix que maximiza el revenue neto después de comisiones.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para channel mix.", "prompt": "Crea base de datos CHANNEL_MIX_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de reservas por canal", "desc": "20.000 reservas con comisiones.", "prompt": "Genera tabla 'reservas_canal' con 20.000 filas: reserva_id, canal (Directo 20%, Booking 25%, Expedia 15%, HRS 8%, Agencias 12%, Wholesaler 10%, Corporativo 10%), fecha_reserva, fecha_checkin, noches, tipo_habitacion, tarifa_bruta_eur, comision_pct (Directo 0%, Booking 15-18%, Expedia 15-20%, HRS 12-15%, Agencias 10-15%, Wholesaler 20-25%, Corporativo 5-8%), tarifa_neta_eur, temporada (Alta/Media/Baja)."}, {"title": "Calcular coste de adquisición", "desc": "CPA por canal y segmento.", "prompt": "Crea vista 'cpa_canal' con: canal, reservas, revenue_bruto, comisiones_total, revenue_neto, cpa_por_reserva (comision_media), cpa_por_habitacion_noche, roi (revenue_neto / revenue_bruto). Agrupa por temporada."}, {"title": "Modelar elasticidad por canal", "desc": "Sensibilidad de demanda ante allocation.", "prompt": "Genera tabla simulada 'elasticidad_canal' que modela: si aumento allocation de canal X un 10%, cuánto aumenta su demanda. Elasticidades: Directo 0.5 (inversión en SEO/SEM), Booking 0.8, Expedia 0.7, Wholesaler 1.2 (muy elástico). Usa ML.CLASSIFICATION para clasificar canales por elasticidad."}, {"title": "Optimizar mix de canales", "desc": "Allocation que maximiza revenue neto.", "prompt": "Crea análisis SQL de optimización: distribuir 100 habitaciones/noche entre canales maximizando SUM(habitaciones × tarifa_neta × probabilidad_reserva). Restricciones: mínimo 10% directo, máximo 30% cualquier OTA. Compara mix actual vs optimizado."}, {"title": "Simulación de escenarios", "desc": "Impacto de cambios en el mix.", "prompt": "Crea 3 escenarios: (1) Invertir en canal directo (+30% allocation, -20% OTAs), (2) Optimizar por temporada (más directo en alta, más OTA en baja), (3) Eliminar canal menos rentable. Para cada uno: revenue neto total, comisiones ahorradas, riesgo de volumen."}, {"title": "Calcular ROI por canal", "desc": "Return on distribution cost.", "prompt": "Crea vista 'roi_distribucion' con: canal, revenue_neto, coste_distribucion (comisiones + costes fijos), roi_pct, contribucion_al_revenue_total_pct. Identifica canales donde el coste supera el beneficio marginal."}, {"title": "Dashboard channel mix", "desc": "Panel de distribución con simulador.", "prompt": "Crea dashboard Streamlit: KPIs (revenue neto total, comisión media ponderada, mejor canal ROI, ahorro potencial), gráfico de mix actual vs óptimo, simulador interactivo de allocation con sliders por canal, evolución de ROI por canal (12 meses)."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS CHANNEL_MIX_DB comentado para limpieza opcional."}]},
+  UC18: {"title": "Detección de Fraude en Reservas y Chargebacks", "intro": "Prompts para construir un sistema ML de detección de fraude en reservas online que reduce chargebacks y protege el revenue.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para detección de fraude.", "prompt": "Crea base de datos FRAUDE_RESERVAS_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar transacciones", "desc": "20.000 transacciones con fraude.", "prompt": "Genera tabla 'transacciones_reservas' con 20.000 filas: transaccion_id, fecha, hora, canal (Web 50%, App 30%, Telefono 10%, API 10%), importe_eur (50-2000), tarjeta_bin (6 dígitos), pais_tarjeta, ip_address, pais_ip, device_type (Desktop 40%, Mobile 50%, Tablet 10%), device_fingerprint_hash, email_domain, velocidad_reserva_seg (30-600), intentos_pago (1-5), es_fraude (3% con patrones: pais_ip ≠ pais_tarjeta, velocidad <60s, intentos >3, importe >P90)."}, {"title": "Feature engineering", "desc": "Variables de riesgo de fraude.", "prompt": "Crea tabla 'features_fraude' con: pais_mismatch (ip ≠ tarjeta), velocidad_reserva, intentos_pago, importe_vs_media, hora_reserva (madrugada = riesgo), es_email_temporal (dominio sospechoso), device_nuevo, reservas_mismo_device_24h, reservas_misma_ip_24h. Target: es_fraude."}, {"title": "Entrenar modelo", "desc": "Clasificador de fraude.", "prompt": "Divide 80/20, entrena ML.CLASSIFICATION 'detector_fraude_reservas' con target es_fraude y evaluate TRUE. Muestra precision, recall, F1 y feature importance."}, {"title": "Puntuar transacciones", "desc": "Score de riesgo por transacción.", "prompt": "Puntúa todas las transacciones. Crea tabla 'scoring_fraude' con: transaccion_id, probabilidad_fraude, nivel_riesgo (Muy Alto >80%, Alto 50-80%, Medio 20-50%, Bajo <20%). Muestra distribución y falsos positivos estimados."}, {"title": "Definir acciones por nivel", "desc": "Protocolo de respuesta al riesgo.", "prompt": "Crea tabla 'protocolo_fraude' con: nivel_riesgo, accion (Muy Alto: bloquear y solicitar 3DS, Alto: verificación manual pre-arrival, Medio: aceptar con monitorización, Bajo: sin restricciones). Calcula: chargebacks evitados, falsos positivos esperados."}, {"title": "Análisis de chargebacks", "desc": "Historial y patrones de chargebacks.", "prompt": "Genera tabla 'chargebacks_historico' con ~200 registros vinculados a transacciones fraudulentas: chargeback_id, transaccion_id, fecha_chargeback, motivo (Fraude 60%, No recibido 20%, Duplicado 10%, Otro 10%), importe, penalizacion_pct, estado (Perdido 70%, Ganado 30%). Calcula coste total y tasa."}, {"title": "ROI del sistema antifraude", "desc": "Ahorro vs coste del sistema.", "prompt": "Crea análisis: chargebacks evitados × importe_medio × (1 + penalizacion) = ahorro. Menos: revenue legítimo bloqueado por falsos positivos × tasa conversión. ROI = ahorro neto / coste operativo."}, {"title": "Dashboard fraude", "desc": "Panel de detección en tiempo real.", "prompt": "Crea dashboard Streamlit: KPIs (transacciones hoy, alertas fraude, chargebacks evitados, ahorro €), gráfico de transacciones por nivel de riesgo, tabla de alertas activas con detalle, evolución de chargebacks (12 meses), filtros por canal y país."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS FRAUDE_RESERVAS_DB comentado para limpieza opcional."}]},
+  UC19: {"title": "Detección de Reviews Falsas y Manipulación de Reputación", "intro": "Prompts para construir un pipeline NLP que detecta reviews falsas analizando patrones lingüísticos, comportamiento del reviewer y timing.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para integridad de reviews.", "prompt": "Crea base de datos REVIEWS_FALSAS_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar reviews mixtas", "desc": "3.000 reviews con 20% falsas.", "prompt": "Genera tabla 'reviews_analisis' con 3.000 filas: review_id, plataforma, fecha, rating (1-5), reviewer_id, texto_review. Reviews auténticas (80%): variedad natural, específicas, errores tipográficos. Reviews falsas (20%): extremas (1 o 5), genéricas, sin detalles específicos del hotel, timing sospechoso (cluster en 48h), reviewers con <3 reviews totales."}, {"title": "Generar perfil de reviewers", "desc": "Historial y comportamiento de cada reviewer.", "prompt": "Genera tabla 'reviewers' con ~2.000 filas: reviewer_id, reviews_totales (1-200), hoteles_distintos, ciudades_distintas, rating_medio, desviacion_rating, dias_entre_reviews_medio, porcentaje_extremas (1 o 5 estrellas), perfil_verificado (TRUE/FALSE). Reviewers de reviews falsas: <5 reviews, solo extremas, 1-2 hoteles."}, {"title": "Feature engineering lingüístico", "desc": "Variables de texto y comportamiento.", "prompt": "Crea tabla 'features_reviews' usando CORTEX.COMPLETE para extraer: longitud_palabras, uso_superlativos_pct, especificidad_score (menciona detalles concretos del hotel), diversidad_lexica, rating_vs_sentimiento_texto (coherencia), tiene_errores_naturales, menciona_competidor. Del reviewer: reviews_totales, hoteles_distintos, pct_extremas, verificado. Target: es_falsa."}, {"title": "Entrenar clasificador", "desc": "Modelo de detección de reviews falsas.", "prompt": "Divide 80/20, entrena ML.CLASSIFICATION 'detector_reviews_falsas' con target es_falsa y evaluate TRUE. Muestra métricas y feature importance."}, {"title": "Puntuar y clasificar", "desc": "Score de autenticidad por review.", "prompt": "Puntúa todas las reviews. Crea tabla 'clasificacion_reviews' con: Fabricada (>80% probabilidad falsa), Sospechosa (50-80%), Probablemente Auténtica (20-50%), Auténtica (<20%). Muestra distribución y precisión."}, {"title": "Detectar campañas coordinadas", "desc": "Clusters de reviews falsas.", "prompt": "Crea análisis SQL: agrupa reviews sospechosas por ventana temporal (48h), plataforma y rating. Identifica campañas: ≥3 reviews en 48h con rating extremo y reviewers nuevos. Genera tabla 'campanas_detectadas' con evidencia."}, {"title": "Generar informes para plataformas", "desc": "Evidencia para reportar a Booking, TripAdvisor, etc.", "prompt": "Usa CORTEX.COMPLETE para generar informe de evidencia por review falsa: reviewer_id, evidencia (estadísticas + lingüística), confianza del modelo. Formato adecuado para reporte a cada plataforma."}, {"title": "Dashboard integridad", "desc": "Panel de reputación con detección.", "prompt": "Crea dashboard Streamlit: KPIs (reviews analizadas, falsas detectadas, campañas detectadas, purity score), gráfico de reviews reales vs falsas por mes, tabla de reviews sospechosas con evidencia, timeline de campañas detectadas."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS REVIEWS_FALSAS_DB comentado para limpieza opcional."}]},
+  UC20: {"title": "Cumplimiento GDPR/PCI en Datos de Huéspedes", "intro": "Prompts para construir un sistema de clasificación y protección de datos sensibles de huéspedes para cumplimiento GDPR y PCI-DSS.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para compliance.", "prompt": "Crea base de datos COMPLIANCE_HOTEL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar tablas con PII", "desc": "5 tablas con datos sensibles incrustados.", "prompt": "Genera 5 tablas con PII realista: (1) 'huespedes' con nombre, email, telefono, pasaporte, fecha_nacimiento, nacionalidad, direccion. (2) 'reservas' con huesped_id, tarjeta_numero (16 dígitos enmascarados parcialmente), tarjeta_expiry, cvv_hash. (3) 'pagos' con huesped_id, tarjeta_token, importe, fecha. (4) 'reviews_internas' con nombre_huesped en texto libre. (5) 'programa_fidelidad' con nombre, email, puntos, preferencias_texto."}, {"title": "Clasificar PII con Cortex AI", "desc": "Identificación automática de columnas sensibles.", "prompt": "Usa CORTEX.COMPLETE para analizar cada columna de las 5 tablas: 'Dado el nombre de tabla [X], columna [Y] y estos 5 valores de ejemplo, clasifica el tipo de PII: Nombre, Email, Teléfono, Pasaporte, Tarjeta, Dirección, Fecha Nacimiento, No PII. Nivel de sensibilidad: Crítico, Alto, Medio, Bajo.' Almacena en tabla 'clasificacion_pii'."}, {"title": "Mapeo de riesgo GDPR", "desc": "Evaluar riesgo por tabla y columna.", "prompt": "Crea vista 'mapa_riesgo_gdpr' con: tabla, columna, tipo_pii, sensibilidad, tiene_politica_masking (TRUE/FALSE), acceso_roles (lista de roles con acceso), base_legal (consentimiento, contrato, interés legítimo), retencion_dias, riesgo_score (0-100 basado en sensibilidad × exposición)."}, {"title": "Diseñar políticas de enmascaramiento", "desc": "Reglas por rol y nivel de sensibilidad.", "prompt": "Genera tabla 'politicas_masking' con reglas: (1) Tarjeta → mostrar solo últimos 4 dígitos para rol Pagos, ocultar totalmente para otros. (2) Pasaporte → mostrar solo nacionalidad para Marketing, completo para Recepción. (3) Email → mostrar dominio para Analytics, completo para CRM. (4) Nombre → completo para Recepción y CRM, iniciales para Analytics. Muestra cómo implementar con CREATE MASKING POLICY."}, {"title": "Auditar accesos", "desc": "Quién accede a datos sensibles.", "prompt": "Genera tabla 'auditoria_accesos' simulando 1.000 accesos: usuario, rol, tabla, columna, timestamp, tipo_acceso (SELECT/EXPORT). Identifica accesos no autorizados: usuario sin rol adecuado accediendo a columna PII Crítico. Marca como Incidente."}, {"title": "Calcular score de compliance", "desc": "Puntuación de cumplimiento global.", "prompt": "Crea vista 'compliance_score' con: total_columnas_pii, con_masking_policy, con_base_legal, con_retencion_definida, incidentes_acceso. Score = (con_policy + con_base_legal + con_retencion) / (3 × total_pii) × 100. Desglose por tabla."}, {"title": "Generar informe de auditoría", "desc": "Informe ejecutivo con Cortex AI.", "prompt": "Usa CORTEX.COMPLETE para generar informe ejecutivo en formato texto: resumen de hallazgos, score de compliance, riesgos principales, acciones correctivas prioritarias, calendario de implementación. Almacena en tabla 'informes_compliance'."}, {"title": "Dashboard compliance", "desc": "Panel de cumplimiento GDPR/PCI.", "prompt": "Crea dashboard Streamlit: score de compliance (gauge), mapa de PII por tabla con semáforo, incidentes de acceso no autorizado, progreso de implementación de políticas, informe ejecutivo generado."}, {"title": "Limpieza (opcional)", "desc": "Elimina los objetos creados.", "prompt": "Genera DROP DATABASE IF EXISTS COMPLIANCE_HOTEL_DB comentado para limpieza opcional."}]}
+};
+
+function verGuia(ucId) {
+  const g = GUIAS[ucId];
+  if (!g) { alert('Guía no disponible aún para ' + ucId); return; }
+  const box = document.getElementById('guiaModalBox');
+  let h = `<button class="modal-close" onclick="cerrarModal('guiaModal')">&times;</button>`;
+  h += `<span class="guide-badge">${ucId}</span>`;
+  h += `<h2>${g.title}</h2>`;
+  h += `<p><strong>Caso de Uso: ${g.title}</strong></p>`;
+  h += `<h3>Contexto de Negocio</h3><p>${g.contexto}</p>`;
+  h += `<p><strong>Foco:</strong> ${g.foco}</p>`;
+  h += `<p><strong>Reto de negocio:</strong> ${g.reto}</p>`;
+  h += `<h3>Objetivos de Aprendizaje</h3><ul>${g.objetivos.map(o=>`<li>${o}</li>`).join('')}</ul>`;
+  h += `<h3>Funcionalidades</h3><ul>${g.funcionalidades.map(f=>`<li>${f}</li>`).join('')}</ul>`;
+  h += `<h3>Datos Generados</h3><ul>${g.datos.map(d=>`<li>${d}</li>`).join('')}</ul>`;
+  h += `<h3>Estratificación</h3><ul>${g.estratificacion.map(e=>`<li>${e}</li>`).join('')}</ul>`;
+  h += `<h3>Cómo Usar</h3><ul>${g.como_usar.map(c=>`<li>${c}</li>`).join('')}</ul>`;
+  h += `<p class="guide-footer">Desarrollado con Snowflake Cortex ML + Streamlit</p>`;
+  box.innerHTML = h;
+  document.getElementById('guiaModal').classList.add('active');
+}
+
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('active');
+});
+function cerrarModal(id) { document.getElementById(id).classList.remove('active'); }
+
+function verPrompts(ucId) {
+  const data = PROMPTS[ucId];
+  if (!data) { alert('Prompts no disponibles aún para ' + ucId); return; }
+  const box = document.getElementById('promptsModalBox');
+  let html = `<button class="modal-close" onclick="cerrarModal('promptsModal')">&times;</button>`;
+  html += `<span class="guide-badge">${ucId}</span>`;
+  html += `<h2>${data.title} — Cortex Code Prompts</h2>`;
+  html += `<p class="prompt-intro">${data.intro}</p>`;
+  data.steps.forEach((s, i) => {
+    const escaped = s.prompt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    html += `<div class="prompt-step">`;
+    html += `<div class="prompt-step-header"><span class="prompt-step-num">${i+1}</span><span class="prompt-step-title">${s.title}</span></div>`;
+    html += `<div class="prompt-step-desc">${s.desc}</div>`;
+    html += `<div class="prompt-code" id="prompt_${ucId}_${i}"><button class="copy-btn" onclick="copiarPrompt('prompt_${ucId}_${i}')">Copiar</button>${escaped}</div>`;
+    html += `</div>`;
+  });
+  html += `<p class="guide-footer">Ejecuta cada prompt en Cortex Code (Snowsight) de forma secuencial</p>`;
+  box.innerHTML = html;
+  document.getElementById('promptsModal').classList.add('active');
+}
+
+function copiarPrompt(id) {
+  const el = document.getElementById(id);
+  const btn = el.querySelector('.copy-btn');
+  const text = el.textContent.replace('Copiar', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '¡Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar', 1500);
+  });
+}
+</script>
+
+<div class="modal-overlay" id="guiaModal">
+  <div class="modal-box" id="guiaModalBox"></div>
+</div>
+
+<div class="modal-overlay" id="promptsModal">
+  <div class="modal-box" id="promptsModalBox" style="max-width:780px;"></div>
+</div>
+</body>
+</html>
