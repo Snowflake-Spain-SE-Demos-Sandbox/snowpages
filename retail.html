@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <title>Snowflake — Soluciones IA/ML para Retail y E-Commerce</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #003545, #11567F);
+      color: #fff;
+      padding: 32px 48px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .hero-left { flex: 1; }
+
+    .logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logo-snowflake {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 6px;
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .stats-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 28px;
+      text-align: center;
+      color: #1a1a1a;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .stats-box .stat-number {
+      font-size: 40px;
+      font-weight: 700;
+      color: #7D44CF;
+      line-height: 1;
+    }
+
+    .stats-box .stat-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .stats-box .stat-time {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+
+    .stats-box .stat-time-label {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .stats-divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 10px 0;
+    }
+
+    .intro {
+      background: #fff;
+      text-align: center;
+      padding: 48px 24px 32px;
+    }
+
+    .intro h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #11567F;
+      margin-bottom: 14px;
+    }
+
+    .intro p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .filters-bar {
+      background: #fff;
+      padding: 20px 48px 0;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filters-left {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 80px;
+      border: 1.5px solid #ccc;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover { border-color: #29B5E8; color: #29B5E8; }
+
+    .filter-btn.active {
+      background: #29B5E8;
+      border-color: #29B5E8;
+      color: #fff;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #ccc;
+      border-radius: 80px;
+      padding: 7px 14px;
+      gap: 8px;
+      min-width: 200px;
+      background: #fff;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 13px;
+      color: #444;
+      width: 100%;
+      background: transparent;
+    }
+    .search-box input::placeholder { color: #aaa; }
+
+    .results-count {
+      padding: 14px 48px 8px;
+      font-size: 13px;
+      color: #666;
+      background: #f5f5f5;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+      padding: 16px 48px 48px;
+      background: #f5f5f5;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #e2e2e2;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
+
+    .card-header {
+      padding: 16px 18px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-badges { display: flex; gap: 6px; align-items: center; }
+
+    .badge-id {
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-cat {
+      background: #E0F4FD;
+      color: #11567F;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .badge-cat.personalizacion { background: #EDE7F6; color: #7D44CF; }
+    .badge-cat.pricing         { background: #FFF3E0; color: #E65100; }
+    .badge-cat.supply          { background: #E8F5E9; color: #2E7D32; }
+    .badge-cat.marketing       { background: #E3F2FD; color: #1565C0; }
+    .badge-cat.seguridad       { background: #FCE4EC; color: #C62828; }
+
+    .card-time {
+      font-size: 12px;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .card-title {
+      padding: 0 18px 12px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #11567F;
+      line-height: 1.3;
+    }
+
+    .pain-point {
+      margin: 0 18px 14px;
+      background: #F0F7FA;
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .pain-point-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #7D44CF;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .pain-point p {
+      font-size: 13px;
+      color: #2a2a2a;
+      line-height: 1.55;
+    }
+
+    .card-desc {
+      padding: 0 18px 14px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-features {
+      padding: 0 18px 16px;
+      list-style: none;
+    }
+
+    .card-features li {
+      font-size: 13px;
+      color: #444;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .card-features li::before {
+      content: '\2713';
+      color: #29B5E8;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-actions {
+      padding: 14px 18px 18px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid #f0f0f0;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 10px;
+      background: #29B5E8;
+      color: #fff;
+      border: none;
+      border-radius: 80px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+    .btn-secondary:hover { background: #11567F; }
+
+    .btn-tertiary {
+      flex: 1;
+      padding: 10px;
+      background: #003545;
+      color: #29B5E8;
+      border: none;
+      border-radius: 80px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+    .btn-tertiary:hover { background: #11567F; }
+
+    .prompt-step { margin-bottom: 18px; }
+    .prompt-step-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .prompt-step-num { background: #003545; color: #29B5E8; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .prompt-step-title { font-size: 13px; font-weight: 600; color: #333; }
+    .prompt-step-desc { font-size: 12px; color: #666; margin-bottom: 6px; line-height: 1.5; }
+    .prompt-code { position: relative; background: #003545; color: #e0e0e0; border-radius: 8px; padding: 12px 14px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+    .prompt-code .copy-btn { position: absolute; top: 6px; right: 8px; background: rgba(255,255,255,0.1); border: none; color: #aaa; font-size: 11px; padding: 3px 8px; border-radius: 4px; cursor: pointer; }
+    .prompt-code .copy-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .modal-box .prompt-intro { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #eee; }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 92%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 32px 28px;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #888;
+      line-height: 1;
+    }
+    .modal-close:hover { color: #7D44CF; }
+    .modal-box h2 { color: #11567F; font-size: 20px; margin-bottom: 6px; }
+    .modal-box h3 { font-size: 15px; color: #333; margin: 18px 0 8px; }
+    .modal-box p, .modal-box li { font-size: 13px; line-height: 1.7; color: #444; }
+    .modal-box ul { padding-left: 20px; margin: 6px 0; }
+    .modal-box .guide-badge { display: inline-block; background: #E0F4FD; color: #11567F; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; }
+    .modal-box .guide-footer { margin-top: 20px; padding-top: 14px; border-top: 1px solid #eee; font-size: 12px; color: #888; }
+
+    @media (max-width: 700px) {
+      .hero { flex-direction: column; padding: 24px 20px; }
+      .cards-grid { grid-template-columns: 1fr; padding: 16px 16px 48px; }
+      .filters-bar { padding: 16px 16px 0; }
+      .results-count { padding: 12px 16px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-left">
+    <div class="logos">
+      <div class="logo-snowflake">
+        <img src="bug-white.png" alt="Snowflake" width="32" height="32" />
+        Snowflake
+      </div>
+    </div>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,0.75);text-decoration:none;margin-bottom:8px;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="12,4 6,10 12,16"/></svg>Volver al &Iacute;ndice de Industrias</a>
+    <p class="hero-eyebrow">Sector Retail &amp; E-Commerce &times; Snowflake</p>
+    <h1 class="hero-title">Soluciones IA/ML para Retail y E-Commerce</h1>
+    <p class="hero-subtitle">Gu&iacute;as y Prompts de Cortex Code listos para desplegar en retail, moda y comercio electr&oacute;nico</p>
+    <p class="hero-tagline">Desarrollado con Snowflake Cortex AI | Impacto inmediato</p>
+  </div>
+
+  <div class="stats-box">
+    <div class="stat-number">20</div>
+    <div class="stat-label">Casos de Uso</div>
+    <hr class="stats-divider"/>
+    <div class="stat-time">8-15 min</div>
+    <div class="stat-time-label">Tiempo de Configuraci&oacute;n</div>
+  </div>
+</header>
+
+<section class="intro">
+  <h2>Acelera tu Anal&iacute;tica con Soluciones IA Preconfiguradas para Retail</h2>
+  <p>Cada soluci&oacute;n incluye Cortex Code Prompts de Snowflake con datos sint&eacute;ticos, gu&iacute;as paso a paso
+     e implementaciones SQL-first con Cortex AI/ML. Incluye Feature Store y Model Registry para despliegue
+     en producci&oacute;n. Todo el procesamiento permanece dentro de Snowflake,
+     sin dependencias externas, listo para personalizar con tus propios datos.</p>
+</section>
+
+<div class="filters-bar">
+  <div class="filters-left" id="filterBtns">
+    <button class="filter-btn active" data-filter="all">Todos (20)</button>
+    <button class="filter-btn" data-filter="personalizacion">Personalizaci&oacute;n y CX (5)</button>
+    <button class="filter-btn" data-filter="pricing">Pricing &amp; Revenue (4)</button>
+    <button class="filter-btn" data-filter="supply">Supply Chain (4)</button>
+    <button class="filter-btn" data-filter="marketing">Marketing &amp; Loyalty (4)</button>
+    <button class="filter-btn" data-filter="seguridad">Fraude y Seguridad (3)</button>
+  </div>
+  <div class="search-box">
+    <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round">
+      <circle cx="9" cy="9" r="7"/><line x1="15" y1="15" x2="19" y2="19"/>
+    </svg>
+    <input id="searchInput" type="text" placeholder="Buscar casos de uso&hellip;" />
+  </div>
+</div>
+
+<div class="results-count" id="resultsCount">Mostrando 20 de 20 casos de uso</div>
+
+<main class="cards-grid" id="cardsGrid"></main>
+<script>
+const USE_CASES = [
+  {
+    "id": "UC01",
+    "cat": "pricing",
+    "catLabel": "Pricing & Revenue",
+    "time": "15 min",
+    "title": "Dynamic Pricing Omnicanal con Model Registry",
+    "pain": "El 70% de los retailers usa precios estáticos basados en márgenes fijos. Los competidores ajustan precios cada 15 minutos mientras las tiendas físicas tardan semanas en repreciar, perdiendo un 8-12% de margen.",
+    "desc": "Motor de pricing dinámico que optimiza precios por producto, canal y zona geográfica usando ML.CLASSIFICATION sobre elasticidad de demanda, competencia y stock. El modelo se registra en Snowflake Model Registry para despliegue en producción.",
+    "features": [
+      "Dynamic pricing con ML.CLASSIFICATION + Model Registry",
+      "Versionado de modelos con log_model() y deploy()",
+      "Variables: elasticidad, competencia, stock, estacionalidad, canal",
+      "Dashboard Streamlit de Revenue Management por categoría"
+    ]
+  },
+  {
+    "id": "UC02",
+    "cat": "personalizacion",
+    "catLabel": "Personalización y CX",
+    "time": "14 min",
+    "title": "Recomendaciones de Producto en Tiempo Real",
+    "pain": "Los motores de recomendación genéricos muestran los mismos productos a todos los visitantes. La tasa de clic en recomendaciones es del 2-3% frente al 15-20% de recomendaciones personalizadas.",
+    "desc": "Motor de recomendación colaborativo y contextual que combina historial de compra, navegación, perfil del cliente y tendencias para generar sugerencias personalizadas en tiempo real con Cortex AI.",
+    "features": [
+      "Recomendaciones con CORTEX.COMPLETE contextual",
+      "Collaborative filtering + content-based hybrid",
+      "Variables: historial, navegación, carrito, perfil, tendencias",
+      "Integración con e-commerce para recomendaciones on-page"
+    ]
+  },
+  {
+    "id": "UC03",
+    "cat": "supply",
+    "catLabel": "Supply Chain",
+    "time": "14 min",
+    "title": "Predicción de Demanda Multi-SKU con Model Registry",
+    "pain": "Los retailers gestionan 10.000-100.000 SKUs con forecast basado en medias históricas. El error MAPE medio es del 35%, generando un 8% de roturas de stock y un 12% de sobrestock que acaba en rebajas.",
+    "desc": "Modelo de predicción de demanda por SKU/tienda con ML.FORECAST integrando estacionalidad, promociones, meteorología y eventos. El modelo se versiona en Model Registry para despliegue automatizado.",
+    "features": [
+      "Forecast multi-SKU con ML.FORECAST + Model Registry",
+      "Variables exógenas: promos, meteo, eventos, competencia",
+      "Intervalos de confianza al 95% por SKU y tienda",
+      "Tracking de accuracy con MAPE por categoría"
+    ]
+  },
+  {
+    "id": "UC04",
+    "cat": "personalizacion",
+    "catLabel": "Personalización y CX",
+    "time": "13 min",
+    "title": "Segmentación de Clientes con CLV Predictivo",
+    "pain": "Los retailers segmentan por datos demográficos básicos y pierden la oportunidad de identificar clientes de alto valor. El 20% top de clientes genera el 60% del revenue pero recibe el mismo trato que el resto.",
+    "desc": "Customer Lifetime Value predictivo combinando RFM, comportamiento de navegación, sensibilidad al precio y probabilidad de churn. Segmenta en tiers accionables para marketing diferenciado.",
+    "features": [
+      "CLV predictivo con ML.CLASSIFICATION",
+      "Segmentación automática en 5 tiers de valor",
+      "Variables: RFM, canales, sensibilidad precio, churn risk",
+      "Activación de campañas diferenciadas por segmento"
+    ]
+  },
+  {
+    "id": "UC05",
+    "cat": "supply",
+    "catLabel": "Supply Chain",
+    "time": "15 min",
+    "title": "Optimización de Inventario y Reposición Automática",
+    "pain": "La reposición manual genera un 15% de sobre-stock y un 8% de roturas. Los planificadores gestionan miles de SKUs con hojas de cálculo sin considerar el lead time real de cada proveedor.",
+    "desc": "Sistema de reposición automática que calcula el punto de pedido óptimo por SKU/tienda considerando demanda prevista, lead time variable, coste de almacenamiento y nivel de servicio objetivo.",
+    "features": [
+      "Cálculo de safety stock óptimo con ML",
+      "Variables: demanda prevista, lead time, variabilidad, coste",
+      "Simulación de escenarios: nivel de servicio vs coste",
+      "Dashboard de planificación de compras con alertas"
+    ]
+  },
+  {
+    "id": "UC06",
+    "cat": "personalizacion",
+    "catLabel": "Personalización y CX",
+    "time": "12 min",
+    "title": "Análisis de Sentimiento en Reviews de Producto",
+    "pain": "Los retailers reciben miles de reviews sin análisis estructurado. Las tendencias negativas en un producto tardan semanas en detectarse, cuando ya han erosionado las ventas y generado devoluciones.",
+    "desc": "Pipeline NLP que clasifica sentimiento por dimensión (calidad, talla, material, envío, precio) y detecta tendencias emergentes por producto y categoría. Genera alertas automáticas al equipo de producto.",
+    "features": [
+      "Sentimiento multi-dimensión con CORTEX.SENTIMENT + CORTEX.COMPLETE",
+      "Extracción de temas recurrentes por categoría",
+      "Detección de tendencias negativas en 24h",
+      "Alertas automáticas al product manager"
+    ]
+  },
+  {
+    "id": "UC07",
+    "cat": "personalizacion",
+    "catLabel": "Personalización y CX",
+    "time": "14 min",
+    "title": "Chatbot de Atención al Cliente con RAG",
+    "pain": "El 60% de las consultas de atención al cliente son repetitivas (estado de pedido, política de devoluciones, tallas). El coste medio por interacción humana es de 5-8€ y los tiempos de espera generan abandono.",
+    "desc": "Asistente conversacional RAG con Cortex Search indexando catálogo, FAQ, políticas, guías de tallas y estado de pedidos. Resuelve el 75% de consultas sin intervención humana en el idioma del cliente.",
+    "features": [
+      "RAG con Cortex Search + CORTEX.COMPLETE",
+      "Base de conocimiento: catálogo, FAQ, políticas, tallas",
+      "Multiidioma automático con detección de idioma",
+      "Escalado a agente humano cuando confianza < umbral"
+    ]
+  },
+  {
+    "id": "UC08",
+    "cat": "personalizacion",
+    "catLabel": "Personalización y CX",
+    "time": "15 min",
+    "title": "Feature Store de Cliente 360",
+    "pain": "Los datos del cliente están dispersos en e-commerce, tienda física, app, CRM y programa de fidelización. No hay visión unificada y cada canal trata al cliente como desconocido.",
+    "desc": "Feature Store centralizado en Snowflake que consolida y versiona las features de cada cliente desde todos los canales. Sirve features en tiempo real para personalización, scoring y decisiones de marketing.",
+    "features": [
+      "Snowflake Feature Store con Entity y FeatureView",
+      "Features servidas en tiempo real para personalización",
+      "Versionado automático de perfiles por interacción",
+      "Pipeline de ingesta desde e-commerce, POS, app, CRM"
+    ]
+  },
+  {
+    "id": "UC09",
+    "cat": "pricing",
+    "catLabel": "Pricing & Revenue",
+    "time": "12 min",
+    "title": "Optimización de Promociones y Markdown",
+    "pain": "Las promociones se lanzan con descuentos uniformes del 20-30% sin considerar elasticidad por producto. El 40% de las unidades en promoción se habrían vendido sin descuento, erosionando margen innecesariamente.",
+    "desc": "Modelo de elasticidad de precio por producto que identifica el descuento óptimo para maximizar unidades incrementales con mínimo sacrificio de margen. Simula el impacto antes de ejecutar la promoción.",
+    "features": [
+      "Elasticidad de precio por producto con ML.CLASSIFICATION",
+      "Cálculo de descuento óptimo por SKU",
+      "Simulación de impacto: unidades incrementales vs margen perdido",
+      "Dashboard de planificación promocional"
+    ]
+  },
+  {
+    "id": "UC10",
+    "cat": "pricing",
+    "catLabel": "Pricing & Revenue",
+    "time": "11 min",
+    "title": "Predicción de Rebajas y Liquidación de Stock",
+    "pain": "El 25% del inventario de moda acaba en rebajas con descuentos del 40-70%. Las decisiones de markdown se toman demasiado tarde y con descuentos excesivos que destruyen margen.",
+    "desc": "Modelo de predicción de venta residual que identifica el momento y profundidad óptima de markdown por SKU. Minimiza el stock final mientras maximiza el revenue total de la temporada.",
+    "features": [
+      "Predicción de sell-through con ML.FORECAST",
+      "Cálculo de timing óptimo de markdown por SKU",
+      "Variables: velocidad de venta, stock, semanas restantes, tendencia",
+      "Simulación de escenarios de liquidación"
+    ]
+  },
+  {
+    "id": "UC11",
+    "cat": "supply",
+    "catLabel": "Supply Chain",
+    "time": "13 min",
+    "title": "Detección de Tendencias de Moda con NLP",
+    "pain": "Los equipos de diseño tardan 4-8 semanas en identificar tendencias emergentes. Los ultra-fast fashion como Shein detectan y producen tendencias en 7-10 días usando datos de redes sociales y búsquedas.",
+    "desc": "Pipeline NLP que monitoriza redes sociales, búsquedas, influencers y competidores para detectar tendencias emergentes de color, tejido, silueta y estilo. Alerta al equipo de diseño con 3-4 semanas de ventaja.",
+    "features": [
+      "Análisis de tendencias con CORTEX.COMPLETE",
+      "Monitorización de redes sociales y búsquedas",
+      "Clasificación por categoría: color, tejido, silueta, estilo",
+      "Alertas al equipo de diseño con scoring de tendencia"
+    ]
+  },
+  {
+    "id": "UC12",
+    "cat": "supply",
+    "catLabel": "Supply Chain",
+    "time": "12 min",
+    "title": "Optimización de Asignación de Stock a Tiendas",
+    "pain": "La distribución de stock a tiendas se basa en cuotas históricas sin considerar la demanda local real. Tiendas con alta demanda se quedan sin stock mientras otras acumulan inventario que necesita transferencias costosas.",
+    "desc": "Modelo de asignación óptima que distribuye stock inicial por tienda según demanda prevista local, perfil de clientela, competencia de zona y capacidad de exposición.",
+    "features": [
+      "Asignación por tienda con ML y restricciones",
+      "Variables: demanda local, perfil tienda, competencia, capacidad",
+      "Optimización multiobjetivo: servicio vs coste de distribución",
+      "Simulación de transferencias entre tiendas"
+    ]
+  },
+  {
+    "id": "UC13",
+    "cat": "marketing",
+    "catLabel": "Marketing & Loyalty",
+    "time": "13 min",
+    "title": "Predicción de Churn y Retención de Clientes",
+    "pain": "La tasa de churn en retail es del 20-30% anual y los retailers solo detectan al cliente perdido cuando ya no compra. Las campañas de retención genéricas tienen una tasa de éxito del 5%.",
+    "desc": "Modelo predictivo de churn que identifica clientes en riesgo de abandono con 60-90 días de antelación. Genera acciones de retención personalizadas por segmento y canal preferido.",
+    "features": [
+      "Predicción de churn con ML.CLASSIFICATION",
+      "Variables: recencia, frecuencia, descenso de gasto, canal, quejas",
+      "Acciones de retención personalizadas por perfil",
+      "Tracking de ROI de campañas de retención"
+    ]
+  },
+  {
+    "id": "UC14",
+    "cat": "marketing",
+    "catLabel": "Marketing & Loyalty",
+    "time": "15 min",
+    "title": "Feature Store de Producto para Merchandising",
+    "pain": "Los atributos de producto están dispersos en PIM, ERP, proveedor y reviews. No hay visión unificada de rendimiento, percepción y competitividad de cada producto para decisiones de surtido.",
+    "desc": "Feature Store en Snowflake que consolida atributos de cada producto: ventas, margen, velocidad de rotación, sentimiento de reviews, posición competitiva y tendencia. Sirve features para decisiones de merchandising.",
+    "features": [
+      "Snowflake Feature Store con Entity por producto",
+      "FeatureViews: sales_metrics, margin_health, customer_perception",
+      "Features servidas para decisiones de surtido en tiempo real",
+      "Pipeline automático de actualización diaria"
+    ]
+  },
+  {
+    "id": "UC15",
+    "cat": "marketing",
+    "catLabel": "Marketing & Loyalty",
+    "time": "12 min",
+    "title": "Next Best Offer Personalizada con IA",
+    "pain": "Las campañas de email tienen un open rate del 15-20% y un CTR del 2-3% porque envían el mismo contenido a toda la base. La falta de personalización genera fatiga y unsubscribes.",
+    "desc": "Motor de Next Best Offer que selecciona el producto, descuento, canal y momento óptimo para cada cliente. Genera contenido personalizado con Cortex AI maximizando la probabilidad de conversión.",
+    "features": [
+      "NBO con ML.CLASSIFICATION multiobjetivo",
+      "Generación de contenido con CORTEX.COMPLETE",
+      "Variables: preferencias, historial, propensión, canal, timing",
+      "A/B testing automatizado de ofertas"
+    ]
+  },
+  {
+    "id": "UC16",
+    "cat": "marketing",
+    "catLabel": "Marketing & Loyalty",
+    "time": "11 min",
+    "title": "Análisis de Cesta de la Compra y Cross-Selling",
+    "pain": "Los retailers no explotan las asociaciones entre productos. El 80% de las oportunidades de cross-selling se pierden porque las sugerencias no están basadas en patrones reales de co-compra.",
+    "desc": "Análisis de market basket que identifica asociaciones fuertes entre productos y genera reglas de cross-selling accionables. Integración con checkout online y POS para sugerencias en tiempo real.",
+    "features": [
+      "Análisis de asociación con SQL y CORTEX.COMPLETE",
+      "Reglas de cross-selling con support, confidence y lift",
+      "Sugerencias contextuales en checkout y post-compra",
+      "Dashboard de afinidad de productos por categoría"
+    ]
+  },
+  {
+    "id": "UC17",
+    "cat": "pricing",
+    "catLabel": "Pricing & Revenue",
+    "time": "12 min",
+    "title": "Monitorización de Precios de Competencia",
+    "pain": "Los equipos de pricing monitorizan precios de competidores manualmente o con herramientas que generan datos sin contexto. No se mide el impacto real de las diferencias de precio en la propia conversión.",
+    "desc": "Sistema de inteligencia competitiva que compara precios propios vs competencia por producto, calcula el price index y correlaciona con conversión propia para identificar productos donde el precio es el driver de venta.",
+    "features": [
+      "Price index por producto y competidor",
+      "Correlación precio relativo vs conversión con ML",
+      "Alertas de desviación significativa de precio",
+      "Dashboard de competitive pricing intelligence"
+    ]
+  },
+  {
+    "id": "UC18",
+    "cat": "seguridad",
+    "catLabel": "Fraude y Seguridad",
+    "time": "12 min",
+    "title": "Detección de Fraude en E-Commerce y Pagos",
+    "pain": "El fraude en e-commerce representa el 1.5-3% de las transacciones. Los chargebacks cuestan al retailer el importe más penalizaciones del 20-40% y dañan la relación con procesadores de pago.",
+    "desc": "Sistema ML de detección de fraude en tiempo real que analiza patrones de compra, datos de pago, comportamiento de navegación y señales de riesgo. Reduce chargebacks un 65% con <2% de falsos positivos.",
+    "features": [
+      "Detección de fraude con ML.CLASSIFICATION",
+      "Variables: device, IP, velocidad, BIN, historial, behavioral",
+      "Scoring de riesgo por transacción con estratificación",
+      "Integración con pasarela de pago"
+    ]
+  },
+  {
+    "id": "UC19",
+    "cat": "seguridad",
+    "catLabel": "Fraude y Seguridad",
+    "time": "13 min",
+    "title": "Detección de Fraude en Devoluciones y Abuso de Políticas",
+    "pain": "El 8-10% de las devoluciones son fraudulentas: wardrobing (usar y devolver), etiquetas intercambiadas, devoluciones seriales. Los retailers pierden 15.000M€ anuales en Europa por abuso de políticas de devolución.",
+    "desc": "Modelo ML que detecta patrones de abuso en devoluciones analizando frecuencia, tipo de producto, timing, canal y historial del cliente. Clasifica clientes en perfiles de riesgo para aplicar políticas diferenciadas.",
+    "features": [
+      "Detección de abuso con ML.CLASSIFICATION + NLP",
+      "Variables: ratio devolución, timing, productos, canal, motivo",
+      "Perfiles: Legítimo, Sospechoso, Abuso Sistemático",
+      "Políticas diferenciadas por perfil de riesgo"
+    ]
+  },
+  {
+    "id": "UC20",
+    "cat": "seguridad",
+    "catLabel": "Fraude y Seguridad",
+    "time": "10 min",
+    "title": "Detección de Anomalías en Inventario y Merma",
+    "pain": "La merma conocida y desconocida representa el 1.5-2.5% de las ventas en retail. Las pérdidas por hurto, errores administrativos y fraude interno son difíciles de detectar con auditorías periódicas.",
+    "desc": "Sistema de detección de anomalías en inventario que identifica discrepancias entre stock teórico y físico, patrones de merma por tienda/categoría y señales de fraude interno o hurto organizado.",
+    "features": [
+      "Detección de anomalías con ML y análisis estadístico",
+      "Variables: stock teórico vs físico, patrones de merma, turnos",
+      "Alertas por tienda, categoría y período",
+      "Dashboard de prevención de pérdidas con investigación"
+    ]
+  }
+];
+const TOTAL = 20;
+
+function renderCards(list) {
+  const grid = document.getElementById('cardsGrid');
+  const count = document.getElementById('resultsCount');
+  grid.innerHTML = '';
+  count.textContent = `Mostrando ${list.length} de ${TOTAL} casos de uso`;
+  list.forEach(uc => {
+    const catClass = uc.cat;
+    grid.innerHTML += `
+      <article class="card">
+        <div class="card-header">
+          <div class="card-badges">
+            <span class="badge-id">${uc.id}</span>
+            <span class="badge-cat ${catClass}">${uc.catLabel}</span>
+          </div>
+          <span class="card-time">
+            <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2"><circle cx="10" cy="10" r="8"/><polyline points="10,5 10,10 13,13"/></svg>
+            ${uc.time}
+          </span>
+        </div>
+        <h3 class="card-title">${uc.title}</h3>
+        <div class="pain-point">
+          <div class="pain-point-label">Problema</div>
+          <p>${uc.pain}</p>
+        </div>
+        <p class="card-desc">${uc.desc}</p>
+        <ul class="card-features">
+          ${uc.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+        <div class="card-actions">
+          <a href="#" class="btn-secondary" onclick="verGuia('${uc.id}');return false;">Ver Guía</a>
+          <a href="#" class="btn-tertiary" onclick="verPrompts('${uc.id}');return false;">Cortex Code Prompts</a>
+        </div>
+      </article>`;
+  });
+}
+let activeFilter = 'all';
+let searchTerm = '';
+function applyFilters() {
+  let result = USE_CASES;
+  if (activeFilter !== 'all') result = result.filter(u => u.cat === activeFilter);
+  if (searchTerm) result = result.filter(u => u.title.toLowerCase().includes(searchTerm) || u.desc.toLowerCase().includes(searchTerm) || u.pain.toLowerCase().includes(searchTerm));
+  renderCards(result);
+}
+document.getElementById('filterBtns').addEventListener('click', e => {
+  if (!e.target.matches('.filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  activeFilter = e.target.dataset.filter;
+  applyFilters();
+});
+document.getElementById('searchInput').addEventListener('input', e => { searchTerm = e.target.value.toLowerCase().trim(); applyFilters(); });
+renderCards(USE_CASES);
+
+const GUIAS = {
+  "UC01": {
+    "title": "Dynamic Pricing Omnicanal con Model Registry",
+    "contexto": "Estos Cortex Code Prompts construyen un motor de pricing dinámico para retail que ajusta precios por producto, canal y zona, y registra el modelo en Snowflake Model Registry.",
+    "foco": "Revenue Management retail — optimización de precios en e-commerce y tienda física en función de demanda, competencia y stock.",
+    "reto": "Incrementar el margen bruto un 8-12% mediante pricing dinámico con modelos versionados y desplegados en producción.",
+    "objetivos": [
+      "Construir modelo de pricing dinámico con ML.CLASSIFICATION",
+      "Registrar y versionar el modelo con Snowflake Model Registry (log_model)",
+      "Generar datos sintéticos de ventas, competencia y stock",
+      "Desplegar modelo para inferencia en producción",
+      "Construir dashboard de pricing con Streamlit"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Clasificación de franja de precio óptima por SKU",
+      "Model Registry: Versionado con log_model() y métricas de accuracy",
+      "Datos sintéticos: 5.000 SKUs × 90 días con precios, ventas y competencia",
+      "Dashboard Streamlit: Panel de pricing con recomendaciones por categoría"
+    ],
+    "datos": [
+      "Productos: SKU, categoría, coste, precio actual, margen",
+      "Ventas: Diarias por SKU, canal, zona con elasticidad implícita",
+      "Competencia: Precios de 5 competidores por SKU",
+      "Modelo: Versión registrada con métricas y feature importance"
+    ],
+    "estratificacion": [
+      "Precio Premium (+10-20%): Producto diferencial sin competencia directa",
+      "Precio Mercado (±5%): Alineado con competencia, optimizar margen",
+      "Precio Agresivo (-5-15%): Producto commodity, maximizar volumen",
+      "Liquidación (-20-50%): Stock obsoleto, minimizar pérdida"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente en Cortex Code",
+      "El modelo se entrena y registra en Model Registry",
+      "Se genera inferencia para los próximos 30 días",
+      "El dashboard permite simular cambios de precio"
+    ]
+  },
+  "UC02": {
+    "title": "Recomendaciones de Producto en Tiempo Real",
+    "contexto": "Estos Cortex Code Prompts construyen un motor de recomendación híbrido que combina collaborative filtering y contenido para generar sugerencias personalizadas.",
+    "foco": "Personalización e-commerce — recomendaciones de producto basadas en historial, navegación y contexto del cliente.",
+    "reto": "Incrementar la tasa de conversión de recomendaciones del 2% al 12% y el ticket medio un 18%.",
+    "objetivos": [
+      "Generar historial de compras y navegación de clientes",
+      "Implementar collaborative filtering con similitud de compra",
+      "Generar recomendaciones contextuales con CORTEX.COMPLETE",
+      "Evaluar relevancia de recomendaciones",
+      "Construir interfaz de recomendaciones con Streamlit"
+    ],
+    "funcionalidades": [
+      "Recomendaciones: Hybrid CF + content-based con Cortex AI",
+      "Datos sintéticos: 10.000 clientes, 5.000 productos, 100.000 transacciones",
+      "Contexto: Momento del día, dispositivo, última búsqueda, carrito actual",
+      "Dashboard Streamlit: Panel de recomendaciones por cliente"
+    ],
+    "datos": [
+      "Clientes: Perfil, segmento, historial de compras, preferencias",
+      "Productos: Categoría, atributos, precio, stock, tendencia",
+      "Interacciones: Vistas, clics, carritos, compras, devoluciones"
+    ],
+    "estratificacion": [
+      "Relevancia alta (>80%): Mostrar en home y producto",
+      "Relevancia media (50-80%): Incluir en email y carrito",
+      "Relevancia baja (<50%): No mostrar para evitar ruido"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan clientes, productos e interacciones",
+      "CORTEX.COMPLETE genera recomendaciones contextuales",
+      "El dashboard permite explorar recomendaciones por cliente"
+    ]
+  },
+  "UC03": {
+    "title": "Predicción de Demanda Multi-SKU con Model Registry",
+    "contexto": "Estos Cortex Code Prompts construyen modelos de forecast de demanda por SKU/tienda con ML.FORECAST y registro en Model Registry.",
+    "foco": "Supply chain retail — predicción de demanda por producto y punto de venta integrando variables externas.",
+    "reto": "Reducir el error de forecast (MAPE) del 35% al 15% y las roturas de stock del 8% al 2%.",
+    "objetivos": [
+      "Entrenar modelos de forecast por SKU con ML.FORECAST",
+      "Registrar modelo en Model Registry con log_model()",
+      "Integrar variables externas: promociones, meteo, eventos",
+      "Evaluar accuracy por SKU, categoría y tienda",
+      "Construir dashboard de forecast con alertas de stock"
+    ],
+    "funcionalidades": [
+      "Modelo ML: ML.FORECAST con series temporales y exógenas + Model Registry",
+      "Datos sintéticos: 500 SKUs × 52 semanas × 20 tiendas",
+      "Forecast: 4, 8 y 12 semanas con intervalos de confianza",
+      "Dashboard Streamlit: Forecast por SKU con alertas de rotura"
+    ],
+    "datos": [
+      "Ventas: Semanales por SKU y tienda con estacionalidad",
+      "Variables externas: Promociones, meteo, festivos, eventos",
+      "Stock: Actual, en tránsito, punto de pedido, lead time"
+    ],
+    "estratificacion": [
+      "MAPE <15%: Forecast fiable para reposición automática",
+      "MAPE 15-25%: Usar con safety stock adicional",
+      "MAPE >25%: Revisar modelo, posible producto errático"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 52 semanas de ventas para 500 SKUs",
+      "El modelo se entrena y registra en Model Registry",
+      "El dashboard muestra forecast vs real con alertas"
+    ]
+  },
+  "UC04": {
+    "title": "Segmentación de Clientes con CLV Predictivo",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de Customer Lifetime Value predictivo para segmentar clientes de retail por valor futuro.",
+    "foco": "CRM retail — segmentación por valor real del cliente para marketing diferenciado y retención.",
+    "reto": "Identificar el 20% de clientes que generan el 60% del revenue y diseñar estrategias diferenciadas por tier.",
+    "objetivos": [
+      "Calcular CLV predictivo combinando RFM y propensión",
+      "Segmentar clientes en 5 tiers de valor",
+      "Generar datos sintéticos de historial de compras",
+      "Diseñar campañas diferenciadas por segmento",
+      "Construir dashboard de fidelización"
+    ],
+    "funcionalidades": [
+      "Modelo ML: CLV predictivo con clasificación",
+      "Datos sintéticos: 10.000 clientes con 2 años de compras",
+      "Segmentos: VIP (>P95), Premium (P80-P95), Regular (P50-P80), Occasional (P20-P50), Dormant (<P20)",
+      "Dashboard Streamlit: Análisis por tier con acciones"
+    ],
+    "datos": [
+      "Clientes: Perfil, canal, fecha alta, programa fidelización",
+      "Compras: Fecha, importe, productos, canal, descuentos",
+      "CLV: Valor predicho a 12 meses con probabilidad de retorno"
+    ],
+    "estratificacion": [
+      "VIP (CLV >2.000€): Personal shopper, acceso anticipado, eventos exclusivos",
+      "Premium (1.000-2.000€): Ofertas exclusivas, envío gratuito ilimitado",
+      "Regular (300-1.000€): Campañas de incremento de frecuencia",
+      "Occasional (100-300€): Incentivos de segunda compra",
+      "Dormant (<100€): Campaña de reactivación o exclusión"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 10.000 clientes con historial realista",
+      "El modelo predice CLV y segmenta",
+      "El dashboard muestra distribución y acciones por tier"
+    ]
+  },
+  "UC05": {
+    "title": "Optimización de Inventario y Reposición Automática",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de reposición automática que calcula el punto de pedido óptimo por SKU/tienda.",
+    "foco": "Gestión de inventario — reposición óptima considerando demanda variable, lead time y costes.",
+    "reto": "Reducir roturas de stock del 8% al 2% y sobrestock del 15% al 5%, liberando 20% de capital circulante.",
+    "objetivos": [
+      "Calcular safety stock óptimo por SKU y tienda",
+      "Generar datos de inventario con lead times variables",
+      "Modelar demanda con ML.FORECAST",
+      "Optimizar punto de pedido con restricciones",
+      "Simular impacto en nivel de servicio y coste"
+    ],
+    "funcionalidades": [
+      "Optimización: Safety stock con fórmula dinámica + ML",
+      "Datos sintéticos: 1.000 SKUs con stock, ventas y lead times",
+      "Simulación: Escenarios de nivel de servicio 95%, 97%, 99%",
+      "Dashboard Streamlit: Panel de reposición con alertas"
+    ],
+    "datos": [
+      "Inventario: Stock actual, en tránsito, reservado, disponible",
+      "Demanda: Ventas diarias con variabilidad y estacionalidad",
+      "Proveedores: Lead time medio, variabilidad, fiabilidad"
+    ],
+    "estratificacion": [
+      "Stock crítico (<safety stock): Pedido urgente inmediato",
+      "Stock bajo (safety stock ± 20%): Pedido en próximo ciclo",
+      "Stock óptimo: Sin acción, monitorizar",
+      "Sobrestock (>130% target): Evaluar transferencia o promoción"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 1.000 SKUs con inventario y ventas",
+      "El modelo calcula punto de pedido óptimo",
+      "El dashboard muestra alertas y simulación de escenarios"
+    ]
+  },
+  "UC06": {
+    "title": "Análisis de Sentimiento en Reviews de Producto",
+    "contexto": "Estos Cortex Code Prompts construyen un pipeline NLP para analizar reviews de producto clasificando sentimiento por dimensión y detectando tendencias.",
+    "foco": "Voice of Customer — análisis de reviews para mejorar productos, surtido y experiencia de compra.",
+    "reto": "Detectar problemas de calidad en productos en <48h y reducir la tasa de devoluciones un 20%.",
+    "objetivos": [
+      "Generar reviews sintéticas con variedad de sentimiento",
+      "Clasificar sentimiento por dimensión con Cortex AI",
+      "Extraer temas recurrentes por categoría",
+      "Detectar tendencias negativas emergentes",
+      "Generar alertas automáticas al product manager"
+    ],
+    "funcionalidades": [
+      "NLP: CORTEX.SENTIMENT + CORTEX.COMPLETE multi-dimensión",
+      "Datos sintéticos: 5.000 reviews de 500 productos",
+      "Dimensiones: Calidad, Talla/Fit, Material, Envío, Precio, Diseño",
+      "Dashboard Streamlit: Panel de Voice of Customer"
+    ],
+    "datos": [
+      "Reviews: Texto, rating, producto, categoría, fecha, verificada",
+      "Sentimiento: Score por dimensión (-1 a +1)",
+      "Tendencias: Media móvil 14 días por dimensión y categoría"
+    ],
+    "estratificacion": [
+      "Alerta crítica (caída >0.4 en 14 días): Retirar producto, investigar",
+      "Tendencia negativa (caída 0.2-0.4): Contactar proveedor, revisar calidad",
+      "Estable: Monitorización estándar",
+      "Tendencia positiva: Destacar en marketing"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 5.000 reviews con variedad",
+      "Cortex AI clasifica sentimiento por dimensión",
+      "El dashboard muestra tendencias y alertas"
+    ]
+  },
+  "UC07": {
+    "title": "Chatbot de Atención al Cliente con RAG",
+    "contexto": "Estos Cortex Code Prompts construyen un asistente conversacional RAG con Cortex Search sobre catálogo, FAQ y políticas del retailer.",
+    "foco": "Atención al cliente — chatbot que resuelve consultas sobre productos, pedidos, devoluciones y tallas.",
+    "reto": "Resolver el 75% de consultas sin intervención humana, reduciendo el coste por interacción de 6€ a 0.50€.",
+    "objetivos": [
+      "Generar base de conocimiento del retailer",
+      "Crear chunks para indexación semántica",
+      "Crear Cortex Search Service",
+      "Implementar pipeline RAG multiidioma",
+      "Construir interfaz de chat con Streamlit"
+    ],
+    "funcionalidades": [
+      "RAG: Cortex Search + CORTEX.COMPLETE multiidioma",
+      "Datos sintéticos: 200 documentos (FAQ, políticas, guías de tallas, catálogo)",
+      "Multiidioma: Respuestas en ES, EN, FR, DE, PT automáticamente",
+      "Dashboard Streamlit: Chat con historial y escalado"
+    ],
+    "datos": [
+      "FAQ: 100 preguntas frecuentes con respuestas",
+      "Políticas: Devoluciones, envío, garantía, privacidad",
+      "Catálogo: 500 productos con descripción, composición, tallas"
+    ],
+    "estratificacion": [
+      "Confianza alta (>0.85): Respuesta directa",
+      "Confianza media (0.6-0.85): Responder + ofrecer agente",
+      "Confianza baja (<0.6): Escalar a agente humano"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se genera base de conocimiento con 200 documentos",
+      "Se crea Cortex Search Service",
+      "El dashboard permite chatear y ver chunks utilizados"
+    ]
+  },
+  "UC08": {
+    "title": "Feature Store de Cliente 360",
+    "contexto": "Estos Cortex Code Prompts construyen un Feature Store en Snowflake para consolidar datos de cliente desde todos los canales en tiempo real.",
+    "foco": "Omnicanalidad — Feature Store centralizado con visión 360 del cliente para personalización y decisiones.",
+    "reto": "Lograr que el 95% de interacciones con el cliente tengan acceso a su perfil completo unificado.",
+    "objetivos": [
+      "Crear entidades y FeatureViews con Snowflake Feature Store",
+      "Generar datos de múltiples canales (e-commerce, POS, app, CRM)",
+      "Implementar pipeline de ingesta y merge de canales",
+      "Servir features en tiempo real para personalización",
+      "Validar consistencia y frescura"
+    ],
+    "funcionalidades": [
+      "Feature Store: Entity (customer_id) + FeatureViews (purchase, browsing, loyalty, preferences)",
+      "Pipeline: Ingesta de e-commerce, POS, app, CRM con identity resolution",
+      "Datos sintéticos: 5.000 clientes con actividad multi-canal",
+      "Dashboard Streamlit: Panel de cliente 360"
+    ],
+    "datos": [
+      "Compras: Online y tienda con productos, importes, frecuencia",
+      "Navegación: Páginas vistas, búsquedas, carritos abandonados",
+      "Fidelización: Puntos, nivel, beneficios canjeados",
+      "Preferencias: Categorías favoritas, tallas, canal preferido"
+    ],
+    "estratificacion": [
+      "Cliente 360 completo: Personalización total en todos los canales",
+      "Perfil parcial (>60% features): Personalización con inferencias",
+      "Perfil mínimo (<60%): Enriquecimiento progresivo",
+      "Cliente nuevo: Onboarding con captura de preferencias"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se crean entidades y FeatureViews en Feature Store",
+      "Se generan datos de 5.000 clientes multi-canal",
+      "El dashboard muestra perfil 360 unificado"
+    ]
+  },
+  "UC09": {
+    "title": "Optimización de Promociones y Markdown",
+    "contexto": "Estos Cortex Code Prompts construyen un optimizador de promociones que calcula el descuento óptimo por producto maximizando unidades incrementales.",
+    "foco": "Promociones retail — descuento óptimo por SKU para maximizar incrementalidad con mínimo sacrificio de margen.",
+    "reto": "Reducir la canibalización del 40% al 15% y aumentar las unidades incrementales un 60%.",
+    "objetivos": [
+      "Generar historial de ventas con y sin promoción",
+      "Calcular elasticidad de precio por producto",
+      "Modelar incrementalidad vs canibalización",
+      "Simular impacto de descuentos antes de ejecutar",
+      "Construir dashboard de planificación promocional"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Elasticidad y propensión con ML.CLASSIFICATION",
+      "Datos sintéticos: 2.000 productos con 52 semanas de ventas+promos",
+      "Simulación: Impacto de descuentos del 10% al 50% por producto",
+      "Dashboard Streamlit: Planificador de promociones"
+    ],
+    "datos": [
+      "Ventas: Semanales con y sin promoción activa",
+      "Promociones: Tipo, descuento, duración, canal",
+      "Elasticidad: Sensibilidad al precio por categoría y producto"
+    ],
+    "estratificacion": [
+      "Producto elástico (e>1.5): Descuento 15-25% genera alta incrementalidad",
+      "Producto moderado (0.8-1.5): Descuento 10-15%, evaluar margen",
+      "Producto inelástico (e<0.8): No promocionar, descuento no genera volumen",
+      "Producto base (price anchor): Mantener precio para percepción"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 2.000 productos con historial de promos",
+      "El modelo calcula elasticidad por producto",
+      "El dashboard simula impacto antes de activar"
+    ]
+  },
+  "UC10": {
+    "title": "Predicción de Rebajas y Liquidación de Stock",
+    "contexto": "Estos Cortex Code Prompts construyen un predictor de sell-through que optimiza el timing y profundidad de markdown para moda y productos estacionales.",
+    "foco": "Markdown optimization — decisiones de rebajas basadas en datos para maximizar revenue de temporada.",
+    "reto": "Reducir el stock residual del 25% al 10% y el descuento medio del 45% al 30% manteniendo el sell-through.",
+    "objetivos": [
+      "Generar datos de venta de temporada con curva de decaimiento",
+      "Predecir sell-through residual por SKU",
+      "Calcular timing y profundidad óptima de markdown",
+      "Simular escenarios de liquidación",
+      "Construir dashboard de gestión de rebajas"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de sell-through con ML.FORECAST",
+      "Datos sintéticos: 1.000 SKUs de moda con 16 semanas de temporada",
+      "Variables: velocidad de venta, semana, stock, tendencia, competencia",
+      "Dashboard Streamlit: Panel de markdown con simulación"
+    ],
+    "datos": [
+      "Ventas: Semanales por SKU con curva de decaimiento natural",
+      "Stock: Inicial, actual, proyectado a fin de temporada",
+      "Markdown: Timing, profundidad, impacto en velocidad de venta"
+    ],
+    "estratificacion": [
+      "Sell-through >80% semana 8: No marcar, venderá a full price",
+      "Sell-through 50-80%: Markdown ligero (-20%) semana 10",
+      "Sell-through 30-50%: Markdown medio (-35%) semana 8",
+      "Sell-through <30%: Markdown agresivo (-50%) semana 6"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 1.000 SKUs con curva de temporada",
+      "El modelo predice sell-through residual",
+      "El dashboard recomienda timing y descuento óptimo"
+    ]
+  },
+  "UC11": {
+    "title": "Detección de Tendencias de Moda con NLP",
+    "contexto": "Estos Cortex Code Prompts construyen un pipeline NLP para detectar tendencias emergentes de moda analizando redes sociales, búsquedas e influencers.",
+    "foco": "Trend spotting — detección temprana de tendencias de color, tejido, silueta y estilo para diseño y compras.",
+    "reto": "Detectar tendencias 3-4 semanas antes que el proceso manual, reduciendo el time-to-market de nuevos productos.",
+    "objetivos": [
+      "Generar datos sintéticos de menciones en redes sociales",
+      "Clasificar tendencias por categoría con Cortex AI",
+      "Calcular score de tendencia y velocidad de crecimiento",
+      "Generar alertas al equipo de diseño",
+      "Construir dashboard de trend intelligence"
+    ],
+    "funcionalidades": [
+      "NLP: CORTEX.COMPLETE para clasificación de tendencias",
+      "Datos sintéticos: 10.000 menciones de 4 fuentes (Instagram, TikTok, Pinterest, Google Trends)",
+      "Categorías: Color, Tejido, Silueta, Estilo, Estampado",
+      "Dashboard Streamlit: Panel de tendencias con scoring"
+    ],
+    "datos": [
+      "Menciones: Texto, fuente, fecha, engagement, influencer_tier",
+      "Tendencias: Categoría, score, velocidad crecimiento, región",
+      "Productos: Catálogo actual con atributos para matching"
+    ],
+    "estratificacion": [
+      "Tendencia viral (score >80, crecimiento >50%/semana): Producir inmediatamente",
+      "Tendencia emergente (60-80): Preparar diseño y sourcing",
+      "Tendencia temprana (40-60): Monitorizar próximas 2 semanas",
+      "Ruido (<40): No acción"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 10.000 menciones con tendencias",
+      "Cortex AI clasifica y puntúa tendencias",
+      "El dashboard muestra ranking con alertas"
+    ]
+  },
+  "UC12": {
+    "title": "Optimización de Asignación de Stock a Tiendas",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de asignación óptima de stock inicial a tiendas basado en demanda local y perfil de clientela.",
+    "foco": "Distribución retail — asignación de inventario a puntos de venta maximizando ventas y minimizando transferencias.",
+    "reto": "Reducir transferencias entre tiendas un 40% y mejorar el sell-through en primera asignación del 60% al 80%.",
+    "objetivos": [
+      "Generar datos de ventas por tienda con perfiles diferenciados",
+      "Predecir demanda local por SKU y tienda",
+      "Optimizar asignación con restricciones de capacidad",
+      "Simular escenarios de distribución",
+      "Construir dashboard de asignación de compras"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de demanda local con ML.CLASSIFICATION",
+      "Datos sintéticos: 500 SKUs × 50 tiendas con 24 semanas",
+      "Optimización: Asignación con restricciones de capacidad y mínimos",
+      "Dashboard Streamlit: Panel de asignación por lanzamiento"
+    ],
+    "datos": [
+      "Tiendas: Ubicación, m², perfil clientela, categorías fuertes",
+      "Ventas históricas: Por SKU y tienda con estacionalidad local",
+      "Asignación: Unidades por tienda, coste de distribución, transfers"
+    ],
+    "estratificacion": [
+      "Tienda flagship (alta demanda): Asignación completa, todas las tallas",
+      "Tienda estándar: Asignación proporcional a demanda prevista",
+      "Tienda nicho: Solo SKUs afines al perfil local",
+      "Outlet: Solo excedentes y segundas calidades"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan ventas por tienda con perfiles diferenciados",
+      "El modelo predice demanda local por SKU",
+      "El dashboard optimiza y visualiza asignación"
+    ]
+  },
+  "UC13": {
+    "title": "Predicción de Churn y Retención de Clientes",
+    "contexto": "Estos Cortex Code Prompts construyen un predictor de churn que identifica clientes en riesgo de abandono con 60-90 días de antelación.",
+    "foco": "Retención retail — detección temprana de churn y acciones personalizadas para retener clientes de valor.",
+    "reto": "Identificar el 80% de los churners con 60+ días de antelación y reducir el churn un 25% con campañas personalizadas.",
+    "objetivos": [
+      "Generar historial de compras con patrones de churn",
+      "Entrenar modelo predictivo de churn con ML.CLASSIFICATION",
+      "Calcular valor en riesgo por cliente",
+      "Diseñar acciones de retención personalizadas",
+      "Tracking de ROI de campañas de retención"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Predicción de churn con ML.CLASSIFICATION",
+      "Datos sintéticos: 10.000 clientes con 15% de churn histórico",
+      "Variables: recencia, frecuencia, tendencia gasto, quejas, canal",
+      "Dashboard Streamlit: Panel de retención con ROI"
+    ],
+    "datos": [
+      "Clientes: Perfil, historial de compras, programa fidelización",
+      "Comportamiento: Descenso de frecuencia, reducción ticket, canal shift",
+      "Quejas: Reclamaciones, devoluciones, NPS bajo"
+    ],
+    "estratificacion": [
+      "Churn inminente (>70%): Oferta agresiva personalizada inmediata",
+      "Riesgo alto (40-70%): Campaña de retención por canal preferido",
+      "Riesgo moderado (20-40%): Comunicación de valor y beneficios",
+      "Bajo riesgo (<20%): Sin acción específica de retención"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 10.000 clientes con patrones de churn",
+      "El modelo predice churn con 60-90 días de antelación",
+      "El dashboard muestra clientes en riesgo y acciones"
+    ]
+  },
+  "UC14": {
+    "title": "Feature Store de Producto para Merchandising",
+    "contexto": "Estos Cortex Code Prompts construyen un Feature Store en Snowflake que consolida atributos de rendimiento de cada producto para decisiones de merchandising.",
+    "foco": "Merchandising — Feature Store con métricas unificadas de producto para decisiones de surtido, precio y exposición.",
+    "reto": "Tener visión 360 de cada producto en tiempo real para decisiones de compra, pricing y espacio que maximicen revenue/m².",
+    "objetivos": [
+      "Crear entidades y FeatureViews con Snowflake Feature Store",
+      "Generar datos de ventas, margen, reviews y competencia por producto",
+      "Implementar pipeline de actualización diaria",
+      "Servir features para decisiones de merchandising",
+      "Construir dashboard de product intelligence"
+    ],
+    "funcionalidades": [
+      "Feature Store: Entity (product_id) + FeatureViews (sales, margin, perception)",
+      "Pipeline: Actualización diaria desde POS, e-commerce, reviews, pricing",
+      "Datos sintéticos: 2.000 productos con 12 meses de métricas",
+      "Dashboard Streamlit: Panel de merchandising con scoring"
+    ],
+    "datos": [
+      "Ventas: Unidades, revenue, velocidad de rotación por canal",
+      "Margen: Coste, precio, margen bruto, margen tras descuentos",
+      "Percepción: Rating reviews, sentimiento, tasa devolución"
+    ],
+    "estratificacion": [
+      "Producto estrella (ventas alta + margen alto): Maximizar exposición",
+      "Producto vaca (ventas alta + margen bajo): Optimizar precio",
+      "Producto incógnita (ventas baja + margen alto): Invertir en visibilidad",
+      "Producto perro (ventas baja + margen bajo): Evaluar descatalogación"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se crean entidades y FeatureViews en Feature Store",
+      "Se generan 12 meses de métricas para 2.000 productos",
+      "El dashboard muestra matriz BCG y scoring"
+    ]
+  },
+  "UC15": {
+    "title": "Next Best Offer Personalizada con IA",
+    "contexto": "Estos Cortex Code Prompts construyen un motor de Next Best Offer que selecciona producto, descuento, canal y timing óptimo por cliente.",
+    "foco": "Marketing 1:1 — oferta personalizada que maximiza conversión considerando preferencias, historial y contexto.",
+    "reto": "Incrementar el CTR de campañas del 2% al 10% y la conversión del 0.5% al 3% con personalización profunda.",
+    "objetivos": [
+      "Generar perfiles de cliente con historial y preferencias",
+      "Entrenar modelo de propensión multi-producto",
+      "Generar contenido personalizado con Cortex AI",
+      "Implementar A/B testing de ofertas",
+      "Construir dashboard de campañas con ROI"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Propensión multiobjetivo con ML.CLASSIFICATION",
+      "NLP: Generación de contenido con CORTEX.COMPLETE",
+      "Datos sintéticos: 8.000 clientes con 50.000 interacciones de campaña",
+      "Dashboard Streamlit: Panel de NBO con A/B testing"
+    ],
+    "datos": [
+      "Clientes: Perfil, preferencias, historial de respuesta a campañas",
+      "Campañas: Producto, descuento, canal, momento, resultado",
+      "Propensión: Probabilidad de compra por producto × canal × oferta"
+    ],
+    "estratificacion": [
+      "Propensión >60%: Enviar oferta por canal preferido inmediatamente",
+      "Propensión 30-60%: Programar para momento óptimo de la semana",
+      "Propensión 10-30%: Incluir en campaña masiva con bajo coste",
+      "Propensión <10%: No enviar (evitar fatiga y unsubscribe)"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan clientes con historial de campañas",
+      "El modelo predice propensión por oferta",
+      "CORTEX.COMPLETE genera contenido personalizado"
+    ]
+  },
+  "UC16": {
+    "title": "Análisis de Cesta de la Compra y Cross-Selling",
+    "contexto": "Estos Cortex Code Prompts construyen un análisis de market basket para identificar asociaciones entre productos y generar reglas de cross-selling.",
+    "foco": "Cross-selling retail — asociaciones de productos para sugerencias en checkout, email y layout de tienda.",
+    "reto": "Incrementar el ticket medio un 12% con sugerencias de cross-selling basadas en patrones reales de co-compra.",
+    "objetivos": [
+      "Generar datos de tickets con productos asociados",
+      "Calcular métricas de asociación: support, confidence, lift",
+      "Generar reglas de cross-selling accionables",
+      "Evaluar impacto potencial en ticket medio",
+      "Construir dashboard de afinidad de productos"
+    ],
+    "funcionalidades": [
+      "Análisis de asociación: SQL con métricas de market basket",
+      "Datos sintéticos: 50.000 tickets con 2-8 productos cada uno",
+      "Reglas: Top 100 asociaciones con lift >2",
+      "Dashboard Streamlit: Panel de cross-selling y layout"
+    ],
+    "datos": [
+      "Tickets: Producto, cantidad, importe, canal, cliente",
+      "Asociaciones: Producto A → Producto B con support, confidence, lift",
+      "Impacto: Ticket medio actual vs potencial con cross-selling"
+    ],
+    "estratificacion": [
+      "Lift >5: Asociación muy fuerte, bundles obligatorios",
+      "Lift 3-5: Cross-sell en checkout y email post-compra",
+      "Lift 2-3: Sugerencia en ficha de producto",
+      "Lift <2: No acción de cross-selling"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 50.000 tickets con patrones de co-compra",
+      "Las reglas SQL calculan métricas de asociación",
+      "El dashboard muestra reglas y sugiere layout"
+    ]
+  },
+  "UC17": {
+    "title": "Monitorización de Precios de Competencia",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de inteligencia de precios que compara precio propio vs competencia y correlaciona con conversión.",
+    "foco": "Competitive pricing — monitorización de precios de competidores y su impacto en ventas propias.",
+    "reto": "Identificar los 100 productos donde el precio es el driver de venta y ajustar para recuperar un 5% de conversión.",
+    "objetivos": [
+      "Generar datos de precios de 5 competidores por producto",
+      "Calcular price index por producto y competidor",
+      "Correlacionar precio relativo con conversión y venta",
+      "Generar alertas de desviación significativa",
+      "Construir dashboard de competitive intelligence"
+    ],
+    "funcionalidades": [
+      "Análisis SQL: Price index y correlación precio-conversión",
+      "Datos sintéticos: 1.000 productos × 5 competidores × 90 días",
+      "ML: Clasificación de sensibilidad al precio con ML.CLASSIFICATION",
+      "Dashboard Streamlit: Panel de inteligencia competitiva"
+    ],
+    "datos": [
+      "Precios propios: Por producto, canal, fecha",
+      "Precios competencia: 5 competidores por producto y fecha",
+      "Conversión: Visitas, clics, compras por producto y día"
+    ],
+    "estratificacion": [
+      "Price leader (index <95): Mantener, ventaja competitiva",
+      "At parity (95-105): Optimizar margen",
+      "Price follower (105-115): Evaluar ajuste si producto elástico",
+      "Price outlier (>115): Ajustar urgentemente o justificar premium"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan precios de competencia con variaciones",
+      "El análisis calcula price index y correlación",
+      "El dashboard identifica productos precio-sensibles"
+    ]
+  },
+  "UC18": {
+    "title": "Detección de Fraude en E-Commerce y Pagos",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema ML de detección de fraude en transacciones de e-commerce para reducir chargebacks.",
+    "foco": "Seguridad de pagos — detección de transacciones fraudulentas en e-commerce con scoring en tiempo real.",
+    "reto": "Reducir chargebacks un 65% manteniendo la tasa de falsos positivos por debajo del 2%.",
+    "objetivos": [
+      "Generar transacciones sintéticas con fraude",
+      "Entrenar modelo de detección de fraude con ML.CLASSIFICATION",
+      "Implementar scoring en tiempo real",
+      "Definir protocolo de acción por nivel de riesgo",
+      "Construir dashboard de fraude y chargebacks"
+    ],
+    "funcionalidades": [
+      "Modelo ML: Detección de fraude con ML.CLASSIFICATION",
+      "Datos sintéticos: 50.000 transacciones con 2.5% de fraude",
+      "Variables: device, IP, velocidad, BIN, importe, historial, behavioral",
+      "Dashboard Streamlit: Panel de fraude con alertas"
+    ],
+    "datos": [
+      "Transacciones: Canal, importe, tarjeta BIN, IP, device, hora",
+      "Señales: País mismatch, velocidad, device nuevo, importe anómalo",
+      "Chargebacks: Historial con motivo y resolución"
+    ],
+    "estratificacion": [
+      "Fraude probable (>80%): Bloquear + verificación 3DS",
+      "Sospechoso (50-80%): Verificación manual antes de envío",
+      "Riesgo bajo (20-50%): Aceptar con monitorización",
+      "Legítimo (<20%): Procesamiento normal"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 50.000 transacciones con patrones de fraude",
+      "El modelo puntúa cada transacción",
+      "El dashboard muestra fraude evitado y ROI"
+    ]
+  },
+  "UC19": {
+    "title": "Detección de Fraude en Devoluciones y Abuso de Políticas",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de detección de abuso en devoluciones analizando patrones de comportamiento y NLP sobre motivos.",
+    "foco": "Prevención de pérdidas — detección de wardrobing, etiquetas intercambiadas y devoluciones seriales fraudulentas.",
+    "reto": "Identificar el 85% del abuso en devoluciones con <5% de falsos positivos, ahorrando 2-3% del revenue en devoluciones fraudulentas.",
+    "objetivos": [
+      "Generar historial de devoluciones con patrones de abuso",
+      "Clasificar motivos de devolución con NLP",
+      "Entrenar modelo de detección de abuso",
+      "Definir políticas diferenciadas por perfil",
+      "Construir dashboard de prevención de pérdidas"
+    ],
+    "funcionalidades": [
+      "NLP: CORTEX.COMPLETE para clasificación de motivos + ML.CLASSIFICATION",
+      "Datos sintéticos: 20.000 devoluciones con 8% de abuso",
+      "Variables: ratio devolución, timing, productos, canal, motivo texto",
+      "Dashboard Streamlit: Panel de fraude en devoluciones"
+    ],
+    "datos": [
+      "Devoluciones: Producto, motivo, timing, canal, estado producto",
+      "Clientes: Historial de devoluciones, ratio, productos devueltos",
+      "Perfiles: Legítimo, Sospechoso, Abuso Sistemático"
+    ],
+    "estratificacion": [
+      "Abuso confirmado (>80%): Rechazar devolución, auditar cuenta",
+      "Sospechoso (50-80%): Inspección física obligatoria",
+      "Posible abuso (20-50%): Aceptar con registro y alerta",
+      "Legítimo (<20%): Proceso normal de devolución"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 20.000 devoluciones con patrones de abuso",
+      "Cortex AI clasifica motivos y ML detecta patrones",
+      "El dashboard muestra perfiles de riesgo y ahorro"
+    ]
+  },
+  "UC20": {
+    "title": "Detección de Anomalías en Inventario y Merma",
+    "contexto": "Estos Cortex Code Prompts construyen un sistema de detección de anomalías en inventario para identificar merma desconocida, hurto y fraude interno.",
+    "foco": "Prevención de pérdidas — detección de discrepancias de inventario y patrones de merma por tienda y categoría.",
+    "reto": "Reducir la merma desconocida del 1.5% al 0.8% del revenue identificando patrones de pérdida y sus causas raíz.",
+    "objetivos": [
+      "Generar datos de inventario con discrepancias realistas",
+      "Detectar anomalías con análisis estadístico y ML",
+      "Identificar patrones por tienda, categoría y turno",
+      "Calcular impacto económico de la merma",
+      "Construir dashboard de prevención de pérdidas"
+    ],
+    "funcionalidades": [
+      "Detección de anomalías: Z-score + ML.CLASSIFICATION",
+      "Datos sintéticos: 50 tiendas × 500 productos × 90 días",
+      "Variables: stock teórico vs físico, merma por turno, categoría",
+      "Dashboard Streamlit: Panel de inventario con investigación"
+    ],
+    "datos": [
+      "Inventario: Stock teórico (ventas + recepciones) vs físico (conteos)",
+      "Merma: Diferencia, categoría, tienda, turno, empleado",
+      "Patrones: Concentración por turno, categoría, día de semana"
+    ],
+    "estratificacion": [
+      "Anomalía crítica (>3 sigma): Investigación inmediata, posible hurto",
+      "Anomalía alta (2-3 sigma): Auditoría en próxima visita",
+      "Anomalía moderada (1.5-2 sigma): Monitorizar tendencia",
+      "Normal (<1.5 sigma): Merma operativa aceptable"
+    ],
+    "como_usar": [
+      "Ejecutar prompts secuencialmente",
+      "Se generan 90 días de inventario con anomalías",
+      "El modelo detecta discrepancias y patrones",
+      "El dashboard permite investigar por tienda y categoría"
+    ]
+  }
+};
+
+const PROMPTS = {
+  UC01: {"title": "Dynamic Pricing Omnicanal con Model Registry", "intro": "Abre Cortex Code en Snowsight y ejecuta estos prompts secuencialmente. Construirás un motor de pricing dinámico y registrarás el modelo en Snowflake Model Registry.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos y warehouse para pricing.", "prompt": "Crea una base de datos llamada DYNAMIC_PRICING_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH tamaño SMALL con auto-suspend 60 segundos."}, {"title": "Generar catálogo de productos", "desc": "5.000 SKUs con categorías y costes.", "prompt": "Genera tabla 'productos' con 5.000 filas: sku_id (SKU00001..SKU05000), nombre, categoria (Moda 25%, Electrónica 20%, Hogar 15%, Deportes 15%, Belleza 10%, Alimentación 15%), subcategoria, coste_eur, precio_pvp_eur (margen 40-70% según categoría), proveedor, peso_kg, es_online_only (15%)."}, {"title": "Generar historial de ventas y precios", "desc": "90 días de ventas con precios de competencia.", "prompt": "Genera tabla 'ventas_precios' con 5.000 SKUs × 90 días: sku_id, fecha, canal (Online 55%, Tienda 45%), unidades_vendidas (0-50 según categoría y día), precio_venta_eur, precio_comp_1 (±8%), precio_comp_2 (±12%), stock_actual, dia_semana, es_promocion (15% de días), descuento_pct (0-30%)."}, {"title": "Feature engineering", "desc": "Variables predictoras de precio óptimo.", "prompt": "Crea tabla 'pricing_features' con: elasticidad_estimada (log change unidades / log change precio), precio_vs_comp_1, precio_vs_comp_2, stock_semanas (stock/venta_media_semanal), tendencia_venta_14d, es_fin_semana, mes, categoria_encoded, canal_encoded. Target: franja_precio_optima (Descuento, Normal, Premium, Full_Price) basado en maximizar revenue × margen."}, {"title": "Entrenar modelo", "desc": "ML.CLASSIFICATION para pricing óptimo.", "prompt": "Divide 80/20, entrena SNOWFLAKE.ML.CLASSIFICATION 'modelo_pricing_retail_v1' con target franja_precio_optima y evaluate TRUE."}, {"title": "Evaluar rendimiento", "desc": "Métricas y feature importance.", "prompt": "Ejecuta SHOW_EVALUATION_METRICS, SHOW_CONFUSION_MATRIX y SHOW_FEATURE_IMPORTANCE. Interpreta qué variables más influyen en la decisión de precio."}, {"title": "Registrar en Model Registry", "desc": "Versionar con log_model().", "prompt": "Usando Python: importa snowflake.ml.registry, crea Registry, usa registry.log_model() para registrar con model_name='dynamic_pricing_retail', version_name='v1', metrics={'accuracy': <valor>, 'f1_weighted': <valor>}, comment='Motor de pricing dinámico retail v1'. Muestra modelos registrados."}, {"title": "Inferencia con modelo registrado", "desc": "Pricing para próximos 30 días.", "prompt": "Recupera el modelo con registry.get_model('dynamic_pricing_retail').version('v1'). Genera precios recomendados para top 100 SKUs por revenue. Calcula impacto: revenue con precio actual vs optimizado."}, {"title": "Simulación de impacto", "desc": "Uplift de margen con pricing dinámico.", "prompt": "Crea análisis: margen_actual vs margen_optimizado por categoría. Calcula uplift total €, distribución por franja, productos con mayor impacto. Muestra top 20 SKUs con mayor mejora de margen."}, {"title": "Dashboard pricing", "desc": "Panel de Revenue Management.", "prompt": "Crea dashboard Streamlit: KPIs (margen actual, margen optimizado, uplift %, SKUs repriceados), gráfico de precio recomendado vs actual por categoría, tabla de recomendaciones por SKU, filtros por categoría y canal."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS DYNAMIC_PRICING_RETAIL_DB comentado."}]},
+  UC02: {"title": "Recomendaciones de Producto en Tiempo Real", "intro": "Prompts para construir un motor de recomendación híbrido con collaborative filtering y Cortex AI para personalización e-commerce.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para recomendaciones.", "prompt": "Crea base de datos RECOMENDACIONES_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar catálogo de productos", "desc": "5.000 productos con atributos.", "prompt": "Genera tabla 'catalogo' con 5.000 filas: producto_id, nombre, categoria, subcategoria, marca, precio_eur, color, material, tags (array de 3-5 atributos: casual, formal, sport, eco, premium, básico), rating_medio (3.0-5.0), num_reviews."}, {"title": "Generar perfiles de clientes", "desc": "10.000 clientes con preferencias.", "prompt": "Genera tabla 'clientes' con 10.000 filas: cliente_id, edad (18-70), genero, ciudad, segmento (VIP 5%, Premium 15%, Regular 50%, Occasional 30%), canal_preferido (Web 45%, App 35%, Tienda 20%), categorias_favoritas (top 2-3)."}, {"title": "Generar historial de interacciones", "desc": "100.000 transacciones y 500.000 eventos de navegación.", "prompt": "Genera tabla 'compras' con 100.000 filas: cliente_id, producto_id, fecha, canal, importe, cantidad. Genera tabla 'navegacion' con 500.000 filas: cliente_id, producto_id, fecha, evento (vista_pagina 60%, add_carrito 20%, add_wishlist 10%, busqueda 10%), dispositivo."}, {"title": "Collaborative filtering", "desc": "Similitud entre clientes por co-compra.", "prompt": "Crea vista 'similitud_clientes' que calcula co-compras entre pares de clientes (productos comprados en común). Para cada cliente, identifica top 10 clientes similares. Genera recomendaciones: productos comprados por similares que el cliente no ha comprado."}, {"title": "Content-based matching", "desc": "Similitud de productos por atributos.", "prompt": "Crea vista 'productos_similares' que calcula overlap de tags entre productos. Para cada producto comprado, genera top 5 similares no comprados por el cliente."}, {"title": "Recomendaciones con Cortex AI", "desc": "Generación contextual personalizada.", "prompt": "Usa CORTEX.COMPLETE para generar recomendaciones personalizadas para 10 clientes: 'Dado el perfil [perfil] y las últimas compras [productos], recomienda 5 productos del catálogo [lista candidatos] con una frase de por qué le gustará cada uno.' Almacena en 'recomendaciones_ia'."}, {"title": "Evaluar recomendaciones", "desc": "Métricas de relevancia.", "prompt": "Calcula hit rate: % de recomendaciones que el cliente realmente compró en las siguientes 4 semanas. Compara: CF solo, content-based solo, híbrido, Cortex AI. Muestra precisión por método."}, {"title": "Dashboard recomendaciones", "desc": "Panel de personalización.", "prompt": "Crea dashboard Streamlit: selector de cliente, top 10 recomendaciones con score y explicación, comparativa de métodos, métricas de conversión de recomendaciones."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS RECOMENDACIONES_RETAIL_DB comentado."}]},
+  UC03: {"title": "Predicción de Demanda Multi-SKU con Model Registry", "intro": "Prompts para construir modelos de forecast por SKU con ML.FORECAST y registro en Model Registry para despliegue automatizado.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para forecast.", "prompt": "Crea base de datos FORECAST_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de ventas", "desc": "500 SKUs × 52 semanas × 20 tiendas.", "prompt": "Genera tabla 'ventas_historicas' con 500 SKUs × 52 semanas: sku_id, semana (timestamp), tienda_id (20 tiendas), unidades_vendidas (con estacionalidad: navidad ×2.5, verano ×1.3, enero ×0.6). Incluye variabilidad por categoría."}, {"title": "Generar variables exógenas", "desc": "Promociones, meteo, festivos, eventos.", "prompt": "Genera tabla 'exogenas' con 52 semanas: semana, es_promocion (20% de semanas), descuento_medio, temperatura_media_c, es_festivo, evento_local (0-2/mes), competidor_promocion."}, {"title": "Preparar datos para ML.FORECAST", "desc": "Formato requerido con series.", "prompt": "Crea tabla 'forecast_input' con: serie_id (sku_tienda), timestamp, unidades (target). Vincula con exógenas. Verifica sin gaps ni nulls."}, {"title": "Entrenar modelo forecast", "desc": "ML.FORECAST con exógenas.", "prompt": "Entrena SNOWFLAKE.ML.FORECAST 'predictor_demanda_retail' con SERIES_COLNAME='serie_id', TIMESTAMP_COLNAME='timestamp', TARGET_COLNAME='unidades', PREDICTION_INTERVAL=0.95."}, {"title": "Registrar en Model Registry", "desc": "Versionar con log_model().", "prompt": "Usando Python: registry.log_model() con model_name='demand_forecast_retail', version_name='v1', metrics={'mape_global': <valor>}, comment='Forecast de demanda retail multi-SKU v1'."}, {"title": "Generar predicciones", "desc": "4, 8 y 12 semanas.", "prompt": "Genera predicciones con predictor_demanda_retail!FORECAST(FORECASTING_PERIODS=>12). Extrae forecast, lower_bound, upper_bound. Calcula MAPE por categoría y horizonte."}, {"title": "Alertas de stock", "desc": "SKUs en riesgo de rotura.", "prompt": "Crea vista 'alertas_stock' comparando stock actual con demanda prevista 4 semanas. Marca: Rotura inminente (stock < 1 semana demanda), Riesgo (1-2 semanas), OK (>2 semanas). Calcula revenue en riesgo."}, {"title": "Dashboard forecast", "desc": "Panel de demanda con alertas.", "prompt": "Crea dashboard Streamlit: KPIs (MAPE, SKUs en riesgo, revenue en riesgo, accuracy por categoría), gráfico forecast con bandas de confianza por SKU seleccionado, tabla de alertas de stock, filtros por categoría y tienda."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS FORECAST_RETAIL_DB comentado."}]},
+  UC04: {"title": "Segmentación de Clientes con CLV Predictivo", "intro": "Prompts para construir un sistema de CLV predictivo para segmentar clientes retail por valor futuro.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para CLV.", "prompt": "Crea base de datos CLV_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de clientes", "desc": "10.000 clientes con 2 años de compras.", "prompt": "Genera tabla 'clientes_retail' con 10.000 filas: cliente_id, fecha_alta, canal_adquisicion (Orgánico 30%, Paid 25%, Referral 15%, Tienda 30%), programa_fidelidad (Gold 10%, Silver 25%, Standard 40%, None 25%). Genera tabla 'compras_historicas' con ~80.000 registros: cliente_id, fecha, importe, productos_distintos, canal, descuento_aplicado."}, {"title": "Calcular métricas RFM", "desc": "Recencia, Frecuencia, Monetario.", "prompt": "Crea vista 'rfm_clientes' con: recencia_dias, frecuencia_24m, valor_monetario_24m, ticket_medio, productos_por_compra, canal_preferido, descuento_medio_pct, tendencia_gasto_12m (creciente/estable/decreciente)."}, {"title": "Feature engineering CLV", "desc": "Variables predictoras de valor.", "prompt": "Crea tabla 'features_clv' con: rfm + canal_encoded, programa_encoded, tendencia_encoded, meses_como_cliente, ratio_online, sensibilidad_descuento. Target: tier_valor (VIP/Premium/Regular/Occasional/Dormant) basado en percentiles."}, {"title": "Entrenar modelo CLV", "desc": "Clasificador de tier.", "prompt": "Divide 80/20, entrena ML.CLASSIFICATION 'modelo_clv_retail' con target tier_valor y evaluate TRUE."}, {"title": "Puntuar y segmentar", "desc": "Asignar tier predictivo.", "prompt": "Puntúa todos los clientes. Crea 'segmentacion_clv' con: tier_actual, tier_predicho, clv_12m_estimado, probabilidad_retorno. Identifica clientes con potencial de upgrade (tier_predicho > tier_actual)."}, {"title": "Matriz valor × engagement", "desc": "Clasificar para acciones.", "prompt": "Crea 'matriz_accion': Proteger (VIP activo), Desarrollar (tier creciente), Recuperar (tier alto inactivo), Activar (nuevo con potencial), Mantener (tier bajo activo). Cuenta clientes y valor por cuadrante."}, {"title": "Campañas con Cortex AI", "desc": "Mensajes diferenciados.", "prompt": "Usa CORTEX.COMPLETE para generar emails por segmento: VIP (acceso anticipado exclusivo), Premium (upgrade de beneficios), Regular (campaña de frecuencia), Dormant (reactivación con incentivo). En español e inglés."}, {"title": "Dashboard CLV", "desc": "Panel de fidelización.", "prompt": "Crea dashboard Streamlit: KPIs (CLV total, clientes VIP, tasa retención, revenue en riesgo), distribución por tier, matriz valor × engagement, tabla de acciones por cliente, filtros por segmento y canal."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS CLV_RETAIL_DB comentado."}]},
+  UC05: {"title": "Optimización de Inventario y Reposición Automática", "intro": "Prompts para construir un sistema de reposición automática que calcula punto de pedido óptimo por SKU/tienda.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para inventario.", "prompt": "Crea base de datos INVENTARIO_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar maestro de productos", "desc": "1.000 SKUs con proveedores.", "prompt": "Genera tabla 'productos_inventario' con 1.000 filas: sku_id, categoria, subcategoria, coste_unitario, precio_venta, proveedor_id (50 proveedores), lead_time_dias (7-45 según proveedor), moq (minimum order quantity: 10-500), coste_almacenamiento_dia (0.01-0.50€)."}, {"title": "Generar historial de ventas e inventario", "desc": "90 días de movimientos.", "prompt": "Genera tabla 'movimientos_inventario' con 1.000 SKUs × 90 días: sku_id, fecha, stock_inicio, ventas_dia, recepciones, stock_fin, rotura_stock (TRUE si stock_inicio <ventas_dia, ~8% de casos)."}, {"title": "Calcular variabilidad", "desc": "Demanda media y desviación por SKU.", "prompt": "Crea vista 'stats_sku' con: demanda_media_diaria, desviacion_demanda, coeficiente_variacion, lead_time_medio, desviacion_lead_time, tasa_rotura_actual, dias_stock_actual."}, {"title": "Calcular safety stock", "desc": "Fórmula dinámica con nivel de servicio.", "prompt": "Crea tabla 'parametros_reposicion' con: safety_stock = Z × SQRT(lead_time × σ_demanda² + demanda² × σ_lead_time²) para Z=1.65 (95%), Z=1.96 (97.5%), Z=2.33 (99%). Punto_pedido = demanda_media × lead_time + safety_stock. Cantidad_pedido basada en EOQ."}, {"title": "Simular escenarios", "desc": "Impacto de distintos niveles de servicio.", "prompt": "Crea análisis SQL simulando 90 días con cada nivel de servicio (95%, 97.5%, 99%): roturas, sobre-stock, coste_almacenamiento, coste_pedidos. Calcula trade-off servicio vs coste."}, {"title": "Generar pedidos automáticos", "desc": "Pedidos a generar hoy.", "prompt": "Crea vista 'pedidos_hoy' que identifica SKUs cuyo stock_actual ≤ punto_pedido. Genera pedido con cantidad_pedido, proveedor, coste_total, fecha_entrega_estimada. Agrupa por proveedor para consolidar envíos."}, {"title": "Dashboard inventario", "desc": "Panel de reposición.", "prompt": "Crea dashboard Streamlit: KPIs (SKUs bajo punto pedido, valor stock, tasa rotura, días stock medio), tabla de pedidos pendientes por proveedor, gráfico de evolución de stock por SKU seleccionado, simulador de nivel de servicio."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS INVENTARIO_RETAIL_DB comentado."}]},
+  UC06: {"title": "Análisis de Sentimiento en Reviews de Producto", "intro": "Prompts para construir un pipeline NLP que clasifica sentimiento de reviews por dimensión y detecta tendencias emergentes.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para análisis de reviews.", "prompt": "Crea base de datos REVIEWS_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar catálogo de productos", "desc": "500 productos con categorías.", "prompt": "Genera tabla 'productos_reviews' con 500 filas: producto_id, nombre, categoria, subcategoria, precio_eur, marca, fecha_lanzamiento."}, {"title": "Generar reviews", "desc": "5.000 reviews con variedad emocional.", "prompt": "Genera tabla 'reviews_producto' con 5.000 filas: review_id, producto_id, fecha (últimos 12 meses), rating (1-5), texto_review (3-6 frases cubriendo: calidad, talla/fit, material, envío, precio, diseño). Distribución: 20% muy positivas, 35% positivas, 20% neutras, 18% negativas, 7% muy negativas. Incluye compra_verificada (85% TRUE)."}, {"title": "Sentimiento global", "desc": "Score por review.", "prompt": "Crea tabla 'reviews_sentimiento' con CORTEX.SENTIMENT sobre texto_review. Muestra distribución por categoría y mes."}, {"title": "Sentimiento multi-dimensión", "desc": "Análisis por 6 categorías.", "prompt": "Usa CORTEX.COMPLETE para extraer sentimiento (-1 a +1) por 6 dimensiones: calidad, talla_fit, material, envio, precio_valor, diseno. Almacena en 'sentimiento_dimensiones'."}, {"title": "Detectar tendencias", "desc": "Media móvil 14 días por dimensión.", "prompt": "Crea vista 'tendencias_reviews' con media móvil 14 días por producto y dimensión. Marca alertas: caída >0.3 en calidad o talla = problema de calidad urgente."}, {"title": "Extraer problemas recurrentes", "desc": "Temas negativos con Cortex AI.", "prompt": "Usa CORTEX.COMPLETE para extraer top 3 problemas de reviews negativas (sentimiento <-0.2) por producto. Clasifica: Defecto Fabricación, Error Talla, Material Inferior, Envío Dañado, Expectativa vs Realidad."}, {"title": "Dashboard Voice of Customer", "desc": "Panel de reviews con alertas.", "prompt": "Crea dashboard Streamlit: KPIs (rating medio, sentimiento medio, alertas activas, tasa devolución), mapa de calor producto × dimensión, tendencia por dimensión, tabla de alertas con producto y problema, filtros por categoría."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS REVIEWS_RETAIL_DB comentado."}]},
+  UC07: {"title": "Chatbot de Atención al Cliente con RAG", "intro": "Prompts para construir un asistente conversacional RAG con Cortex Search sobre catálogo, FAQ y políticas del retailer.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para chatbot.", "prompt": "Crea base de datos CHATBOT_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar base de conocimiento", "desc": "200 documentos del retailer.", "prompt": "Genera tabla 'documentos_retail' con 200 filas: doc_id, tipo (FAQ 30%, Política 20%, Guía Tallas 15%, Catálogo 20%, Envío 10%, Promociones 5%), titulo, area (General, Producto, Envío, Devolución, Cuenta, Pago). Genera contenido de 200-400 palabras con CORTEX.COMPLETE."}, {"title": "Crear chunks", "desc": "Fragmentar en chunks de ~500 chars.", "prompt": "Crea tabla 'chunks_retail' fragmentando documentos: chunk_id, doc_id, tipo, area, texto_chunk, chunk_index. ~3-5 chunks por documento."}, {"title": "Crear Cortex Search Service", "desc": "Indexación semántica.", "prompt": "Crea Cortex Search Service 'buscador_retail' sobre chunks_retail con SEARCH_COLUMN='texto_chunk', ATTRIBUTES='tipo,area'. TARGET_LAG='1 hour'."}, {"title": "Validar búsqueda", "desc": "Pruebas con preguntas frecuentes.", "prompt": "Ejecuta 5 búsquedas: '¿Cuánto tarda el envío?', '¿Puedo devolver sin ticket?', '¿Qué talla me corresponde?', '¿Aceptan PayPal?', '¿Tienen tiendas físicas?'. Muestra top 3 chunks con score."}, {"title": "Pipeline RAG multiidioma", "desc": "Respuestas en el idioma del cliente.", "prompt": "Crea pipeline: (1) detectar idioma, (2) buscar top 5 chunks, (3) generar respuesta con CORTEX.COMPLETE en el idioma detectado citando fuente. Prueba en ES, EN, FR, DE."}, {"title": "Evaluar calidad", "desc": "Validar respuestas.", "prompt": "Ejecuta 10 preguntas variadas. Evalúa relevancia con CORTEX.COMPLETE (1-5). Identifica preguntas donde el chatbot no tiene respuesta adecuada."}, {"title": "Dashboard chatbot", "desc": "Interfaz de chat.", "prompt": "Crea dashboard Streamlit: campo de pregunta, respuesta con fuente, selector de idioma, historial, FAQ rápido por área."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS CHATBOT_RETAIL_DB y DROP CORTEX SEARCH SERVICE buscador_retail comentados."}]},
+  UC08: {"title": "Feature Store de Cliente 360", "intro": "Prompts para construir un Feature Store en Snowflake que consolida datos de cliente desde todos los canales para personalización omnicanal.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para Feature Store.", "prompt": "Crea base de datos FEATURE_STORE_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar datos e-commerce", "desc": "Compras y navegación online.", "prompt": "Genera tabla 'ecommerce_data' con 50.000 registros: cliente_id (5.000 únicos), fecha, producto_id, accion (compra 30%, vista 40%, carrito 15%, wishlist 10%, busqueda 5%), importe, dispositivo (Desktop 40%, Mobile 50%, Tablet 10%)."}, {"title": "Generar datos POS", "desc": "Compras en tienda física.", "prompt": "Genera tabla 'pos_data' con 30.000 registros: cliente_id (3.000 únicos, 60% overlap con ecommerce), tienda_id (50 tiendas), fecha, productos, importe_total, metodo_pago, ticket_id."}, {"title": "Generar datos CRM y fidelización", "desc": "Programa de puntos y comunicaciones.", "prompt": "Genera tabla 'crm_data' con 5.000 filas: cliente_id, email, programa_nivel (Gold/Silver/Standard/None), puntos_acumulados, fecha_alta, preferencia_comunicacion, campanas_abiertas_pct, ultimo_canje."}, {"title": "Generar datos de app", "desc": "Actividad en la app móvil.", "prompt": "Genera tabla 'app_data' con 20.000 registros: cliente_id (2.000 únicos), fecha, accion (navegacion 50%, escaneo_producto 20%, store_locator 15%, wishlist 10%, notificacion_clic 5%), categoria_interes."}, {"title": "Crear Entity y FeatureViews", "desc": "Feature Store con métricas unificadas.", "prompt": "Usando Python con snowflake.ml.feature_store: (1) Crea Entity 'customer' con join_keys=['cliente_id']. (2) FeatureView 'purchase_behavior': frecuencia, ticket_medio, categorias_top3, ratio_online, ultima_compra_dias. (3) FeatureView 'browsing_signals': paginas_mes, carritos_abandonados, wishlist_size, busquedas_recientes. (4) FeatureView 'loyalty_profile': nivel, puntos, engagement_email, preferencias. Registra FeatureViews."}, {"title": "Identity resolution y merge", "desc": "Unificar clientes cross-canal.", "prompt": "Crea pipeline de identity resolution: match por email, teléfono y tarjeta fidelización. Genera tabla 'golden_record' con cliente_id unificado. Calcula cobertura: % de transacciones con identity match."}, {"title": "Servir features", "desc": "Recuperar perfil para personalización.", "prompt": "Usa feature_store.get_features() para 10 clientes. Muestra perfil 360 completo. Mide latencia. Demuestra uso para personalización de home page."}, {"title": "Dashboard Cliente 360", "desc": "Panel de perfil unificado.", "prompt": "Crea dashboard Streamlit: buscador de cliente, perfil 360 (compras, navegación, fidelización), timeline de interacciones cross-canal, score de completitud, sugerencias de personalización."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS FEATURE_STORE_RETAIL_DB comentado."}]},
+  UC09: {"title": "Optimización de Promociones y Markdown", "intro": "Prompts para construir un optimizador de promociones que calcula el descuento óptimo por producto maximizando incrementalidad.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para optimización de promos.", "prompt": "Crea base de datos PROMOS_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de ventas con promos", "desc": "2.000 productos × 52 semanas.", "prompt": "Genera tabla 'ventas_promos' con 2.000 productos × 52 semanas: producto_id, semana, unidades_sin_promo (baseline), unidades_con_promo (baseline × uplift), es_promocion (20% de semanas), descuento_pct (10-50%), tipo_promo (% Descuento 50%, 2x1 20%, Regalo 15%, Flash Sale 15%). Uplift variable: elásticos ×2-3, inelásticos ×1.1-1.3."}, {"title": "Calcular elasticidad", "desc": "Sensibilidad al precio por producto.", "prompt": "Crea vista 'elasticidad_producto' con: producto_id, elasticidad = (% change unidades) / (% change precio), categoria, clasificacion (Muy Elástico >2, Elástico 1-2, Inelástico 0.5-1, Muy Inelástico <0.5)."}, {"title": "Calcular incrementalidad", "desc": "Unidades incrementales vs canibalización.", "prompt": "Crea vista 'incrementalidad' con: por cada promoción, unidades_incrementales = unidades_promo - baseline_esperado. Canibalización = unidades de la semana siguiente que bajan vs baseline. Net incremental = incremental - canibalización."}, {"title": "Entrenar modelo de propensión", "desc": "Predecir respuesta a promoción.", "prompt": "Crea features: elasticidad, categoria_encoded, precio_actual, margen_pct, stock_semanas, tendencia_venta. Entrena ML.CLASSIFICATION 'modelo_promo_response' con target respuesta_alta (TRUE si uplift >50%)."}, {"title": "Simular descuentos", "desc": "Impacto de distintos niveles.", "prompt": "Crea análisis: para cada producto, simula descuentos de 10%, 20%, 30%, 40%, 50%. Calcula: unidades_incrementales, revenue_incremental, margen_sacrificado, ROI_promo. Identifica descuento óptimo (max ROI)."}, {"title": "Generar plan promocional", "desc": "Calendario de promos recomendado.", "prompt": "Crea tabla 'plan_promocional' con top 200 productos para próximo mes: producto_id, descuento_optimo, tipo_promo_recomendado, semana_optima, uplift_esperado, roi_esperado. Excluir productos inelásticos."}, {"title": "Dashboard promociones", "desc": "Panel de planificación.", "prompt": "Crea dashboard Streamlit: KPIs (ROI medio promos, uplift medio, canibalización media, margen sacrificado), matriz elasticidad × margen, calendario de promos recomendado, simulador de descuento por producto."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS PROMOS_RETAIL_DB comentado."}]},
+  UC10: {"title": "Predicción de Rebajas y Liquidación de Stock", "intro": "Prompts para construir un predictor de sell-through que optimiza timing y profundidad de markdown para moda estacional.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para markdown.", "prompt": "Crea base de datos MARKDOWN_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar productos de temporada", "desc": "1.000 SKUs con curva de decaimiento.", "prompt": "Genera tabla 'productos_temporada' con 1.000 SKUs: sku_id, categoria (Ropa 40%, Calzado 25%, Accesorios 20%, Deportes 15%), stock_inicial (50-500 uds), precio_full, coste_unitario, semana_lanzamiento (1-4), temporada (PV26)."}, {"title": "Generar ventas de temporada", "desc": "16 semanas con curva natural.", "prompt": "Genera tabla 'ventas_temporada' con 1.000 SKUs × 16 semanas: sku_id, semana, unidades_vendidas (curva natural: pico semana 2-4, decaimiento exponencial), precio_venta (full_price semanas 1-8, markdown semanas 9-16), stock_restante."}, {"title": "Calcular sell-through", "desc": "Velocidad de venta por SKU.", "prompt": "Crea vista 'sell_through_analysis' con: sku_id, sell_through_semana_8 (% vendido), velocidad_venta_semanal, semanas_stock_restante, tendencia_velocidad (acelerando/decelerando), comparable_categoria (vs media de la categoría)."}, {"title": "Predecir stock residual", "desc": "Forecast de venta restante.", "prompt": "Entrena ML.FORECAST para predecir ventas semanales restantes por SKU. Calcula stock_residual_fin_temporada sin markdown vs con markdown a distintas profundidades."}, {"title": "Calcular markdown óptimo", "desc": "Timing y profundidad por SKU.", "prompt": "Crea tabla 'markdown_recomendacion': para cada SKU, calcula semana_optima_markdown y descuento_optimo que minimiza MAX(stock_residual × coste, margen_sacrificado). Clasifica: No marcar, -20%, -30%, -40%, -50%."}, {"title": "Simular escenarios", "desc": "Comparar estrategias de liquidación.", "prompt": "Simula 3 estrategias: (1) Markdown agresivo semana 6 (-40%), (2) Markdown progresivo (-20% semana 8, -30% semana 10, -50% semana 14), (3) Markdown optimizado por SKU. Compara: revenue total, stock residual, margen."}, {"title": "Dashboard markdown", "desc": "Panel de gestión de rebajas.", "prompt": "Crea dashboard Streamlit: KPIs (sell-through actual, stock en riesgo, revenue potencial rebajas, margen preservado), gráfico de sell-through por categoría, tabla de recomendaciones de markdown por SKU, simulador de escenarios."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS MARKDOWN_RETAIL_DB comentado."}]},
+  UC11: {"title": "Detección de Tendencias de Moda con NLP", "intro": "Prompts para construir un pipeline NLP de trend spotting que monitoriza redes sociales, búsquedas e influencers para detectar tendencias emergentes de moda.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para detección de tendencias.", "prompt": "Crea base de datos TRENDS_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar menciones de redes sociales", "desc": "10.000 posts de 4 plataformas.", "prompt": "Genera tabla 'menciones_moda' con 10.000 filas: mencion_id, fecha (últimos 60 días), plataforma (Instagram 35%, TikTok 30%, Pinterest 20%, Google Trends 15%), texto (50-150 palabras sobre moda), hashtags (3-5), engagement (likes+comments), influencer_tier (Mega 2%, Macro 8%, Micro 30%, Nano 60%)."}, {"title": "Clasificar tendencias", "desc": "Categorización por dimensión.", "prompt": "Usa CORTEX.COMPLETE para clasificar cada mención en: dimension (Color, Tejido, Silueta, Estilo, Estampado), tendencia_especifica (e.g., 'burdeos', 'lino', 'oversized', 'quiet luxury', 'rayas'), relevancia (1-5). Almacena en 'menciones_clasificadas'."}, {"title": "Calcular score de tendencia", "desc": "Momentum y velocidad.", "prompt": "Crea vista 'trend_scores' con: tendencia, dimension, menciones_7d, menciones_14d, crecimiento_pct_semanal, engagement_medio, influencer_tier_ponderado. Score = menciones × crecimiento × engagement × tier_weight."}, {"title": "Detectar tendencias emergentes", "desc": "Ranking con alertas.", "prompt": "Crea vista 'tendencias_emergentes': top 30 tendencias por score con: tendencia, dimensión, score, velocidad_crecimiento, región_dominante (si aplica), semanas_de_vida, clasificación (Viral, Emergente, Temprana, Ruido)."}, {"title": "Matching con catálogo", "desc": "Productos alineados con tendencias.", "prompt": "Genera tabla 'catalogo_moda' con 500 productos y atributos de moda. Usa CORTEX.COMPLETE para calcular match score entre tendencias top y productos existentes. Identifica gaps: tendencias sin producto en catálogo."}, {"title": "Generar alertas de diseño", "desc": "Briefing para equipo creativo.", "prompt": "Usa CORTEX.COMPLETE para generar briefings: para cada tendencia top 10, genera descripción de tendencia, público objetivo, referencia visual, sugerencia de producto, urgencia de producción. En formato estructurado."}, {"title": "Análisis de competencia", "desc": "¿Quién ya lo tiene?", "prompt": "Genera datos de competidores (5) con productos lanzados. Cruza con tendencias: identifica ventanas de oportunidad (tendencia emergente sin competidor activo) y riesgos (tendencia donde competidores ya están presentes)."}, {"title": "Dashboard de tendencias", "desc": "Panel de trend intelligence.", "prompt": "Crea dashboard Streamlit: ranking de tendencias con score y velocidad, timeline de evolución, matching con catálogo, gaps de producto, briefing de diseño, filtros por dimensión y plataforma."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS TRENDS_RETAIL_DB comentado."}]},
+  UC12: {"title": "Optimización de Asignación de Stock a Tiendas", "intro": "Prompts para construir un sistema de asignación óptima de stock a tiendas basado en demanda local y perfil de clientela.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para asignación.", "prompt": "Crea base de datos ASIGNACION_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar maestro de tiendas", "desc": "50 tiendas con perfiles diferenciados.", "prompt": "Genera tabla 'tiendas' con 50 filas: tienda_id, ciudad, tipo (Flagship 10%, Standard 50%, Outlet 20%, Express 20%), m2_venta, m2_almacen, perfil_clientela (Premium 15%, Mainstream 50%, Value 20%, Turista 15%), categorias_fuertes (top 3)."}, {"title": "Generar historial de ventas por tienda", "desc": "500 SKUs × 50 tiendas × 24 semanas.", "prompt": "Genera tabla 'ventas_tienda' con 500 SKUs × 50 tiendas × 24 semanas: sku_id, tienda_id, semana, unidades_vendidas (varía según perfil tienda × SKU), stock_inicial, roturas_stock, transferencias_recibidas, transferencias_enviadas."}, {"title": "Calcular demanda local", "desc": "Predicción por SKU × tienda.", "prompt": "Crea vista 'demanda_local' con: sku_id, tienda_id, demanda_media_semanal, variabilidad, tendencia, estacionalidad_local. Usa ML para predecir demanda próximas 8 semanas por combinación."}, {"title": "Definir restricciones", "desc": "Capacidad y mínimos por tienda.", "prompt": "Crea tabla 'restricciones_tienda': capacidad_maxima por categoría (m2 → unidades), surtido_minimo (tallas mínimas por SKU), coste_envio por ruta logística, prioridad_tienda (1-5 según revenue/m2)."}, {"title": "Optimizar asignación", "desc": "Distribución que maximiza sell-through.", "prompt": "Crea procedimiento de asignación: (1) Asigna mínimo a todas, (2) Distribuye resto proporcional a demanda local, (3) Ajusta por capacidad y prioridad, (4) Calcula sell-through esperado vs asignación histórica plana."}, {"title": "Simular transferencias", "desc": "Impacto de redistribución.", "prompt": "Simula 2 semanas: identifica tiendas con exceso (stock > 3× demanda) y déficit (stock < 1 semana). Propone transferencias: origen, destino, SKU, cantidad, coste. Calcula ahorro vs rotura evitada."}, {"title": "Dashboard asignación", "desc": "Panel de distribución.", "prompt": "Crea dashboard Streamlit: mapa de tiendas con nivel de stock, asignación recomendada por lanzamiento nuevo, tabla de transferencias sugeridas, comparativa sell-through optimizado vs histórico, filtros por categoría y tienda."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS ASIGNACION_RETAIL_DB comentado."}]},
+  UC13: {"title": "Predicción de Churn y Retención de Clientes", "intro": "Prompts para construir un predictor de churn que identifica clientes en riesgo de abandono con 60-90 días de antelación.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para churn.", "prompt": "Crea base de datos CHURN_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de clientes", "desc": "10.000 clientes con patrones de churn.", "prompt": "Genera tabla 'clientes_churn' con 10.000 filas: cliente_id, fecha_alta, segmento, canal_adquisicion, programa_fidelidad. 15% han hecho churn (sin compra >120 días). Genera tabla 'actividad_clientes' con ~100.000 registros: fecha, tipo (compra, visita_web, apertura_email, queja, devolucion)."}, {"title": "Feature engineering de churn", "desc": "Señales de abandono.", "prompt": "Crea vista 'features_churn' con: dias_desde_ultima_compra, tendencia_frecuencia_3m (creciente/estable/decreciente), tendencia_gasto_3m, ratio_devolucion, num_quejas_6m, apertura_emails_pct, canal_shift (cambió canal habitual), programa_activo."}, {"title": "Entrenar modelo de churn", "desc": "Predicción a 90 días.", "prompt": "Divide 80/20. Entrena ML.CLASSIFICATION 'modelo_churn_retail' con target es_churn y evaluate TRUE. Muestra métricas (AUC, precision, recall, F1)."}, {"title": "Feature importance", "desc": "Qué señales importan.", "prompt": "Ejecuta SHOW_FEATURE_IMPORTANCE. Interpreta: ¿qué señales son más predictivas de churn? ¿Recencia, frecuencia, quejas, email engagement?"}, {"title": "Scoring y segmentación", "desc": "Puntuar clientes activos.", "prompt": "Puntúa todos los clientes activos. Crea 'riesgo_churn' con: probabilidad_churn, segmento_riesgo (Inminente >70%, Alto 40-70%, Moderado 20-40%, Bajo <20%), valor_en_riesgo = CLV × probabilidad_churn."}, {"title": "Acciones de retención", "desc": "Campañas personalizadas por riesgo.", "prompt": "Usa CORTEX.COMPLETE para generar acciones por perfil: canal preferido + oferta personalizada + mensaje. E.g., cliente VIP riesgo alto → llamada personal + 20% próxima compra. Calcula ROI esperado por acción."}, {"title": "Tracking de retención", "desc": "Medir eficacia.", "prompt": "Crea framework de tracking: control (sin acción) vs treated (con campaña). Calcula retención a 30/60/90 días, incremento vs control, coste por cliente retenido, ROI de retención."}, {"title": "Dashboard churn", "desc": "Panel de retención.", "prompt": "Crea dashboard Streamlit: KPIs (tasa churn predicha, clientes en riesgo, valor en riesgo €, ROI retención), distribución por segmento de riesgo, top 50 clientes en riesgo con acción recomendada, filtros por segmento y canal."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS CHURN_RETAIL_DB comentado."}]},
+  UC14: {"title": "Feature Store de Producto para Merchandising", "intro": "Prompts para construir un Feature Store que consolida métricas de rendimiento de producto para decisiones de merchandising y surtido.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para Feature Store de producto.", "prompt": "Crea base de datos PRODUCT_FS_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar datos de ventas", "desc": "2.000 productos × 12 meses.", "prompt": "Genera tabla 'ventas_producto' con 2.000 productos × 12 meses: producto_id, mes, unidades_vendidas, revenue_eur, devoluciones_uds, canal (Online/Tienda). Incluir variabilidad por categoría y estacionalidad."}, {"title": "Generar datos de margen", "desc": "Costes y márgenes por producto.", "prompt": "Genera tabla 'margenes_producto' con 2.000 filas: producto_id, coste_unitario, precio_pvp, precio_medio_venta (considerando promos), margen_bruto_pct, margen_neto_pct (tras descuentos y devoluciones), coste_almacenamiento_anual."}, {"title": "Generar datos de percepción", "desc": "Reviews, ratings, sentimiento.", "prompt": "Genera tabla 'percepcion_producto' con 2.000 filas: producto_id, rating_medio (2.5-5.0), num_reviews, sentimiento_medio (-1 a +1), tasa_devolucion_pct, nps_score (-100 a +100), share_of_voice (0-100)."}, {"title": "Generar datos de competencia", "desc": "Precio y posición competitiva.", "prompt": "Genera tabla 'competencia_producto' con 2.000 filas: producto_id, price_index (85-130, vs media competidores), ranking_categoria (1-50), share_of_search_pct, tendencia_demanda_sector (creciente/estable/decreciente)."}, {"title": "Crear Entity y FeatureViews", "desc": "Feature Store de producto.", "prompt": "Usando Python con snowflake.ml.feature_store: (1) Entity 'product' con join_keys=['producto_id']. (2) FeatureView 'sales_metrics': revenue_12m, unidades_12m, crecimiento_yoy, velocidad_rotacion. (3) FeatureView 'margin_health': margen_bruto, margen_neto, contribucion_categoria. (4) FeatureView 'customer_perception': rating, sentimiento, tasa_devolucion, nps. Registra FeatureViews."}, {"title": "Matriz BCG de productos", "desc": "Clasificación estrella/vaca/incógnita/perro.", "prompt": "Usa feature_store.get_features() para todos los productos. Clasifica en matriz BCG: Estrella (ventas alta + margen alto), Vaca (ventas alta + margen bajo), Incógnita (ventas baja + margen alto), Perro (ventas baja + margen bajo). Cuenta y valora cada cuadrante."}, {"title": "Recomendaciones de surtido", "desc": "Acciones por producto.", "prompt": "Usa CORTEX.COMPLETE para generar recomendaciones: Estrella → maximizar exposición, Vaca → optimizar precio, Incógnita → invertir en visibilidad, Perro → evaluar descatalogación. Calcula impacto potencial por acción."}, {"title": "Dashboard merchandising", "desc": "Panel de product intelligence.", "prompt": "Crea dashboard Streamlit: matriz BCG interactiva, ranking de productos por score, ficha de producto con todas las features, tabla de acciones recomendadas, filtros por categoría y cuadrante."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS PRODUCT_FS_RETAIL_DB comentado."}]},
+  UC15: {"title": "Next Best Offer Personalizada con IA", "intro": "Prompts para construir un motor de Next Best Offer que selecciona producto, descuento, canal y timing óptimo para cada cliente.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para NBO.", "prompt": "Crea base de datos NBO_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar perfiles y preferencias", "desc": "8.000 clientes con historial de campañas.", "prompt": "Genera tabla 'clientes_nbo' con 8.000 filas: cliente_id, segmento, canal_preferido, mejor_hora_apertura (mañana/mediodía/tarde/noche), categorias_preferidas, sensibilidad_descuento (alta/media/baja), frecuencia_max_contacto_semana."}, {"title": "Generar historial de campañas", "desc": "50.000 interacciones.", "prompt": "Genera tabla 'campanas_historicas' con 50.000 filas: campana_id, cliente_id, fecha, canal (Email 40%, Push 25%, SMS 15%, Web 20%), producto_ofrecido, descuento_pct (0-30%), apertura (TRUE/FALSE), clic (TRUE/FALSE), compra (TRUE/FALSE). Tasas realistas por canal y segmento."}, {"title": "Feature engineering NBO", "desc": "Variables de propensión.", "prompt": "Crea tabla 'features_nbo' con: afinidad_categoria (score por cada categoría), respuesta_por_canal (tasa por canal), sensibilidad_precio, frecuencia_compra_mes, ultima_campana_dias, fatiga_score (contactos recientes sin respuesta), propension_historica."}, {"title": "Entrenar modelo de propensión", "desc": "Probabilidad de compra por oferta.", "prompt": "Entrena ML.CLASSIFICATION 'modelo_nbo_retail' con target compra. Features: afinidad_categoria, canal, descuento_pct, hora, dias_desde_ultima, fatiga, sensibilidad. Evaluate TRUE."}, {"title": "Generar ofertas candidatas", "desc": "Top 3 ofertas por cliente.", "prompt": "Para cada cliente activo, genera 5 ofertas candidatas (producto × descuento × canal). Puntúa con modelo. Selecciona top 3 con mayor propensión que respeten frecuencia máxima y no generen fatiga."}, {"title": "Personalizar contenido", "desc": "Mensaje con Cortex AI.", "prompt": "Usa CORTEX.COMPLETE para generar mensaje personalizado por oferta: asunto email, body, CTA. Adapta tono: VIP (exclusivo), Premium (beneficio), Regular (urgencia), Occasional (descubrimiento). En español."}, {"title": "A/B testing", "desc": "Framework de experimentación.", "prompt": "Diseña A/B test: 50% modelo NBO vs 50% campaña genérica. Define métricas: open rate, CTR, conversión, revenue por cliente, ROI. Calcula tamaño de muestra necesario para significancia."}, {"title": "Tracking de resultados", "desc": "Dashboard de performance.", "prompt": "Crea dashboard Streamlit: KPIs (conversión NBO vs genérica, CTR uplift, revenue incremental, ROI), distribución de ofertas por canal, performance por segmento, tabla de próximas campañas con score, filtros por segmento y canal."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS NBO_RETAIL_DB comentado."}]},
+  UC16: {"title": "Análisis de Cesta de la Compra y Cross-Selling", "intro": "Prompts para construir un análisis de market basket con métricas de asociación y reglas de cross-selling accionables.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para market basket.", "prompt": "Crea base de datos BASKET_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar catálogo", "desc": "1.000 productos con categorías.", "prompt": "Genera tabla 'catalogo_basket' con 1.000 filas: producto_id, nombre, categoria, subcategoria, precio_eur, margen_pct."}, {"title": "Generar tickets de compra", "desc": "50.000 tickets con 2-8 productos.", "prompt": "Genera tabla 'tickets_compra' con 50.000 tickets: ticket_id, cliente_id (15.000 únicos), fecha, tienda_id, canal (Tienda 60%, Online 40%). Genera tabla 'lineas_ticket' con ~200.000 filas: ticket_id, producto_id, cantidad, importe. Patrones de co-compra: Leche+Pan+Cereales, Camiseta+Pantalón+Cinturón, Champú+Acondicionador+Mascarilla, etc."}, {"title": "Calcular métricas de asociación", "desc": "Support, confidence, lift.", "prompt": "Crea vista 'asociaciones_producto' con pares de productos: producto_a, producto_b, support (% tickets que contienen ambos), confidence (P(B|A)), lift (confidence / P(B)). Filtra: support >0.5%, confidence >15%, lift >1.5."}, {"title": "Ranking de reglas", "desc": "Top 100 asociaciones.", "prompt": "Crea vista 'top_reglas' con top 100 asociaciones ordenadas por lift × support. Incluye: categorias de ambos productos, revenue potencial si el 10% de compradores de A también compran B."}, {"title": "Afinidad por categoría", "desc": "Cross-selling entre categorías.", "prompt": "Crea vista 'afinidad_categorias' con: categoria_a, categoria_b, lift_medio, num_reglas, revenue_potencial. Identifica pares de categorías más afines para layout de tienda."}, {"title": "Sugerencias contextuales", "desc": "Reglas para checkout.", "prompt": "Crea tabla 'reglas_checkout' con: para cada producto, top 3 productos sugeridos con: nombre, descuento_sugerido (0-10%), mensaje_sugerencia (generado con CORTEX.COMPLETE: 'Los clientes que compraron X también compraron Y')."}, {"title": "Evaluar impacto", "desc": "Ticket medio potencial.", "prompt": "Calcula: ticket_medio_actual vs ticket_medio_con_crossselling (asumiendo 10% tasa de adopción). Revenue incremental mensual. ROI de implementación de sugerencias."}, {"title": "Dashboard cross-selling", "desc": "Panel de afinidad.", "prompt": "Crea dashboard Streamlit: red de afinidad entre categorías, top reglas de asociación, tabla de sugerencias para checkout por producto, simulador de impacto en ticket medio, filtros por categoría."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS BASKET_RETAIL_DB comentado."}]},
+  UC17: {"title": "Monitorización de Precios de Competencia", "intro": "Prompts para construir un sistema de competitive intelligence que compara precios y correlaciona con conversión propia.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para inteligencia competitiva.", "prompt": "Crea base de datos COMPETITIVE_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar catálogo propio", "desc": "1.000 productos comparables.", "prompt": "Genera tabla 'catalogo_propio' con 1.000 filas: producto_id, nombre, categoria, subcategoria, precio_pvp, coste, margen_pct, ean (código de barras para matching)."}, {"title": "Generar precios de competencia", "desc": "5 competidores × 90 días.", "prompt": "Genera tabla 'precios_competencia' con 1.000 productos × 5 competidores × 90 días: producto_id, competidor (Amazon, El Corte Inglés, Zalando, Decathlon, MediaMarkt), fecha, precio_eur (variación ±3-15% sobre nuestro precio, con movimientos semanales)."}, {"title": "Generar datos de conversión propia", "desc": "Visitas y conversiones diarias.", "prompt": "Genera tabla 'conversion_propia' con 1.000 productos × 90 días: producto_id, fecha, visitas, add_to_cart, compras, tasa_conversion. La conversión varía inversamente con diferencia de precio vs competencia."}, {"title": "Calcular price index", "desc": "Posición relativa.", "prompt": "Crea vista 'price_index' con: producto_id, fecha, precio_propio, precio_medio_comp, precio_min_comp, price_index (100 = igual, >100 = más caro, <100 = más barato). Tendencia 14 días."}, {"title": "Correlacionar precio y conversión", "desc": "Impacto del precio relativo.", "prompt": "Crea análisis de correlación: para cada producto, calcula correlación entre price_index y tasa_conversion. Clasifica con ML.CLASSIFICATION: Precio-Sensible (correlación fuerte), Moderado (correlación media), Precio-Insensible (sin correlación)."}, {"title": "Identificar oportunidades", "desc": "Productos donde ajustar precio.", "prompt": "Crea vista 'oportunidades_pricing' con productos donde: (1) Somos más caros Y conversión baja, (2) Somos más baratos Y margen sacrificable, (3) Price leader con margen suficiente. Calcula revenue potencial de ajuste."}, {"title": "Alertas de precio", "desc": "Notificaciones de desviación.", "prompt": "Crea vista 'alertas_precio' con: productos donde price_index cambió >10% en 7 días, competidor que bajó precio significativamente, productos con price_index >120 y conversión en caída. Clasificar urgencia."}, {"title": "Dashboard competitive intelligence", "desc": "Panel de precios de competencia.", "prompt": "Crea dashboard Streamlit: KPIs (price index medio, % productos price leader, revenue en riesgo), gráfico de price index por categoría, tabla de alertas urgentes, correlación precio-conversión por producto, filtros por competidor y categoría."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS COMPETITIVE_RETAIL_DB comentado."}]},
+  UC18: {"title": "Detección de Fraude en E-Commerce y Pagos", "intro": "Prompts para construir un sistema ML de detección de fraude en transacciones e-commerce con scoring en tiempo real.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para detección de fraude.", "prompt": "Crea base de datos FRAUDE_ECOMMERCE_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar transacciones", "desc": "50.000 transacciones con 2.5% fraude.", "prompt": "Genera tabla 'transacciones_ecommerce' con 50.000 filas: txn_id, fecha, cliente_id, importe_eur (5-2.000), metodo_pago (Tarjeta 60%, PayPal 20%, Bizum 10%, Transferencia 10%), tarjeta_bin (primeros 6 dígitos), dispositivo (Desktop/Mobile/Tablet), ip_pais, direccion_pais, hora_local."}, {"title": "Generar señales de fraude", "desc": "Features comportamentales.", "prompt": "Genera tabla 'features_fraude' con: txn_id, velocidad_compra_1h (txns en última hora), cambio_dispositivo (dispositivo nuevo), ip_mismatch (ip_pais ≠ direccion_pais), importe_vs_media (ratio), tarjeta_nueva (primera vez), intentos_fallidos_previos, hora_inusual (2-5am), destino_diferente (envío ≠ facturación). es_fraude TRUE en 2.5% (correlacionado con señales)."}, {"title": "Entrenar modelo de fraude", "desc": "ML.CLASSIFICATION binaria.", "prompt": "Divide 80/20, entrena ML.CLASSIFICATION 'modelo_fraude_ecommerce' con target es_fraude y evaluate TRUE. Optimizar para alta precision (low FP) manteniendo recall >80%."}, {"title": "Evaluar rendimiento", "desc": "Métricas de fraude.", "prompt": "Muestra: AUC, precision, recall, F1, confusion matrix. Calcula: falsos positivos (clientes legítimos bloqueados), falsos negativos (fraude no detectado), coste de cada error. Busca threshold óptimo."}, {"title": "Scoring en tiempo real", "desc": "Puntuar nuevas transacciones.", "prompt": "Genera 100 transacciones nuevas. Puntúa con modelo. Muestra distribución de scores. Aplica reglas: >80% → Bloquear + 3DS, 50-80% → Verificación manual, <50% → Aprobar."}, {"title": "Análisis de patrones", "desc": "Tendencias y clusters de fraude.", "prompt": "Analiza fraude detectado: patrones por hora, día, BIN, país, importe. Usa CORTEX.COMPLETE para resumir: 'Los 3 patrones de fraude más comunes son...' con recomendaciones de reglas."}, {"title": "Dashboard de fraude", "desc": "Panel de prevención.", "prompt": "Crea dashboard Streamlit: KPIs (tasa fraude, fraude evitado €, FP rate, chargebacks), gráfico de fraude por hora y día, tabla de transacciones sospechosas con score, distribución por tipo de fraude, filtros por canal y método de pago."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS FRAUDE_ECOMMERCE_DB comentado."}]},
+  UC19: {"title": "Detección de Fraude en Devoluciones y Abuso de Políticas", "intro": "Prompts para detectar wardrobing, etiquetas intercambiadas y devoluciones seriales fraudulentas con ML y NLP.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para fraude en devoluciones.", "prompt": "Crea base de datos FRAUDE_DEVOL_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar historial de devoluciones", "desc": "20.000 devoluciones con patrones.", "prompt": "Genera tabla 'devoluciones_retail' con 20.000 filas: devolucion_id, cliente_id (5.000 únicos), producto_id, fecha_compra, fecha_devolucion, motivo_texto (free text), importe_eur, canal_compra, canal_devolucion, estado_producto (Perfecto 60%, Usado 25%, Dañado 10%, Etiqueta faltante 5%). 8% son abuso."}, {"title": "Feature engineering", "desc": "Señales de abuso.", "prompt": "Crea tabla 'features_devolucion' con: cliente_id, ratio_devolucion_12m, num_devol_6m, dias_medio_compra_devol, producto_mas_devuelto_pct, canal_mismatch_pct (compra online devuelve tienda o viceversa), productos_high_value_pct, timing_sospechoso (devuelve día 14 de 15 permitidos)."}, {"title": "Clasificar motivos con NLP", "desc": "Categorización automática de texto.", "prompt": "Usa CORTEX.COMPLETE para clasificar motivo_texto en: Talla_Incorrecta, Defecto_Producto, No_Gusta, Diferente_a_Foto, Wardrobing_Sospecha, Otro. Almacena en 'motivos_clasificados'. Detectar patrones: motivos genéricos repetitivos = posible abuso."}, {"title": "Entrenar modelo de abuso", "desc": "ML.CLASSIFICATION de perfiles.", "prompt": "Entrena ML.CLASSIFICATION 'modelo_abuso_devol' con features + motivo_clasificado, target perfil_riesgo (Legítimo, Sospechoso, Abuso_Sistemático). Evaluate TRUE."}, {"title": "Puntuar clientes", "desc": "Perfil de riesgo.", "prompt": "Puntúa todos los clientes con historial de devoluciones. Crea 'perfiles_riesgo_devolucion' con: cliente_id, perfil, probabilidad, coste_devol_12m, frecuencia. Top 50 abusadores con detalle."}, {"title": "Políticas diferenciadas", "desc": "Reglas por perfil.", "prompt": "Define políticas: Legítimo → proceso normal 30 días. Sospechoso → inspección física obligatoria, límite 2 devol/mes. Abuso Sistemático → solo crédito tienda, inspección siempre, alerta al store manager. Usa CORTEX.COMPLETE para redactar comunicación."}, {"title": "Calcular impacto", "desc": "Ahorro estimado.", "prompt": "Calcula: coste actual de devoluciones fraudulentas (8% × importe medio), ahorro estimado con políticas (reducción al 3%), ROI del sistema. Compara: pre vs post implementación (simulado)."}, {"title": "Dashboard devoluciones", "desc": "Panel de prevención de pérdidas.", "prompt": "Crea dashboard Streamlit: KPIs (tasa devolución, % abuso, ahorro estimado, falsos positivos), distribución por perfil de riesgo, top abusadores con timeline, análisis de motivos por categoría, filtros por tienda y período."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS FRAUDE_DEVOL_RETAIL_DB comentado."}]},
+  UC20: {"title": "Detección de Anomalías en Inventario y Merma", "intro": "Prompts para construir un sistema de detección de anomalías en inventario que identifica merma desconocida, hurto y fraude interno.", "steps": [{"title": "Configurar entorno", "desc": "Base de datos para detección de merma.", "prompt": "Crea base de datos MERMA_RETAIL_DB con esquema PUBLIC y warehouse COMPUTE_WH."}, {"title": "Generar datos de inventario", "desc": "50 tiendas × 500 productos × 90 días.", "prompt": "Genera tabla 'inventario_diario' con 50 tiendas × 500 productos × 90 días: tienda_id, producto_id, fecha, stock_teorico (ventas+recepciones-ajustes), stock_fisico (conteo periódico, con discrepancias), merma_uds (diferencia), turno (Mañana/Tarde/Noche)."}, {"title": "Generar patrones de merma", "desc": "Normal + anomalías.", "prompt": "Ajusta merma: 80% de registros merma_uds=0 (sin discrepancia), 15% merma 1-3 uds (operativa normal), 5% merma 4+ uds (anomalía). Concentra anomalías: 30% en 3 tiendas 'problemáticas', 25% en categoría Electrónica/Perfumería, 20% en turno Noche."}, {"title": "Detección estadística", "desc": "Z-score por tienda × categoría.", "prompt": "Crea vista 'anomalias_zscore' con: tienda_id, producto_id, fecha, merma_uds, media_historica, desviacion, z_score. Marca anomalía si |z_score| > 2. Agrupa por tienda y categoría para detectar patrones."}, {"title": "Clasificar anomalías con ML", "desc": "Tipo de merma.", "prompt": "Entrena ML.CLASSIFICATION para clasificar merma en: Operativa (error de conteo), Robo_Externo (hurto cliente), Robo_Interno (empleado), Error_Recepción (proveedor). Features: turno, categoría, importe, frecuencia, tienda."}, {"title": "Investigación por tienda", "desc": "Drill-down de sospechosos.", "prompt": "Crea vista 'investigacion_tiendas' con: tienda_id, merma_total_90d_eur, merma_vs_media_cadena (ratio), categorias_anomalas, turnos_anomalos, empleados_en_turno_anomalo. Ranking de tiendas más sospechosas."}, {"title": "Impacto económico", "desc": "Coste de la merma.", "prompt": "Calcula: merma_total_eur por categoría y tienda, % sobre revenue, tendencia 90 días, categorías y tiendas que concentran el 80% de la merma. Compara con benchmark del sector (1.5%)."}, {"title": "Dashboard prevención de pérdidas", "desc": "Panel de investigación.", "prompt": "Crea dashboard Streamlit: KPIs (merma total €, % sobre revenue, tiendas con anomalía, categorías afectadas), mapa de calor tienda × categoría, timeline de anomalías por tienda seleccionada, tabla de investigaciones prioritarias, filtros por tienda, categoría y período."}, {"title": "Limpieza (opcional)", "desc": "Elimina objetos.", "prompt": "Genera DROP DATABASE IF EXISTS MERMA_RETAIL_DB comentado."}]}
+};
+
+function verGuia(ucId) {
+  const g = GUIAS[ucId];
+  if (!g) return;
+  const html = `
+    <span class="guide-badge">${ucId}</span>
+    <h2>${g.title}</h2>
+    <p>${g.contexto}</p>
+    <h3>Foco</h3><p>${g.foco}</p>
+    <h3>Reto</h3><p>${g.reto}</p>
+    <h3>Objetivos</h3><ul>${g.objetivos.map(o=>`<li>${o}</li>`).join('')}</ul>
+    <h3>Funcionalidades</h3><ul>${g.funcionalidades.map(f=>`<li>${f}</li>`).join('')}</ul>
+    <h3>Datos</h3><ul>${g.datos.map(d=>`<li>${d}</li>`).join('')}</ul>
+    <h3>Estratificación</h3><ul>${g.estratificacion.map(e=>`<li>${e}</li>`).join('')}</ul>
+    <h3>Cómo Usar</h3><ul>${g.como_usar.map(c=>`<li>${c}</li>`).join('')}</ul>
+    <div class="guide-footer">Guía generada para Snowflake Cortex Code</div>`;
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function verPrompts(ucId) {
+  const data = PROMPTS[ucId];
+  if (!data) return;
+  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  let html = `<span class="guide-badge">${ucId}</span><h2>${data.title}</h2>`;
+  html += `<p class="prompt-intro">${data.intro}</p>`;
+  data.steps.forEach((s,i) => {
+    html += `<div class="prompt-step">
+      <div class="prompt-step-header">
+        <span class="prompt-step-num">${i+1}</span>
+        <span class="prompt-step-title">${s.title}</span>
+      </div>
+      <p class="prompt-step-desc">${s.desc}</p>
+      <div class="prompt-code"><button class="copy-btn" onclick="copiarPrompt(this)">Copiar</button>${esc(s.prompt)}</div>
+    </div>`;
+  });
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+
+function copiarPrompt(btn) {
+  const code = btn.parentElement.textContent.replace('Copiar','').trim();
+  navigator.clipboard.writeText(code).then(()=>{btn.textContent='✓ Copiado';setTimeout(()=>btn.textContent='Copiar',1500);});
+}
+
+function cerrarModal() { document.getElementById('modalOverlay').classList.remove('active'); }
+</script>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)cerrarModal();">
+  <div class="modal-box">
+    <button class="modal-close" onclick="cerrarModal()">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+</body>
+</html>
