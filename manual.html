@@ -93,6 +93,7 @@
       <li><a href="#que-es">&iquest;Qu&eacute; es Cortex Code?</a></li>
       <li><a href="#requisitos">Requisitos Previos</a></li>
       <li><a href="#abrir">Abrir Cortex Code en Snowsight</a></li>
+      <li><a href="#skill">A&ntilde;adir la Skill de Best-Practices</a></li>
       <li><a href="#flujo">Flujo de Trabajo con los Prompts</a></li>
       <li><a href="#ejecutar">Ejecutar un Caso de Uso Paso a Paso</a></li>
       <li><a href="#revisar">Revisar y Validar el C&oacute;digo Generado</a></li>
@@ -205,8 +206,38 @@
   </div>
 
   <!-- SECTION 4 -->
+  <div class="section" id="skill">
+    <h2><span class="step-num">4</span> A&ntilde;adir la Skill de Best-Practices a Cortex Code</h2>
+    <p>Para mejorar el rendimiento y reducir costes del c&oacute;digo generado, puedes a&ntilde;adir la skill de <strong>best-practices</strong> a Cortex Code. Una vez cargada, estar&aacute; disponible antes de cada prompt y orientar&aacute; al asistente a generar c&oacute;digo m&aacute;s eficiente y optimizado para Snowflake.</p>
+
+    <h3>4.1 &mdash; Descargar la skill</h3>
+    <p>Descarga el fichero comprimido con la skill de best-practices y gu&aacute;rdalo en tu equipo:</p>
+    <p style="margin:20px 0;"><a href="best-practices.zip" download style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:linear-gradient(135deg,#29B5E8,#11567F);color:#fff;font-weight:700;font-size:15px;border-radius:80px;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 16px rgba(41,181,232,0.3);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(41,181,232,0.45)'" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 16px rgba(41,181,232,0.3)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Descargar best-practices.zip</a></p>
+
+    <h3>4.2 &mdash; Descomprimir localmente</h3>
+    <p>Descomprime el fichero descargado en tu equipo. Obtendr&aacute;s una carpeta llamada <strong>best-practices</strong> con los archivos de la skill listos para subir.</p>
+    <div class="callout">
+      <p><strong>Tip:</strong> Descomprime en un lugar f&aacute;cil de localizar (por ejemplo, el Escritorio o tu carpeta de Descargas), ya que en el siguiente paso necesitar&aacute;s seleccionarla desde Snowsight.</p>
+    </div>
+
+    <h3>4.3 &mdash; Subir la skill a Cortex Code en Snowsight</h3>
+    <p>En Snowsight, dentro del panel de <strong>Cortex Code</strong>, haz clic en el bot&oacute;n <strong>+</strong>, selecciona la opci&oacute;n <strong>&laquo;Upload Skill Folder(s)&raquo;</strong> y elige la carpeta <strong>best-practices</strong> que acabas de descomprimir localmente:</p>
+    <img src="uploadskill.jpg" alt="Bot&oacute;n + en Cortex Code para subir una skill" style="display:block;max-width:700px;width:100%;margin:16px auto;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 4px 20px rgba(0,0,0,0.1);" />
+    <div class="callout">
+      <p><strong>Nota:</strong> El bot&oacute;n <strong>+</strong> se encuentra en la parte superior del panel de Cortex Code, junto al selector de contexto. Al hacer clic aparecer&aacute; un men&uacute; &mdash; selecciona <strong>&laquo;Upload Skill Folder(s)&raquo;</strong> y navega hasta donde descomprimiste la skill.</p>
+    </div>
+
+    <h3>4.4 &mdash; Usar la skill antes de cada prompt</h3>
+    <p>Una vez subida, la skill quedar&aacute; disponible en tu sesi&oacute;n de Cortex Code. Escribe el comando <code>/best-practices</code> antes de cada prompt para activarla y obtener c&oacute;digo m&aacute;s eficiente:</p>
+    <img src="useskill.jpg" alt="Comando /best-practices disponible en Cortex Code" style="display:block;max-width:700px;width:100%;margin:16px auto;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 4px 20px rgba(0,0,0,0.1);" />
+    <div class="callout-success">
+      <p><strong>Listo:</strong> Con la skill activa, Cortex Code aplicar&aacute; autom&aacute;ticamente buenas pr&aacute;cticas de Snowflake en todo el c&oacute;digo generado: uso eficiente de warehouses, clustering keys, optimizaci&oacute;n de consultas y reducci&oacute;n de costes de cr&eacute;ditos.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
   <div class="section" id="flujo">
-    <h2><span class="step-num">4</span> Flujo de Trabajo con los Prompts</h2>
+    <h2><span class="step-num">5</span> Flujo de Trabajo con los Prompts</h2>
     <p>Cada caso de uso de este cat&aacute;logo incluye entre 8 y 11 prompts secuenciales. El flujo recomendado es:</p>
 
     <div class="steps-visual">
@@ -232,9 +263,9 @@
     </div>
   </div>
 
-  <!-- SECTION 5 -->
+  <!-- SECTION 6 -->
   <div class="section" id="ejecutar">
-    <h2><span class="step-num">5</span> Ejecutar un Caso de Uso Paso a Paso</h2>
+    <h2><span class="step-num">6</span> Ejecutar un Caso de Uso Paso a Paso</h2>
     <p>Veamos el proceso completo con un ejemplo pr&aacute;ctico:</p>
 
     <h3>5.1 &mdash; Seleccionar industria y caso de uso</h3>
@@ -261,7 +292,7 @@
           <li>Haz clic en <strong>&laquo;Copiar&raquo;</strong> en el prompt</li>
           <li>P&eacute;galo en el panel de Cortex Code</li>
           <li>Cortex Code generar&aacute; el c&oacute;digo SQL/Python correspondiente</li>
-          <li><strong>Rev&iacute;salo</strong> antes de ejecutar (ver secci&oacute;n 6)</li>
+          <li><strong>Rev&iacute;salo</strong> antes de ejecutar (ver secci&oacute;n 7)</li>
           <li>Haz clic en <strong>&laquo;Run&raquo;</strong> o <strong>&laquo;Apply&raquo;</strong></li>
           <li>Verifica que se ejecut&oacute; correctamente</li>
           <li>Pasa al siguiente prompt</li>
@@ -296,9 +327,9 @@ USE WAREHOUSE BANCA_WH;</div>
     </div>
   </div>
 
-  <!-- SECTION 6 -->
+  <!-- SECTION 7 -->
   <div class="section" id="revisar">
-    <h2><span class="step-num">6</span> Revisar y Validar el C&oacute;digo Generado</h2>
+    <h2><span class="step-num">7</span> Revisar y Validar el C&oacute;digo Generado</h2>
     <p>Cortex Code genera c&oacute;digo de alta calidad, pero <strong>siempre debes revisarlo</strong> antes de ejecutar. Puntos clave:</p>
 
     <h3>Checklist de revisi&oacute;n</h3>
@@ -325,9 +356,9 @@ USE WAREHOUSE BANCA_WH;</div>
     </div>
   </div>
 
-  <!-- SECTION 7 -->
+  <!-- SECTION 8 -->
   <div class="section" id="streamlit">
-    <h2><span class="step-num">7</span> Desplegar Dashboards Streamlit</h2>
+    <h2><span class="step-num">8</span> Desplegar Dashboards Streamlit</h2>
     <p>Casi todos los casos de uso incluyen un prompt para generar un dashboard Streamlit. As&iacute; se despliega:</p>
 
     <h3>7.1 &mdash; Generar el c&oacute;digo Streamlit</h3>
@@ -368,9 +399,9 @@ with col1:
 # ... gráficos, tablas, filtros interactivos</div>
   </div>
 
-  <!-- SECTION 8 -->
+  <!-- SECTION 9 -->
   <div class="section" id="tasks">
-    <h2><span class="step-num">8</span> Automatizar con Tasks y Pipelines</h2>
+    <h2><span class="step-num">9</span> Automatizar con Tasks y Pipelines</h2>
     <p>El &uacute;ltimo prompt de cada caso de uso crea Tasks de Snowflake para automatizar el pipeline:</p>
 
     <h3>Qu&eacute; se automatiza</h3>
@@ -399,13 +430,13 @@ ALTER TASK scoring_semanal RESUME;</div>
     </div>
   </div>
 
-  <!-- SECTION 9 -->
+  <!-- SECTION 10 -->
   <div class="section" id="tips">
-    <h2><span class="step-num">9</span> Consejos y Buenas Pr&aacute;cticas</h2>
+    <h2><span class="step-num">10</span> Consejos y Buenas Pr&aacute;cticas</h2>
 
     <h3>Desarrollo</h3>
     <ul>
-      <li><strong>Usa un warehouse S para desarrollo</strong> &mdash; Escala a M/L solo para producci&oacute;n o datos grandes</li>
+      <li><strong>Usa siempre <code>/best-practices</code> antes de cada prompt</strong> &mdash; Activa la skill para que Cortex Code genere c&oacute;digo optimizado en rendimiento y costes desde el primer paso</li>
       <li><strong>Ejecuta prompt a prompt</strong> &mdash; No intentes ejecutar todos los prompts de golpe; cada paso valida el anterior</li>
       <li><strong>Nombra tus objetos consistentemente</strong> &mdash; Los prompts sugieren nombres descriptivos como <code>BANCA_FRAUDE_DB</code></li>
       <li><strong>Guarda el worksheet</strong> &mdash; Cada caso de uso genera bastante c&oacute;digo; guarda frecuentemente</li>
@@ -429,9 +460,9 @@ ALTER TASK scoring_semanal RESUME;</div>
     </ul>
   </div>
 
-  <!-- SECTION 10 -->
+  <!-- SECTION 11 -->
   <div class="section" id="faq">
-    <h2><span class="step-num">10</span> Preguntas Frecuentes</h2>
+    <h2><span class="step-num">11</span> Preguntas Frecuentes</h2>
 
     <div class="faq-item">
       <div class="faq-q">&iquest;Necesito saber SQL para usar los prompts?</div>
@@ -480,7 +511,7 @@ ALTER TASK scoring_semanal RESUME;</div>
 
     <div class="faq-item">
       <div class="faq-q">&iquest;Necesito instalar algo?</div>
-      <div class="faq-a">No. Todo funciona dentro de Snowsight en el navegador. No hace falta instalar nada en local, ni configurar entornos Python, ni usar herramientas externas. Solo necesitas un navegador y una cuenta de Snowflake.</div>
+      <div class="faq-a">Casi nada. Todo el c&oacute;digo se ejecuta dentro de Snowsight en el navegador, sin entornos Python ni herramientas externas. El &uacute;nico paso previo es <strong>descargar la skill de best-practices</strong> (fichero <code>best-practices.zip</code>), descomprimirla en tu equipo y subir la carpeta a Cortex Code desde el bot&oacute;n <strong>+</strong> en Snowsight. Una vez subida, estar&aacute; disponible con el comando <code>/best-practices</code> y no necesitar&aacute;s repetir el proceso.</div>
     </div>
   </div>
 
