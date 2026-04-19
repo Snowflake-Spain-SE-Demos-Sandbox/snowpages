@@ -6,144 +6,136 @@ Colección de **guías detalladas** y **Cortex Code Prompts** listos para desple
 
 ---
 
-## Estructura del Proyecto
+## Ficheros Principales
+
+| Fichero | Descripción |
+|---|---|
+| `index.html` | Página principal — catálogo de industrias con buscador |
+| `index_en.html` | Versión en inglés de la página principal |
+| `manual.html` | Guía paso a paso para usar Cortex Code en Snowsight |
+| `manual_en.html` | Versión en inglés del manual |
+| `bug-white.png` | Logo Snowflake |
+| `README.md` | Este fichero |
+
+---
+
+## `index.html` — Página Principal
+
+Portal de búsqueda y acceso a todos los aceleradores IA/ML por industria. Incluye:
+
+- **Buscador global** de casos de uso por nombre o descripción
+- **Tarjetas por industria** con número de casos de uso y enlace directo
+- **Versión en inglés** (`index_en.html`) con el mismo contenido
+
+---
+
+## `manual.html` — Guía de Uso de Cortex Code
+
+Manual completo en **12 secciones** para desplegar cualquier caso de uso con Cortex Code en Snowsight:
+
+| # | Sección |
+|---|---|
+| 1 | ¿Qué es Cortex Code? |
+| 2 | Requisitos Previos |
+| 3 | Abrir Cortex Code en Snowsight |
+| 4 | Añadir la Skill de Best-Practices a Cortex Code |
+| 5 | Flujo de Trabajo con los Prompts |
+| 6 | Ejecutar un Caso de Uso Paso a Paso |
+| 7 | Revisar y Validar el Código Generado |
+| 8 | Desplegar Dashboards Streamlit |
+| 9 | Automatizar con Tasks y Pipelines |
+| 10 | Comprobar Gasto Utilizado |
+| 11 | Consejos y Buenas Prácticas |
+| 12 | Preguntas Frecuentes |
+
+---
+
+## Industrias — Resumen
+
+| Industria | Fichero | UCs | Categorías |
+|---|---|---|---|
+| **Farmacéutica** | `farmaceutica.html` | 27 | Machine Learning · IA y Lenguaje Natural · Journey del Paciente |
+| **Seguros** | `seguros.html` | 36 | Detección de Fraude · Riesgo y Suscripción · IA y Lenguaje Natural · Gestión de Siniestros · Call Center IA · Asistentes IA · Comercial y Red · Operaciones · Pricing |
+| **Banca** | `banca.html` | 20 | Riesgo y Compliance · Cliente y Negocio · Operaciones y Mercados · Inteligencia Avanzada |
+| **Energía y Utilities** | `energia.html` | 20 | Generación Renovable · Red y Smart Grid · Experiencia de Cliente · Operaciones y Eficiencia · Seguridad y Cumplimiento |
+| **Gestión del Agua** | `agua.html` | 10 | Operación de Planta · Calidad del Agua · Red de Distribución · Experiencia de Cliente |
+| **Retail y E-Commerce** | `retail.html` | 20 | Personalización y CX · Pricing & Revenue · Supply Chain · Marketing & Loyalty · Fraude y Seguridad |
+| **Salud y Hospitales** | `salud.html` | 20 | Atención al Paciente · Datos Clínicos · Operaciones · Crónicos · Seguridad |
+| **Educación** | `educacion.html` | 20 | Experiencia Estudiante · Gestión Académica · Admisiones · Investigación · Operaciones |
+| **Telecomunicaciones** | `telecom.html` | 20 | Red y Conectividad · Experiencia de Cliente · Operaciones y Eficiencia · Monetización y Ofertas · Seguridad y Cumplimiento |
+| **Logística y Transporte** | `logistica.html` | 20 | Rutas y Última Milla · Almacén y Fulfillment · Flota y Mantenimiento · Demanda y Planificación · Seguridad y Cumplimiento |
+| **Sector Público** | `sector_publico.html` | 20 | Experiencia Ciudadana · Políticas Públicas · Fraude y Control · Eficiencia Administrativa · Seguridad y Smart Cities |
+| **Medios Audiovisuales** | `medios.html` | 20 | Contenido y Producción · Audiencia y Engagement · Publicidad y Monetización · Distribución y Plataformas · Seguridad y Derechos |
+| **Hospitality** | `hospitality.html` | 20 | Revenue & Pricing · Experiencia del Huésped · Operaciones · Distribución B2B · Fraude y Seguridad |
+| **Manufactura** | `manufactura.html` | 15 | Calidad y Producción · Mantenimiento Predictivo · Cadena de Suministro · Operaciones IA |
+
+> **Total: ~278 casos de uso** · Versiones en inglés disponibles para algunas industrias (`_en.html`)
+
+---
+
+## Estructura de Ficheros
 
 ```
-├── index.html                  # Página principal — índice de industrias
-├── seguros.html                # Página de seguros (17 casos de uso)
-├── farmaceutica.html           # Página de farmacéutica (27 casos de uso)
-├── banca.html                  # Página de banca (20 casos de uso)
-├── energia.html                # Página de energía
-├── agua.html                   # Página de gestión del agua (10 casos de uso)
-├── bug-white.png               # Logo Snowflake
+├── index.html / index_en.html          # Catálogo principal de industrias
+├── manual.html / manual_en.html        # Guía de uso de Cortex Code (12 secciones)
+├── farmaceutica.html / _en.html        # Farmacéutica (27 UCs)
+├── seguros.html / _en.html             # Seguros (36 UCs)
+├── banca.html / _en.html               # Banca (20 UCs)
+├── energia.html / _en.html             # Energía y Utilities (20 UCs)
+├── agua.html / _en.html                # Gestión del Agua (10 UCs)
+├── retail.html                         # Retail y E-Commerce (20 UCs)
+├── salud.html                          # Salud y Hospitales (20 UCs)
+├── educacion.html / _en.html           # Educación (20 UCs)
+├── telecom.html                        # Telecomunicaciones (20 UCs)
+├── logistica.html                      # Logística y Transporte (20 UCs)
+├── sector_publico.html                 # Sector Público (20 UCs)
+├── medios.html                         # Medios Audiovisuales (20 UCs)
+├── hospitality.html / _en.html         # Hospitality (20 UCs)
+├── manufactura.html                    # Manufactura (15 UCs)
+├── bug-white.png                       # Logo Snowflake
 └── README.md
 ```
 
-## Industrias
-
-| Industria | Estado | Casos de Uso |
-|---|---|---|
-| **Seguros** | ✅ Disponible | 17 |
-| **Farmacéutica** | ✅ Disponible | 27 |
-| **Banca y Servicios Financieros** | ✅ Disponible | 20 |
-| **Gestión del Agua** | ✅ Disponible | 10 |
-| **Energía y Utilities** | ✅ Disponible | — |
-| Salud | 🔜 Próximamente | — |
-| Retail y E-Commerce | 🔜 Próximamente | — |
-| Manufactura e Industria | 🔜 Próximamente | — |
-| Telecomunicaciones | 🔜 Próximamente | — |
-| Logística y Transporte | 🔜 Próximamente | — |
-| Educación | 🔜 Próximamente | — |
-| Sector Público | 🔜 Próximamente | — |
-
-## Seguros — Casos de Uso
-
-### Detección de Fraude
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC01 | Puntuación de Fraude en Siniestros | ML.CLASSIFICATION |
-| UC02 | Detección de Accidentes Simulados | ML.CLASSIFICATION |
-| UC03 | Fraude en Solicitudes de Identidad Sintética | ML.CLASSIFICATION |
-
-### Riesgo y Suscripción
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC04 | Puntuación Dinámica de Riesgo Auto | ML.CLASSIFICATION |
-| UC05 | Analítica de Exposición a Catástrofes | SQL Analítico |
-| UC06 | Predicción de Fuga en Renovación | ML.CLASSIFICATION |
-| UC07 | Segmentación de Riesgo Telemático | ML.CLASSIFICATION |
-
-### IA y Lenguaje Natural
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC08 | Extracción Documental con IA | CORTEX.COMPLETE |
-| UC09 | Inteligencia de Quejas de Clientes | CORTEX.SENTIMENT + COMPLETE |
-| UC10 | Asistente de Consultas de Póliza | Cortex Search + RAG |
-
-### Gestión de Siniestros
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC11 | Predicción de Severidad en Siniestros | ML.CLASSIFICATION |
-| UC12 | Identificación de Oportunidades de Subrogación | ML.CLASSIFICATION |
-
-### Call Center IA
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC13 | Clasificación Automática de Llamadas | CORTEX.COMPLETE + SENTIMENT |
-| UC14 | Evaluación Automática de Agentes (QA) | CORTEX.COMPLETE + SENTIMENT |
-| UC15 | Generación Automática de Resúmenes | CORTEX.COMPLETE |
-| UC16 | Mejora de CX en Tiempo Real | CORTEX.SENTIMENT + Alertas |
-| UC17 | Cumplimiento Normativo (Compliance) | CORTEX.COMPLETE |
-
-## Farmacéutica — Casos de Uso
-
-### Machine Learning
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC01 | Predicción de Riesgo de Adherencia | ML.CLASSIFICATION |
-| UC02 | Optimizador de Rendimiento de Campañas | Window Functions / Atribución |
-| UC03 | Análisis de Sentimiento del Consumidor | CORTEX.SENTIMENT |
-| UC04 | Predicción de Pérdida de Exclusividad | ML.FORECAST |
-| UC05 | Optimizador de Engagement con HCPs | ML.CLASSIFICATION |
-| UC06 | Chatbot de Inteligencia Comercial | Cortex Analyst |
-| UC07 | Segmentación de Consumidores y LTV | SQL NTILE + ML.FORECAST |
-| UC08 | Analizador de Efectividad de Contenido | CORTEX.COMPLETE |
-| UC09 | Generador de Evidencia del Mundo Real | SQL Analítico |
-| UC10 | Monitor de Inteligencia Competitiva | CORTEX.COMPLETE + Marketplace |
-| UC11 | Mapeador de Journey Omnicanal | Cadenas de Markov |
-| UC12 | Optimizador de Precios y Descuentos | GENERATOR + Elasticidad |
-| UC13 | Selector de Centros para Ensayos | Geoespacial ST_DISTANCE |
-| UC14 | Predicción de Demanda de Lanzamiento | ML.FORECAST |
-| UC15 | Gestor de Compliance de Claims | REGEXP + FLATTEN |
-
-### IA y Lenguaje Natural
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC16 | Detección de Crisis en Redes Sociales | CORTEX.SENTIMENT + Z-score |
-| UC17 | Inteligencia de Mensajes de Competidores | Cortex Search + LLM |
-| UC18 | Tracker de Sentimiento en Medios Globales | CORTEX.SENTIMENT |
-| UC19 | Predictor de Recepción de Lanzamiento | ML.FORECAST + Sentiment |
-| UC20 | Red de Sentimiento de KOLs e Influencers | CORTEX.SENTIMENT + Red |
-| UC21 | Percepción Competitiva de Producto | CORTEX.SENTIMENT comparativo |
-| UC22 | Optimizador de Comunicación Ejecutiva | CORTEX.COMPLETE |
-| UC23 | Inteligencia Competitiva Automatizada | CORTEX.COMPLETE + Alertas |
-| UC24 | Sentimiento Global Multi-Idioma | CORTEX.TRANSLATE + SENTIMENT |
-
-### Journey del Paciente
-| # | Caso de Uso | Tecnología |
-|---|---|---|
-| UC25 | Journey de Tratamiento del Paciente | CORTEX.SENTIMENT + CLASSIFY_TEXT |
-| UC26 | Inteligencia de Adherencia al Tratamiento | CORTEX.COMPLETE + CLASSIFY_TEXT |
-| UC27 | Insights de Engagement con HCPs | CORTEX.SENTIMENT + AI_EXTRACT |
+---
 
 ## Cómo Usar
 
-1. **Abrir** la web y seleccionar una industria
-2. **Explorar** los casos de uso y abrir la **Guía** para entender el contexto y los datos
-3. **Copiar** los **Cortex Code Prompts** y ejecutarlos secuencialmente en Cortex Code (Snowflake)
-4. **Personalizar** reemplazando los datos sintéticos con tus propios datos
+1. **Abrir** la web (`index.html`) y seleccionar una industria
+2. **Leer** el `manual.html` para entender el flujo de trabajo con Cortex Code
+3. **Explorar** los casos de uso y abrir la **Guía** para entender el contexto y los datos
+4. **Copiar** los **Cortex Code Prompts** y ejecutarlos secuencialmente en Cortex Code (Snowsight)
+5. **Personalizar** reemplazando los datos sintéticos con tus propios datos
+
+---
 
 ## Requisitos
 
-- Cuenta de Snowflake con acceso a:
-  - `SNOWFLAKE.ML.CLASSIFICATION` (Seguros: UC01-04, 06-07, 11-12; Pharma: UC01, 05)
-  - `SNOWFLAKE.ML.FORECAST` (Pharma: UC04, 07, 14, 19)
-  - `SNOWFLAKE.CORTEX.COMPLETE` (Seguros: UC08-10, 13-17; Pharma: UC06, 08, 10, 17, 22-23)
-  - `SNOWFLAKE.CORTEX.SENTIMENT` (Seguros: UC09, 13-14, 16; Pharma: UC03, 16, 18-21, 24-27)
-  - `SNOWFLAKE.CORTEX.TRANSLATE` (Pharma: UC24)
-  - Cortex Search Service (Seguros: UC10; Pharma: UC17)
-- Warehouse `SMALL` o superior
+- Cuenta de Snowflake con acceso a Cortex AI/ML:
+  - `SNOWFLAKE.ML.CLASSIFICATION` — modelos de clasificación
+  - `SNOWFLAKE.ML.FORECAST` — forecasting de series temporales
+  - `SNOWFLAKE.CORTEX.COMPLETE` — LLM inference (mistral-large2, llama3.1-70b)
+  - `SNOWFLAKE.CORTEX.SENTIMENT` — análisis de sentimiento
+  - `SNOWFLAKE.CORTEX.TRANSLATE` — traducción multi-idioma
+  - `SNOWFLAKE.CORTEX.SUMMARIZE` / `CLASSIFY_TEXT` — resumen y clasificación
+  - `AI_EXTRACT` — extracción estructurada de texto libre
+  - Cortex Search Service — búsqueda semántica RAG
+  - Cortex Analyst — lenguaje natural a SQL
+- Warehouse `SMALL` o superior (auto-suspend 60s recomendado)
 - Rol con permisos `CREATE DATABASE`
-- Acceso a **Cortex Code** en Snowflake
+- Acceso a **Cortex Code** en Snowsight
+- Skill `/best-practices` instalada en Cortex Code (descargable desde `manual.html`)
+
+---
 
 ## Stack Tecnológico
 
-- **Snowflake Cortex AI** — LLM inference (mistral-large2), sentiment analysis
-- **Snowflake Cortex ML** — AutoML classification
-- **Snowflake Cortex Search** — RAG pipelines
-- **Snowflake Cortex Code** — Prompts guiados paso a paso
-- **Streamlit in Snowflake** — Dashboards interactivos
-- **GitHub Pages** — Hosting estático del catálogo web
+- **Snowflake Cortex AI** — LLM inference, sentiment, summarize, translate, classify
+- **Snowflake Cortex ML** — AutoML classification y forecasting
+- **Snowflake Cortex Search** — RAG pipelines y búsqueda semántica
+- **Snowflake Cortex Analyst** — lenguaje natural a SQL con capa semántica
+- **Snowflake Cortex Code** — prompts guiados paso a paso con skills
+- **Streamlit in Snowflake** — dashboards interactivos
+- **GitHub Pages** — hosting estático del catálogo web
 
 ---
 
