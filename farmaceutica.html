@@ -739,18 +739,18 @@ renderCards(USE_CASES);
 const GUIAS = {
   UC01: {
     title: 'Predicción de Riesgo de Adherencia del Paciente',
-    contexto: 'Estos Cortex Code Prompts demuestra la predicción de riesgo de adherencia de pacientes cardiovasculares usando productos de Bayer Pharmaceuticals y Snowflake Cortex ML.',
-    foco: 'Xarelto (rivaroxaban) para indicaciones cardiovasculares — terapia de anticoagulación.',
+    contexto: 'Estos Cortex Code Prompts demuestra la predicción de riesgo de adherencia de pacientes con enfermedades crónicas usando Snowflake Cortex ML.',
+    foco: 'Medicamentos de alta adherencia (anticoagulantes, tratamientos crónicos) — terapia de larga duración.',
     reto: 'Predecir y prevenir la no-adherencia en pacientes cardiovasculares crónicos. El 40-60% de los pacientes no siguen la terapia.',
     objetivos: ['Crear flujos ML con SNOWFLAKE.ML.CLASSIFICATION','Generar datos sintéticos de adherencia para productos farmacéuticos','Construir variables a partir de dispensaciones en farmacia y engagement con app','Evaluar modelos de clasificación binaria','Construir dashboards de estratificación de riesgo con Streamlit'],
     funcionalidades: ['Modelo ML: Clasificación binaria para predicción de adherencia','Datos sintéticos: 500 pacientes, 8 refills cada uno, 120 días de uso de app','Variables: Gaps de dispensación, patrones de engagement, demográficos','Dashboard Streamlit: Scoring de riesgo interactivo y filtrado de pacientes'],
-    datos: ['Pacientes: Demográficos, seguro, fechas de inscripción','Dispensaciones en farmacia: Historial de refills de Xarelto 20mg','Uso de App: Patrones de engagement con app móvil','Predicciones ML: Nivel de riesgo (Alto/Medio/Bajo) con probabilidades'],
+    datos: ['Pacientes: Demográficos, seguro, fechas de inscripción','Dispensaciones en farmacia: Historial de refills de medicamentos crónicos','Uso de App: Patrones de engagement con app móvil','Predicciones ML: Nivel de riesgo (Alto/Medio/Bajo) con probabilidades'],
     como_usar: ['Ejecutar los prompts secuencialmente','La configuración del entorno crea una base de datos aislada','Los datos sintéticos generan 500 pacientes automáticamente','El modelo se entrena en 30-60 segundos','El dashboard se lanza interactivamente en el notebook']
   },
   UC02: {
     title: 'Optimizador de Rendimiento de Campañas',
-    contexto: 'Estos Cortex Code Prompts demuestra la atribución multi-touch y la optimización de ROI de campañas para operaciones de marketing de Bayer Pharmaceuticals.',
-    foco: 'Campañas de Xarelto en más de 50 mercados — optimización de presupuesto de marketing.',
+    contexto: 'Estos Cortex Code Prompts demuestra la atribución multi-touch y la optimización de ROI de campañas para operaciones de marketing farmacéutico.',
+    foco: 'Campañas multi-producto en más de 50 mercados — optimización de presupuesto de marketing.',
     reto: 'Automatizar la atribución de campañas para superar el análisis manual y los indicadores retrasados.',
     objetivos: ['Implementar atribución multi-touch con window functions SQL','Generar datos sintéticos de campañas con journeys de conversión','Construir modelos de atribución lineal y de decaimiento temporal','Calcular ROI por canal y mercado','Crear análisis de rutas de conversión'],
     funcionalidades: ['Window functions para asignación de crédito de touchpoints','Modelos de atribución multi-touch (lineal y decaimiento temporal)','Cálculos de ROI por canal con inversión vs retorno','Análisis de rutas de conversión más efectivas'],
@@ -759,8 +759,8 @@ const GUIAS = {
   },
   UC03: {
     title: 'Análisis de Sentimiento del Consumidor',
-    contexto: 'Estos Cortex Code Prompts demuestra el análisis de sentimiento usando Snowflake Cortex AI para productos de Bayer Pharmaceuticals en múltiples áreas terapéuticas.',
-    foco: 'Xarelto y Eylea — monitorización de sentimiento en redes sociales, reseñas y tickets de soporte.',
+    contexto: 'Estos Cortex Code Prompts demuestra el análisis de sentimiento usando Snowflake Cortex AI para productos farmacéuticos en múltiples áreas terapéuticas.',
+    foco: 'Productos de la cartera farmacéutica — monitorización de sentimiento en redes sociales, reseñas y tickets de soporte.',
     reto: 'Escalar el análisis de sentimiento a millones de posts. Detectar problemas virales antes de que escalen.',
     objetivos: ['Implementar scoring de sentimiento con CORTEX.SENTIMENT()','Detectar temas emergentes con modelado de temas LLM','Construir alertas en tiempo real para caídas de sentimiento','Analizar tendencias de sentimiento a lo largo del tiempo'],
     funcionalidades: ['Función CORTEX.SENTIMENT para scoring automatizado','Modelado de temas con CORTEX.COMPLETE (LLM)','Dashboard de alertas en tiempo real con Streamlit','Algoritmos de detección de tendencias y anomalías'],
@@ -769,8 +769,8 @@ const GUIAS = {
   },
   UC04: {
     title: 'Predicción de Pérdida de Exclusividad',
-    contexto: 'Estos Cortex Code Prompts demuestra el forecasting de ingresos para productos de Bayer que se acercan a la expiración de patente usando ML de series temporales.',
-    foco: 'Xarelto — impacto de pérdida de exclusividad y escenarios de erosión por genéricos.',
+    contexto: 'Estos Cortex Code Prompts demuestra el forecasting de ingresos para productos farmacéuticos que se acercan a la expiración de patente usando ML de series temporales.',
+    foco: 'Productos maduros — impacto de pérdida de exclusividad y escenarios de erosión por genéricos.',
     reto: 'Predecir el impacto en ingresos a 24 meses con múltiples escenarios de entrada de genéricos.',
     objetivos: ['Implementar forecasting con SNOWFLAKE.ML.FORECAST','Modelar patrones históricos de pérdida de exclusividad','Crear escenarios de erosión de mercado con genéricos','Generar proyecciones con intervalos de confianza','Analizar impacto financiero por mercado'],
     funcionalidades: ['Modelos SNOWFLAKE.ML.FORECAST para series temporales','Análisis de patrones históricos de LoE en la industria','Modelado de escenarios: optimista, base, pesimista','Proyecciones con intervalos de confianza a 24 meses'],
@@ -779,18 +779,18 @@ const GUIAS = {
   },
   UC05: {
     title: 'Optimizador de Engagement con Profesionales Sanitarios',
-    contexto: 'Estos Cortex Code Prompts demuestra la predicción de propensión a prescribir para Bayer Pharmaceuticals usando datos de engagement y machine learning.',
-    foco: 'Xarelto — optimización del engagement con cardiólogos y profesionales sanitarios (HCPs).',
+    contexto: 'Estos Cortex Code Prompts demuestra la predicción de propensión a prescribir en la industria farmacéutica usando datos de engagement y machine learning.',
+    foco: 'Medicamentos de prescripción — optimización del engagement con especialistas y profesionales sanitarios (HCPs).',
     reto: 'Priorizar HCPs para maximizar el impacto de los equipos de campo. Personalizar contenido y timing.',
     objetivos: ['Construir motor de recomendación next-best-action','Analizar patrones de engagement de HCPs (emails, webinars, prescripciones)','Generar scores de probabilidad de prescripción','Personalizar recomendaciones de contenido por HCP','Crear dashboard móvil para fuerza de ventas'],
     funcionalidades: ['Modelos de filtrado colaborativo para recomendaciones','Scoring de likelihood-to-prescribe por HCP','Recomendaciones personalizadas de contenido y canal','Dashboard de fuerza de ventas con priorización'],
-    datos: ['HCPs: Perfil, especialidad, historial de prescripciones','Interacciones: Emails, webinars, visitas de representante','Prescripciones: Datos de Xarelto por HCP y período','Recomendaciones: Next-best-action por HCP'],
+    datos: ['HCPs: Perfil, especialidad, historial de prescripciones','Interacciones: Emails, webinars, visitas de representante','Prescripciones: Datos por producto y HCP','Recomendaciones: Next-best-action por HCP'],
     como_usar: ['Ejecutar las celdas secuencialmente','Se generan perfiles de HCPs y datos de interacciones','El modelo calcula propensión a prescribir','El dashboard prioriza HCPs y sugiere acciones']
   },
   UC06: {
     title: 'Chatbot de Inteligencia Comercial',
-    contexto: 'Estos Cortex Code Prompts construye una interfaz de consulta en lenguaje natural para inteligencia comercial de Bayer usando Cortex Analyst.',
-    foco: 'Xarelto, Eylea, Stivarga — consultas de mercado, cuota, ventas por región.',
+    contexto: 'Estos Cortex Code Prompts construye una interfaz de consulta en lenguaje natural para inteligencia comercial farmacéutica usando Cortex Analyst.',
+    foco: 'Productos de la cartera farmacéutica — consultas de mercado, cuota, ventas por región.',
     reto: 'Democratizar el acceso a insights comerciales sin necesidad de SQL ni formación en dashboards.',
     objetivos: ['Implementar Cortex Analyst con capa semántica','Configurar lenguaje natural a SQL automatizado','Generar visualizaciones automáticas','Mejorar consultas con aprendizaje continuo'],
     funcionalidades: ['Capa semántica Cortex Analyst sobre datos comerciales','Conversión de lenguaje natural a SQL optimizado','Gráficos auto-generados según el tipo de consulta','Sistema de aprendizaje para mejorar respuestas'],
@@ -799,7 +799,7 @@ const GUIAS = {
   },
   UC07: {
     title: 'Segmentación de Consumidores y LTV',
-    contexto: 'Estos Cortex Code Prompts implementa segmentación RFM y predicción de valor de vida del paciente para Bayer Pharmaceuticals.',
+    contexto: 'Estos Cortex Code Prompts implementa segmentación RFM y predicción de valor de vida del paciente en la industria farmacéutica.',
     foco: 'Pacientes de AFib — segmentación por valor y predicción de LTV a 12 meses.',
     reto: 'Identificar qué segmentos de pacientes priorizar y predecir su valor futuro.',
     objetivos: ['Implementar análisis RFM con SQL NTILE()','Puntuar pacientes en Recencia, Frecuencia y Valor Monetario','Predecir LTV a 12 meses con Cortex ML','Asignar segmentos con reglas de negocio','Analizar valor por cohorte'],
@@ -809,8 +809,8 @@ const GUIAS = {
   },
   UC08: {
     title: 'Analizador de Efectividad de Contenido',
-    contexto: 'Estos Cortex Code Prompts analiza la efectividad de contenido de marketing para Xarelto usando Cortex Complete para análisis de copy con IA.',
-    foco: 'Xarelto — análisis de assets de marketing, tono emocional, claridad y persuasión.',
+    contexto: 'Estos Cortex Code Prompts analiza la efectividad de contenido de marketing farmacéutico usando Cortex Complete para análisis de copy con IA.',
+    foco: 'Productos farmacéuticos — análisis de assets de marketing, tono emocional, claridad y persuasión.',
     reto: 'Analizar miles de assets de marketing sin análisis creativo sistemático, acelerado por revisión regulatoria.',
     objetivos: ['Analizar copy publicitario con LLM (Cortex Complete)','Clasificar imágenes y elementos visuales','Agregar resultados de tests A/B','Calcular significancia estadística de variantes','Crear leaderboard de rendimiento creativo'],
     funcionalidades: ['Análisis de copy con CORTEX.COMPLETE (tono, claridad, persuasión)','Agregación de resultados de tests A/B por variante','Tests de significancia estadística automatizados','Leaderboard de rendimiento creativo con rankings'],
@@ -819,9 +819,9 @@ const GUIAS = {
   },
   UC09: {
     title: 'Generador de Evidencia del Mundo Real (RWE)',
-    contexto: 'Estos Cortex Code Prompts genera Evidencia del Mundo Real (RWE) desde datos de EHR y claims para submissions a pagadores de Xarelto.',
-    foco: 'Xarelto vs Warfarin — efectividad comparativa, adherencia y coste-efectividad para anticoagulación.',
-    reto: 'Generar RWE para submissions a pagadores de forma automatizada, comparando resultados de Xarelto vs estándar de cuidado.',
+    contexto: 'Estos Cortex Code Prompts genera Evidencia del Mundo Real (RWE) desde datos de EHR y claims para submissions a pagadores en la industria farmacéutica.',
+    foco: 'Producto innovador vs estándar de cuidado — efectividad comparativa, adherencia y coste-efectividad.',
+    reto: 'Generar RWE para submissions a pagadores de forma automatizada, comparando resultados del producto bajo análisis vs estándar de cuidado.',
     objetivos: ['Construir análisis de efectividad comparativa con SQL','Calcular métricas de adherencia (PDC)','Analizar resultados clínicos (reducción de ictus)','Generar análisis de coste-efectividad (ICER)','Estudiar patrones de utilización sanitaria'],
     funcionalidades: ['Funciones agregadas SQL para análisis de resultados','LEAD/LAG para secuencias de tratamiento','Cálculos de PDC (Proportion of Days Covered) y persistencia','Análisis de coste-efectividad (ICER) y NNT'],
     datos: ['EHR: Registros clínicos desidentificados','Claims: Dispensaciones, hospitalizaciones, visitas','Resultados: Eventos de ictus, sangrado, mortalidad','Costes: Directos e indirectos por tratamiento'],
@@ -840,7 +840,7 @@ const GUIAS = {
   UC11: {
     title: 'Mapeador de Journey Omnicanal',
     contexto: 'Estos Cortex Code Prompts rastrea el engagement de HCPs a través de múltiples canales para entender qué secuencias de touchpoints llevan a prescripciones.',
-    foco: 'Xarelto — journey omnicanal de HCPs (Email, Web, Eventos, Visitas de Representante).',
+    foco: 'Medicamentos de prescripción — journey omnicanal de HCPs (Email, Web, Eventos, Visitas de Representante).',
     reto: 'Visualizar el movimiento del HCP entre puntos de contacto y optimizar rutas a conversión.',
     objetivos: ['Procesar secuencias de eventos multi-canal','Implementar análisis de cadenas de Markov','Identificar rutas óptimas a prescripción','Detectar puntos de abandono y fricción','Crear visualizaciones Sankey interactivas'],
     funcionalidades: ['Procesamiento de secuencias de eventos por HCP','Analítica de grafos para mapeo de rutas','Algoritmos de análisis de funnel con tasas de conversión','Visualizaciones Sankey interactivas del journey'],
@@ -849,8 +849,8 @@ const GUIAS = {
   },
   UC12: {
     title: 'Optimizador de Precios y Descuentos',
-    contexto: 'Estos Cortex Code Prompts implementa modelado de escenarios de precios y descuentos para productos de Bayer usando funciones SQL.',
-    foco: 'Xarelto, Eylea, Stivarga — optimización de precios y programas de asistencia al paciente.',
+    contexto: 'Estos Cortex Code Prompts implementa modelado de escenarios de precios y descuentos para productos farmacéuticos usando funciones SQL.',
+    foco: 'Productos de la cartera farmacéutica — optimización de precios y programas de asistencia al paciente.',
     reto: 'Analizar miles de escenarios de precio/descuento para maximizar ingresos y optimizar programas de asistencia.',
     objetivos: ['Generar escenarios con GENERATOR() para 100 combinaciones','Modelar elasticidad de precios con POWER()','Identificar puntos de precio que maximizan ingresos','Construir simulador de precios interactivo'],
     funcionalidades: ['GENERATOR() para creación masiva de escenarios','Elasticidad de precios con función POWER()','Análisis de optimización de ingresos por punto de precio','Simulador interactivo de precios con Streamlit'],
@@ -860,7 +860,7 @@ const GUIAS = {
   UC13: {
     title: 'Selector de Centros para Ensayos Clínicos',
     contexto: 'Estos Cortex Code Prompts implementa selección y optimización de centros para ensayos clínicos usando análisis geoespacial SQL.',
-    foco: 'Nuevos productos cardiovasculares de Bayer — selección de centros para ensayos clínicos.',
+    foco: 'Nuevos productos farmacéuticos — selección de centros para ensayos clínicos.',
     reto: 'Superar la selección intuitiva de centros con análisis basado en datos de accesibilidad y rendimiento.',
     objetivos: ['Implementar análisis geoespacial con ST_DISTANCE() y ST_MAKEPOINT()','Puntuar centros por accesibilidad de pacientes','Evaluar historial de rendimiento de reclutamiento','Crear scoring ponderado multi-criterio'],
     funcionalidades: ['Funciones geoespaciales SQL para análisis de distancia','ST_DISTANCE para cálculo de accesibilidad de pacientes','Scoring ponderado multi-criterio para ranking de centros','Dashboard interactivo de mapa de centros'],
@@ -879,8 +879,8 @@ const GUIAS = {
   },
   UC15: {
     title: 'Gestor de Compliance de Claims',
-    contexto: 'Estos Cortex Code Prompts implementa verificación automatizada de claims de marketing contra una librería aprobada por MLR para Bayer Pharmaceuticals.',
-    foco: 'Xarelto, Eylea, Stivarga — compliance de claims en contenido de marketing.',
+    contexto: 'Estos Cortex Code Prompts implementa verificación automatizada de claims de marketing contra una librería aprobada por MLR en la industria farmacéutica.',
+    foco: 'Productos de la cartera farmacéutica — compliance de claims en contenido de marketing.',
     reto: 'Verificar claims aprobados automáticamente para evitar contenido no conforme publicado.',
     objetivos: ['Implementar validación regex SQL con REGEXP_COUNT','Parsear texto de marketing con SPLIT_TO_TABLE','Matchear claims contra librería aprobada','Analizar campos multi-valor con FLATTEN','Crear dashboard de scoring de compliance'],
     funcionalidades: ['Validación regex SQL (REGEXP_COUNT) para claims','Parsing de texto con SPLIT_TO_TABLE','FLATTEN para análisis de campos anidados','Dashboard de scoring de compliance por asset'],
@@ -890,7 +890,7 @@ const GUIAS = {
   UC16: {
     title: 'Detección de Crisis en Redes Sociales',
     contexto: 'Estos Cortex Code Prompts implementa detección de crisis en redes sociales con análisis de sentimiento en tiempo real y detección de eventos adversos.',
-    foco: 'Xarelto, Eylea, Stivarga — monitorización de amenazas a la marca en redes sociales.',
+    foco: 'Productos de la cartera farmacéutica — monitorización de amenazas a la marca en redes sociales.',
     reto: 'Detectar amenazas virales y eventos adversos antes de que escalen, a escala de millones de posts.',
     objetivos: ['Implementar scoring en tiempo real con CORTEX.SENTIMENT()','Clasificar eventos adversos con LLM','Detectar anomalías estadísticas con Z-score','Crear alertas automatizadas por severidad'],
     funcionalidades: ['SENTIMENT() para scoring en tiempo real de todos los posts','Clasificación de eventos adversos con CORTEX.COMPLETE','Detección de anomalías con Z-score estadístico','Alertas automatizadas por severidad y alcance'],
@@ -909,8 +909,8 @@ const GUIAS = {
   },
   UC18: {
     title: 'Tracker de Sentimiento en Medios Globales',
-    contexto: 'Estos Cortex Code Prompts implementa seguimiento automatizado de sentimiento en medios globales para Bayer Pharmaceuticals.',
-    foco: 'Xarelto — monitorización de sentimiento en noticias, informes de analistas y medios ganados.',
+    contexto: 'Estos Cortex Code Prompts implementa seguimiento automatizado de sentimiento en medios globales en la industria farmacéutica.',
+    foco: 'Productos farmacéuticos líderes — monitorización de sentimiento en noticias, informes de analistas y medios ganados.',
     reto: 'Obtener una vista unificada del sentimiento global de marca a partir de millones de fuentes dispersas.',
     objetivos: ['Agregar sentimiento de múltiples fuentes de medios','Calcular métricas de share of voice','Analizar tendencias en series temporales','Comparar sentimiento regional'],
     funcionalidades: ['Agregación de sentimiento multi-fuente automatizada','Cálculos de share of voice por competidor','Análisis de tendencias en series temporales','Comparación regional de sentimiento por mercado'],
@@ -929,8 +929,8 @@ const GUIAS = {
   },
   UC20: {
     title: 'Red de Sentimiento de KOLs e Influencers',
-    contexto: 'Estos Cortex Code Prompts implementa análisis de red de sentimiento e influencia de KOLs (Key Opinion Leaders) para Bayer.',
-    foco: 'Cardiólogos KOL — seguimiento de sentimiento e influencia en el espacio de anticoagulación.',
+    contexto: 'Estos Cortex Code Prompts implementa análisis de red de sentimiento e influencia de KOLs (Key Opinion Leaders) en la industria farmacéutica.',
+    foco: 'KOLs por área terapéutica — seguimiento de sentimiento e influencia en el sector.',
     reto: 'Rastrear sentimiento de KOLs influyentes a escala e identificar señales tempranas.',
     objetivos: ['Construir algoritmos de scoring de influencia de KOL','Rastrear sentimiento de KOLs a lo largo del tiempo','Mapear relaciones y redes de influencia','Crear rankings de principales influencers'],
     funcionalidades: ['Algoritmos de scoring de influencia por KOL','Seguimiento de sentimiento con tendencia temporal','Mapeo de relaciones de red entre KOLs','Rankings dinámicos de principales influencers'],
@@ -939,8 +939,8 @@ const GUIAS = {
   },
   UC21: {
     title: 'Percepción Competitiva de Producto',
-    contexto: 'Estos Cortex Code Prompts implementa análisis comparativo de percepción de producto entre Bayer y sus competidores.',
-    foco: 'Xarelto vs Eliquis vs Pradaxa — percepción comparativa en el mercado de anticoagulantes.',
+    contexto: 'Estos Cortex Code Prompts implementa análisis comparativo de percepción de producto entre el portfolio propio y sus competidores del mercado.',
+    foco: 'Producto propio vs competidores — percepción comparativa en el mercado farmacéutico.',
     reto: 'Entender las diferencias de percepción entre productos y detectar oportunidades de mensajería.',
     objetivos: ['Comparar sentimiento entre productos competitivos','Identificar gaps de percepción entre productos','Crear mapas de posicionamiento competitivo','Detectar oportunidades de mejora de mensajería'],
     funcionalidades: ['Comparación cruzada de sentimiento por producto','Identificación de gaps de percepción y atributos','Mapas de posicionamiento competitivo multidimensional','Detección de oportunidades de mensajería específicas'],
@@ -949,8 +949,8 @@ const GUIAS = {
   },
   UC22: {
     title: 'Optimizador de Comunicación Ejecutiva',
-    contexto: 'Estos Cortex Code Prompts analiza la efectividad de comunicaciones ejecutivas de Bayer usando IA para evaluar tono, claridad y resonancia.',
-    foco: 'Comunicaciones ejecutivas de Bayer — optimización con IA de mensajes corporativos.',
+    contexto: 'Estos Cortex Code Prompts analiza la efectividad de comunicaciones ejecutivas farmacéuticas usando IA para evaluar tono, claridad y resonancia.',
+    foco: 'Comunicaciones ejecutivas farmacéuticas — optimización con IA de mensajes corporativos.',
     reto: 'Optimizar comunicaciones importantes sin testeo sistemático de tono, claridad y resonancia con audiencias.',
     objetivos: ['Analizar mensajes ejecutivos con LLM (Cortex Complete)','Evaluar tono, claridad y persuasión','Predecir resonancia con diferentes audiencias','Generar recomendaciones de optimización'],
     funcionalidades: ['Scoring de calidad de mensaje con CORTEX.COMPLETE','Análisis multidimensional de tono y claridad','Predicción de resonancia con audiencia objetivo','Recomendaciones específicas de optimización'],
@@ -970,7 +970,7 @@ const GUIAS = {
   UC24: {
     title: 'Sentimiento Global Multi-Idioma',
     contexto: 'Estos Cortex Code Prompts implementa análisis de sentimiento en múltiples idiomas usando Cortex TRANSLATE para una vista global unificada.',
-    foco: 'Xarelto — sentimiento global en idiomas nativos con consolidación a métricas unificadas.',
+    foco: 'Productos farmacéuticos líderes — sentimiento global en idiomas nativos con consolidación a métricas unificadas.',
     reto: 'Superar barreras lingüísticas que impiden el análisis global unificado del sentimiento de marca.',
     objetivos: ['Integrar CORTEX.TRANSLATE para traducción multi-idioma','Implementar scoring de sentimiento en idiomas nativos','Comparar sentimiento regional con contexto cultural','Consolidar métricas globales desde múltiples idiomas'],
     funcionalidades: ['Integración de CORTEX.TRANSLATE para 10+ idiomas','Scoring de sentimiento multi-idioma con CORTEX.SENTIMENT','Comparación regional de sentimiento con contexto','Métricas globales de sentimiento consolidadas'],
@@ -990,7 +990,7 @@ const GUIAS = {
   UC26: {
     title: 'Inteligencia del Journey de Adherencia al Tratamiento',
     contexto: 'Estos Cortex Code Prompts combina analítica de refills con IA para clasificar barreras de adherencia y predecir ventanas de riesgo.',
-    foco: 'Xarelto — programa de adherencia a 12 meses con predicción de abandonos a 30/60/90 días.',
+    foco: 'Medicamentos crónicos — programa de adherencia a 12 meses con predicción de abandonos a 30/60/90 días.',
     reto: 'Predecir abandonos a 30/60/90 días en un programa de 12 meses, pasando de intervenciones reactivas a proactivas.',
     objetivos: ['Implementar tracking de refills y persistencia a 12 meses','Analizar tendencia de sentimiento sobre la medicación con CORTEX.SENTIMENT','Clasificar barreras y generar planes de acción con IA','Etiquetar riesgo a 30/60/90 días con CORTEX.CLASSIFY_TEXT'],
     funcionalidades: ['Tracking completo de refills y persistencia a 12 meses','CORTEX.SENTIMENT trendline del tono sobre la medicación','Clasificación de barreras + planes de acción con IA','CORTEX.CLASSIFY_TEXT etiquetas de riesgo 30/60/90 días'],
@@ -1000,7 +1000,7 @@ const GUIAS = {
   UC27: {
     title: 'Analizador de Insights de Engagement con HCPs',
     contexto: 'Estos Cortex Code Prompts puntúa notas de visitas de campo con Cortex Sentiment y extrae intención con AI_EXTRACT para priorizar seguimiento de HCPs.',
-    foco: 'Equipos de campo de Bayer — triaje rápido de notas de visitas a profesionales sanitarios.',
+    foco: 'Equipos de campo farmacéuticos — triaje rápido de notas de visitas a profesionales sanitarios.',
     reto: 'Eliminar la revisión manual de notas de visitas para priorizar el seguimiento de HCPs urgentes en 48 horas.',
     objetivos: ['Puntuar notas de visita con SNOWFLAKE.CORTEX.SENTIMENT()','Extraer intención, urgencia y próximos pasos con AI_EXTRACT','Crear vista SQL prioritaria para triaje rápido','Construir dashboard Streamlit para gestión de cola urgente'],
     funcionalidades: ['SNOWFLAKE.CORTEX.SENTIMENT() para cada interacción de campo','AI_EXTRACT captura intención, urgencia y próximos pasos','Vista SQL prioritaria para triaje rápido de cuentas','Streamlit tabs para tendencias, cola urgente y exportaciones'],
@@ -1041,7 +1041,7 @@ const PROMPTS = {
     steps: [
       { title: 'Configurar entorno', desc: 'Crea la base de datos, esquema y warehouse.', prompt: 'Crea una base de datos llamada PATIENT_ADHERENCE_DB con esquema PUBLIC y un warehouse COMPUTE_WH tamaño SMALL con auto-suspend de 60 segundos. Establece el contexto de sesión.' },
       { title: 'Generar datos de pacientes', desc: 'Genera 500 pacientes sintéticos con perfil cardiovascular.', prompt: 'Genera una tabla PATIENTS con 500 filas usando GENERATOR(). Columnas: patient_id (PAT00001...), age (25-85), gender (M/F), insurance_type (Private 40%, Medicare 30%, Medicaid 30%), enrollment_date (últimos 2 años), risk_score_baseline (0.1-0.9). Incluye indicadores de condición cardiovascular.' },
-      { title: 'Generar dispensaciones en farmacia', desc: 'Genera historial de refills de Xarelto.', prompt: 'Genera tabla PHARMACY_FILLS cruzando pacientes con 8 refills cada uno. Columnas: fill_id, patient_id, medication (Xarelto 20mg), fill_date, days_supply (30), quantity, pharmacy_id. Pacientes no adherentes tienen gaps crecientes entre refills (45-90 días vs 28-35 días).' },
+      { title: 'Generar dispensaciones en farmacia', desc: 'Genera historial de refills del medicamento.', prompt: 'Genera tabla PHARMACY_FILLS cruzando pacientes con 8 refills cada uno. Columnas: fill_id, patient_id, medication (nombre_medicamento), fill_date, days_supply (30), quantity, pharmacy_id. Pacientes no adherentes tienen gaps crecientes entre refills (45-90 días vs 28-35 días).' },
       { title: 'Generar datos de uso de app', desc: 'Patrones de engagement con app móvil.', prompt: 'Genera tabla APP_USAGE con registros diarios por paciente durante 120 días: patient_id, usage_date, sessions, minutes_active, reminders_acknowledged. Pacientes no adherentes muestran menor engagement progresivo.' },
       { title: 'Ingeniería de variables', desc: 'Construye features predictivas.', prompt: 'Crea tabla ADHERENCE_FEATURES haciendo JOIN entre patients, pharmacy_fills y app_usage. Calcula: avg_fill_gap, max_fill_gap, fill_gap_trend (usando LAG), avg_daily_sessions, session_decline_rate, reminder_ack_rate, days_since_enrollment, risk_score_baseline. Target: is_non_adherent (booleano basado en gap > 45 días).' },
       { title: 'Dividir train/test', desc: 'Separa 80% entrenamiento y 20% test.', prompt: 'Crea tabla TRAINING con SAMPLE(80) de ADHERENCE_FEATURES y tabla TEST con los registros restantes. Muestra el conteo y tasa de no-adherencia de cada conjunto.' },
@@ -1069,7 +1069,7 @@ const PROMPTS = {
     intro: 'Prompts para construir un sistema de análisis de sentimiento en tiempo real para productos farmacéuticos usando Cortex AI.',
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para análisis de sentimiento.', prompt: 'Crea base de datos SENTIMENT_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
-      { title: 'Crear estructura de datos', desc: 'Tablas para feedback multi-fuente.', prompt: 'Crea tabla FEEDBACK con: feedback_id, source (Twitter/Facebook/Reddit/Reviews/Support), product (Xarelto/Eylea), text, created_at, author_id, platform_engagement (likes, shares).' },
+      { title: 'Crear estructura de datos', desc: 'Tablas para feedback multi-fuente.', prompt: 'Crea tabla FEEDBACK con: feedback_id, source (Twitter/Facebook/Reddit/Reviews/Support), product (producto_A/producto_B), text, created_at, author_id, platform_engagement (likes, shares).' },
       { title: 'Generar datos sintéticos', desc: 'Feedback de múltiples fuentes.', prompt: 'Genera 2.000 registros de feedback sintético distribuidos entre fuentes. Incluye textos con sentimiento positivo (eficacia), negativo (efectos secundarios) y neutro (preguntas). Usa UNIFORM() para distribución realista.' },
       { title: 'Análisis de sentimiento con Cortex', desc: 'Scoring automatizado.', prompt: 'Aplica SNOWFLAKE.CORTEX.SENTIMENT(text) a cada registro. Clasifica en Positivo (>0.2), Negativo (<-0.2), Neutro. Agrega por fuente y producto.' },
       { title: 'Detectar tendencias', desc: 'Series temporales de sentimiento.', prompt: 'Calcula sentimiento medio diario/semanal por producto y fuente. Usa LAG() para detectar cambios bruscos. Identifica alertas cuando el sentimiento cae más de 0.3 en 24h.' },
@@ -1109,9 +1109,9 @@ const PROMPTS = {
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para BI conversacional.', prompt: 'Crea base de datos CHATBOT_BI_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
       { title: 'Crear tablas de negocio', desc: 'Datos comerciales multi-producto.', prompt: 'Crea tablas: SALES (product, market, region, month, revenue, units), MARKET_SHARE (product, market, month, share_pct, competitor_share), PIPELINE (opportunity_id, product, stage, value, close_date).' },
-      { title: 'Generar datos de ventas', desc: 'Datos sintéticos multi-mercado.', prompt: 'Genera 3 años de datos para Xarelto, Eylea, Stivarga en 10 mercados. Incluye estacionalidad, tendencias y datos de cuota de mercado vs competidores.' },
+      { title: 'Generar datos de ventas', desc: 'Datos sintéticos multi-mercado.', prompt: 'Genera 3 años de datos para 3 productos de la cartera farmacéutica en 10 mercados. Incluye estacionalidad, tendencias y datos de cuota de mercado vs competidores.' },
       { title: 'Crear modelo semántico', desc: 'Cortex Analyst semantic layer.', prompt: 'Define un modelo semántico YAML con las tablas, relaciones, métricas (revenue, units, market_share, growth_rate) y dimensiones (product, market, time). Esto permite consultas en lenguaje natural.' },
-      { title: 'Consultas en lenguaje natural', desc: 'Probar con Cortex Analyst.', prompt: 'Ejecuta consultas como: Cual es nuestra cuota de mercado de Xarelto en Alemania en Q3, Comparar ventas de Eylea vs competidores en los ultimos 6 meses, Top 5 mercados por crecimiento de revenue.' },
+      { title: 'Consultas en lenguaje natural', desc: 'Probar con Cortex Analyst.', prompt: 'Ejecuta consultas como: Cual es nuestra cuota de mercado del producto principal en Alemania en Q3, Comparar ventas del producto A vs competidores en los ultimos 6 meses, Top 5 mercados por crecimiento de revenue.' },
       { title: 'Dashboard conversacional', desc: 'Interfaz de chat para ejecutivos.', prompt: 'Crea dashboard Streamlit con: campo de texto para preguntas, área de resultados con tabla y gráfico auto-generado, historial de consultas recientes, métricas KPI en sidebar.' },
     ]
   },
@@ -1133,7 +1133,7 @@ const PROMPTS = {
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para análisis de contenido.', prompt: 'Crea base de datos CONTENT_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
       { title: 'Crear estructura', desc: 'Tablas de assets y métricas.', prompt: 'Crea tablas: CONTENT_ASSETS (asset_id, type, product, copy_text, channel, created_date), AB_TESTS (test_id, asset_a_id, asset_b_id, start_date, end_date), ENGAGEMENT_METRICS (asset_id, impressions, clicks, conversions, ctr, conversion_rate).' },
-      { title: 'Generar datos', desc: 'Assets de marketing con métricas.', prompt: 'Genera 500 assets para Xarelto y Eylea con copy text variado. Genera 50 tests A/B con métricas de engagement. Assets con mejor tono emocional tienen mejores métricas.' },
+      { title: 'Generar datos', desc: 'Assets de marketing con métricas.', prompt: 'Genera 500 assets para productos farmacéuticos con copy text variado. Genera 50 tests A/B con métricas de engagement. Assets con mejor tono emocional tienen mejores métricas.' },
       { title: 'Scoring con Cortex AI', desc: 'Evaluar tono, claridad y persuasión.', prompt: 'Usa SNOWFLAKE.CORTEX.COMPLETE(mistral-large2, prompt) para evaluar cada asset en 3 dimensiones: tono_emocional (1-10), claridad (1-10), persuasion (1-10). Extrae scores con PARSE_JSON. Crea tabla CONTENT_SCORES.' },
       { title: 'Análisis A/B', desc: 'Significancia estadística de tests.', prompt: 'Calcula diferencia de CTR y conversion_rate entre variantes A y B. Aplica test de significancia (z-score) para determinar ganadores con p-value < 0.05.' },
       { title: 'Recomendaciones con LLM', desc: 'Generar mejoras para contenido.', prompt: 'Usa CORTEX.COMPLETE para generar recomendaciones de mejora del copy para los 20 assets con peor rendimiento. Formato: problema detectado, sugerencia específica, copy mejorado.' },
@@ -1145,11 +1145,11 @@ const PROMPTS = {
     intro: 'Prompts para generar Evidencia del Mundo Real desde datos de EHR y claims para submissions a pagadores.',
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para RWE.', prompt: 'Crea base de datos MARKET_ACCESS_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
-      { title: 'Crear estructura', desc: 'Tablas de pacientes, claims y resultados.', prompt: 'Crea tablas: PATIENTS (patient_id, treatment_arm [Xarelto/Warfarin], demographics), PHARMACY_CLAIMS (claim_id, patient_id, drug, fill_date, days_supply), CLINICAL_EVENTS (patient_id, event_type [stroke/bleed/hospitalization], event_date), COSTS (patient_id, category, amount, date).' },
-      { title: 'Generar datos clínicos', desc: 'Cohortes Xarelto vs Warfarin.', prompt: 'Genera 2.000 pacientes (1.000 por brazo). Xarelto tiene mejor adherencia (PDC 0.85 vs 0.72), menor tasa de ictus (3% vs 5%), similar sangrado. Genera 24 meses de claims y eventos.' },
+      { title: 'Crear estructura', desc: 'Tablas de pacientes, claims y resultados.', prompt: 'Crea tablas: PATIENTS (patient_id, treatment_arm [Tratamiento_A/Tratamiento_B], demographics), PHARMACY_CLAIMS (claim_id, patient_id, drug, fill_date, days_supply), CLINICAL_EVENTS (patient_id, event_type [stroke/bleed/hospitalization], event_date), COSTS (patient_id, category, amount, date).' },
+      { title: 'Generar datos clínicos', desc: 'Cohortes Tratamiento_A vs Tratamiento_B.', prompt: 'Genera 2.000 pacientes (1.000 por brazo). Tratamiento_A tiene mejor adherencia (PDC 0.85 vs 0.72), menor tasa de eventos primarios (3% vs 5%), perfil similar en eventos secundarios. Genera 24 meses de claims y eventos.' },
       { title: 'Calcular adherencia (PDC)', desc: 'Proportion of Days Covered.', prompt: 'Calcula PDC por paciente: días cubiertos / días en período. Usa DATEDIFF y LEAD para identificar gaps. Clasifica: Adherente (PDC >= 0.8), Parcial (0.5-0.8), No Adherente (<0.5). Compara por brazo de tratamiento.' },
       { title: 'Analizar resultados clínicos', desc: 'Efectividad comparativa.', prompt: 'Calcula tasas de eventos (ictus, sangrado, hospitalización) por brazo. Usa análisis de supervivencia simplificado con DATEDIFF al primer evento. Calcula NNT (Number Needed to Treat) y riesgo relativo.' },
-      { title: 'Análisis coste-efectividad', desc: 'ICER y costes totales.', prompt: 'Calcula costes totales por paciente y brazo (medicación, hospitalización, consultas). Calcula ICER = (Coste_Xarelto - Coste_Warfarin) / (Eventos_evitados). Genera tabla COST_EFFECTIVENESS_SUMMARY.' },
+      { title: 'Análisis coste-efectividad', desc: 'ICER y costes totales.', prompt: 'Calcula costes totales por paciente y brazo (medicación, hospitalización, consultas). Calcula ICER = (Coste_Tratamiento_A - Coste_Tratamiento_B) / (Eventos_evitados). Genera tabla COST_EFFECTIVENESS_SUMMARY.' },
       { title: 'Dashboard RWE', desc: 'Informe para pagadores.', prompt: 'Crea dashboard Streamlit con: comparativa de PDC por brazo, Kaplan-Meier simplificado, tabla de NNT y riesgo relativo, waterfall de costes, resumen ejecutivo auto-generado con CORTEX.COMPLETE.' },
     ]
   },
@@ -1162,7 +1162,7 @@ const PROMPTS = {
       { title: 'Generar datos', desc: 'Documentos de inteligencia competitiva.', prompt: 'Genera 500 documentos sintéticos distribuidos entre 4 tipos de fuente y 3 competidores. Incluye noticias de lanzamientos, resultados de ensayos clínicos, filings de la SEC y menciones en redes sociales con contenido realista.' },
       { title: 'Crear Cortex Search Service', desc: 'Índice de búsqueda semántica.', prompt: 'Crea un Cortex Search Service sobre INTEL_DOCUMENTS indexando la columna content. Configura para búsqueda semántica con resultados rankeados por relevancia.' },
       { title: 'Búsqueda semántica', desc: 'Consultas de inteligencia.', prompt: 'Ejecuta búsquedas semánticas como: resultados de ensayos fase III de Eliquis, cambios de precio de Pradaxa en Europa, nuevas indicaciones aprobadas para Entresto. Muestra top 5 resultados con score de relevancia.' },
-      { title: 'Análisis de posicionamiento', desc: 'Resumen competitivo con LLM.', prompt: 'Usa CORTEX.COMPLETE para generar resumen ejecutivo del panorama competitivo agrupado por competidor. Extrae: fortalezas, amenazas, movimientos recientes, implicaciones para Bayer.' },
+      { title: 'Análisis de posicionamiento', desc: 'Resumen competitivo con LLM.', prompt: 'Usa CORTEX.COMPLETE para generar resumen ejecutivo del panorama competitivo agrupado por competidor. Extrae: fortalezas, amenazas, movimientos recientes, implicaciones para la empresa.' },
       { title: 'Dashboard competitivo', desc: 'Panel de monitorización.', prompt: 'Crea dashboard Streamlit con: campo de búsqueda semántica, timeline de eventos por competidor, resumen ejecutivo, alertas de amenazas, distribución de fuentes, filtros por competidor y período.' },
     ]
   },
@@ -1222,7 +1222,7 @@ const PROMPTS = {
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para compliance.', prompt: 'Crea base de datos CLAIMS_COMPLIANCE_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
       { title: 'Crear estructura', desc: 'Tablas de claims y materiales.', prompt: 'Crea tablas: APPROVED_CLAIMS (claim_id, product, claim_text, approval_date, expiry_date, category), MARKETING_MATERIALS (material_id, product, content_text, channel, status, review_date).' },
-      { title: 'Generar datos', desc: 'Claims aprobados y materiales.', prompt: 'Genera 50 claims aprobados para Xarelto con categorías (eficacia, seguridad, dosificación). Genera 200 materiales de marketing con variaciones: algunos usan claims aprobados textualmente, otros los modifican ligeramente, algunos incluyen claims no aprobados.' },
+      { title: 'Generar datos', desc: 'Claims aprobados y materiales.', prompt: 'Genera 50 claims aprobados para el producto farmacéutico con categorías (eficacia, seguridad, dosificación). Genera 200 materiales de marketing con variaciones: algunos usan claims aprobados textualmente, otros los modifican ligeramente, algunos incluyen claims no aprobados.' },
       { title: 'Validación regex', desc: 'Matching de claims con REGEXP.', prompt: 'Usa REGEXP_COUNT y SPLIT_TO_TABLE para extraer claims del contenido de cada material. Compara contra librería aprobada usando CONTAINS y similarity matching. Clasifica: Conforme, Modificado (claim alterado), No Aprobado.' },
       { title: 'Scoring con IA', desc: 'Sentimiento y remediación.', prompt: 'Aplica CORTEX.SENTIMENT sobre claims para detectar exageraciones. Usa CORTEX.COMPLETE para generar briefs de remediación: qué claim viola, claim aprobado más cercano, sugerencia de corrección.' },
       { title: 'Análisis FLATTEN', desc: 'Claims multi-valor.', prompt: 'Usa FLATTEN para analizar materiales con múltiples claims. Genera tabla de compliance por material con detalle de cada claim encontrado y su estado.' },
@@ -1251,7 +1251,7 @@ const PROMPTS = {
       { title: 'Generar documentos', desc: 'Contenido competitivo sintético.', prompt: 'Genera 300 documentos con claims de eficacia, seguridad y conveniencia para cada competidor. Incluye evolución temporal: claims más agresivos en períodos recientes.' },
       { title: 'Crear Cortex Search', desc: 'Índice semántico de documentos.', prompt: 'Crea Cortex Search Service sobre COMPETITOR_DOCS indexando content. Permite búsqueda semántica de claims específicos.' },
       { title: 'Extraer claims con LLM', desc: 'Pipeline de extracción.', prompt: 'Usa CORTEX.COMPLETE para extraer de cada documento: claims de eficacia, claims de seguridad, posicionamiento vs competidores. Formato JSON estructurado. Genera tabla EXTRACTED_CLAIMS.' },
-      { title: 'Búsqueda semántica', desc: 'Consultas de inteligencia.', prompt: 'Ejecuta búsquedas: claims de superioridad de Eliquis en fibrilación auricular, mensajes de seguridad de Pradaxa vs Xarelto, cambios de posicionamiento recientes.' },
+      { title: 'Búsqueda semántica', desc: 'Consultas de inteligencia.', prompt: 'Ejecuta búsquedas: claims de superioridad de Competidor_A en la indicación principal, mensajes de seguridad de Competidor_B vs el producto propio, cambios de posicionamiento recientes.' },
       { title: 'Análisis de posicionamiento', desc: 'Evolución temporal.', prompt: 'Analiza cambios de claims por competidor y trimestre. Detecta nuevos claims, claims retirados y cambios de tono.' },
       { title: 'Dashboard competitivo', desc: 'Panel de inteligencia.', prompt: 'Crea dashboard Streamlit con: campo de búsqueda semántica, tabla de claims por competidor y categoría, timeline de evolución de mensajes, alertas de nuevos claims, filtros por competidor y período.' },
     ]
@@ -1264,7 +1264,7 @@ const PROMPTS = {
       { title: 'Crear estructura', desc: 'Tablas de artículos y métricas.', prompt: 'Crea tabla MEDIA_ARTICLES con: article_id, source_type (news/analyst/earned_media), publication, region, title, content, published_date, reach_estimate.' },
       { title: 'Generar datos', desc: 'Artículos globales multi-fuente.', prompt: 'Genera 2.000 artículos de 50 publicaciones en 10 regiones. Distribuye sentimiento: positivo (40%), neutro (35%), negativo (25%). Incluye picos regionales de sentimiento.' },
       { title: 'Análisis de sentimiento', desc: 'Scoring multi-fuente.', prompt: 'Aplica CORTEX.SENTIMENT a cada artículo. Calcula sentimiento medio por fuente, región y semana. Pondera por alcance (reach_estimate).' },
-      { title: 'Share of voice', desc: 'Métricas de presencia.', prompt: 'Calcula share of voice: % de menciones de Bayer vs competidores por región y período. Usa COUNT y ratio sobre total de artículos. Genera tabla SOV_METRICS.' },
+      { title: 'Share of voice', desc: 'Métricas de presencia.', prompt: 'Calcula share of voice: % de menciones del producto propio vs competidores por región y período. Usa COUNT y ratio sobre total de artículos. Genera tabla SOV_METRICS.' },
       { title: 'Tendencias temporales', desc: 'Series de sentimiento.', prompt: 'Analiza tendencias semanales de sentimiento por región. Detecta cambios significativos con LAG() y alertas cuando la variación supera 0.2 en una semana.' },
       { title: 'Dashboard de medios', desc: 'Monitorización global.', prompt: 'Crea dashboard Streamlit con: mapa de calor de sentimiento por región, share of voice por competidor, tendencias temporales, tabla de artículos destacados, alertas de cambios, filtros por región y fuente.' },
     ]
@@ -1287,7 +1287,7 @@ const PROMPTS = {
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para KOL analytics.', prompt: 'Crea base de datos KOL_SENTIMENT_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
       { title: 'Crear estructura', desc: 'Tablas de KOLs y declaraciones.', prompt: 'Crea tablas: KOLS (kol_id, name, specialty, institution, h_index, followers, tier), KOL_STATEMENTS (statement_id, kol_id, text, source, date, reach), KOL_CONNECTIONS (kol_a_id, kol_b_id, relationship_type, strength).' },
-      { title: 'Generar datos', desc: 'KOLs con historial de declaraciones.', prompt: 'Genera 100 KOLs cardiólogos con 1.000 declaraciones sobre anticoagulantes. Algunos KOLs son consistentemente positivos sobre Xarelto, otros negativos. Genera red de conexiones (coautorías, misma institución).' },
+      { title: 'Generar datos', desc: 'KOLs con historial de declaraciones.', prompt: 'Genera 100 KOLs por área terapéutica con 1.000 declaraciones sobre los productos del mercado. Algunos KOLs son consistentemente positivos sobre el producto propio, otros negativos. Genera red de conexiones (coautorías, misma institución).' },
       { title: 'Análisis de sentimiento', desc: 'Scoring por KOL.', prompt: 'Aplica CORTEX.SENTIMENT a cada declaración. Calcula sentimiento medio por KOL, tendencia temporal con LAG(), y volatilidad (desviación estándar). Clasifica: Advocate, Neutral, Detractor.' },
       { title: 'Métricas de influencia', desc: 'Scoring de red.', prompt: 'Calcula influence_score = 0.3*h_index_norm + 0.3*reach_norm + 0.2*connections + 0.2*statement_frequency. Identifica top 20 influencers y su sentimiento.' },
       { title: 'Dashboard de KOLs', desc: 'Panel de inteligencia.', prompt: 'Crea dashboard Streamlit con: ranking de KOLs por influencia y sentimiento, mapa de red de conexiones, tendencias temporales por KOL, alertas de cambio de sentimiento, filtros por tier e institución.' },
@@ -1298,10 +1298,10 @@ const PROMPTS = {
     intro: 'Prompts para analizar la percepción comparativa entre productos farmacéuticos competidores.',
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para análisis de percepción.', prompt: 'Crea base de datos COMPETITIVE_PERCEPTION_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
-      { title: 'Crear estructura', desc: 'Tablas de menciones y atributos.', prompt: 'Crea tabla PRODUCT_MENTIONS con: mention_id, product (Xarelto/Eliquis/Pradaxa), source, text, date, author_type (patient/hcp/media). Crea tabla PERCEPTION_ATTRIBUTES con: attribute (efficacy/safety/convenience/price/side_effects).' },
-      { title: 'Generar datos', desc: 'Menciones multi-producto.', prompt: 'Genera 3.000 menciones distribuidas entre 3 productos. Xarelto fuerte en conveniencia, Eliquis en seguridad percibida, Pradaxa en precio. Incluye textos de pacientes, HCPs y medios.' },
+      { title: 'Crear estructura', desc: 'Tablas de menciones y atributos.', prompt: 'Crea tabla PRODUCT_MENTIONS con: mention_id, product (Producto_Propio/Competidor_A/Competidor_B), source, text, date, author_type (patient/hcp/media). Crea tabla PERCEPTION_ATTRIBUTES con: attribute (efficacy/safety/convenience/price/side_effects).' },
+      { title: 'Generar datos', desc: 'Menciones multi-producto.', prompt: 'Genera 3.000 menciones distribuidas entre 3 productos. Producto_Propio fuerte en conveniencia, Competidor_A en seguridad percibida, Competidor_B en precio. Incluye textos de pacientes, HCPs y medios.' },
       { title: 'Scoring de percepción', desc: 'Sentimiento por producto y atributo.', prompt: 'Aplica CORTEX.SENTIMENT por mención. Usa CORTEX.COMPLETE para clasificar cada mención en atributos (eficacia, seguridad, conveniencia, precio). Genera matriz producto × atributo con sentimiento medio.' },
-      { title: 'Análisis de gaps', desc: 'Diferencias de percepción.', prompt: 'Calcula diferencias de sentimiento entre Xarelto y competidores por atributo. Identifica: gaps positivos (Xarelto gana), gaps negativos (competidor gana), oportunidades de mensajería.' },
+      { title: 'Análisis de gaps', desc: 'Diferencias de percepción.', prompt: 'Calcula diferencias de sentimiento entre el producto propio y competidores por atributo. Identifica: gaps positivos (producto propio gana), gaps negativos (competidor gana), oportunidades de mensajería.' },
       { title: 'Dashboard de percepción', desc: 'Mapas competitivos.', prompt: 'Crea dashboard Streamlit con: radar chart de percepción por producto, tabla de gaps por atributo, tendencias temporales de percepción, menciones destacadas positivas y negativas, filtros por producto y fuente.' },
     ]
   },
@@ -1335,7 +1335,7 @@ const PROMPTS = {
     steps: [
       { title: 'Configurar entorno', desc: 'Base de datos para sentimiento multiidioma.', prompt: 'Crea base de datos GLOBAL_SENTIMENT_DB con esquema PUBLIC y warehouse COMPUTE_WH.' },
       { title: 'Crear estructura', desc: 'Tablas de contenido multiidioma.', prompt: 'Crea tabla GLOBAL_CONTENT con: content_id, original_text, language (en/de/fr/es/ja/pt/it/zh/ko/nl), region, source, date, product.' },
-      { title: 'Generar datos', desc: 'Contenido en 10 idiomas.', prompt: 'Genera 2.000 registros de contenido en 10 idiomas para 5 regiones. Incluye textos en idioma nativo sobre experiencias con Xarelto. Sentimiento varía por región (Japón más positivo, Europa mixto).' },
+      { title: 'Generar datos', desc: 'Contenido en 10 idiomas.', prompt: 'Genera 2.000 registros de contenido en 10 idiomas para 5 regiones. Incluye textos en idioma nativo sobre experiencias con el producto farmacéutico. Sentimiento varía por región (Japón más positivo, Europa mixto).' },
       { title: 'Traducir con Cortex', desc: 'TRANSLATE a inglés unificado.', prompt: 'Aplica SNOWFLAKE.CORTEX.TRANSLATE(original_text, source_language, en) para traducir todo el contenido a inglés. Almacena texto traducido en columna translated_text.' },
       { title: 'Análisis de sentimiento', desc: 'Scoring unificado.', prompt: 'Aplica CORTEX.SENTIMENT tanto al texto original como al traducido. Compara scores para validar consistencia de la traducción. Calcula sentimiento medio por región, idioma y producto.' },
       { title: 'Comparación regional', desc: 'Métricas globales consolidadas.', prompt: 'Consolida sentimiento por región con ponderación por volumen. Identifica regiones con sentimiento divergente del global. Genera tabla REGIONAL_SENTIMENT_SUMMARY con alertas por región.' },
