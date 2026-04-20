@@ -179,31 +179,18 @@
     <h2><span class="step-num">3</span> Abrir Cortex Code en Snowsight</h2>
     <p>Cortex Code se encuentra integrado en varias superficies de Snowsight. Estas son las formas de acceder:</p>
 
-    <h3>Opci&oacute;n A &mdash; Desde Worksheets (SQL)</h3>
+    <h3>Opci&oacute;n A &mdash; Desde Workspaces</h3>
     <ol>
-      <li>Entra en <strong>Snowsight</strong> &rarr; <strong>Projects</strong> &rarr; <strong>Worksheets</strong></li>
-      <li>Abre un worksheet nuevo o existente</li>
+      <li>Entra en <strong>Snowsight</strong> &rarr; <strong>Projects</strong> &rarr; <strong>Workspaces</strong></li>
+      <li>Crea o abre un workspace existente</li>
       <li>Haz clic en el icono de <strong>Cortex</strong> (&#10024;) en la barra lateral derecha, o usa el atajo <kbd>Cmd+Shift+Space</kbd> (Mac) / <kbd>Ctrl+Shift+Space</kbd> (Windows)</li>
       <li>Se abrir&aacute; el panel de Cortex Code a la derecha del editor</li>
     </ol>
 
     <div class="callout">
-      <p><strong>Tip:</strong> El panel de Cortex Code mantiene el contexto de tu worksheet. Si tienes tablas referenciadas en el editor, Cortex Code las usar&aacute; como contexto para generar c&oacute;digo m&aacute;s preciso.</p>
+      <p><strong>Tip:</strong> El panel de Cortex Code mantiene el contexto de tu workspace. Si tienes tablas referenciadas en el editor, Cortex Code las usar&aacute; como contexto para generar c&oacute;digo m&aacute;s preciso.</p>
     </div>
 
-    <h3>Opci&oacute;n B &mdash; Desde Notebooks</h3>
-    <ol>
-      <li>Entra en <strong>Snowsight</strong> &rarr; <strong>Projects</strong> &rarr; <strong>Notebooks</strong></li>
-      <li>Crea o abre un notebook</li>
-      <li>En cualquier celda, haz clic en el icono &#10024; o escribe directamente tu prompt en una celda Markdown y Cortex Code generar&aacute; el c&oacute;digo en la siguiente celda</li>
-    </ol>
-
-    <h3>Opci&oacute;n C &mdash; Desde Streamlit</h3>
-    <ol>
-      <li>Entra en <strong>Snowsight</strong> &rarr; <strong>Projects</strong> &rarr; <strong>Streamlit</strong></li>
-      <li>Crea una nueva app Streamlit</li>
-      <li>Usa Cortex Code en el editor lateral para generar componentes</li>
-    </ol>
   </div>
 
   <!-- SECTION 4 -->
@@ -269,7 +256,7 @@
     <h2><span class="step-num">6</span> Ejecutar un Caso de Uso Paso a Paso</h2>
     <p>Veamos el proceso completo con un ejemplo pr&aacute;ctico:</p>
 
-    <h3>5.1 &mdash; Seleccionar industria y caso de uso</h3>
+    <h3>6.1 &mdash; Seleccionar industria y caso de uso</h3>
     <ol>
       <li>Ve al <a href="index.html" style="color:#29B5E8;">cat&aacute;logo de industrias</a></li>
       <li>Elige una industria (por ejemplo, <strong>Banca</strong>)</li>
@@ -277,17 +264,17 @@
       <li>Lee la secci&oacute;n <strong>&laquo;Problema&raquo;</strong> para entender el dolor de negocio</li>
     </ol>
 
-    <h3>5.2 &mdash; Leer la Gu&iacute;a</h3>
+    <h3>6.2 &mdash; Leer la Gu&iacute;a</h3>
     <ol>
       <li>Haz clic en <strong>&laquo;Ver Gu&iacute;a&raquo;</strong></li>
       <li>Lee las secciones: <em>Contexto, Foco, Reto, Objetivos, Funcionalidades, Datos, Estratificaci&oacute;n y C&oacute;mo Usar</em></li>
       <li>Esto te dar&aacute; el marco conceptual antes de generar c&oacute;digo</li>
     </ol>
 
-    <h3>5.3 &mdash; Ejecutar los Prompts</h3>
+    <h3>6.3 &mdash; Ejecutar los Prompts</h3>
     <ol>
       <li>Haz clic en <strong>&laquo;Ver Prompts&raquo;</strong></li>
-      <li>En Snowsight, abre un <strong>worksheet SQL</strong> y activa <strong>Cortex Code</strong></li>
+      <li>En Snowsight, abre un <strong>workspace</strong> y activa <strong>Cortex Code</strong></li>
       <li>Para cada paso:
         <ul>
           <li>Haz clic en <strong>&laquo;Copiar&raquo;</strong> en el prompt</li>
@@ -362,24 +349,15 @@ USE WAREHOUSE BANCA_WH;</div>
     <h2><span class="step-num">8</span> Desplegar Dashboards Streamlit</h2>
     <p>Casi todos los casos de uso incluyen un prompt para generar un dashboard Streamlit. As&iacute; se despliega:</p>
 
-    <h3>7.1 &mdash; Generar el c&oacute;digo Streamlit</h3>
+    <h3>8.1 &mdash; Generar la app de Streamlit</h3>
     <ol>
       <li>Ejecuta el prompt de &laquo;Dashboard&raquo; (normalmente el pen&uacute;ltimo paso)</li>
       <li>Cortex Code generar&aacute; c&oacute;digo Python con Streamlit</li>
-      <li>Copia el c&oacute;digo generado</li>
+      <li>Entra en <strong>Snowsight</strong> &rarr; <strong>Projects</strong> &rarr; <strong>Streamlit</strong></li>
     </ol>
 
-    <h3>7.2 &mdash; Crear la app en Snowsight</h3>
-    <ol>
-      <li>Ve a <strong>Projects</strong> &rarr; <strong>Streamlit</strong></li>
-      <li>Haz clic en <strong>&laquo;+ Streamlit App&raquo;</strong></li>
-      <li>Selecciona la base de datos y esquema del caso de uso</li>
-      <li>Selecciona el warehouse</li>
-      <li>Pega el c&oacute;digo generado en el editor</li>
-      <li>Haz clic en <strong>&laquo;Run&raquo;</strong></li>
-    </ol>
 
-    <h3>7.3 &mdash; Verificar y compartir</h3>
+    <h3>8.3 &mdash; Verificar y compartir</h3>
     <ol>
       <li>Comprueba que todos los gr&aacute;ficos y tablas cargan correctamente</li>
       <li>Si hay errores, verifica que las tablas y vistas existen (se crearon en pasos anteriores)</li>
