@@ -1295,52 +1295,52 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos y esquema para retención.",
-        "prompt": "Crea la base de datos EDU_RETENCION_DB con esquema ANALYTICS y warehouse EDU_WH (size S). Incluye comentarios del proyecto de predicción de abandono estudiantil con Model Registry."
+        "prompt": "/best-practices Crea la base de datos EDU_RETENCION_DB con esquema ANALYTICS y warehouse EDU_WH (size S). Incluye comentarios del proyecto de predicción de abandono estudiantil con Model Registry."
       },
       {
         "title": "Crear expediente académico",
         "desc": "Generar datos sintéticos de estudiantes.",
-        "prompt": "Crea la tabla EXPEDIENTE_ACADEMICO con: student_id, grado VARCHAR, facultad, curso_actual INT, fecha_ingreso DATE, nota_acceso FLOAT, rama_bachillerato (Ciencias, Tecnologia, Sociales, Humanidades, Artes), creditos_matriculados_total INT, creditos_aprobados_total INT, nota_media_expediente FLOAT, convocatorias_agotadas INT, cambio_grado BOOLEAN, estado (Activo, Abandono, Graduado, Baja_Temporal). Genera 60,000 estudiantes de 8 cohortes. El 21% abandona, con pico en primer curso (15%). Usa SQL GENERATOR(ROWCOUNT => 60000) con UNIFORM() para distribuciones numéricas."
+        "prompt": "/best-practices Crea la tabla EXPEDIENTE_ACADEMICO con: student_id, grado VARCHAR, facultad, curso_actual INT, fecha_ingreso DATE, nota_acceso FLOAT, rama_bachillerato (Ciencias, Tecnologia, Sociales, Humanidades, Artes), creditos_matriculados_total INT, creditos_aprobados_total INT, nota_media_expediente FLOAT, convocatorias_agotadas INT, cambio_grado BOOLEAN, estado (Activo, Abandono, Graduado, Baja_Temporal). Genera 60,000 estudiantes de 8 cohortes. El 21% abandona, con pico en primer curso (15%). Usa SQL GENERATOR(ROWCOUNT => 60000) con UNIFORM() para distribuciones numéricas."
       },
       {
         "title": "Crear actividad LMS",
         "desc": "Engagement digital del estudiante.",
-        "prompt": "Crea la tabla ACTIVIDAD_LMS con: student_id, semestre VARCHAR, accesos_totales INT, tiempo_total_min INT, recursos_descargados INT, videos_vistos INT, entregas_a_tiempo_pct FLOAT, participacion_foros INT, tests_completados INT, ultima_actividad_fecha DATE. Genera datos semestrales para todos los estudiantes activos. Los que abandonan muestran caída de actividad LMS 4-8 semanas antes."
+        "prompt": "/best-practices Crea la tabla ACTIVIDAD_LMS con: student_id, semestre VARCHAR, accesos_totales INT, tiempo_total_min INT, recursos_descargados INT, videos_vistos INT, entregas_a_tiempo_pct FLOAT, participacion_foros INT, tests_completados INT, ultima_actividad_fecha DATE. Genera datos semestrales para todos los estudiantes activos. Los que abandonan muestran caída de actividad LMS 4-8 semanas antes."
       },
       {
         "title": "Crear perfil socioeconómico",
         "desc": "Factores no académicos que influyen en abandono.",
-        "prompt": "Crea la tabla PERFIL_SOCIOECONOMICO con: student_id, beca_tipo (Sin_Beca, General, Excelencia, Colaboracion), beca_importe FLOAT, trabaja BOOLEAN, horas_trabajo_semana INT, distancia_campus_km FLOAT, vive_con (Familia, Residencia, Piso_Compartido, Solo), primera_generacion_universitaria BOOLEAN, renta_familiar_tramo (Bajo, Medio_Bajo, Medio, Medio_Alto, Alto). Genera perfiles. Los estudiantes sin beca que trabajan >15h/semana tienen 2.3x más abandono."
+        "prompt": "/best-practices Crea la tabla PERFIL_SOCIOECONOMICO con: student_id, beca_tipo (Sin_Beca, General, Excelencia, Colaboracion), beca_importe FLOAT, trabaja BOOLEAN, horas_trabajo_semana INT, distancia_campus_km FLOAT, vive_con (Familia, Residencia, Piso_Compartido, Solo), primera_generacion_universitaria BOOLEAN, renta_familiar_tramo (Bajo, Medio_Bajo, Medio, Medio_Alto, Alto). Genera perfiles. Los estudiantes sin beca que trabajan >15h/semana tienen 2.3x más abandono."
       },
       {
         "title": "Calcular features predictivas",
         "desc": "Indicadores de riesgo de abandono.",
-        "prompt": "Crea la vista FEATURES_ABANDONO que por estudiante y semestre calcule:\n- Académico: nota_media_semestre, pct_aprobados, tendencia_notas, convocatorias_extra\n- Engagement: accesos_lms_semana, tendencia_lms_4sem, entregas_pendientes, ultima_actividad_dias\n- Económico: tiene_beca, trabaja, horas_trabajo, renta_tramo\n- Social: distancia, vive_solo, primera_generacion\n- Histórico: rendimiento_semestre_anterior, creditos_acumulados_pct, cambio_rendimiento"
+        "prompt": "/best-practices Crea la vista FEATURES_ABANDONO que por estudiante y semestre calcule:\n- Académico: nota_media_semestre, pct_aprobados, tendencia_notas, convocatorias_extra\n- Engagement: accesos_lms_semana, tendencia_lms_4sem, entregas_pendientes, ultima_actividad_dias\n- Económico: tiene_beca, trabaja, horas_trabajo, renta_tramo\n- Social: distancia, vive_solo, primera_generacion\n- Histórico: rendimiento_semestre_anterior, creditos_acumulados_pct, cambio_rendimiento"
       },
       {
         "title": "Entrenar modelo de abandono",
         "desc": "ML.CLASSIFICATION para scoring de riesgo.",
-        "prompt": "Usa SNOWFLAKE.ML.CLASSIFICATION para predecir abandono: si/no. Variables: todas las features de FEATURES_ABANDONO. Entrena con 6 cohortes y valida con las 2 últimas. Evalúa AUC, precision, recall. Objetivo: AUC >0.78, recall >0.70 para capturar la mayoría de abandonos. Usa evaluate => TRUE para generar métricas de evaluación."
+        "prompt": "/best-practices Usa SNOWFLAKE.ML.CLASSIFICATION para predecir abandono: si/no. Variables: todas las features de FEATURES_ABANDONO. Entrena con 6 cohortes y valida con las 2 últimas. Evalúa AUC, precision, recall. Objetivo: AUC >0.78, recall >0.70 para capturar la mayoría de abandonos. Usa evaluate => TRUE para generar métricas de evaluación."
       },
       {
         "title": "Registrar en Model Registry",
         "desc": "Guardar modelo con métricas para operación continua.",
-        "prompt": "Registra el modelo en Snowflake Model Registry:\n\nfrom snowflake.ml.registry import Registry\nreg = Registry(session=session, database_name='EDU_RETENCION_DB', schema_name='ANALYTICS')\nreg.log_model(\n    model=dropout_model,\n    model_name='student_dropout_predictor',\n    version_name='v1',\n    metrics={'auc': auc_score, 'recall': recall, 'precision': precision, 'f1': f1},\n    comment='Modelo de predicción de abandono estudiantil universitario'\n)\nVerifica registro y lista versiones."
+        "prompt": "/best-practices Registra el modelo en Snowflake Model Registry:\n\nfrom snowflake.ml.registry import Registry\nreg = Registry(session=session, database_name='EDU_RETENCION_DB', schema_name='ANALYTICS')\nreg.log_model(\n    model=dropout_model,\n    model_name='student_dropout_predictor',\n    version_name='v1',\n    metrics={'auc': auc_score, 'recall': recall, 'precision': precision, 'f1': f1},\n    comment='Modelo de predicción de abandono estudiantil universitario'\n)\nVerifica registro y lista versiones."
       },
       {
         "title": "Scoring y plan de intervención",
         "desc": "Ejecutar modelo sobre estudiantes activos.",
-        "prompt": "Crea vista SCORING_ABANDONO que para cada estudiante activo ejecute el modelo Registry y genere: riesgo_abandono_pct, nivel_riesgo (Alto >60%, Moderado 30-60%, Bajo <30%), factores_principales (top 3 variables), intervencion_sugerida (tutoría, beca, orientación, mentoring, apoyo académico). Genera plan para top 200 estudiantes de alto riesgo."
+        "prompt": "/best-practices Crea vista SCORING_ABANDONO que para cada estudiante activo ejecute el modelo Registry y genere: riesgo_abandono_pct, nivel_riesgo (Alto >60%, Moderado 30-60%, Bajo <30%), factores_principales (top 3 variables), intervencion_sugerida (tutoría, beca, orientación, mentoring, apoyo académico). Genera plan para top 200 estudiantes de alto riesgo."
       },
       {
         "title": "Dashboard de retención",
         "desc": "Streamlit de gestión.",
-        "prompt": "Genera código Streamlit con:\n1. Lista de estudiantes en riesgo con scoring y factores\n2. Tendencia de abandono por grado, curso y cohorte\n3. Métricas del modelo: AUC, precision, recall por versión Registry\n4. Efectividad de intervenciones: retención post-intervención\n5. Comparativa entre facultades y programas\n6. Perfil tipo del estudiante en riesgo. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Lista de estudiantes en riesgo con scoring y factores\n2. Tendencia de abandono por grado, curso y cohorte\n3. Métricas del modelo: AUC, precision, recall por versión Registry\n4. Efectividad de intervenciones: retención post-intervención\n5. Comparativa entre facultades y programas\n6. Perfil tipo del estudiante en riesgo. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de reentrenamiento",
         "desc": "Automatizar scoring y actualización.",
-        "prompt": "Crea Tasks:\n1. SCORING_SEMANAL: ejecuta modelo Registry sobre estudiantes activos\n2. ACTUALIZAR_FEATURES: semanal, recalcula features con nuevos datos LMS\n3. ALERTAS_RIESGO: semanal, notifica tutores de cambios de nivel\n4. REENTRENAR_MODELO: anual, con nueva cohorte y registra versión\n5. COMPARAR_VERSIONES: tras reentrenamiento, activa la mejor\n6. Documenta. Objetivo: AUC >0.78, reducir abandono 20%."
+        "prompt": "/best-practices Crea Tasks:\n1. SCORING_SEMANAL: ejecuta modelo Registry sobre estudiantes activos\n2. ACTUALIZAR_FEATURES: semanal, recalcula features con nuevos datos LMS\n3. ALERTAS_RIESGO: semanal, notifica tutores de cambios de nivel\n4. REENTRENAR_MODELO: anual, con nueva cohorte y registra versión\n5. COMPARAR_VERSIONES: tras reentrenamiento, activa la mejor\n6. Documenta. Objetivo: AUC >0.78, reducir abandono 20%."
       }
     ]
   },
@@ -1351,47 +1351,47 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para chatbot.",
-        "prompt": "Crea la base de datos EDU_CHATBOT_DB con esquema RAG y warehouse EDU_WH. Comentarios del proyecto de chatbot RAG de atención al estudiante."
+        "prompt": "/best-practices Crea la base de datos EDU_CHATBOT_DB con esquema RAG y warehouse EDU_WH. Comentarios del proyecto de chatbot RAG de atención al estudiante."
       },
       {
         "title": "Crear base de conocimiento",
         "desc": "Corpus de normativa y procedimientos.",
-        "prompt": "Crea la tabla CONOCIMIENTO_UNIVERSITARIO con: doc_id, categoria (Normativa_Academica, Matricula, Becas, Convalidaciones, Movilidad, Practicas, TFG_TFM, Servicios, Calendario), titulo, contenido TEXT, grado_aplica VARCHAR, vigente_desde DATE, vigente BOOLEAN. Genera 500 documentos cubriendo: reglamento de evaluación, normativa de permanencia, guía de matrícula, FAQ becas MEC, procedimientos de convalidación, normativa TFG/TFM, movilidad Erasmus. Usa SQL GENERATOR(ROWCOUNT => 500) con UNIFORM() para distribuciones numéricas."
+        "prompt": "/best-practices Crea la tabla CONOCIMIENTO_UNIVERSITARIO con: doc_id, categoria (Normativa_Academica, Matricula, Becas, Convalidaciones, Movilidad, Practicas, TFG_TFM, Servicios, Calendario), titulo, contenido TEXT, grado_aplica VARCHAR, vigente_desde DATE, vigente BOOLEAN. Genera 500 documentos cubriendo: reglamento de evaluación, normativa de permanencia, guía de matrícula, FAQ becas MEC, procedimientos de convalidación, normativa TFG/TFM, movilidad Erasmus. Usa SQL GENERATOR(ROWCOUNT => 500) con UNIFORM() para distribuciones numéricas."
       },
       {
         "title": "Indexar con Cortex Search",
         "desc": "Crear servicio de búsqueda semántica.",
-        "prompt": "Crea un Cortex Search Service sobre CONOCIMIENTO_UNIVERSITARIO:\n- Columnas indexadas: titulo, contenido, categoria\n- Filtros: categoria, grado_aplica\nDemuestra con 5 consultas: '¿Cuántas convocatorias tengo por asignatura?', '¿Cómo pido una convalidación de FP?', '¿Cuál es el plazo de matrícula para segundo semestre?', '¿Puedo cambiar de grado manteniendo créditos?', '¿Requisitos para Erasmus en tercer curso?'."
+        "prompt": "/best-practices Crea un Cortex Search Service sobre CONOCIMIENTO_UNIVERSITARIO:\n- Columnas indexadas: titulo, contenido, categoria\n- Filtros: categoria, grado_aplica\nDemuestra con 5 consultas: '¿Cuántas convocatorias tengo por asignatura?', '¿Cómo pido una convalidación de FP?', '¿Cuál es el plazo de matrícula para segundo semestre?', '¿Puedo cambiar de grado manteniendo créditos?', '¿Requisitos para Erasmus en tercer curso?'."
       },
       {
         "title": "Crear función de chat",
         "desc": "RAG con contexto del estudiante.",
-        "prompt": "Crea la función CHAT_ESTUDIANTE(student_id, pregunta) que:\n1. Busca documentos relevantes con Cortex Search (top 5)\n2. Si student_id: consulta expediente, matrícula y situación\n3. Contextualiza: grado, curso, situación específica\n4. Genera respuesta con CORTEX.COMPLETE precisa y clara\n5. Incluye referencia al artículo/normativa fuente\nDemuestra con 3 perfiles: nuevo ingreso, Erasmus, último curso."
+        "prompt": "/best-practices Crea la función CHAT_ESTUDIANTE(student_id, pregunta) que:\n1. Busca documentos relevantes con Cortex Search (top 5)\n2. Si student_id: consulta expediente, matrícula y situación\n3. Contextualiza: grado, curso, situación específica\n4. Genera respuesta con CORTEX.COMPLETE precisa y clara\n5. Incluye referencia al artículo/normativa fuente\nDemuestra con 3 perfiles: nuevo ingreso, Erasmus, último curso."
       },
       {
         "title": "Gestión de trámites",
         "desc": "Integrar con sistema académico.",
-        "prompt": "Crea tabla TRAMITES_ESTUDIANTE con: tramite_id, student_id, tipo (Matricula, Convalidacion, Certificado, Baja, Cambio_Grupo, Reconocimiento), estado (Solicitado, En_Proceso, Resuelto, Denegado), fecha_solicitud, fecha_resolucion. Crea función GESTIONAR_TRAMITE(student_id, tipo, parametros) para: consultar estado, iniciar solicitud, consultar requisitos."
+        "prompt": "/best-practices Crea tabla TRAMITES_ESTUDIANTE con: tramite_id, student_id, tipo (Matricula, Convalidacion, Certificado, Baja, Cambio_Grupo, Reconocimiento), estado (Solicitado, En_Proceso, Resuelto, Denegado), fecha_solicitud, fecha_resolucion. Crea función GESTIONAR_TRAMITE(student_id, tipo, parametros) para: consultar estado, iniciar solicitud, consultar requisitos."
       },
       {
         "title": "Escalado inteligente",
         "desc": "Detectar cuándo escalar a personal.",
-        "prompt": "Crea función EVALUAR_ESCALADO(pregunta, respuesta) que use CORTEX.COMPLETE para determinar escalado: consulta fuera de ámbito, reclamación formal, caso excepcional, frustración del estudiante. Retorna: escalar BOOLEAN, motivo, departamento_destino (secretaría, orientación, becas, decanato), resumen_contexto."
+        "prompt": "/best-practices Crea función EVALUAR_ESCALADO(pregunta, respuesta) que use CORTEX.COMPLETE para determinar escalado: consulta fuera de ámbito, reclamación formal, caso excepcional, frustración del estudiante. Retorna: escalar BOOLEAN, motivo, departamento_destino (secretaría, orientación, becas, decanato), resumen_contexto."
       },
       {
         "title": "Métricas de chatbot",
         "desc": "Medir calidad y resolución.",
-        "prompt": "Crea tabla HISTORIAL_CHAT_EDU con: sesion_id, student_id, pregunta, respuesta, fue_util BOOLEAN, fue_escalada BOOLEAN, feedback INT. Crea vista METRICAS_CHATBOT: tasa_resolucion, satisfaccion, escalados, top_consultas, gaps_conocimiento. Genera 10,000 conversaciones sintéticas."
+        "prompt": "/best-practices Crea tabla HISTORIAL_CHAT_EDU con: sesion_id, student_id, pregunta, respuesta, fue_util BOOLEAN, fue_escalada BOOLEAN, feedback INT. Crea vista METRICAS_CHATBOT: tasa_resolucion, satisfaccion, escalados, top_consultas, gaps_conocimiento. Genera 10,000 conversaciones sintéticas."
       },
       {
         "title": "Dashboard del chatbot",
         "desc": "Streamlit de operación.",
-        "prompt": "Genera código Streamlit con:\n1. Demo de chat con perfil de estudiante\n2. Métricas: resolución, satisfacción, escalados por tipo\n3. Base de conocimiento: búsqueda y gestión\n4. Top consultas frecuentes y gaps\n5. Comparativa coste: chatbot vs presencial\n6. Picos de demanda: matrícula, exámenes, becas. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Demo de chat con perfil de estudiante\n2. Métricas: resolución, satisfacción, escalados por tipo\n3. Base de conocimiento: búsqueda y gestión\n4. Top consultas frecuentes y gaps\n5. Comparativa coste: chatbot vs presencial\n6. Picos de demanda: matrícula, exámenes, becas. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de mantenimiento",
         "desc": "Mantener actualizado.",
-        "prompt": "Crea Tasks:\n1. ACTUALIZAR_NORMATIVA: inicio de curso, reindeza reglamentos\n2. ANALIZAR_GAPS: mensual, identifica consultas sin respuesta\n3. METRICAS_SEMANALES: calcula indicadores\n4. SINCRONIZAR_TRAMITES: diario, actualiza estados\n5. Documenta. Objetivo: resolución >60%, satisfacción >4.0."
+        "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_NORMATIVA: inicio de curso, reindeza reglamentos\n2. ANALIZAR_GAPS: mensual, identifica consultas sin respuesta\n3. METRICAS_SEMANALES: calcula indicadores\n4. SINCRONIZAR_TRAMITES: diario, actualiza estados\n5. Documenta. Objetivo: resolución >60%, satisfacción >4.0."
       }
     ]
   },
@@ -1402,47 +1402,47 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para admisiones.",
-        "prompt": "Crea la base de datos EDU_ADMISIONES_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de matriculación con Model Registry."
+        "prompt": "/best-practices Crea la base de datos EDU_ADMISIONES_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de matriculación con Model Registry."
       },
       {
         "title": "Crear datos del funnel",
         "desc": "Pipeline de admisiones completo.",
-        "prompt": "Crea la tabla FUNNEL_ADMISIONES con: lead_id, fecha_contacto DATE, fuente (Organico, SEM, Redes_Sociales, Referral, Prescriptor, Feria, Jornada), programa_interes VARCHAR, tipo_programa (Grado, Master, MBA, Doctorado, Executive), nota_acceso FLOAT, edad INT, ubicacion_provincia, visito_campus BOOLEAN, descargo_info BOOLEAN, contacto_asesor BOOLEAN, jornada_puertas_abiertas BOOLEAN, admitido BOOLEAN, beca_ofertada BOOLEAN, beca_importe FLOAT, matriculado BOOLEAN, fecha_matricula DATE. Genera 50,000 leads de 4 ciclos. Yield rate: 22%."
+        "prompt": "/best-practices Crea la tabla FUNNEL_ADMISIONES con: lead_id, fecha_contacto DATE, fuente (Organico, SEM, Redes_Sociales, Referral, Prescriptor, Feria, Jornada), programa_interes VARCHAR, tipo_programa (Grado, Master, MBA, Doctorado, Executive), nota_acceso FLOAT, edad INT, ubicacion_provincia, visito_campus BOOLEAN, descargo_info BOOLEAN, contacto_asesor BOOLEAN, jornada_puertas_abiertas BOOLEAN, admitido BOOLEAN, beca_ofertada BOOLEAN, beca_importe FLOAT, matriculado BOOLEAN, fecha_matricula DATE. Genera 50,000 leads de 4 ciclos. Yield rate: 22%."
       },
       {
         "title": "Crear interacciones digitales",
         "desc": "Comportamiento web y engagement.",
-        "prompt": "Crea la tabla INTERACCIONES_LEADS con: lead_id, fecha DATE, tipo (Visita_Web, Descarga, Email_Abierto, Click_Email, Formulario, Chat, Llamada, Webinar), pagina_visitada VARCHAR, tiempo_sesion_seg INT, dispositivo (Desktop, Mobile, Tablet). Genera datos de interacciones para todos los leads. Los que matriculan tienen 3x más interacciones y visitan páginas de becas y plan de estudios."
+        "prompt": "/best-practices Crea la tabla INTERACCIONES_LEADS con: lead_id, fecha DATE, tipo (Visita_Web, Descarga, Email_Abierto, Click_Email, Formulario, Chat, Llamada, Webinar), pagina_visitada VARCHAR, tiempo_sesion_seg INT, dispositivo (Desktop, Mobile, Tablet). Genera datos de interacciones para todos los leads. Los que matriculan tienen 3x más interacciones y visitan páginas de becas y plan de estudios."
       },
       {
         "title": "Calcular features de conversión",
         "desc": "Indicadores para el modelo.",
-        "prompt": "Crea la vista FEATURES_MATRICULACION que por lead calcule:\n- Engagement: total_interacciones, visitas_web_7d, descargas, formularios\n- Perfil: nota_acceso, edad, distancia_campus, tipo_programa\n- Acciones: visito_campus, jornada, contacto_asesor, beca\n- Timing: dias_desde_contacto, fase_ciclo (temprano, medio, tardío)\n- Competencia: beca_competidora_estimada, alternativas_visitadas"
+        "prompt": "/best-practices Crea la vista FEATURES_MATRICULACION que por lead calcule:\n- Engagement: total_interacciones, visitas_web_7d, descargas, formularios\n- Perfil: nota_acceso, edad, distancia_campus, tipo_programa\n- Acciones: visito_campus, jornada, contacto_asesor, beca\n- Timing: dias_desde_contacto, fase_ciclo (temprano, medio, tardío)\n- Competencia: beca_competidora_estimada, alternativas_visitadas"
       },
       {
         "title": "Entrenar modelo de matriculación",
         "desc": "ML.CLASSIFICATION para probabilidad.",
-        "prompt": "Usa SNOWFLAKE.ML.CLASSIFICATION para predecir matriculado: si/no. Variables: todas las features. Entrena con 3 ciclos y valida con el 4º. Evalúa AUC, precision, recall. Objetivo: AUC >0.75 para priorización efectiva del equipo comercial. Usa evaluate => TRUE para generar métricas de evaluación."
+        "prompt": "/best-practices Usa SNOWFLAKE.ML.CLASSIFICATION para predecir matriculado: si/no. Variables: todas las features. Entrena con 3 ciclos y valida con el 4º. Evalúa AUC, precision, recall. Objetivo: AUC >0.75 para priorización efectiva del equipo comercial. Usa evaluate => TRUE para generar métricas de evaluación."
       },
       {
         "title": "Registrar en Model Registry",
         "desc": "Guardar modelo con métricas.",
-        "prompt": "Registra el modelo en Snowflake Model Registry:\n\nfrom snowflake.ml.registry import Registry\nreg = Registry(session=session, database_name='EDU_ADMISIONES_DB', schema_name='ANALYTICS')\nreg.log_model(\n    model=enrollment_model,\n    model_name='enrollment_predictor',\n    version_name='v1',\n    metrics={'auc': auc_score, 'yield_rate_predicted': yield_pred, 'precision': prec, 'recall': rec},\n    comment='Modelo de predicción de matriculación universitaria'\n)\nVerifica registro."
+        "prompt": "/best-practices Registra el modelo en Snowflake Model Registry:\n\nfrom snowflake.ml.registry import Registry\nreg = Registry(session=session, database_name='EDU_ADMISIONES_DB', schema_name='ANALYTICS')\nreg.log_model(\n    model=enrollment_model,\n    model_name='enrollment_predictor',\n    version_name='v1',\n    metrics={'auc': auc_score, 'yield_rate_predicted': yield_pred, 'precision': prec, 'recall': rec},\n    comment='Modelo de predicción de matriculación universitaria'\n)\nVerifica registro."
       },
       {
         "title": "Scoring del funnel",
         "desc": "Priorizar leads activos.",
-        "prompt": "Crea vista SCORING_FUNNEL que para cada lead activo ejecute el modelo y genere: prob_matricula_pct, categoria (Hot >70%, Warm 40-70%, Cold <40%), accion_recomendada (llamada urgente, email personalizado, invitación campus, beca especial, nurturing). Genera ranking de leads para el equipo comercial."
+        "prompt": "/best-practices Crea vista SCORING_FUNNEL que para cada lead activo ejecute el modelo y genere: prob_matricula_pct, categoria (Hot >70%, Warm 40-70%, Cold <40%), accion_recomendada (llamada urgente, email personalizado, invitación campus, beca especial, nurturing). Genera ranking de leads para el equipo comercial."
       },
       {
         "title": "Dashboard de admisiones",
         "desc": "Streamlit de gestión.",
-        "prompt": "Genera código Streamlit con:\n1. Funnel de admisiones con scoring ML\n2. Predicción de matrículas por programa y campaña\n3. Métricas del modelo por versión de Registry\n4. ROI por canal de captación\n5. Simulador: impacto de becas en conversión\n6. Comparativa ciclos de admisión. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Funnel de admisiones con scoring ML\n2. Predicción de matrículas por programa y campaña\n3. Métricas del modelo por versión de Registry\n4. ROI por canal de captación\n5. Simulador: impacto de becas en conversión\n6. Comparativa ciclos de admisión. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de scoring",
         "desc": "Automatizar predicción.",
-        "prompt": "Crea Tasks:\n1. SCORING_DIARIO: ejecuta modelo sobre leads activos\n2. ACTUALIZAR_INTERACCIONES: diario, carga nuevas interacciones\n3. ALERTAS_HOT_LEADS: inmediato cuando lead sube a Hot\n4. REENTRENAR: anual tras cierre de matriculación\n5. ANALISIS_CICLO: post-matrícula, evalúa modelo vs realidad\n6. Documenta. Objetivo: AUC >0.75, yield rate +10pp."
+        "prompt": "/best-practices Crea Tasks:\n1. SCORING_DIARIO: ejecuta modelo sobre leads activos\n2. ACTUALIZAR_INTERACCIONES: diario, carga nuevas interacciones\n3. ALERTAS_HOT_LEADS: inmediato cuando lead sube a Hot\n4. REENTRENAR: anual tras cierre de matriculación\n5. ANALISIS_CICLO: post-matrícula, evalúa modelo vs realidad\n6. Documenta. Objetivo: AUC >0.75, yield rate +10pp."
       }
     ]
   },
@@ -1453,42 +1453,42 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para learning analytics.",
-        "prompt": "Crea la base de datos EDU_LEARNING_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de learning analytics y personalización."
+        "prompt": "/best-practices Crea la base de datos EDU_LEARNING_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de learning analytics y personalización."
       },
       {
         "title": "Crear datos de actividad LMS",
         "desc": "Interacciones detalladas por recurso.",
-        "prompt": "Crea la tabla ACTIVIDAD_LMS_DETALLE con: student_id, asignatura_id, recurso_id, tipo_recurso (Video, Documento, Test, Ejercicio, Foro, Tarea), fecha_hora TIMESTAMP, duracion_min FLOAT, completado BOOLEAN, intentos INT, resultado FLOAT, dispositivo. Genera 2,000,000 interacciones para 5,000 estudiantes × 6 asignaturas × 1 semestre. Patrones: estudiantes exitosos acceden 4-5 días/semana; en riesgo <2 días/semana. Usa SQL GENERATOR(ROWCOUNT => 5000) con UNIFORM() para distribuciones numéricas."
+        "prompt": "/best-practices Crea la tabla ACTIVIDAD_LMS_DETALLE con: student_id, asignatura_id, recurso_id, tipo_recurso (Video, Documento, Test, Ejercicio, Foro, Tarea), fecha_hora TIMESTAMP, duracion_min FLOAT, completado BOOLEAN, intentos INT, resultado FLOAT, dispositivo. Genera 2,000,000 interacciones para 5,000 estudiantes × 6 asignaturas × 1 semestre. Patrones: estudiantes exitosos acceden 4-5 días/semana; en riesgo <2 días/semana. Usa SQL GENERATOR(ROWCOUNT => 5000) con UNIFORM() para distribuciones numéricas."
       },
       {
         "title": "Crear evaluaciones parciales",
         "desc": "Resultados intermedios.",
-        "prompt": "Crea la tabla EVALUACIONES_PARCIALES con: student_id, asignatura_id, evaluacion_id, tipo (Test_Online, Practica, Trabajo, Exposicion, Parcial), semana INT, nota FLOAT, fecha_entrega DATE, dias_anticipacion INT, tiempo_empleado_min INT. Genera evaluaciones semanales/quincenales. Correlación: entrega anticipada + más tiempo = mejor nota."
+        "prompt": "/best-practices Crea la tabla EVALUACIONES_PARCIALES con: student_id, asignatura_id, evaluacion_id, tipo (Test_Online, Practica, Trabajo, Exposicion, Parcial), semana INT, nota FLOAT, fecha_entrega DATE, dias_anticipacion INT, tiempo_empleado_min INT. Genera evaluaciones semanales/quincenales. Correlación: entrega anticipada + más tiempo = mejor nota."
       },
       {
         "title": "Calcular features de aprendizaje",
         "desc": "Indicadores por estudiante y asignatura.",
-        "prompt": "Crea vista FEATURES_LEARNING que por student_id y asignatura calcule:\n- Actividad: accesos_semana, tiempo_estudio_semana, regularidad_estudio\n- Recursos: videos_completados_pct, tests_intentados, ejercicios_resueltos\n- Entregas: puntualidad_pct, calidad_media, tendencia_notas\n- Social: participacion_foros, consultas_tutor, grupo_estudio\n- Patrón: tipo_recurso_preferido, horario_estudio, dispositivo_principal"
+        "prompt": "/best-practices Crea vista FEATURES_LEARNING que por student_id y asignatura calcule:\n- Actividad: accesos_semana, tiempo_estudio_semana, regularidad_estudio\n- Recursos: videos_completados_pct, tests_intentados, ejercicios_resueltos\n- Entregas: puntualidad_pct, calidad_media, tendencia_notas\n- Social: participacion_foros, consultas_tutor, grupo_estudio\n- Patrón: tipo_recurso_preferido, horario_estudio, dispositivo_principal"
       },
       {
         "title": "Detectar riesgo académico",
         "desc": "ML.CLASSIFICATION por asignatura.",
-        "prompt": "Usa ML.CLASSIFICATION para predecir riesgo de suspenso por asignatura: aprobará, en_riesgo, suspenso_probable. Variables: features de aprendizaje en semana 3-5. Evalúa accuracy y recall. El modelo debe capturar >70% de futuros suspensos en semana 5. Usa evaluate => TRUE para generar métricas de evaluación."
+        "prompt": "/best-practices Usa ML.CLASSIFICATION para predecir riesgo de suspenso por asignatura: aprobará, en_riesgo, suspenso_probable. Variables: features de aprendizaje en semana 3-5. Evalúa accuracy y recall. El modelo debe capturar >70% de futuros suspensos en semana 5. Usa evaluate => TRUE para generar métricas de evaluación."
       },
       {
         "title": "Generar recomendaciones personalizadas",
         "desc": "LLM para itinerarios de estudio.",
-        "prompt": "Crea función RECOMENDAR_ESTUDIO(student_id, asignatura_id) que use CORTEX.COMPLETE para generar: diagnóstico de situación, temas que reforzar basado en evaluaciones, recursos específicos recomendados del LMS, plan de estudio semanal adaptado al estilo del estudiante, estimación de esfuerzo necesario para aprobar."
+        "prompt": "/best-practices Crea función RECOMENDAR_ESTUDIO(student_id, asignatura_id) que use CORTEX.COMPLETE para generar: diagnóstico de situación, temas que reforzar basado en evaluaciones, recursos específicos recomendados del LMS, plan de estudio semanal adaptado al estilo del estudiante, estimación de esfuerzo necesario para aprobar."
       },
       {
         "title": "Dashboard de learning analytics",
         "desc": "Streamlit para profesores y estudiantes.",
-        "prompt": "Genera código Streamlit con:\n1. Vista profesor: clase con semáforo de riesgo por estudiante\n2. Vista estudiante: mi progreso, recomendaciones, plan de estudio\n3. Engagement por recurso: qué materiales funcionan mejor\n4. Alertas tempranas: estudiantes que cambian de nivel\n5. Comparativa: antes/después de recomendaciones\n6. Heatmap de actividad de la clase. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Vista profesor: clase con semáforo de riesgo por estudiante\n2. Vista estudiante: mi progreso, recomendaciones, plan de estudio\n3. Engagement por recurso: qué materiales funcionan mejor\n4. Alertas tempranas: estudiantes que cambian de nivel\n5. Comparativa: antes/después de recomendaciones\n6. Heatmap de actividad de la clase. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de alertas",
         "desc": "Automatizar detección.",
-        "prompt": "Crea Tasks:\n1. ACTUALIZAR_ACTIVIDAD: diario, carga nuevas interacciones LMS\n2. SCORING_SEMANAL: ejecuta modelo de riesgo por asignatura\n3. GENERAR_RECOMENDACIONES: semanal para estudiantes en riesgo\n4. ALERTAS_TUTOR: cuando estudiante cambia a riesgo alto\n5. Documenta. Objetivo: detectar 70% suspensos en semana 5, +10% aprobados."
+        "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_ACTIVIDAD: diario, carga nuevas interacciones LMS\n2. SCORING_SEMANAL: ejecuta modelo de riesgo por asignatura\n3. GENERAR_RECOMENDACIONES: semanal para estudiantes en riesgo\n4. ALERTAS_TUTOR: cuando estudiante cambia a riesgo alto\n5. Documenta. Objetivo: detectar 70% suspensos en semana 5, +10% aprobados."
       }
     ]
   },
@@ -1499,42 +1499,42 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para espacios.",
-        "prompt": "Crea la base de datos EDU_ESPACIOS_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de optimización de horarios y espacios."
+        "prompt": "/best-practices Crea la base de datos EDU_ESPACIOS_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de optimización de horarios y espacios."
       },
       {
         "title": "Crear catálogo de espacios",
         "desc": "Aulas y recursos disponibles.",
-        "prompt": "Crea la tabla ESPACIOS_UNIVERSITARIOS con: espacio_id, tipo (Aula, Laboratorio, Informatica, Auditorio, Seminario, Biblioteca), edificio, campus, capacidad INT, equipamiento (Proyector, Ordenadores, Lab_Quimica, Lab_Fisica, Pizarra_Digital), accesible BOOLEAN, coste_hora_eur FLOAT. Genera 300 espacios en 3 campus."
+        "prompt": "/best-practices Crea la tabla ESPACIOS_UNIVERSITARIOS con: espacio_id, tipo (Aula, Laboratorio, Informatica, Auditorio, Seminario, Biblioteca), edificio, campus, capacidad INT, equipamiento (Proyector, Ordenadores, Lab_Quimica, Lab_Fisica, Pizarra_Digital), accesible BOOLEAN, coste_hora_eur FLOAT. Genera 300 espacios en 3 campus."
       },
       {
         "title": "Crear datos de asignaturas y grupos",
         "desc": "Requisitos de planificación.",
-        "prompt": "Crea la tabla ASIGNATURAS_GRUPOS con: asignatura_id, grado, curso INT, semestre, grupo VARCHAR, tipo_clase (Teoria, Practica, Laboratorio, Seminario), alumnos_matriculados INT, horas_semana INT, profesor_id, requisitos_espacio (capacidad_min, equipamiento_necesario), restricciones TEXT. Genera 800 asignaturas-grupo de 15 grados."
+        "prompt": "/best-practices Crea la tabla ASIGNATURAS_GRUPOS con: asignatura_id, grado, curso INT, semestre, grupo VARCHAR, tipo_clase (Teoria, Practica, Laboratorio, Seminario), alumnos_matriculados INT, horas_semana INT, profesor_id, requisitos_espacio (capacidad_min, equipamiento_necesario), restricciones TEXT. Genera 800 asignaturas-grupo de 15 grados."
       },
       {
         "title": "Analizar ocupación histórica",
         "desc": "Uso real de espacios.",
-        "prompt": "Crea la tabla OCUPACION_HISTORICA con: espacio_id, fecha DATE, franja (8-9, 9-10, ..., 20-21), ocupado BOOLEAN, asignatura_id, asistencia_real INT, capacidad_usada_pct FLOAT. Genera datos de 2 cursos. Las franjas 9-13 tienen ocupación >85%; 15-17 al 50%; >18h al 20%."
+        "prompt": "/best-practices Crea la tabla OCUPACION_HISTORICA con: espacio_id, fecha DATE, franja (8-9, 9-10, ..., 20-21), ocupado BOOLEAN, asignatura_id, asistencia_real INT, capacidad_usada_pct FLOAT. Genera datos de 2 cursos. Las franjas 9-13 tienen ocupación >85%; 15-17 al 50%; >18h al 20%."
       },
       {
         "title": "Predecir demanda por franja",
         "desc": "ML.FORECAST de ocupación.",
-        "prompt": "Usa ML.FORECAST para predecir demanda de espacios por tipo, campus y franja. Variables: dia_semana, mes, periodo_exámenes, eventos. Identifica franjas infrautilizadas y saturadas. Generar mapa de calor de demanda por campus, día y hora. Usa evaluate => TRUE para generar métricas de evaluación."
+        "prompt": "/best-practices Usa ML.FORECAST para predecir demanda de espacios por tipo, campus y franja. Variables: dia_semana, mes, periodo_exámenes, eventos. Identifica franjas infrautilizadas y saturadas. Generar mapa de calor de demanda por campus, día y hora. Usa evaluate => TRUE para generar métricas de evaluación."
       },
       {
         "title": "Optimizar asignación",
         "desc": "Generar horario óptimo.",
-        "prompt": "Crea función OPTIMIZAR_HORARIOS(semestre, campus) que asigne asignaturas-grupo a espacios y franjas minimizando: conflictos de profesor, desplazamientos entre edificios, uso de franjas no preferidas. Maximizando: utilización >80%, satisfacción de preferencias. Generar horario completo del semestre."
+        "prompt": "/best-practices Crea función OPTIMIZAR_HORARIOS(semestre, campus) que asigne asignaturas-grupo a espacios y franjas minimizando: conflictos de profesor, desplazamientos entre edificios, uso de franjas no preferidas. Maximizando: utilización >80%, satisfacción de preferencias. Generar horario completo del semestre."
       },
       {
         "title": "Dashboard de espacios",
         "desc": "Streamlit de gestión.",
-        "prompt": "Genera código Streamlit con:\n1. Mapa de ocupación en tiempo real por campus y edificio\n2. Predicción de demanda por franja con heatmap\n3. Horario óptimo generado vs manual: comparativa\n4. Métricas: utilización, conflictos, desplazamientos\n5. Buscador de aulas libres por requisitos\n6. Simulador: impacto de añadir/quitar espacios. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de ocupación en tiempo real por campus y edificio\n2. Predicción de demanda por franja con heatmap\n3. Horario óptimo generado vs manual: comparativa\n4. Métricas: utilización, conflictos, desplazamientos\n5. Buscador de aulas libres por requisitos\n6. Simulador: impacto de añadir/quitar espacios. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de optimización",
         "desc": "Automatizar planificación.",
-        "prompt": "Crea Tasks:\n1. ACTUALIZAR_OCUPACION: diario, registra uso real\n2. PREDECIR_DEMANDA: mensual, actualiza predicciones\n3. GENERAR_HORARIO: semestral, optimiza asignación\n4. DETECTAR_INFRAUTILIZACION: semanal, identifica oportunidades\n5. Documenta. Objetivo: utilización 80%, conflictos -50%."
+        "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_OCUPACION: diario, registra uso real\n2. PREDECIR_DEMANDA: mensual, actualiza predicciones\n3. GENERAR_HORARIO: semestral, optimiza asignación\n4. DETECTAR_INFRAUTILIZACION: semanal, identifica oportunidades\n5. Documenta. Objetivo: utilización 80%, conflictos -50%."
       }
     ]
   },
@@ -1545,42 +1545,42 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para bibliometría.",
-        "prompt": "Crea la base de datos EDU_INVESTIGACION_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de NLP sobre producción científica."
+        "prompt": "/best-practices Crea la base de datos EDU_INVESTIGACION_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de NLP sobre producción científica."
       },
       {
         "title": "Crear repositorio de publicaciones",
         "desc": "Corpus de producción científica.",
-        "prompt": "Crea la tabla PUBLICACIONES con: pub_id, titulo TEXT, abstract TEXT, keywords TEXT, autores_json TEXT, departamento, area_conocimiento, revista, factor_impacto FLOAT, cuartil (Q1, Q2, Q3, Q4, Sin_Indexar), year INT, tipo (Articulo, Conferencia, Libro, Capitulo, Patent), open_access BOOLEAN, doi VARCHAR, citas_recibidas INT. Genera 15,000 publicaciones de 500 investigadores × 10 años."
+        "prompt": "/best-practices Crea la tabla PUBLICACIONES con: pub_id, titulo TEXT, abstract TEXT, keywords TEXT, autores_json TEXT, departamento, area_conocimiento, revista, factor_impacto FLOAT, cuartil (Q1, Q2, Q3, Q4, Sin_Indexar), year INT, tipo (Articulo, Conferencia, Libro, Capitulo, Patent), open_access BOOLEAN, doi VARCHAR, citas_recibidas INT. Genera 15,000 publicaciones de 500 investigadores × 10 años."
       },
       {
         "title": "Extraer temas y tendencias",
         "desc": "NLP sobre abstracts.",
-        "prompt": "Crea vista TEMAS_PUBLICACIONES que use CORTEX.COMPLETE para extraer de cada abstract: temas_principales (3-5 keywords), area_tematica, metodologia, innovacion_clave, aplicabilidad. Agrega por departamento y año para identificar tendencias: temas emergentes (crecimiento >30%/año), consolidados, en declive."
+        "prompt": "/best-practices Crea vista TEMAS_PUBLICACIONES que use CORTEX.COMPLETE para extraer de cada abstract: temas_principales (3-5 keywords), area_tematica, metodologia, innovacion_clave, aplicabilidad. Agrega por departamento y año para identificar tendencias: temas emergentes (crecimiento >30%/año), consolidados, en declive."
       },
       {
         "title": "Análisis de redes de colaboración",
         "desc": "Co-autoría y partnership.",
-        "prompt": "Crea vista REDES_COLABORACION que analice co-autorías para mapear: colaboraciones internas (entre departamentos), nacionales (entre universidades), internacionales (entre países). Calcular métricas: grado de colaboración, centralidad, clusters temáticos. Identificar oportunidades de colaboración no explotadas."
+        "prompt": "/best-practices Crea vista REDES_COLABORACION que analice co-autorías para mapear: colaboraciones internas (entre departamentos), nacionales (entre universidades), internacionales (entre países). Calcular métricas: grado de colaboración, centralidad, clusters temáticos. Identificar oportunidades de colaboración no explotadas."
       },
       {
         "title": "Búsqueda semántica en repositorio",
         "desc": "Cortex Search sobre producción.",
-        "prompt": "Crea Cortex Search Service sobre PUBLICACIONES indexando titulo + abstract + keywords + area_conocimiento. Demuestra: 'machine learning aplicado a medicina', 'sostenibilidad en cadena de suministro', 'inteligencia artificial en educación', 'nanomateriales para energía renovable'."
+        "prompt": "/best-practices Crea Cortex Search Service sobre PUBLICACIONES indexando titulo + abstract + keywords + area_conocimiento. Demuestra: 'machine learning aplicado a medicina', 'sostenibilidad en cadena de suministro', 'inteligencia artificial en educación', 'nanomateriales para energía renovable'."
       },
       {
         "title": "Análisis de impacto y benchmarking",
         "desc": "Métricas bibliométricas.",
-        "prompt": "Crea vista IMPACTO_INVESTIGADOR que por investigador calcule: publicaciones_total, publicaciones_Q1_pct, h_index_estimado, citas_totales, citas_media, colaboraciones_internacionales_pct. Benchmark contra media del área. Identificar investigadores emergentes (alto crecimiento, bajo H-index aún)."
+        "prompt": "/best-practices Crea vista IMPACTO_INVESTIGADOR que por investigador calcule: publicaciones_total, publicaciones_Q1_pct, h_index_estimado, citas_totales, citas_media, colaboraciones_internacionales_pct. Benchmark contra media del área. Identificar investigadores emergentes (alto crecimiento, bajo H-index aún)."
       },
       {
         "title": "Dashboard de inteligencia científica",
         "desc": "Streamlit de investigación.",
-        "prompt": "Genera código Streamlit con:\n1. Mapa de producción por departamento y área\n2. Tendencias temáticas con gráfico temporal\n3. Redes de colaboración interactivas\n4. Búsqueda semántica en repositorio\n5. Ranking de investigadores con benchmarking\n6. Áreas emergentes y recomendaciones de inversión. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de producción por departamento y área\n2. Tendencias temáticas con gráfico temporal\n3. Redes de colaboración interactivas\n4. Búsqueda semántica en repositorio\n5. Ranking de investigadores con benchmarking\n6. Áreas emergentes y recomendaciones de inversión. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de actualización",
         "desc": "Automatizar análisis.",
-        "prompt": "Crea Tasks:\n1. INGESTAR_PUBLICACIONES: mensual desde repositorio y bases\n2. EXTRAER_TEMAS: mensual sobre nuevas publicaciones\n3. ACTUALIZAR_REDES: trimestral, recalcula colaboraciones\n4. ACTUALIZAR_INDICE: mensual, reindeza Cortex Search\n5. Documenta. Objetivo: cobertura 100%, tendencias +1-2 años."
+        "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_PUBLICACIONES: mensual desde repositorio y bases\n2. EXTRAER_TEMAS: mensual sobre nuevas publicaciones\n3. ACTUALIZAR_REDES: trimestral, recalcula colaboraciones\n4. ACTUALIZAR_INDICE: mensual, reindeza Cortex Search\n5. Documenta. Objetivo: cobertura 100%, tendencias +1-2 años."
       }
     ]
   },
@@ -1591,42 +1591,42 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para calidad.",
-        "prompt": "Crea la base de datos EDU_CALIDAD_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de análisis de satisfacción y calidad docente."
+        "prompt": "/best-practices Crea la base de datos EDU_CALIDAD_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de análisis de satisfacción y calidad docente."
       },
       {
         "title": "Crear datos de feedback",
         "desc": "Múltiples fuentes de opinión.",
-        "prompt": "Crea la tabla FEEDBACK_ESTUDIANTE con: feedback_id, student_id_hash, fuente (Encuesta_Docente, Encuesta_Programa, Foro_Estudiantes, Google_Reviews, Red_Social), asignatura_id, profesor_hash, semestre, texto TEXT, puntuacion INT (1-5), tipo (Positivo, Neutro, Negativo, Sugerencia). Genera 40,000 feedbacks de 4 semestres. Distribución: 35% positivo, 35% neutro, 30% negativo."
+        "prompt": "/best-practices Crea la tabla FEEDBACK_ESTUDIANTE con: feedback_id, student_id_hash, fuente (Encuesta_Docente, Encuesta_Programa, Foro_Estudiantes, Google_Reviews, Red_Social), asignatura_id, profesor_hash, semestre, texto TEXT, puntuacion INT (1-5), tipo (Positivo, Neutro, Negativo, Sugerencia). Genera 40,000 feedbacks de 4 semestres. Distribución: 35% positivo, 35% neutro, 30% negativo."
       },
       {
         "title": "Analizar sentimiento",
         "desc": "Sentimiento por asignatura y profesor.",
-        "prompt": "Crea vista SENTIMIENTO_DOCENTE que use CORTEX.SENTIMENT sobre cada feedback para: sentimiento_score, sentimiento_label. Agrega por asignatura y profesor: media, distribución, tendencia semestral. Identifica asignaturas con sentimiento negativo sostenido."
+        "prompt": "/best-practices Crea vista SENTIMIENTO_DOCENTE que use CORTEX.SENTIMENT sobre cada feedback para: sentimiento_score, sentimiento_label. Agrega por asignatura y profesor: media, distribución, tendencia semestral. Identifica asignaturas con sentimiento negativo sostenido."
       },
       {
         "title": "Clasificar por tema",
         "desc": "Categorización automática.",
-        "prompt": "Crea vista TEMAS_FEEDBACK que use CORTEX.COMPLETE para clasificar: tema_principal (Contenido, Metodologia, Evaluacion, Trato, Recursos, Carga_Trabajo, Utilidad_Profesional), subtema, es_accionable BOOLEAN. Demuestra con 10 ejemplos diversos."
+        "prompt": "/best-practices Crea vista TEMAS_FEEDBACK que use CORTEX.COMPLETE para clasificar: tema_principal (Contenido, Metodologia, Evaluacion, Trato, Recursos, Carga_Trabajo, Utilidad_Profesional), subtema, es_accionable BOOLEAN. Demuestra con 10 ejemplos diversos."
       },
       {
         "title": "Correlacionar con rendimiento",
         "desc": "Satisfacción vs resultados.",
-        "prompt": "Crea vista CORRELACION_SATISFACCION_RENDIMIENTO que por asignatura cruce: satisfacción media, sentimiento, con tasa_aprobados, nota_media, tasa_abandono_asignatura. Identificar: asignaturas con alta satisfacción y bajo rendimiento (fácil), baja satisfacción y alto rendimiento (exigente pero efectiva)."
+        "prompt": "/best-practices Crea vista CORRELACION_SATISFACCION_RENDIMIENTO que por asignatura cruce: satisfacción media, sentimiento, con tasa_aprobados, nota_media, tasa_abandono_asignatura. Identificar: asignaturas con alta satisfacción y bajo rendimiento (fácil), baja satisfacción y alto rendimiento (exigente pero efectiva)."
       },
       {
         "title": "Detectar alertas de calidad",
         "desc": "Alertas automáticas.",
-        "prompt": "Crea vista ALERTAS_CALIDAD_DOCENTE que detecte: sentimiento negativo >2 semestres, cluster de quejas del mismo tema, caída súbita de puntuación, divergencia significativa profesor vs media departamento. Generar alerta con contexto y recomendación."
+        "prompt": "/best-practices Crea vista ALERTAS_CALIDAD_DOCENTE que detecte: sentimiento negativo >2 semestres, cluster de quejas del mismo tema, caída súbita de puntuación, divergencia significativa profesor vs media departamento. Generar alerta con contexto y recomendación."
       },
       {
         "title": "Dashboard de calidad",
         "desc": "Streamlit de gestión.",
-        "prompt": "Genera código Streamlit con:\n1. Ranking de satisfacción por asignatura y profesor\n2. Análisis temático: mejores prácticas y áreas de mejora\n3. Correlación satisfacción-rendimiento\n4. Alertas de calidad activas\n5. Tendencia por semestre y departamento\n6. Comparativa entre titulaciones. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Ranking de satisfacción por asignatura y profesor\n2. Análisis temático: mejores prácticas y áreas de mejora\n3. Correlación satisfacción-rendimiento\n4. Alertas de calidad activas\n5. Tendencia por semestre y departamento\n6. Comparativa entre titulaciones. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de análisis",
         "desc": "Automatizar procesamiento.",
-        "prompt": "Crea Tasks:\n1. INGESTAR_FEEDBACK: tras cada periodo de encuestas\n2. ANALIZAR_SENTIMIENTO: semanal sobre nuevo feedback\n3. CLASIFICAR_TEMAS: semanal\n4. DETECTAR_ALERTAS: mensual\n5. Documenta. Objetivo: análisis <48h, acciones de mejora +40%."
+        "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_FEEDBACK: tras cada periodo de encuestas\n2. ANALIZAR_SENTIMIENTO: semanal sobre nuevo feedback\n3. CLASIFICAR_TEMAS: semanal\n4. DETECTAR_ALERTAS: mensual\n5. Documenta. Objetivo: análisis <48h, acciones de mejora +40%."
       }
     ]
   },
@@ -1637,47 +1637,47 @@ const PROMPTS = {
       {
         "title": "Configurar Feature Store",
         "desc": "Crear base de datos.",
-        "prompt": "Crea la base de datos EDU_STUDENT360_DB con esquema FEATURE_STORE y warehouse EDU_WH. Comenta que implementa Snowflake Feature Store para Perfil de Estudiante 360 con cumplimiento RGPD."
+        "prompt": "/best-practices Crea la base de datos EDU_STUDENT360_DB con esquema FEATURE_STORE y warehouse EDU_WH. Comenta que implementa Snowflake Feature Store para Perfil de Estudiante 360 con cumplimiento RGPD."
       },
       {
         "title": "Crear datos fuente",
         "desc": "5 sistemas fuente principales.",
-        "prompt": "Crea 5 tablas fuente:\n1. RAW_DEMOGRAPHICS: student_id, fecha_nacimiento, genero, nacionalidad, provincia_residencia, codigo_postal, tipo_acceso (Selectividad, FP, Mayores_25, Internacional)\n2. RAW_ACADEMIC: student_id, grado, curso, creditos_matriculados INT, creditos_aprobados INT, nota_media FLOAT, convocatorias_extra INT, estado_matricula\n3. RAW_ENGAGEMENT: student_id, semestre, accesos_lms INT, tiempo_lms_min INT, biblioteca_prestamos INT, deportes_inscrito BOOLEAN, asociaciones INT, eventos_asistidos INT\n4. RAW_FINANCIAL: student_id, semestre, beca_tipo, beca_importe FLOAT, deuda_pendiente FLOAT, pago_fraccionado BOOLEAN, situacion_economica\n5. RAW_CAREER: student_id, practicas_realizadas INT, empresa_practicas VARCHAR, orientacion_sesiones INT, cv_actualizado BOOLEAN, competencias_certificadas INT\nGenera datos para 40,000 estudiantes. Usa SQL GENERATOR(ROWCOUNT => 40000) con UNIFORM() para distribuciones numéricas."
+        "prompt": "/best-practices Crea 5 tablas fuente:\n1. RAW_DEMOGRAPHICS: student_id, fecha_nacimiento, genero, nacionalidad, provincia_residencia, codigo_postal, tipo_acceso (Selectividad, FP, Mayores_25, Internacional)\n2. RAW_ACADEMIC: student_id, grado, curso, creditos_matriculados INT, creditos_aprobados INT, nota_media FLOAT, convocatorias_extra INT, estado_matricula\n3. RAW_ENGAGEMENT: student_id, semestre, accesos_lms INT, tiempo_lms_min INT, biblioteca_prestamos INT, deportes_inscrito BOOLEAN, asociaciones INT, eventos_asistidos INT\n4. RAW_FINANCIAL: student_id, semestre, beca_tipo, beca_importe FLOAT, deuda_pendiente FLOAT, pago_fraccionado BOOLEAN, situacion_economica\n5. RAW_CAREER: student_id, practicas_realizadas INT, empresa_practicas VARCHAR, orientacion_sesiones INT, cv_actualizado BOOLEAN, competencias_certificadas INT\nGenera datos para 40,000 estudiantes. Usa SQL GENERATOR(ROWCOUNT => 40000) con UNIFORM() para distribuciones numéricas."
       },
       {
         "title": "Crear Entity",
         "desc": "Definir Entity 'student' en Feature Store.",
-        "prompt": "Usando Snowflake Feature Store:\n\nfrom snowflake.ml.feature_store import FeatureStore, Entity, FeatureView\nfs = FeatureStore(session=session, database='EDU_STUDENT360_DB', name='FEATURE_STORE')\n\nstudent = Entity(\n    name='STUDENT',\n    join_keys=['STUDENT_ID'],\n    desc='Estudiante universitario con perfil 360 - Cumplimiento RGPD'\n)\nfs.register_entity(student)\nVerifica registro."
+        "prompt": "/best-practices Usando Snowflake Feature Store:\n\nfrom snowflake.ml.feature_store import FeatureStore, Entity, FeatureView\nfs = FeatureStore(session=session, database='EDU_STUDENT360_DB', name='FEATURE_STORE')\n\nstudent = Entity(\n    name='STUDENT',\n    join_keys=['STUDENT_ID'],\n    desc='Estudiante universitario con perfil 360 - Cumplimiento RGPD'\n)\nfs.register_entity(student)\nVerifica registro."
       },
       {
         "title": "Crear FeatureViews demográfico y académico",
         "desc": "Perfil básico y rendimiento.",
-        "prompt": "Crea 2 FeatureViews:\n1. DEMOGRAPHICS desde RAW_DEMOGRAPHICS:\n- grupo_edad (17-19, 20-22, 23-25, 25+), genero, es_internacional\n- tipo_acceso, provincia_grupo\n\n2. ACADEMIC desde RAW_ACADEMIC:\n- nota_media_actual, pct_creditos_aprobados, progreso_grado_pct\n- convocatorias_extra, en_riesgo_academico BOOLEAN\n- rendimiento_vs_cohorte (superior, medio, inferior)\n\nRefresh semanal. Enmascarar fecha_nacimiento exacta."
+        "prompt": "/best-practices Crea 2 FeatureViews:\n1. DEMOGRAPHICS desde RAW_DEMOGRAPHICS:\n- grupo_edad (17-19, 20-22, 23-25, 25+), genero, es_internacional\n- tipo_acceso, provincia_grupo\n\n2. ACADEMIC desde RAW_ACADEMIC:\n- nota_media_actual, pct_creditos_aprobados, progreso_grado_pct\n- convocatorias_extra, en_riesgo_academico BOOLEAN\n- rendimiento_vs_cohorte (superior, medio, inferior)\n\nRefresh semanal. Enmascarar fecha_nacimiento exacta."
       },
       {
         "title": "Crear FeatureViews engagement y financiero",
         "desc": "Participación y situación económica.",
-        "prompt": "Crea 2 FeatureViews:\n1. ENGAGEMENT desde RAW_ENGAGEMENT:\n- actividad_lms_grupo (alta, media, baja, inactivo)\n- biblioteca_activo BOOLEAN, vida_campus_score\n- tendencia_engagement (creciente, estable, decreciente)\n\n2. FINANCIAL desde RAW_FINANCIAL:\n- tiene_beca BOOLEAN, tipo_beca\n- situacion_deuda (al_dia, pendiente, moroso)\n- riesgo_economico BOOLEAN\n\nRefresh semanal. Control de acceso: datos financieros solo para becas/dirección."
+        "prompt": "/best-practices Crea 2 FeatureViews:\n1. ENGAGEMENT desde RAW_ENGAGEMENT:\n- actividad_lms_grupo (alta, media, baja, inactivo)\n- biblioteca_activo BOOLEAN, vida_campus_score\n- tendencia_engagement (creciente, estable, decreciente)\n\n2. FINANCIAL desde RAW_FINANCIAL:\n- tiene_beca BOOLEAN, tipo_beca\n- situacion_deuda (al_dia, pendiente, moroso)\n- riesgo_economico BOOLEAN\n\nRefresh semanal. Control de acceso: datos financieros solo para becas/dirección."
       },
       {
         "title": "Crear FeatureView de empleabilidad",
         "desc": "Orientación y competencias.",
-        "prompt": "Crea FeatureView CAREER desde RAW_CAREER:\n- practicas_realizadas, tiene_practicas_curriculares BOOLEAN\n- orientacion_activa BOOLEAN, cv_actualizado\n- competencias_certificadas, empleabilidad_score\n\nRefresh mensual. Demuestra consumo con fs.get_features() para un estudiante."
+        "prompt": "/best-practices Crea FeatureView CAREER desde RAW_CAREER:\n- practicas_realizadas, tiene_practicas_curriculares BOOLEAN\n- orientacion_activa BOOLEAN, cv_actualizado\n- competencias_certificadas, empleabilidad_score\n\nRefresh mensual. Demuestra consumo con fs.get_features() para un estudiante."
       },
       {
         "title": "Servir features para otros UCs",
         "desc": "Demostrar consumo.",
-        "prompt": "Demuestra consumo de features:\n\n# Para abandono (UC01)\ndf_abandono = fs.get_features(entity=student, feature_views=['ACADEMIC', 'ENGAGEMENT', 'FINANCIAL'], spine_df=activos_df)\n\n# Para learning analytics (UC04)\ndf_learning = fs.get_features(entity=student, feature_views=['ACADEMIC', 'ENGAGEMENT'], spine_df=asignatura_df)\n\n# Para becas (UC17)\ndf_becas = fs.get_features(entity=student, feature_views=['DEMOGRAPHICS', 'ACADEMIC', 'FINANCIAL'], spine_df=candidatos_df)\n\nMuestra DataFrames resultantes."
+        "prompt": "/best-practices Demuestra consumo de features:\n\n# Para abandono (UC01)\ndf_abandono = fs.get_features(entity=student, feature_views=['ACADEMIC', 'ENGAGEMENT', 'FINANCIAL'], spine_df=activos_df)\n\n# Para learning analytics (UC04)\ndf_learning = fs.get_features(entity=student, feature_views=['ACADEMIC', 'ENGAGEMENT'], spine_df=asignatura_df)\n\n# Para becas (UC17)\ndf_becas = fs.get_features(entity=student, feature_views=['DEMOGRAPHICS', 'ACADEMIC', 'FINANCIAL'], spine_df=candidatos_df)\n\nMuestra DataFrames resultantes."
       },
       {
         "title": "Dashboard del Feature Store",
         "desc": "Streamlit de monitorización.",
-        "prompt": "Genera código Streamlit con:\n1. Resumen: 5 FeatureViews, features totales, último refresh\n2. Buscador de estudiante con perfil 360 (con enmascaramiento RGPD)\n3. Distribución de perfiles por riesgo y engagement\n4. Métricas de calidad: completitud, freshness, drift\n5. Audit log de accesos\n6. Cumplimiento RGPD: finalidad, minimización, accesos. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen: 5 FeatureViews, features totales, último refresh\n2. Buscador de estudiante con perfil 360 (con enmascaramiento RGPD)\n3. Distribución de perfiles por riesgo y engagement\n4. Métricas de calidad: completitud, freshness, drift\n5. Audit log de accesos\n6. Cumplimiento RGPD: finalidad, minimización, accesos. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de mantenimiento",
         "desc": "Automatizar actualización.",
-        "prompt": "Crea Tasks:\n1. REFRESH_DEMOGRAPHICS: inicio de curso desde SGA\n2. REFRESH_ACADEMIC: semanal desde expediente\n3. REFRESH_ENGAGEMENT: semanal desde LMS y servicios\n4. REFRESH_FINANCIAL: mensual desde becas y facturación\n5. REFRESH_CAREER: mensual desde orientación y prácticas\n6. MONITOR_QUALITY: semanal, verifica completitud y drift\n7. Documenta. Cumplimiento RGPD estricto."
+        "prompt": "/best-practices Crea Tasks:\n1. REFRESH_DEMOGRAPHICS: inicio de curso desde SGA\n2. REFRESH_ACADEMIC: semanal desde expediente\n3. REFRESH_ENGAGEMENT: semanal desde LMS y servicios\n4. REFRESH_FINANCIAL: mensual desde becas y facturación\n5. REFRESH_CAREER: mensual desde orientación y prácticas\n6. MONITOR_QUALITY: semanal, verifica completitud y drift\n7. Documenta. Cumplimiento RGPD estricto."
       }
     ]
   },
@@ -1688,42 +1688,42 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para marketing.",
-        "prompt": "Crea la base de datos EDU_MARKETING_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de segmentación de campañas de captación."
+        "prompt": "/best-practices Crea la base de datos EDU_MARKETING_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de segmentación de campañas de captación."
       },
       {
         "title": "Crear datos de leads y conversión",
         "desc": "Historial de captación.",
-        "prompt": "Crea la tabla LEADS_HISTORICO con: lead_id, ciclo_admision VARCHAR, fuente, programa_interes, perfil_edad_grupo (17-18, 19-22, 23-30, 30+), perfil_formacion (Bachillerato, FP, Universidad, Profesional), ubicacion_region, interacciones_total INT, visito_campus BOOLEAN, webinar_asistido BOOLEAN, scoring_manual INT, matriculado BOOLEAN, programa_matriculado. Genera 80,000 leads de 4 ciclos con tasa de conversión 5%."
+        "prompt": "/best-practices Crea la tabla LEADS_HISTORICO con: lead_id, ciclo_admision VARCHAR, fuente, programa_interes, perfil_edad_grupo (17-18, 19-22, 23-30, 30+), perfil_formacion (Bachillerato, FP, Universidad, Profesional), ubicacion_region, interacciones_total INT, visito_campus BOOLEAN, webinar_asistido BOOLEAN, scoring_manual INT, matriculado BOOLEAN, programa_matriculado. Genera 80,000 leads de 4 ciclos con tasa de conversión 5%."
       },
       {
         "title": "Crear segmentos",
         "desc": "Microsegmentación por comportamiento.",
-        "prompt": "Usa ML.CLASSIFICATION para crear segmentos de leads: explorador (mucha web, no contacta), decidido (pocas interacciones, alta conversión), comparador (descarga de varias universidades), recomendado (viene de prescriptor), professional (busca máster/executive). Para cada segmento: tasa de conversión, canal preferido, mensaje que convierte. Usa evaluate => TRUE para generar métricas de evaluación."
+        "prompt": "/best-practices Usa ML.CLASSIFICATION para crear segmentos de leads: explorador (mucha web, no contacta), decidido (pocas interacciones, alta conversión), comparador (descarga de varias universidades), recomendado (viene de prescriptor), professional (busca máster/executive). Para cada segmento: tasa de conversión, canal preferido, mensaje que convierte. Usa evaluate => TRUE para generar métricas de evaluación."
       },
       {
         "title": "Generar mensajes personalizados",
         "desc": "LLM para contenido de campaña.",
-        "prompt": "Crea función GENERAR_MENSAJE(lead_id, canal, fase) que use CORTEX.COMPLETE para generar: asunto de email, body personalizado, CTA adaptado al segmento. Parámetros: programa, segmento, fase del funnel, interacciones previas. Demostrar 5 mensajes para 5 segmentos diferentes."
+        "prompt": "/best-practices Crea función GENERAR_MENSAJE(lead_id, canal, fase) que use CORTEX.COMPLETE para generar: asunto de email, body personalizado, CTA adaptado al segmento. Parámetros: programa, segmento, fase del funnel, interacciones previas. Demostrar 5 mensajes para 5 segmentos diferentes."
       },
       {
         "title": "Scoring de leads",
         "desc": "Priorización ML.",
-        "prompt": "Crea vista SCORING_LEADS que por lead calcule: probabilidad_conversion, segmento, canal_optimo, mensaje_recomendado, timing_optimo (mejor momento para contactar), coste_estimado_conversion. Ordenar por probabilidad × valor del programa."
+        "prompt": "/best-practices Crea vista SCORING_LEADS que por lead calcule: probabilidad_conversion, segmento, canal_optimo, mensaje_recomendado, timing_optimo (mejor momento para contactar), coste_estimado_conversion. Ordenar por probabilidad × valor del programa."
       },
       {
         "title": "Analizar ROI por canal",
         "desc": "Efectividad de canales.",
-        "prompt": "Crea vista ROI_CANALES que por fuente × programa × segmento calcule: leads, conversiones, CPA, coste_total, revenue_matriculas, ROI_pct. Identificar canales ineficientes (CPA >2x media) y eficientes (ROI >300%)."
+        "prompt": "/best-practices Crea vista ROI_CANALES que por fuente × programa × segmento calcule: leads, conversiones, CPA, coste_total, revenue_matriculas, ROI_pct. Identificar canales ineficientes (CPA >2x media) y eficientes (ROI >300%)."
       },
       {
         "title": "Dashboard de marketing",
         "desc": "Streamlit de campañas.",
-        "prompt": "Genera código Streamlit con:\n1. Segmentos de leads con perfil y tasa de conversión\n2. Scoring de leads activos con acciones recomendadas\n3. ROI por canal, programa y segmento\n4. Generador de mensajes personalizados con LLM\n5. Funnel de conversión por segmento\n6. Presupuesto óptimo por canal. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Segmentos de leads con perfil y tasa de conversión\n2. Scoring de leads activos con acciones recomendadas\n3. ROI por canal, programa y segmento\n4. Generador de mensajes personalizados con LLM\n5. Funnel de conversión por segmento\n6. Presupuesto óptimo por canal. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de captación",
         "desc": "Automatizar marketing.",
-        "prompt": "Crea Tasks:\n1. SCORING_DIARIO: puntuar nuevos leads\n2. SEGMENTAR: semanal, actualizar segmentos\n3. GENERAR_CONTENIDO: semanal, crear mensajes por segmento\n4. ANALIZAR_ROI: mensual por canal\n5. Documenta. Objetivo: CPA -25%, conversión del 3% al 6%."
+        "prompt": "/best-practices Crea Tasks:\n1. SCORING_DIARIO: puntuar nuevos leads\n2. SEGMENTAR: semanal, actualizar segmentos\n3. GENERAR_CONTENIDO: semanal, crear mensajes por segmento\n4. ANALIZAR_ROI: mensual por canal\n5. Documenta. Objetivo: CPA -25%, conversión del 3% al 6%."
       }
     ]
   },
@@ -1734,42 +1734,42 @@ const PROMPTS = {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para integridad.",
-        "prompt": "Crea la base de datos EDU_INTEGRIDAD_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de detección de fraude académico y plagio."
+        "prompt": "/best-practices Crea la base de datos EDU_INTEGRIDAD_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de detección de fraude académico y plagio."
       },
       {
         "title": "Crear corpus de entregas",
         "desc": "Historial de trabajos de estudiantes.",
-        "prompt": "Crea la tabla ENTREGAS_ACADEMICAS con: entrega_id, student_id, asignatura_id, tipo (Ensayo, Trabajo, Codigo, Presentacion, TFG), fecha_entrega TIMESTAMP, texto TEXT, longitud_palabras INT, tiempo_edicion_min INT, metadata_documento TEXT. Genera 100,000 entregas de 5,000 estudiantes × 2 cursos. El 8% tiene indicios de fraude (plagio, IA, suplantación). Usa SQL GENERATOR(ROWCOUNT => 5000) con UNIFORM() para distribuciones numéricas."
+        "prompt": "/best-practices Crea la tabla ENTREGAS_ACADEMICAS con: entrega_id, student_id, asignatura_id, tipo (Ensayo, Trabajo, Codigo, Presentacion, TFG), fecha_entrega TIMESTAMP, texto TEXT, longitud_palabras INT, tiempo_edicion_min INT, metadata_documento TEXT. Genera 100,000 entregas de 5,000 estudiantes × 2 cursos. El 8% tiene indicios de fraude (plagio, IA, suplantación). Usa SQL GENERATOR(ROWCOUNT => 5000) con UNIFORM() para distribuciones numéricas."
       },
       {
         "title": "Crear baseline estilométrico",
         "desc": "Huella de escritura del estudiante.",
-        "prompt": "Crea vista PERFIL_ESTILOMETRICO que por student_id calcule baseline de escritura: longitud_media_frase, vocabulario_riqueza, uso_conectores, complejidad_sintactica, errores_ortograficos_ratio, muletillas_frecuentes, formalidad_score. Basado en entregas verificadas de los primeros meses."
+        "prompt": "/best-practices Crea vista PERFIL_ESTILOMETRICO que por student_id calcule baseline de escritura: longitud_media_frase, vocabulario_riqueza, uso_conectores, complejidad_sintactica, errores_ortograficos_ratio, muletillas_frecuentes, formalidad_score. Basado en entregas verificadas de los primeros meses."
       },
       {
         "title": "Detectar contenido generado por IA",
         "desc": "Análisis con LLM.",
-        "prompt": "Crea función DETECTAR_IA(texto) que use CORTEX.COMPLETE para analizar: perplejidad del texto, uniformidad estilística, patrones típicos de LLM (frases genéricas, estructura predecible), coherencia excesiva. Retorna: probabilidad_ia_pct, evidencias, fragmentos_sospechosos. Comparar con baseline estilométrico del estudiante."
+        "prompt": "/best-practices Crea función DETECTAR_IA(texto) que use CORTEX.COMPLETE para analizar: perplejidad del texto, uniformidad estilística, patrones típicos de LLM (frases genéricas, estructura predecible), coherencia excesiva. Retorna: probabilidad_ia_pct, evidencias, fragmentos_sospechosos. Comparar con baseline estilométrico del estudiante."
       },
       {
         "title": "Detectar plagio semántico",
         "desc": "Cortex Search para similitud.",
-        "prompt": "Crea Cortex Search Service sobre ENTREGAS_ACADEMICAS. Para cada nueva entrega: buscar las 10 más similares semánticamente. Crea función DETECTAR_PLAGIO(entrega_id) que identifique: similitud_maxima_pct, entregas_similares, fragmentos_coincidentes, tipo_plagio (copia directa, paráfrasis, patchwork)."
+        "prompt": "/best-practices Crea Cortex Search Service sobre ENTREGAS_ACADEMICAS. Para cada nueva entrega: buscar las 10 más similares semánticamente. Crea función DETECTAR_PLAGIO(entrega_id) que identifique: similitud_maxima_pct, entregas_similares, fragmentos_coincidentes, tipo_plagio (copia directa, paráfrasis, patchwork)."
       },
       {
         "title": "Detectar suplantación en exámenes",
         "desc": "Patrones de comportamiento.",
-        "prompt": "Crea tabla ACTIVIDAD_EXAMEN_ONLINE con: student_id, examen_id, hora_inicio, hora_fin, cambios_ventana INT, IP_address, navegador, tiempo_respuesta_por_pregunta TEXT. Usa ML.CLASSIFICATION para detectar suplantación: cambio de patrón de respuesta, IP inusual, tiempos atípicos vs perfil habitual. Usa evaluate => TRUE para generar métricas de evaluación."
+        "prompt": "/best-practices Crea tabla ACTIVIDAD_EXAMEN_ONLINE con: student_id, examen_id, hora_inicio, hora_fin, cambios_ventana INT, IP_address, navegador, tiempo_respuesta_por_pregunta TEXT. Usa ML.CLASSIFICATION para detectar suplantación: cambio de patrón de respuesta, IP inusual, tiempos atípicos vs perfil habitual. Usa evaluate => TRUE para generar métricas de evaluación."
       },
       {
         "title": "Dashboard de integridad",
         "desc": "Streamlit de gestión.",
-        "prompt": "Genera código Streamlit con:\n1. Alertas de fraude con evidencia detallada\n2. Análisis estilométrico: perfil del estudiante vs entrega\n3. Detección de IA con probabilidad y fragmentos\n4. Similitud semántica con entregas previas\n5. Métricas: detecciones, falsos positivos, tendencia\n6. Estadísticas por asignatura y tipo de evaluación. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Alertas de fraude con evidencia detallada\n2. Análisis estilométrico: perfil del estudiante vs entrega\n3. Detección de IA con probabilidad y fragmentos\n4. Similitud semántica con entregas previas\n5. Métricas: detecciones, falsos positivos, tendencia\n6. Estadísticas por asignatura y tipo de evaluación. Usa snowflake.connector.connect() para ejecución local del dashboard."
       },
       {
         "title": "Pipeline de detección",
         "desc": "Automatizar análisis.",
-        "prompt": "Crea Tasks:\n1. ANALIZAR_ENTREGA: con cada nueva entrega\n2. ACTUALIZAR_BASELINE: mensual, recalcula perfiles estilométricos\n3. ANALIZAR_EXAMENES: tras cada examen online\n4. REINDEXAR_CORPUS: mensual, actualiza Cortex Search\n5. Documenta. Objetivo: detectar 80% fraude, <5% falsos positivos."
+        "prompt": "/best-practices Crea Tasks:\n1. ANALIZAR_ENTREGA: con cada nueva entrega\n2. ACTUALIZAR_BASELINE: mensual, recalcula perfiles estilométricos\n3. ANALIZAR_EXAMENES: tras cada examen online\n4. REINDEXAR_CORPUS: mensual, actualiza Cortex Search\n5. Documenta. Objetivo: detectar 80% fraude, <5% falsos positivos."
       }
     ]
   }
@@ -1783,42 +1783,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para rendimiento.",
-        "prompt": "Crea la base de datos EDU_RENDIMIENTO_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de rendimiento académico."
+        "prompt": "/best-practices Crea la base de datos EDU_RENDIMIENTO_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de rendimiento académico."
       },
       {
         "title": "Crear datos de asignaturas",
         "desc": "Historial de calificaciones por asignatura.",
-        "prompt": "Crea la tabla CALIFICACIONES_ASIGNATURA con: student_id, asignatura_id, asignatura_nombre, grado, curso INT, semestre, convocatoria INT, nota_final FLOAT, aprobado BOOLEAN, profesor_id, grupo VARCHAR, año_academico. Genera 300,000 calificaciones de 10,000 estudiantes × 5 cursos. Tasa media de aprobados: 68%, con rango 40-95% según asignatura."
+        "prompt": "/best-practices Crea la tabla CALIFICACIONES_ASIGNATURA con: student_id, asignatura_id, asignatura_nombre, grado, curso INT, semestre, convocatoria INT, nota_final FLOAT, aprobado BOOLEAN, profesor_id, grupo VARCHAR, año_academico. Genera 300,000 calificaciones de 10,000 estudiantes × 5 cursos. Tasa media de aprobados: 68%, con rango 40-95% según asignatura."
       },
       {
         "title": "Crear indicadores tempranos",
         "desc": "Señales de las primeras semanas.",
-        "prompt": "Crea la tabla INDICADORES_TEMPRANOS con: student_id, asignatura_id, semana INT (1-15), asistencia_pct FLOAT, entregas_realizadas INT, entregas_pendientes INT, nota_parcial FLOAT, accesos_material INT, participacion_clase INT, consultas_tutor INT. Genera datos semanales. La correlación nota parcial semana 5 → final es r=0.72."
+        "prompt": "/best-practices Crea la tabla INDICADORES_TEMPRANOS con: student_id, asignatura_id, semana INT (1-15), asistencia_pct FLOAT, entregas_realizadas INT, entregas_pendientes INT, nota_parcial FLOAT, accesos_material INT, participacion_clase INT, consultas_tutor INT. Genera datos semanales. La correlación nota parcial semana 5 → final es r=0.72."
       },
       {
         "title": "Calcular features de rendimiento",
         "desc": "Indicadores predictivos.",
-        "prompt": "Crea vista FEATURES_RENDIMIENTO que por student_id y asignatura en semana 5 calcule:\n- Académico: nota_parcial_media, entregas_pct, asistencia_pct\n- Engagement: accesos_material, participacion, consultas\n- Histórico: nota_asignaturas_previas_rama, media_expediente, aprobados_primera_convocatoria_pct\n- Contexto: dificultad_asignatura (tasa_aprobados_historica), ratio_alumnos_profesor\n- Tendencia: cambio_rendimiento_semana_1_a_5"
+        "prompt": "/best-practices Crea vista FEATURES_RENDIMIENTO que por student_id y asignatura en semana 5 calcule:\n- Académico: nota_parcial_media, entregas_pct, asistencia_pct\n- Engagement: accesos_material, participacion, consultas\n- Histórico: nota_asignaturas_previas_rama, media_expediente, aprobados_primera_convocatoria_pct\n- Contexto: dificultad_asignatura (tasa_aprobados_historica), ratio_alumnos_profesor\n- Tendencia: cambio_rendimiento_semana_1_a_5"
       },
       {
         "title": "Entrenar modelo predictivo",
         "desc": "ML.CLASSIFICATION por asignatura.",
-        "prompt": "Usa ML.CLASSIFICATION para predecir resultado: aprobará, en_riesgo, suspenso_probable. Variables: features en semana 5. Entrenar con 3 cursos, validar con el 4º. Evalúa accuracy, recall por categoría. Objetivo: capturar >70% de suspensos en semana 5."
+        "prompt": "/best-practices Usa ML.CLASSIFICATION para predecir resultado: aprobará, en_riesgo, suspenso_probable. Variables: features en semana 5. Entrenar con 3 cursos, validar con el 4º. Evalúa accuracy, recall por categoría. Objetivo: capturar >70% de suspensos en semana 5."
       },
       {
         "title": "Generar alertas y recomendaciones",
         "desc": "Acciones para tutores.",
-        "prompt": "Crea vista ALERTAS_RENDIMIENTO que para estudiantes en riesgo genere: student_id, asignatura, riesgo_nivel, factores_principales, recomendacion (tutoría académica, grupo de estudio, recursos adicionales, reducir carga, cambio de metodología). Usa CORTEX.COMPLETE para personalizar mensaje al tutor con contexto del estudiante."
+        "prompt": "/best-practices Crea vista ALERTAS_RENDIMIENTO que para estudiantes en riesgo genere: student_id, asignatura, riesgo_nivel, factores_principales, recomendacion (tutoría académica, grupo de estudio, recursos adicionales, reducir carga, cambio de metodología). Usa CORTEX.COMPLETE para personalizar mensaje al tutor con contexto del estudiante."
       },
       {
         "title": "Dashboard de rendimiento",
         "desc": "Streamlit para profesores y tutores.",
-        "prompt": "Genera código Streamlit con:\n1. Vista por asignatura: semáforo de riesgo por estudiante\n2. Evolución semanal de indicadores por estudiante\n3. Predicción de resultados con factores explicativos\n4. Alertas activas con recomendaciones de intervención\n5. Tasas de aprobados: predicción vs histórico\n6. Impacto de intervenciones previas"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Vista por asignatura: semáforo de riesgo por estudiante\n2. Evolución semanal de indicadores por estudiante\n3. Predicción de resultados con factores explicativos\n4. Alertas activas con recomendaciones de intervención\n5. Tasas de aprobados: predicción vs histórico\n6. Impacto de intervenciones previas"
       },
       {
         "title": "Pipeline de alertas",
         "desc": "Automatizar predicción.",
-        "prompt": "Crea Tasks:\n1. ACTUALIZAR_INDICADORES: semanal desde LMS y actas\n2. SCORING_SEMANAL: ejecuta modelo en semanas 3-12\n3. ALERTAS_TUTOR: semanal, notifica cambios de nivel\n4. EVALUAR_MODELO: post-exámenes, compara predicción vs realidad\n5. Documenta. Objetivo: capturar 70% suspensos, reducir tasa 12%."
+        "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_INDICADORES: semanal desde LMS y actas\n2. SCORING_SEMANAL: ejecuta modelo en semanas 3-12\n3. ALERTAS_TUTOR: semanal, notifica cambios de nivel\n4. EVALUAR_MODELO: post-exámenes, compara predicción vs realidad\n5. Documenta. Objetivo: capturar 70% suspensos, reducir tasa 12%."
       }
     ]
   },
@@ -1829,42 +1829,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para investigación.",
-        "prompt": "Crea la base de datos EDU_PROPUESTAS_DB con esquema RAG y warehouse EDU_WH. Comentarios del proyecto de soporte a propuestas de investigación con RAG."
+        "prompt": "/best-practices Crea la base de datos EDU_PROPUESTAS_DB con esquema RAG y warehouse EDU_WH. Comentarios del proyecto de soporte a propuestas de investigación con RAG."
       },
       {
         "title": "Crear corpus de convocatorias",
         "desc": "Base de conocimiento de convocatorias.",
-        "prompt": "Crea la tabla CONVOCATORIAS_INVESTIGACION con: convocatoria_id, titulo, tipo (Horizon_Europe, Plan_Estatal, Autonomica, Empresa, Interna), area_tematica TEXT, requisitos TEXT, criterios_evaluacion TEXT, presupuesto_maximo FLOAT, fecha_cierre DATE, trl_minimo INT, equipo_requerido TEXT, elegibilidad TEXT. Genera 300 convocatorias de 3 años."
+        "prompt": "/best-practices Crea la tabla CONVOCATORIAS_INVESTIGACION con: convocatoria_id, titulo, tipo (Horizon_Europe, Plan_Estatal, Autonomica, Empresa, Interna), area_tematica TEXT, requisitos TEXT, criterios_evaluacion TEXT, presupuesto_maximo FLOAT, fecha_cierre DATE, trl_minimo INT, equipo_requerido TEXT, elegibilidad TEXT. Genera 300 convocatorias de 3 años."
       },
       {
         "title": "Crear perfiles de investigadores",
         "desc": "Capacidades y producción.",
-        "prompt": "Crea la tabla PERFILES_INVESTIGADOR con: investigador_id, nombre_hash, departamento, area_principal, areas_secundarias TEXT, publicaciones_5a INT, h_index INT, proyectos_activos INT, proyectos_ip INT, patentes INT, tesis_dirigidas INT, colaboraciones_internacionales TEXT. Genera 500 perfiles de investigadores."
+        "prompt": "/best-practices Crea la tabla PERFILES_INVESTIGADOR con: investigador_id, nombre_hash, departamento, area_principal, areas_secundarias TEXT, publicaciones_5a INT, h_index INT, proyectos_activos INT, proyectos_ip INT, patentes INT, tesis_dirigidas INT, colaboraciones_internacionales TEXT. Genera 500 perfiles de investigadores."
       },
       {
         "title": "Indexar con Cortex Search",
         "desc": "Búsqueda semántica de convocatorias.",
-        "prompt": "Crea Cortex Search Service sobre CONVOCATORIAS_INVESTIGACION indexando titulo + area_tematica + requisitos + criterios_evaluacion. Demuestra matching: dado perfil de investigador en IA aplicada a salud, encontrar convocatorias compatibles. 5 ejemplos de matching."
+        "prompt": "/best-practices Crea Cortex Search Service sobre CONVOCATORIAS_INVESTIGACION indexando titulo + area_tematica + requisitos + criterios_evaluacion. Demuestra matching: dado perfil de investigador en IA aplicada a salud, encontrar convocatorias compatibles. 5 ejemplos de matching."
       },
       {
         "title": "Asistente de redacción",
         "desc": "RAG para mejorar propuestas.",
-        "prompt": "Crea función ASISTIR_PROPUESTA(investigador_id, convocatoria_id, borrador_propuesta) que use Cortex Search + CORTEX.COMPLETE para: evaluar alineación con criterios, identificar puntos débiles, sugerir mejoras con ejemplos de propuestas exitosas, recomendar partners potenciales por perfil complementario."
+        "prompt": "/best-practices Crea función ASISTIR_PROPUESTA(investigador_id, convocatoria_id, borrador_propuesta) que use Cortex Search + CORTEX.COMPLETE para: evaluar alineación con criterios, identificar puntos débiles, sugerir mejoras con ejemplos de propuestas exitosas, recomendar partners potenciales por perfil complementario."
       },
       {
         "title": "Matching investigador-convocatoria",
         "desc": "Recomendación automática.",
-        "prompt": "Crea vista MATCHING_INVESTIGADOR_CONVOCATORIA que por investigador calcule compatibilidad con convocatorias abiertas: score_matching (0-100), factores_match, gaps_a_cubrir (equipo, publicaciones, TRL), partner_recomendado. Ordenar por matching y urgencia (fecha cierre)."
+        "prompt": "/best-practices Crea vista MATCHING_INVESTIGADOR_CONVOCATORIA que por investigador calcule compatibilidad con convocatorias abiertas: score_matching (0-100), factores_match, gaps_a_cubrir (equipo, publicaciones, TRL), partner_recomendado. Ordenar por matching y urgencia (fecha cierre)."
       },
       {
         "title": "Dashboard de investigación",
         "desc": "Streamlit de gestión.",
-        "prompt": "Genera código Streamlit con:\n1. Buscador de convocatorias con matching por perfil\n2. Asistente de redacción: evaluar y mejorar propuesta\n3. Recomendación de partners por complementariedad\n4. Métricas: propuestas presentadas, tasa éxito, financiación captada\n5. Calendario de convocatorias con alertas de cierre\n6. Histórico de propuestas con evaluaciones"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Buscador de convocatorias con matching por perfil\n2. Asistente de redacción: evaluar y mejorar propuesta\n3. Recomendación de partners por complementariedad\n4. Métricas: propuestas presentadas, tasa éxito, financiación captada\n5. Calendario de convocatorias con alertas de cierre\n6. Histórico de propuestas con evaluaciones"
       },
       {
         "title": "Pipeline de actualización",
         "desc": "Mantener actualizado.",
-        "prompt": "Crea Tasks:\n1. INDEXAR_CONVOCATORIAS: semanal, nuevas convocatorias\n2. ACTUALIZAR_PERFILES: trimestral, nuevas publicaciones y proyectos\n3. MATCHING_AUTOMATICO: semanal, notificar convocatorias compatibles\n4. ALERTAS_CIERRE: semanal, recordar plazos próximos\n5. Documenta. Objetivo: +60% rapidez matching, +15% tasa éxito."
+        "prompt": "/best-practices Crea Tasks:\n1. INDEXAR_CONVOCATORIAS: semanal, nuevas convocatorias\n2. ACTUALIZAR_PERFILES: trimestral, nuevas publicaciones y proyectos\n3. MATCHING_AUTOMATICO: semanal, notificar convocatorias compatibles\n4. ALERTAS_CIERRE: semanal, recordar plazos próximos\n5. Documenta. Objetivo: +60% rapidez matching, +15% tasa éxito."
       }
     ]
   },
@@ -1875,42 +1875,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para orientación.",
-        "prompt": "Crea la base de datos EDU_ORIENTACION_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de éxito académico."
+        "prompt": "/best-practices Crea la base de datos EDU_ORIENTACION_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de éxito académico."
       },
       {
         "title": "Crear datos de cohortes",
         "desc": "Historial de ingreso y resultado.",
-        "prompt": "Crea la tabla COHORTES_ACADEMICAS con: student_id, cohorte_ingreso INT, grado_matriculado, nota_acceso FLOAT, rama_bachillerato, primera_opcion BOOLEAN, motivacion_score INT (1-10), distancia_campus_km FLOAT, resultado_1curso (Exito_Pleno, Aprobado, Dificultades, Cambio_Grado, Abandono), nota_media_1curso FLOAT, satisfaccion_1curso INT (1-5), graduado BOOLEAN, tiempo_graduacion_semestres INT. Genera 30,000 estudiantes de 8 cohortes."
+        "prompt": "/best-practices Crea la tabla COHORTES_ACADEMICAS con: student_id, cohorte_ingreso INT, grado_matriculado, nota_acceso FLOAT, rama_bachillerato, primera_opcion BOOLEAN, motivacion_score INT (1-10), distancia_campus_km FLOAT, resultado_1curso (Exito_Pleno, Aprobado, Dificultades, Cambio_Grado, Abandono), nota_media_1curso FLOAT, satisfaccion_1curso INT (1-5), graduado BOOLEAN, tiempo_graduacion_semestres INT. Genera 30,000 estudiantes de 8 cohortes."
       },
       {
         "title": "Calcular features de matching",
         "desc": "Indicadores de ajuste programa-estudiante.",
-        "prompt": "Crea vista FEATURES_MATCHING_PROGRAMA que por estudiante y programa calcule:\n- Acceso: nota_acceso, rama_vs_programa_afinidad, primera_opcion\n- Motivación: motivacion_score, visita_campus, informacion_consultada\n- Contexto: distancia, trabaja, beca, primera_generacion\n- Histórico programa: tasa_exito_perfil_similar, nota_media_cohorte\n- Matching: skills_bachillerato_vs_requisitos, perfil_vs_graduados_exitosos"
+        "prompt": "/best-practices Crea vista FEATURES_MATCHING_PROGRAMA que por estudiante y programa calcule:\n- Acceso: nota_acceso, rama_vs_programa_afinidad, primera_opcion\n- Motivación: motivacion_score, visita_campus, informacion_consultada\n- Contexto: distancia, trabaja, beca, primera_generacion\n- Histórico programa: tasa_exito_perfil_similar, nota_media_cohorte\n- Matching: skills_bachillerato_vs_requisitos, perfil_vs_graduados_exitosos"
       },
       {
         "title": "Entrenar modelo de éxito",
         "desc": "ML.CLASSIFICATION por programa.",
-        "prompt": "Usa ML.CLASSIFICATION para predecir resultado: exito_pleno, aprobado, dificultades, cambio_abandono. Variables: features de matching. Entrenar con 6 cohortes, validar con 2. Evalúa accuracy, recall. Generar probabilidad de éxito por programa para orientación."
+        "prompt": "/best-practices Usa ML.CLASSIFICATION para predecir resultado: exito_pleno, aprobado, dificultades, cambio_abandono. Variables: features de matching. Entrenar con 6 cohortes, validar con 2. Evalúa accuracy, recall. Generar probabilidad de éxito por programa para orientación."
       },
       {
         "title": "Recomendar programa alternativo",
         "desc": "Matching con mejor ajuste.",
-        "prompt": "Crea función RECOMENDAR_PROGRAMA(perfil_estudiante) que: ejecute modelo de éxito para todos los programas del campus, ordene por probabilidad de éxito, identifique si el programa elegido es óptimo, sugiera alternativas con justificación. Use CORTEX.COMPLETE para generar mensaje de orientación personalizado."
+        "prompt": "/best-practices Crea función RECOMENDAR_PROGRAMA(perfil_estudiante) que: ejecute modelo de éxito para todos los programas del campus, ordene por probabilidad de éxito, identifique si el programa elegido es óptimo, sugiera alternativas con justificación. Use CORTEX.COMPLETE para generar mensaje de orientación personalizado."
       },
       {
         "title": "Identificar necesidades de apoyo",
         "desc": "Estudiantes que necesitarán soporte.",
-        "prompt": "Crea vista NECESIDADES_APOYO_PREMATRICULA que para admitidos identifique: necesita_tutoria_refuerzo BOOLEAN, areas_debiles, necesita_curso_cero BOOLEAN, necesita_orientacion BOOLEAN, tipo_apoyo_recomendado. Priorizar por riesgo de dificultad."
+        "prompt": "/best-practices Crea vista NECESIDADES_APOYO_PREMATRICULA que para admitidos identifique: necesita_tutoria_refuerzo BOOLEAN, areas_debiles, necesita_curso_cero BOOLEAN, necesita_orientacion BOOLEAN, tipo_apoyo_recomendado. Priorizar por riesgo de dificultad."
       },
       {
         "title": "Dashboard de orientación",
         "desc": "Streamlit para admisiones.",
-        "prompt": "Genera código Streamlit con:\n1. Predicción de éxito por candidato y programa\n2. Recomendación de programas alternativos con justificación\n3. Distribución predicha de resultados por programa y cohorte\n4. Factores explicativos del éxito por programa\n5. Necesidades de apoyo anticipadas\n6. Validación: predicción vs realidad para cohortes pasadas"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Predicción de éxito por candidato y programa\n2. Recomendación de programas alternativos con justificación\n3. Distribución predicha de resultados por programa y cohorte\n4. Factores explicativos del éxito por programa\n5. Necesidades de apoyo anticipadas\n6. Validación: predicción vs realidad para cohortes pasadas"
       },
       {
         "title": "Pipeline de orientación",
         "desc": "Automatizar predicción.",
-        "prompt": "Crea Tasks:\n1. SCORING_ADMITIDOS: tras admisión, generar predicción\n2. RECOMENDAR_ALTERNATIVAS: para candidatos con baja probabilidad\n3. IDENTIFICAR_APOYO: pre-matrícula, planificar recursos\n4. VALIDAR_MODELO: anual, comparar predicción vs resultados\n5. Documenta. Objetivo: AUC >0.70, cambios de grado del 15% al 8%."
+        "prompt": "/best-practices Crea Tasks:\n1. SCORING_ADMITIDOS: tras admisión, generar predicción\n2. RECOMENDAR_ALTERNATIVAS: para candidatos con baja probabilidad\n3. IDENTIFICAR_APOYO: pre-matrícula, planificar recursos\n4. VALIDAR_MODELO: anual, comparar predicción vs resultados\n5. Documenta. Objetivo: AUC >0.70, cambios de grado del 15% al 8%."
       }
     ]
   },
@@ -1921,42 +1921,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar Feature Store",
         "desc": "Crear base de datos.",
-        "prompt": "Crea la base de datos EDU_PERFORMANCE_DB con esquema FEATURE_STORE y warehouse EDU_WH. Comenta que implementa Snowflake Feature Store para Performance de Programas Académicos."
+        "prompt": "/best-practices Crea la base de datos EDU_PERFORMANCE_DB con esquema FEATURE_STORE y warehouse EDU_WH. Comenta que implementa Snowflake Feature Store para Performance de Programas Académicos."
       },
       {
         "title": "Crear datos fuente",
         "desc": "Métricas de programas desde múltiples fuentes.",
-        "prompt": "Crea 5 tablas fuente:\n1. RAW_ACADEMIC_PERFORMANCE: programa_id, curso_academico, tasa_rendimiento FLOAT, tasa_exito FLOAT, tasa_evaluacion FLOAT, tasa_abandono FLOAT, nota_media FLOAT, duracion_media_semestres FLOAT\n2. RAW_STUDENT_SATISFACTION: programa_id, curso, satisfaccion_global FLOAT, satisfaccion_docencia FLOAT, satisfaccion_recursos FLOAT, nps INT, reclamaciones INT\n3. RAW_EMPLOYABILITY: programa_id, cohorte, tasa_empleo_1a FLOAT, tasa_empleo_3a FLOAT, salario_medio FLOAT, adecuacion_formacion_pct FLOAT, tiempo_primer_empleo_meses FLOAT\n4. RAW_RESEARCH: programa_id, curso, publicaciones_profesorado INT, proyectos_activos INT, tesis_leidas INT, sexenios_pct FLOAT\n5. RAW_RESOURCES: programa_id, curso, ratio_profesor_alumno FLOAT, presupuesto_per_capita FLOAT, espacios_m2_alumno FLOAT, biblioteca_recursos INT\nGenera datos para 60 programas × 5 cursos."
+        "prompt": "/best-practices Crea 5 tablas fuente:\n1. RAW_ACADEMIC_PERFORMANCE: programa_id, curso_academico, tasa_rendimiento FLOAT, tasa_exito FLOAT, tasa_evaluacion FLOAT, tasa_abandono FLOAT, nota_media FLOAT, duracion_media_semestres FLOAT\n2. RAW_STUDENT_SATISFACTION: programa_id, curso, satisfaccion_global FLOAT, satisfaccion_docencia FLOAT, satisfaccion_recursos FLOAT, nps INT, reclamaciones INT\n3. RAW_EMPLOYABILITY: programa_id, cohorte, tasa_empleo_1a FLOAT, tasa_empleo_3a FLOAT, salario_medio FLOAT, adecuacion_formacion_pct FLOAT, tiempo_primer_empleo_meses FLOAT\n4. RAW_RESEARCH: programa_id, curso, publicaciones_profesorado INT, proyectos_activos INT, tesis_leidas INT, sexenios_pct FLOAT\n5. RAW_RESOURCES: programa_id, curso, ratio_profesor_alumno FLOAT, presupuesto_per_capita FLOAT, espacios_m2_alumno FLOAT, biblioteca_recursos INT\nGenera datos para 60 programas × 5 cursos."
       },
       {
         "title": "Crear Entity",
         "desc": "Definir Entity en Feature Store.",
-        "prompt": "Usando Snowflake Feature Store:\n\nfrom snowflake.ml.feature_store import FeatureStore, Entity, FeatureView\nfs = FeatureStore(session=session, database='EDU_PERFORMANCE_DB', name='FEATURE_STORE')\n\nprograma = Entity(\n    name='PROGRAMA_ACADEMICO',\n    join_keys=['PROGRAMA_ID'],\n    desc='Programa académico (grado/máster) con métricas de rendimiento'\n)\nfs.register_entity(programa)\nVerifica registro."
+        "prompt": "/best-practices Usando Snowflake Feature Store:\n\nfrom snowflake.ml.feature_store import FeatureStore, Entity, FeatureView\nfs = FeatureStore(session=session, database='EDU_PERFORMANCE_DB', name='FEATURE_STORE')\n\nprograma = Entity(\n    name='PROGRAMA_ACADEMICO',\n    join_keys=['PROGRAMA_ID'],\n    desc='Programa académico (grado/máster) con métricas de rendimiento'\n)\nfs.register_entity(programa)\nVerifica registro."
       },
       {
         "title": "Crear FeatureViews de rendimiento y satisfacción",
         "desc": "Métricas académicas y percepción.",
-        "prompt": "Crea 2 FeatureViews:\n1. ACADEMIC_PERFORMANCE desde RAW_ACADEMIC_PERFORMANCE:\n- tasa_rendimiento, tendencia_rendimiento_3a\n- tasa_abandono, abandono_vs_media_rama\n- duracion_media_vs_nominal\n\n2. STUDENT_SATISFACTION desde RAW_STUDENT_SATISFACTION:\n- satisfaccion_global, tendencia_3a\n- nps_score, reclamaciones_per_capita\n- satisfaccion_vs_media_centro\n\nRefresh anual."
+        "prompt": "/best-practices Crea 2 FeatureViews:\n1. ACADEMIC_PERFORMANCE desde RAW_ACADEMIC_PERFORMANCE:\n- tasa_rendimiento, tendencia_rendimiento_3a\n- tasa_abandono, abandono_vs_media_rama\n- duracion_media_vs_nominal\n\n2. STUDENT_SATISFACTION desde RAW_STUDENT_SATISFACTION:\n- satisfaccion_global, tendencia_3a\n- nps_score, reclamaciones_per_capita\n- satisfaccion_vs_media_centro\n\nRefresh anual."
       },
       {
         "title": "Crear FeatureViews de empleabilidad e investigación",
         "desc": "Resultados post-grado y calidad docente.",
-        "prompt": "Crea 2 FeatureViews:\n1. EMPLOYABILITY desde RAW_EMPLOYABILITY:\n- tasa_empleo_1a, tasa_empleo_vs_media_rama\n- salario_medio, adecuacion_formacion\n- tiempo_primer_empleo_vs_benchmark\n\n2. RESEARCH desde RAW_RESEARCH:\n- publicaciones_per_profesor, sexenios_pct\n- proyectos_activos, tesis_per_profesor\n- investigacion_vs_benchmark_area\n\nRefresh anual."
+        "prompt": "/best-practices Crea 2 FeatureViews:\n1. EMPLOYABILITY desde RAW_EMPLOYABILITY:\n- tasa_empleo_1a, tasa_empleo_vs_media_rama\n- salario_medio, adecuacion_formacion\n- tiempo_primer_empleo_vs_benchmark\n\n2. RESEARCH desde RAW_RESEARCH:\n- publicaciones_per_profesor, sexenios_pct\n- proyectos_activos, tesis_per_profesor\n- investigacion_vs_benchmark_area\n\nRefresh anual."
       },
       {
         "title": "Crear FeatureView de recursos",
         "desc": "Dotación y eficiencia.",
-        "prompt": "Crea FeatureView RESOURCES desde RAW_RESOURCES:\n- ratio_profesor_alumno, vs_benchmark\n- presupuesto_per_capita, tendencia\n- espacios_adecuacion, biblioteca_recursos_per_capita\n\nRefresh anual. Demuestra consumo completo con fs.get_features() para un programa."
+        "prompt": "/best-practices Crea FeatureView RESOURCES desde RAW_RESOURCES:\n- ratio_profesor_alumno, vs_benchmark\n- presupuesto_per_capita, tendencia\n- espacios_adecuacion, biblioteca_recursos_per_capita\n\nRefresh anual. Demuestra consumo completo con fs.get_features() para un programa."
       },
       {
         "title": "Dashboard de performance",
         "desc": "Streamlit de benchmarking.",
-        "prompt": "Genera código Streamlit con:\n1. Ranking de programas por performance global (score compuesto)\n2. Scorecard por programa: 5 dimensiones con semáforo\n3. Benchmarking: comparativa entre programas similares\n4. Alertas de deterioro: tendencias negativas >10%\n5. Informe ANECA automatizado por programa\n6. Drill-down por dimensión con series temporales"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Ranking de programas por performance global (score compuesto)\n2. Scorecard por programa: 5 dimensiones con semáforo\n3. Benchmarking: comparativa entre programas similares\n4. Alertas de deterioro: tendencias negativas >10%\n5. Informe ANECA automatizado por programa\n6. Drill-down por dimensión con series temporales"
       },
       {
         "title": "Pipeline de actualización",
         "desc": "Automatizar mantenimiento.",
-        "prompt": "Crea Tasks:\n1. REFRESH_ACADEMIC: anual desde expedientes\n2. REFRESH_SATISFACTION: anual desde encuestas\n3. REFRESH_EMPLOYABILITY: anual desde encuesta egresados\n4. REFRESH_RESEARCH: anual desde repositorio\n5. ALERTAR_DETERIORO: tras cada refresh, detectar tendencias\n6. Documenta. Feature Store para acreditación ANECA near-real-time."
+        "prompt": "/best-practices Crea Tasks:\n1. REFRESH_ACADEMIC: anual desde expedientes\n2. REFRESH_SATISFACTION: anual desde encuestas\n3. REFRESH_EMPLOYABILITY: anual desde encuesta egresados\n4. REFRESH_RESEARCH: anual desde repositorio\n5. ALERTAR_DETERIORO: tras cada refresh, detectar tendencias\n6. Documenta. Feature Store para acreditación ANECA near-real-time."
       }
     ]
   },
@@ -1967,42 +1967,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para bibliometría.",
-        "prompt": "Crea la base de datos EDU_BIBLIOMETRIA_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de impacto de publicaciones."
+        "prompt": "/best-practices Crea la base de datos EDU_BIBLIOMETRIA_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de predicción de impacto de publicaciones."
       },
       {
         "title": "Crear datos bibliométricos",
         "desc": "Publicaciones con citas.",
-        "prompt": "Crea la tabla PUBLICACIONES_CITAS con: pub_id, titulo, abstract TEXT, keywords TEXT, area VARCHAR, subarea, revista, factor_impacto FLOAT, cuartil, year_publicacion INT, autores_count INT, h_index_primer_autor INT, open_access BOOLEAN, pais_primer_autor, citas_year_1 INT, citas_year_2 INT, citas_year_5 INT, altmetric_score INT. Genera 20,000 publicaciones de 10 años."
+        "prompt": "/best-practices Crea la tabla PUBLICACIONES_CITAS con: pub_id, titulo, abstract TEXT, keywords TEXT, area VARCHAR, subarea, revista, factor_impacto FLOAT, cuartil, year_publicacion INT, autores_count INT, h_index_primer_autor INT, open_access BOOLEAN, pais_primer_autor, citas_year_1 INT, citas_year_2 INT, citas_year_5 INT, altmetric_score INT. Genera 20,000 publicaciones de 10 años."
       },
       {
         "title": "Calcular features de impacto",
         "desc": "Indicadores predictivos.",
-        "prompt": "Crea vista FEATURES_IMPACTO que por publicación calcule:\n- Revista: factor_impacto, cuartil, posicion_en_area\n- Autores: h_index_max, publicaciones_previas_tema, colaboracion_internacional\n- Contenido: keywords_trending_score, novedad_tema, interdisciplinaridad\n- Formato: open_access, longitud_abstract, tipo (empirico, revisión, teórico)\n- Contexto: funding_acknowledgement, data_availability, replicabilidad"
+        "prompt": "/best-practices Crea vista FEATURES_IMPACTO que por publicación calcule:\n- Revista: factor_impacto, cuartil, posicion_en_area\n- Autores: h_index_max, publicaciones_previas_tema, colaboracion_internacional\n- Contenido: keywords_trending_score, novedad_tema, interdisciplinaridad\n- Formato: open_access, longitud_abstract, tipo (empirico, revisión, teórico)\n- Contexto: funding_acknowledgement, data_availability, replicabilidad"
       },
       {
         "title": "Entrenar modelo de predicción",
         "desc": "ML.FORECAST de citas.",
-        "prompt": "Usa ML.FORECAST para predecir citas_year_2 y citas_year_5. Variables: todas las features. Entrenar con publicaciones 2014-2020, validar con 2021-2022. Evalúa MAPE, correlación Spearman. Objetivo: correlación >0.65 en predicción a 2 años."
+        "prompt": "/best-practices Usa ML.FORECAST para predecir citas_year_2 y citas_year_5. Variables: todas las features. Entrenar con publicaciones 2014-2020, validar con 2021-2022. Evalúa MAPE, correlación Spearman. Objetivo: correlación >0.65 en predicción a 2 años."
       },
       {
         "title": "Recomendar revista",
         "desc": "Matching tema-audiencia.",
-        "prompt": "Crea tabla REVISTAS_PERFIL con: revista, area, factor_impacto, tasa_aceptacion, tiempo_revision_meses, scope TEXT. Crea función RECOMENDAR_REVISTA(abstract, keywords, target_impact) que use Cortex Search para matching semántico y ordene por: matching_tema × factor_impacto × probabilidad_aceptacion."
+        "prompt": "/best-practices Crea tabla REVISTAS_PERFIL con: revista, area, factor_impacto, tasa_aceptacion, tiempo_revision_meses, scope TEXT. Crea función RECOMENDAR_REVISTA(abstract, keywords, target_impact) que use Cortex Search para matching semántico y ordene por: matching_tema × factor_impacto × probabilidad_aceptacion."
       },
       {
         "title": "Identificar temas emergentes",
         "desc": "Trending topics por área.",
-        "prompt": "Crea vista TEMAS_EMERGENTES que analice keywords y abstracts recientes para identificar: temas con crecimiento >50% en 2 años, convergencias interdisciplinares, temas con alta financiación, temas con baja competencia y alto potencial. Use CORTEX.COMPLETE para generar resumen de tendencias por área."
+        "prompt": "/best-practices Crea vista TEMAS_EMERGENTES que analice keywords y abstracts recientes para identificar: temas con crecimiento >50% en 2 años, convergencias interdisciplinares, temas con alta financiación, temas con baja competencia y alto potencial. Use CORTEX.COMPLETE para generar resumen de tendencias por área."
       },
       {
         "title": "Dashboard de estrategia",
         "desc": "Streamlit de publicación.",
-        "prompt": "Genera código Streamlit con:\n1. Predicción de impacto para manuscrito: citas estimadas\n2. Recomendación de revistas con matching score\n3. Temas emergentes por área con potencial de impacto\n4. Análisis de rendimiento del investigador vs área\n5. Simulador: impacto de open access, colaboración, revista\n6. Benchmarking de productividad por departamento"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Predicción de impacto para manuscrito: citas estimadas\n2. Recomendación de revistas con matching score\n3. Temas emergentes por área con potencial de impacto\n4. Análisis de rendimiento del investigador vs área\n5. Simulador: impacto de open access, colaboración, revista\n6. Benchmarking de productividad por departamento"
       },
       {
         "title": "Pipeline de actualización",
         "desc": "Automatizar análisis.",
-        "prompt": "Crea Tasks:\n1. ACTUALIZAR_PUBLICACIONES: mensual, nuevas publicaciones y citas\n2. RECALCULAR_FEATURES: mensual\n3. DETECTAR_TENDENCIAS: trimestral, actualizar temas emergentes\n4. ACTUALIZAR_REVISTAS: semestral, factores de impacto\n5. Documenta. Objetivo: correlación >0.65, selección revista -40% tiempo."
+        "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_PUBLICACIONES: mensual, nuevas publicaciones y citas\n2. RECALCULAR_FEATURES: mensual\n3. DETECTAR_TENDENCIAS: trimestral, actualizar temas emergentes\n4. ACTUALIZAR_REVISTAS: semestral, factores de impacto\n5. Documenta. Objetivo: correlación >0.65, selección revista -40% tiempo."
       }
     ]
   },
@@ -2013,42 +2013,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para curricular.",
-        "prompt": "Crea la base de datos EDU_CURRICULAR_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de diseño curricular basado en datos."
+        "prompt": "/best-practices Crea la base de datos EDU_CURRICULAR_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de diseño curricular basado en datos."
       },
       {
         "title": "Crear corpus de ofertas de empleo",
         "desc": "Demanda del mercado laboral.",
-        "prompt": "Crea la tabla OFERTAS_EMPLEO con: oferta_id, titulo_puesto, empresa_sector, ubicacion_provincia, descripcion TEXT, requisitos TEXT, skills_demandados TEXT, experiencia_requerida, salario_rango, tipo_contrato, fecha_publicacion DATE. Genera 100,000 ofertas de 3 años cubriendo sectores principales."
+        "prompt": "/best-practices Crea la tabla OFERTAS_EMPLEO con: oferta_id, titulo_puesto, empresa_sector, ubicacion_provincia, descripcion TEXT, requisitos TEXT, skills_demandados TEXT, experiencia_requerida, salario_rango, tipo_contrato, fecha_publicacion DATE. Genera 100,000 ofertas de 3 años cubriendo sectores principales."
       },
       {
         "title": "Extraer skills de ofertas",
         "desc": "NLP sobre requisitos.",
-        "prompt": "Crea vista SKILLS_DEMANDADOS que use CORTEX.COMPLETE para extraer de cada oferta: skills_tecnicos (Python, SQL, cloud...), skills_transversales (comunicación, liderazgo, trabajo en equipo), idiomas, certificaciones, herramientas. Agrega por sector y tendencia temporal para identificar skills en crecimiento."
+        "prompt": "/best-practices Crea vista SKILLS_DEMANDADOS que use CORTEX.COMPLETE para extraer de cada oferta: skills_tecnicos (Python, SQL, cloud...), skills_transversales (comunicación, liderazgo, trabajo en equipo), idiomas, certificaciones, herramientas. Agrega por sector y tendencia temporal para identificar skills en crecimiento."
       },
       {
         "title": "Mapear plan de estudios",
         "desc": "Competencias enseñadas.",
-        "prompt": "Crea la tabla PLAN_ESTUDIOS_COMPETENCIAS con: grado, asignatura_id, asignatura_nombre, curso INT, creditos INT, competencias_json TEXT, skills_impartidos TEXT, metodologia, resultados_aprendizaje TEXT. Genera mapeo de competencias para 15 grados."
+        "prompt": "/best-practices Crea la tabla PLAN_ESTUDIOS_COMPETENCIAS con: grado, asignatura_id, asignatura_nombre, curso INT, creditos INT, competencias_json TEXT, skills_impartidos TEXT, metodologia, resultados_aprendizaje TEXT. Genera mapeo de competencias para 15 grados."
       },
       {
         "title": "Análisis de gap",
         "desc": "Skills enseñados vs demandados.",
-        "prompt": "Crea vista GAP_CURRICULAR que por grado cruce skills_impartidos con skills_demandados por sector de salida: skills_cubiertos, skills_gap (demandados pero no enseñados), skills_obsoletos (enseñados pero no demandados), skills_emergentes (crecimiento >30%). Priorizar gaps por volumen de demanda y salario asociado."
+        "prompt": "/best-practices Crea vista GAP_CURRICULAR que por grado cruce skills_impartidos con skills_demandados por sector de salida: skills_cubiertos, skills_gap (demandados pero no enseñados), skills_obsoletos (enseñados pero no demandados), skills_emergentes (crecimiento >30%). Priorizar gaps por volumen de demanda y salario asociado."
       },
       {
         "title": "Generar recomendaciones",
         "desc": "LLM para propuestas curriculares.",
-        "prompt": "Crea función RECOMENDAR_ACTUALIZACION(grado) que use CORTEX.COMPLETE para generar: top 10 gaps a cubrir, asignaturas donde incorporar skills, nuevas optativas sugeridas, contenidos obsoletos a revisar, benchmarking con universidades referencia. Formato de informe para comisión de planes de estudio."
+        "prompt": "/best-practices Crea función RECOMENDAR_ACTUALIZACION(grado) que use CORTEX.COMPLETE para generar: top 10 gaps a cubrir, asignaturas donde incorporar skills, nuevas optativas sugeridas, contenidos obsoletos a revisar, benchmarking con universidades referencia. Formato de informe para comisión de planes de estudio."
       },
       {
         "title": "Dashboard curricular",
         "desc": "Streamlit de alineación.",
-        "prompt": "Genera código Streamlit con:\n1. Gap analysis por grado: radar de cobertura de skills\n2. Skills emergentes: tendencias por sector con volumen de demanda\n3. Recomendaciones de actualización con priorización\n4. Empleabilidad por grado: inserción, salario, adecuación\n5. Benchmarking con otras universidades\n6. Tendencia de skills: 1, 3 y 5 años"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Gap analysis por grado: radar de cobertura de skills\n2. Skills emergentes: tendencias por sector con volumen de demanda\n3. Recomendaciones de actualización con priorización\n4. Empleabilidad por grado: inserción, salario, adecuación\n5. Benchmarking con otras universidades\n6. Tendencia de skills: 1, 3 y 5 años"
       },
       {
         "title": "Pipeline de análisis",
         "desc": "Automatizar monitorización.",
-        "prompt": "Crea Tasks:\n1. INGESTAR_OFERTAS: mensual, cargar nuevas ofertas\n2. EXTRAER_SKILLS: mensual sobre nuevas ofertas\n3. ANALIZAR_GAPS: trimestral, actualizar gap analysis\n4. GENERAR_INFORMES: semestral, para comisiones de planes\n5. Documenta. Objetivo: actualización mensual de gaps, reducir brecha 15%."
+        "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_OFERTAS: mensual, cargar nuevas ofertas\n2. EXTRAER_SKILLS: mensual sobre nuevas ofertas\n3. ANALIZAR_GAPS: trimestral, actualizar gap analysis\n4. GENERAR_INFORMES: semestral, para comisiones de planes\n5. Documenta. Objetivo: actualización mensual de gaps, reducir brecha 15%."
       }
     ]
   },
@@ -2059,42 +2059,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para becas.",
-        "prompt": "Crea la base de datos EDU_BECAS_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de optimización de becas y ayudas."
+        "prompt": "/best-practices Crea la base de datos EDU_BECAS_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de optimización de becas y ayudas."
       },
       {
         "title": "Crear historial de becas",
         "desc": "Datos de asignación y resultado.",
-        "prompt": "Crea la tabla HISTORIAL_BECAS con: student_id, curso_academico, beca_tipo (Merito, Necesidad, Mixta, Talento, Internacional, Deporte), beca_importe FLOAT, programa, nota_acceso FLOAT, renta_familiar_tramo, admitido_alternativa BOOLEAN, matriculo BOOLEAN, retuvo_2curso BOOLEAN, nota_media_1curso FLOAT, graduado BOOLEAN. Genera 25,000 registros de becas de 5 cursos."
+        "prompt": "/best-practices Crea la tabla HISTORIAL_BECAS con: student_id, curso_academico, beca_tipo (Merito, Necesidad, Mixta, Talento, Internacional, Deporte), beca_importe FLOAT, programa, nota_acceso FLOAT, renta_familiar_tramo, admitido_alternativa BOOLEAN, matriculo BOOLEAN, retuvo_2curso BOOLEAN, nota_media_1curso FLOAT, graduado BOOLEAN. Genera 25,000 registros de becas de 5 cursos."
       },
       {
         "title": "Calcular impacto marginal",
         "desc": "¿La beca cambió la decisión?",
-        "prompt": "Crea vista IMPACTO_MARGINAL_BECA que estime por estudiante: se_habria_matriculado_sin_beca (basado en perfil similar sin beca), impacto_marginal (la beca fue decisiva, parcialmente decisiva, no decisiva), sensibilidad_precio (alta, media, baja). Variables: renta, alternativas, distancia, nota, programa."
+        "prompt": "/best-practices Crea vista IMPACTO_MARGINAL_BECA que estime por estudiante: se_habria_matriculado_sin_beca (basado en perfil similar sin beca), impacto_marginal (la beca fue decisiva, parcialmente decisiva, no decisiva), sensibilidad_precio (alta, media, baja). Variables: renta, alternativas, distancia, nota, programa."
       },
       {
         "title": "Entrenar modelo de impacto",
         "desc": "ML.CLASSIFICATION para optimización.",
-        "prompt": "Usa ML.CLASSIFICATION para predecir: beca_fue_decisiva si/no. Variables: renta_tramo, nota, programa, tiene_alternativa, distancia, primera_generacion, importe_beca. Evalúa AUC, precision. Objetivo: identificar el 70% de casos donde la beca es decisiva."
+        "prompt": "/best-practices Usa ML.CLASSIFICATION para predecir: beca_fue_decisiva si/no. Variables: renta_tramo, nota, programa, tiene_alternativa, distancia, primera_generacion, importe_beca. Evalúa AUC, precision. Objetivo: identificar el 70% de casos donde la beca es decisiva."
       },
       {
         "title": "Optimizar distribución",
         "desc": "Maximizar matrículas con presupuesto.",
-        "prompt": "Crea función OPTIMIZAR_BECAS(presupuesto_total, curso) que: para cada candidato calcule impacto marginal × probabilidad de éxito × valor del programa, asigne becas maximizando matrículas incrementales + retención, respetando restricciones de equidad (mínimo X% a alta necesidad). Generar distribución óptima."
+        "prompt": "/best-practices Crea función OPTIMIZAR_BECAS(presupuesto_total, curso) que: para cada candidato calcule impacto marginal × probabilidad de éxito × valor del programa, asigne becas maximizando matrículas incrementales + retención, respetando restricciones de equidad (mínimo X% a alta necesidad). Generar distribución óptima."
       },
       {
         "title": "Simular escenarios",
         "desc": "What-if analysis.",
-        "prompt": "Crea función SIMULAR_BECAS(presupuesto, criterios) que simule: ¿cuántas matrículas más con +10% presupuesto?, ¿qué pasa si eliminamos becas de mérito puro?, ¿impacto de becas internacionales en diversidad? Generar 5 escenarios con métricas comparativas."
+        "prompt": "/best-practices Crea función SIMULAR_BECAS(presupuesto, criterios) que simule: ¿cuántas matrículas más con +10% presupuesto?, ¿qué pasa si eliminamos becas de mérito puro?, ¿impacto de becas internacionales en diversidad? Generar 5 escenarios con métricas comparativas."
       },
       {
         "title": "Dashboard de becas",
         "desc": "Streamlit de gestión.",
-        "prompt": "Genera código Streamlit con:\n1. Distribución óptima de becas por programa y tipo\n2. Impacto marginal por candidato: decisiva vs no decisiva\n3. Simulador de escenarios con sliders de presupuesto\n4. ROI de becas: matrícula, retención, graduación\n5. Equidad: distribución por renta, género, origen\n6. Comparativa: asignación óptima vs criterios actuales"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Distribución óptima de becas por programa y tipo\n2. Impacto marginal por candidato: decisiva vs no decisiva\n3. Simulador de escenarios con sliders de presupuesto\n4. ROI de becas: matrícula, retención, graduación\n5. Equidad: distribución por renta, género, origen\n6. Comparativa: asignación óptima vs criterios actuales"
       },
       {
         "title": "Pipeline de optimización",
         "desc": "Automatizar asignación.",
-        "prompt": "Crea Tasks:\n1. CALCULAR_IMPACTO: pre-matrícula, estimar impacto marginal\n2. OPTIMIZAR_DISTRIBUCION: pre-matrícula, generar propuesta\n3. EVALUAR_RESULTADO: post-matrícula, comparar predicción vs realidad\n4. SEGUIMIENTO_RETENCION: semestral, verificar retención de becados\n5. Documenta. Objetivo: +15% matrículas incrementales, -20% abandono económico."
+        "prompt": "/best-practices Crea Tasks:\n1. CALCULAR_IMPACTO: pre-matrícula, estimar impacto marginal\n2. OPTIMIZAR_DISTRIBUCION: pre-matrícula, generar propuesta\n3. EVALUAR_RESULTADO: post-matrícula, comparar predicción vs realidad\n4. SEGUIMIENTO_RETENCION: semestral, verificar retención de becados\n5. Documenta. Objetivo: +15% matrículas incrementales, -20% abandono económico."
       }
     ]
   },
@@ -2105,42 +2105,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para control financiero.",
-        "prompt": "Crea la base de datos EDU_FINANZAS_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de detección de anomalías financieras."
+        "prompt": "/best-practices Crea la base de datos EDU_FINANZAS_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de detección de anomalías financieras."
       },
       {
         "title": "Crear datos financieros",
         "desc": "Gastos, contratos y presupuesto.",
-        "prompt": "Crea la tabla GASTOS_UNIVERSITARIOS con: gasto_id, fecha DATE, centro_coste, partida_presupuestaria, concepto TEXT, importe FLOAT, proveedor_hash, tipo_gasto (Personal, Funcionamiento, Inversión, Investigacion, Becas), procedimiento_contratacion (Menor, Negociado, Abierto, Restringido), aprobador_nivel (Departamento, Decanato, Gerencia, Rectorado), proyecto_asociado VARCHAR. Genera 200,000 gastos de 3 ejercicios. El 4% tiene patrones anómalos: fraccionamiento, gasto atípico, desviación."
+        "prompt": "/best-practices Crea la tabla GASTOS_UNIVERSITARIOS con: gasto_id, fecha DATE, centro_coste, partida_presupuestaria, concepto TEXT, importe FLOAT, proveedor_hash, tipo_gasto (Personal, Funcionamiento, Inversión, Investigacion, Becas), procedimiento_contratacion (Menor, Negociado, Abierto, Restringido), aprobador_nivel (Departamento, Decanato, Gerencia, Rectorado), proyecto_asociado VARCHAR. Genera 200,000 gastos de 3 ejercicios. El 4% tiene patrones anómalos: fraccionamiento, gasto atípico, desviación."
       },
       {
         "title": "Crear presupuesto de referencia",
         "desc": "Dotación y ejecución por partida.",
-        "prompt": "Cra la tabla PRESUPUESTO_UNIVERSITARIO con: ejercicio, centro_coste, partida, dotacion_inicial FLOAT, modificaciones FLOAT, dotacion_vigente FLOAT, ejecucion_acumulada FLOAT, pendiente_pago FLOAT. Genera presupuesto para 3 ejercicios."
+        "prompt": "/best-practices Cra la tabla PRESUPUESTO_UNIVERSITARIO con: ejercicio, centro_coste, partida, dotacion_inicial FLOAT, modificaciones FLOAT, dotacion_vigente FLOAT, ejecucion_acumulada FLOAT, pendiente_pago FLOAT. Genera presupuesto para 3 ejercicios."
       },
       {
         "title": "Calcular features de anomalía",
         "desc": "Indicadores de desviación.",
-        "prompt": "Crea vista FEATURES_ANOMALIA_FINANCIERA que por gasto calcule:\n- Importe: vs_media_partida, vs_percentil_90, vs_gasto_anterior\n- Proveedor: frecuencia_proveedor, concentracion, es_nuevo\n- Temporal: gasto_fin_ejercicio, concentracion_mensual, ciclicidad\n- Fraccionamiento: gastos_similares_30d mismo proveedor/concepto\n- Presupuesto: ejecucion_vs_dotacion, desviacion_acumulada_pct"
+        "prompt": "/best-practices Crea vista FEATURES_ANOMALIA_FINANCIERA que por gasto calcule:\n- Importe: vs_media_partida, vs_percentil_90, vs_gasto_anterior\n- Proveedor: frecuencia_proveedor, concentracion, es_nuevo\n- Temporal: gasto_fin_ejercicio, concentracion_mensual, ciclicidad\n- Fraccionamiento: gastos_similares_30d mismo proveedor/concepto\n- Presupuesto: ejecucion_vs_dotacion, desviacion_acumulada_pct"
       },
       {
         "title": "Entrenar modelo de detección",
         "desc": "ML.CLASSIFICATION para anomalías.",
-        "prompt": "Usa ML.CLASSIFICATION para clasificar: normal, anomalia_leve, anomalia_moderada, anomalia_grave. Variables: todas las features. Evalúa precision y recall. Objetivo: detectar 65% anomalías con <10% falsos positivos."
+        "prompt": "/best-practices Usa ML.CLASSIFICATION para clasificar: normal, anomalia_leve, anomalia_moderada, anomalia_grave. Variables: todas las features. Evalúa precision y recall. Objetivo: detectar 65% anomalías con <10% falsos positivos."
       },
       {
         "title": "Generar alertas de auditoría",
         "desc": "Priorizar casos.",
-        "prompt": "Crea vista ALERTAS_FINANCIERAS con: gasto_id, tipo_anomalia (fraccionamiento, desviacion, atipico, duplicidad, concentracion_proveedor), severidad, importe_en_cuestion, explicacion TEXT, accion_recomendada. Top 50 para revisión del servicio de auditoría."
+        "prompt": "/best-practices Crea vista ALERTAS_FINANCIERAS con: gasto_id, tipo_anomalia (fraccionamiento, desviacion, atipico, duplicidad, concentracion_proveedor), severidad, importe_en_cuestion, explicacion TEXT, accion_recomendada. Top 50 para revisión del servicio de auditoría."
       },
       {
         "title": "Dashboard financiero",
         "desc": "Streamlit de control.",
-        "prompt": "Genera código Streamlit con:\n1. Alertas priorizadas con detalle de anomalía\n2. Ejecución presupuestaria por centro y partida con semáforo\n3. Análisis de proveedores: concentración y nuevos\n4. Detección de fraccionamiento con evidencia\n5. Tendencia de gasto por partida y estacionalidad\n6. Métricas: anomalías detectadas, importe, tendencia"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Alertas priorizadas con detalle de anomalía\n2. Ejecución presupuestaria por centro y partida con semáforo\n3. Análisis de proveedores: concentración y nuevos\n4. Detección de fraccionamiento con evidencia\n5. Tendencia de gasto por partida y estacionalidad\n6. Métricas: anomalías detectadas, importe, tendencia"
       },
       {
         "title": "Pipeline de auditoría",
         "desc": "Automatizar detección.",
-        "prompt": "Crea Tasks:\n1. INGESTAR_GASTOS: semanal con nuevas operaciones\n2. SCORING_ANOMALIAS: semanal sobre nuevos gastos\n3. ALERTAR_CRITICAS: inmediato si anomalía grave\n4. EVALUAR_EJECUCION: mensual, desviaciones presupuestarias\n5. Documenta. Objetivo: detectar 65% anomalías, <10% falsos positivos."
+        "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_GASTOS: semanal con nuevas operaciones\n2. SCORING_ANOMALIAS: semanal sobre nuevos gastos\n3. ALERTAR_CRITICAS: inmediato si anomalía grave\n4. EVALUAR_EJECUCION: mensual, desviaciones presupuestarias\n5. Documenta. Objetivo: detectar 65% anomalías, <10% falsos positivos."
       }
     ]
   },
@@ -2151,42 +2151,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para transferencia.",
-        "prompt": "Crea la base de datos EDU_TRANSFERENCIA_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de matchmaking universidad-empresa."
+        "prompt": "/best-practices Crea la base de datos EDU_TRANSFERENCIA_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de matchmaking universidad-empresa."
       },
       {
         "title": "Crear catálogo de capacidades",
         "desc": "Oferta de investigación.",
-        "prompt": "Crea la tabla CATALOGO_INVESTIGACION con: capacidad_id, grupo_investigacion, departamento, area_tematica, descripcion TEXT, keywords TEXT, equipamiento_disponible TEXT, trl_actual INT, publicaciones_relevantes TEXT, patentes TEXT, contratos_previos INT, disponibilidad. Genera 200 capacidades de 50 grupos de investigación."
+        "prompt": "/best-practices Crea la tabla CATALOGO_INVESTIGACION con: capacidad_id, grupo_investigacion, departamento, area_tematica, descripcion TEXT, keywords TEXT, equipamiento_disponible TEXT, trl_actual INT, publicaciones_relevantes TEXT, patentes TEXT, contratos_previos INT, disponibilidad. Genera 200 capacidades de 50 grupos de investigación."
       },
       {
         "title": "Crear necesidades empresariales",
         "desc": "Demanda de innovación.",
-        "prompt": "Crea la tabla NECESIDADES_EMPRESA con: necesidad_id, empresa_sector, empresa_tamano (PYME, Mediana, Grande, Multinacional), reto_innovacion TEXT, area_tecnologica TEXT, presupuesto_estimado FLOAT, plazo_meses INT, trl_deseado INT, tipo_colaboracion (Contrato_ID, Licencia, Consultoria, Tesis_Industrial, Spin_Off). Genera 500 necesidades de 200 empresas."
+        "prompt": "/best-practices Crea la tabla NECESIDADES_EMPRESA con: necesidad_id, empresa_sector, empresa_tamano (PYME, Mediana, Grande, Multinacional), reto_innovacion TEXT, area_tecnologica TEXT, presupuesto_estimado FLOAT, plazo_meses INT, trl_deseado INT, tipo_colaboracion (Contrato_ID, Licencia, Consultoria, Tesis_Industrial, Spin_Off). Genera 500 necesidades de 200 empresas."
       },
       {
         "title": "Matching semántico",
         "desc": "Conectar oferta con demanda.",
-        "prompt": "Crea Cortex Search Service sobre CATALOGO_INVESTIGACION + NECESIDADES_EMPRESA. Crea función MATCHING_TRANSFERENCIA(necesidad_id) que busque capacidades compatibles: score_matching, area_overlap, trl_gap, experiencia_sector, proximidad. Demuestra 5 matchings exitosos."
+        "prompt": "/best-practices Crea Cortex Search Service sobre CATALOGO_INVESTIGACION + NECESIDADES_EMPRESA. Crea función MATCHING_TRANSFERENCIA(necesidad_id) que busque capacidades compatibles: score_matching, area_overlap, trl_gap, experiencia_sector, proximidad. Demuestra 5 matchings exitosos."
       },
       {
         "title": "Generar propuesta de colaboración",
         "desc": "LLM para propuestas.",
-        "prompt": "Crea función GENERAR_PROPUESTA(capacidad_id, necesidad_id) que use CORTEX.COMPLETE para generar: resumen ejecutivo, objetivos, plan de trabajo, entregables, presupuesto estimado, equipo propuesto, timeline. Formato profesional para presentar a empresa."
+        "prompt": "/best-practices Crea función GENERAR_PROPUESTA(capacidad_id, necesidad_id) que use CORTEX.COMPLETE para generar: resumen ejecutivo, objetivos, plan de trabajo, entregables, presupuesto estimado, equipo propuesto, timeline. Formato profesional para presentar a empresa."
       },
       {
         "title": "Analizar pipeline de transferencia",
         "desc": "Métricas de la OTRI.",
-        "prompt": "Crea tabla PIPELINE_TRANSFERENCIA con: propuesta_id, capacidad_id, necesidad_id, fecha_propuesta, estado (Propuesta, Negociacion, Firmado, En_Curso, Completado, Cancelado), importe_contrato FLOAT. Crea vista METRICAS_OTRI: propuestas generadas, tasa conversión, ingresos, por área y tipo."
+        "prompt": "/best-practices Crea tabla PIPELINE_TRANSFERENCIA con: propuesta_id, capacidad_id, necesidad_id, fecha_propuesta, estado (Propuesta, Negociacion, Firmado, En_Curso, Completado, Cancelado), importe_contrato FLOAT. Crea vista METRICAS_OTRI: propuestas generadas, tasa conversión, ingresos, por área y tipo."
       },
       {
         "title": "Dashboard de transferencia",
         "desc": "Streamlit de la OTRI.",
-        "prompt": "Genera código Streamlit con:\n1. Buscador de matching: necesidad → capacidades compatibles\n2. Generador de propuestas de colaboración\n3. Pipeline de transferencia: funnel de propuestas\n4. Catálogo de capacidades por área y grupo\n5. Métricas: contratos, ingresos, tasa conversión\n6. Mapa de colaboraciones: red universidad-empresa"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Buscador de matching: necesidad → capacidades compatibles\n2. Generador de propuestas de colaboración\n3. Pipeline de transferencia: funnel de propuestas\n4. Catálogo de capacidades por área y grupo\n5. Métricas: contratos, ingresos, tasa conversión\n6. Mapa de colaboraciones: red universidad-empresa"
       },
       {
         "title": "Pipeline de matching",
         "desc": "Automatizar conexiones.",
-        "prompt": "Crea Tasks:\n1. ACTUALIZAR_CATALOGO: trimestral, nuevas capacidades\n2. INGESTAR_NECESIDADES: continuo, nuevas demandas\n3. MATCHING_AUTOMATICO: semanal, notificar nuevos matchings\n4. GENERAR_PROPUESTAS: bajo demanda\n5. Documenta. Objetivo: triplicar contratos, +25% ingresos transferencia."
+        "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_CATALOGO: trimestral, nuevas capacidades\n2. INGESTAR_NECESIDADES: continuo, nuevas demandas\n3. MATCHING_AUTOMATICO: semanal, notificar nuevos matchings\n4. GENERAR_PROPUESTAS: bajo demanda\n5. Documenta. Objetivo: triplicar contratos, +25% ingresos transferencia."
       }
     ]
   },
@@ -2197,42 +2197,42 @@ Object.assign(PROMPTS, {
       {
         "title": "Configurar entorno",
         "desc": "Crear base de datos para gobierno.",
-        "prompt": "Crea la base de datos EDU_GOBIERNO_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de cumplimiento RGPD y gobierno del dato."
+        "prompt": "/best-practices Crea la base de datos EDU_GOBIERNO_DB con esquema ANALYTICS y warehouse EDU_WH. Comentarios del proyecto de cumplimiento RGPD y gobierno del dato."
       },
       {
         "title": "Crear inventario de tratamientos",
         "desc": "Catálogo de datos personales.",
-        "prompt": "Crea la tabla INVENTARIO_TRATAMIENTOS con: tratamiento_id, sistema_origen (SGA, LMS, RRHH, Email, Investigacion, Biblioteca, Deportes, Medico), tipo_dato (Academico, Financiero, Sanitario, Laboral, Investigacion), categoria_interesado (Estudiante, Profesor, PAS, Investigador, Externo), base_legal (Consentimiento, Interes_Legitimo, Obligacion_Legal, Contrato), finalidad TEXT, periodo_retencion_meses INT, encargado_tratamiento VARCHAR, datos_sensibles BOOLEAN. Genera 150 tratamientos de datos."
+        "prompt": "/best-practices Crea la tabla INVENTARIO_TRATAMIENTOS con: tratamiento_id, sistema_origen (SGA, LMS, RRHH, Email, Investigacion, Biblioteca, Deportes, Medico), tipo_dato (Academico, Financiero, Sanitario, Laboral, Investigacion), categoria_interesado (Estudiante, Profesor, PAS, Investigador, Externo), base_legal (Consentimiento, Interes_Legitimo, Obligacion_Legal, Contrato), finalidad TEXT, periodo_retencion_meses INT, encargado_tratamiento VARCHAR, datos_sensibles BOOLEAN. Genera 150 tratamientos de datos."
       },
       {
         "title": "Clasificar datos personales",
         "desc": "NLP para detección automática.",
-        "prompt": "Crea función CLASIFICAR_DATOS(sistema, tabla, columna, muestra_datos) que use CORTEX.COMPLETE para clasificar: tipo (identificador_directo, cuasi_identificador, dato_sensible, dato_personal, no_personal), categoria_RGPD, riesgo (alto, medio, bajo), recomendacion (encriptar, enmascarar, seudonimizar, ok). Demuestra sobre 20 columnas de diferentes sistemas."
+        "prompt": "/best-practices Crea función CLASIFICAR_DATOS(sistema, tabla, columna, muestra_datos) que use CORTEX.COMPLETE para clasificar: tipo (identificador_directo, cuasi_identificador, dato_sensible, dato_personal, no_personal), categoria_RGPD, riesgo (alto, medio, bajo), recomendacion (encriptar, enmascarar, seudonimizar, ok). Demuestra sobre 20 columnas de diferentes sistemas."
       },
       {
         "title": "Gestionar consentimientos",
         "desc": "Registro centralizado.",
-        "prompt": "Crea tabla CONSENTIMIENTOS con: interesado_id, tipo_interesado, tratamiento_id, consentimiento_otorgado BOOLEAN, fecha_consentimiento DATE, medio (Digital, Papel, Implícito), alcance TEXT, revocado BOOLEAN, fecha_revocacion. Crea función VERIFICAR_CONSENTIMIENTO(interesado_id, tratamiento_id) que verifique base legal y consentimiento vigente."
+        "prompt": "/best-practices Crea tabla CONSENTIMIENTOS con: interesado_id, tipo_interesado, tratamiento_id, consentimiento_otorgado BOOLEAN, fecha_consentimiento DATE, medio (Digital, Papel, Implícito), alcance TEXT, revocado BOOLEAN, fecha_revocacion. Crea función VERIFICAR_CONSENTIMIENTO(interesado_id, tratamiento_id) que verifique base legal y consentimiento vigente."
       },
       {
         "title": "Detectar anomalías de acceso",
         "desc": "ML para accesos sospechosos.",
-        "prompt": "Crea tabla LOGS_ACCESO_DATOS con: usuario_id, sistema, datos_accedidos, fecha_hora TIMESTAMP, ip_origen, volumen_registros INT, tipo_operacion (Lectura, Escritura, Exportacion, Eliminacion). Usa ML.CLASSIFICATION para detectar: acceso fuera de horario, volumen inusual, exportación masiva, acceso a datos sin necesidad. Generar alertas."
+        "prompt": "/best-practices Crea tabla LOGS_ACCESO_DATOS con: usuario_id, sistema, datos_accedidos, fecha_hora TIMESTAMP, ip_origen, volumen_registros INT, tipo_operacion (Lectura, Escritura, Exportacion, Eliminacion). Usa ML.CLASSIFICATION para detectar: acceso fuera de horario, volumen inusual, exportación masiva, acceso a datos sin necesidad. Generar alertas."
       },
       {
         "title": "Evaluar riesgos de privacidad",
         "desc": "DPIA automatizada.",
-        "prompt": "Crea función EVALUAR_RIESGO_PRIVACIDAD(tratamiento_id) que analice: tipo de datos, volumen, automatización, perfilado, datos sensibles, transferencias, medidas de seguridad. Genere puntuación de riesgo y determine si requiere DPIA formal. Use CORTEX.COMPLETE para generar informe de evaluación."
+        "prompt": "/best-practices Crea función EVALUAR_RIESGO_PRIVACIDAD(tratamiento_id) que analice: tipo de datos, volumen, automatización, perfilado, datos sensibles, transferencias, medidas de seguridad. Genere puntuación de riesgo y determine si requiere DPIA formal. Use CORTEX.COMPLETE para generar informe de evaluación."
       },
       {
         "title": "Dashboard RGPD",
         "desc": "Streamlit de cumplimiento.",
-        "prompt": "Genera código Streamlit con:\n1. Inventario de tratamientos con estado de cumplimiento\n2. Clasificación de datos por sistema y sensibilidad\n3. Estado de consentimientos por tipo de interesado\n4. Alertas de acceso anómalo\n5. Evaluación de riesgos con semáforo por tratamiento\n6. Métricas: derechos ARCO gestionados, tiempos de respuesta"
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Inventario de tratamientos con estado de cumplimiento\n2. Clasificación de datos por sistema y sensibilidad\n3. Estado de consentimientos por tipo de interesado\n4. Alertas de acceso anómalo\n5. Evaluación de riesgos con semáforo por tratamiento\n6. Métricas: derechos ARCO gestionados, tiempos de respuesta"
       },
       {
         "title": "Pipeline de gobierno",
         "desc": "Automatizar cumplimiento.",
-        "prompt": "Crea Tasks:\n1. CLASIFICAR_NUEVOS: mensual, analizar nuevos datos\n2. VERIFICAR_CONSENTIMIENTOS: semanal, detectar gaps\n3. DETECTAR_ANOMALIAS_ACCESO: diario\n4. EVALUAR_RIESGOS: trimestral, actualizar evaluaciones\n5. Documenta. Objetivo: inventario 100%, respuesta ARCO <72h."
+        "prompt": "/best-practices Crea Tasks:\n1. CLASIFICAR_NUEVOS: mensual, analizar nuevos datos\n2. VERIFICAR_CONSENTIMIENTOS: semanal, detectar gaps\n3. DETECTAR_ANOMALIAS_ACCESO: diario\n4. EVALUAR_RIESGOS: trimestral, actualizar evaluaciones\n5. Documenta. Objetivo: inventario 100%, respuesta ARCO <72h."
       }
     ]
   }

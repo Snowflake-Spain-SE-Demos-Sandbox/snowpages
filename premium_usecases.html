@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <title>Snowflake — Premium Use Cases</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    /* ── HEADER ──────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #003545, #11567F);
+      color: #fff;
+      padding: 32px 48px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .hero-left { flex: 1; }
+
+    .logos {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logo-snowflake {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 6px;
+    }
+
+    .hero-tagline {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .stats-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 28px;
+      text-align: center;
+      color: #1a1a1a;
+      min-width: 160px;
+      flex-shrink: 0;
+    }
+
+    .stats-box .stat-number {
+      font-size: 40px;
+      font-weight: 700;
+      color: #1A237E;
+      line-height: 1;
+    }
+
+    .stats-box .stat-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .stats-box .stat-time {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1;
+    }
+
+    .stats-box .stat-time-label {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .stats-divider {
+      border: none;
+      border-top: 1px solid #e8e8e8;
+      margin: 10px 0;
+    }
+
+    /* ── SECTION INTRO ───────────────────────────────────── */
+    .intro {
+      background: #fff;
+      text-align: center;
+      padding: 48px 24px 32px;
+    }
+
+    .intro h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #11567F;
+      margin-bottom: 14px;
+    }
+
+    .intro p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* ── FILTERS ─────────────────────────────────────────── */
+    .filters-bar {
+      background: #fff;
+      padding: 20px 48px 0;
+      border-bottom: 1px solid #e8e8e8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filters-left {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 80px;
+      border: 1.5px solid #ccc;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn:hover { border-color: #29B5E8; color: #29B5E8; }
+
+    .filter-btn.active {
+      background: #29B5E8;
+      border-color: #29B5E8;
+      color: #fff;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #ccc;
+      border-radius: 80px;
+      padding: 7px 14px;
+      gap: 8px;
+      min-width: 200px;
+      background: #fff;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 13px;
+      color: #444;
+      width: 100%;
+      background: transparent;
+    }
+    .search-box input::placeholder { color: #aaa; }
+
+    /* ── RESULTS COUNT ────────────────────────────────────── */
+    .results-count {
+      padding: 14px 48px 8px;
+      font-size: 13px;
+      color: #666;
+      background: #f5f5f5;
+    }
+
+    /* ── CARDS GRID ──────────────────────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
+      gap: 24px;
+      padding: 16px 48px 48px;
+      background: #f5f5f5;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #e2e2e2;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
+
+    .card-header {
+      padding: 16px 18px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card-badges { display: flex; gap: 6px; align-items: center; }
+
+    .badge-id {
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-cat {
+      background: #E0F4FD;
+      color: #11567F;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .badge-cat.inventory { background: #E8EAF6; color: #1A237E; }
+    .badge-cat.automotive { background: #E3F2FD; color: #0D47A1; }
+    .badge-cat.forecast  { background: #E3F2FD; color: #1565C0; }
+    .badge-cat.streamlit { background: #F3E5F5; color: #6A1B9A; }
+    .prompt-natural {
+      position: relative; background: #F8FAFB; color: #1a1a1a;
+      border-radius: 8px; padding: 16px 18px;
+      font-family: 'Lato', -apple-system, sans-serif;
+      font-size: 13.5px; line-height: 1.85; white-space: pre-wrap;
+      word-break: break-word; border-left: 4px solid #1A237E;
+    }
+    .prompt-natural .copy-btn {
+      position: absolute; top: 8px; right: 10px;
+      background: rgba(26,35,126,0.12); border: 1px solid rgba(26,35,126,0.4);
+      color: #1A237E; font-size: 11px; padding: 3px 10px;
+      border-radius: 4px; cursor: pointer;
+    }
+    .prompt-natural .copy-btn:hover { background: rgba(26,35,126,0.25); }
+
+    .card-time {
+      font-size: 12px;
+      color: #888;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .card-title {
+      padding: 0 18px 12px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #11567F;
+      line-height: 1.3;
+    }
+
+    .pain-point {
+      margin: 0 18px 14px;
+      background: #F0F7FA;
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .pain-point-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #D45B90;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .pain-point p {
+      font-size: 13px;
+      color: #2a2a2a;
+      line-height: 1.55;
+    }
+
+    .card-desc {
+      padding: 0 18px 14px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-features {
+      padding: 0 18px 16px;
+      list-style: none;
+    }
+
+    .card-features li {
+      font-size: 13px;
+      color: #444;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .card-features li::before {
+      content: '✓';
+      color: #29B5E8;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .card-actions {
+      padding: 14px 18px 18px;
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 10px;
+      background: #29B5E8;
+      color: #fff;
+      border: none;
+      border-radius: 80px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+    .btn-secondary:hover { background: #11567F; }
+
+    .btn-tertiary {
+      flex: 1;
+      padding: 10px;
+      background: #003545;
+      color: #29B5E8;
+      border: none;
+      border-radius: 80px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s;
+      text-decoration: none;
+      display: block;
+    }
+    .btn-tertiary:hover { background: #11567F; }
+
+    .card-actions { flex-wrap: wrap; }
+
+    .prompt-step { margin-bottom: 18px; }
+    .prompt-step-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .prompt-step-num { background: #003545; color: #29B5E8; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+    .prompt-step-title { font-size: 13px; font-weight: 600; color: #333; }
+    .prompt-step-desc { font-size: 12px; color: #666; margin-bottom: 6px; line-height: 1.5; }
+    .prompt-code { position: relative; background: #003545; color: #e0e0e0; border-radius: 8px; padding: 12px 14px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+    .prompt-code .copy-btn { position: absolute; top: 6px; right: 8px; background: rgba(255,255,255,0.1); border: none; color: #aaa; font-size: 11px; padding: 3px 8px; border-radius: 4px; cursor: pointer; }
+    .prompt-code .copy-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .prompt-code .kw { color: #29B5E8; }
+    .modal-box .prompt-intro { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #eee; }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 92%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 32px 28px;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #888;
+      line-height: 1;
+    }
+    .modal-close:hover { color: #D45B90; }
+    .modal-box h2 { color: #11567F; font-size: 20px; margin-bottom: 6px; }
+    .modal-box h3 { font-size: 15px; color: #333; margin: 18px 0 8px; }
+    .modal-box p, .modal-box li { font-size: 13px; line-height: 1.7; color: #444; }
+    .modal-box ul { padding-left: 20px; margin: 6px 0; }
+    .modal-box .guide-badge { display: inline-block; background: #E0F4FD; color: #11567F; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; }
+    .modal-box .guide-footer { margin-top: 20px; padding-top: 14px; border-top: 1px solid #eee; font-size: 12px; color: #888; }
+
+    @media (max-width: 700px) {
+      .hero { flex-direction: column; padding: 24px 20px; }
+      .cards-grid { grid-template-columns: 1fr; padding: 16px 16px 48px; }
+      .filters-bar { padding: 16px 16px 0; }
+      .results-count { padding: 12px 16px 6px; }
+    }
+    </style>
+</head>
+<body>
+
+<header class="hero" style="background:linear-gradient(135deg,#1A237E,#4A148C);">
+  <div class="hero-left">
+    <div class="logos"></div>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,0.75);text-decoration:none;margin-bottom:8px;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="12,4 6,10 12,16"/></svg>Volver al Indice de Industrias</a>
+    <p class="hero-eyebrow">Premium Use Cases</p>
+    <h1 class="hero-title">Premium Use Cases</h1>
+    <p class="hero-subtitle">Casos de uso complejos y end-to-end con aplicaciones Streamlit completas que replican soluciones empresariales reales sobre Snowflake</p>
+    <p class="hero-tagline">ML.FORECAST · ML.ANOMALY_DETECTION · Streamlit · Stored Procedures | Soluciones Enterprise</p>
+  </div>
+  <div class="stats-box">
+    <div class="stat-number">2</div>
+    <div class="stat-label">Casos de Uso</div>
+    <hr class="stats-divider"/>
+    <div class="stat-time">60-90 min</div>
+    <div class="stat-time-label">Tiempo de Implementacion</div>
+  </div>
+</header>
+
+<section class="intro">
+  <h2>Soluciones Empresariales Complejas — 100% en Snowflake</h2>
+  <p>Cada caso de uso Premium replica funcionalidades que tradicionalmente requieren plataformas externas costosas (Palantir, SAP IBP, o]Kinaxis). Aqui demostramos que Snowflake, con sus capacidades nativas de ML, Stored Procedures y Streamlit, puede resolver los mismos problemas sin salir del ecosistema de datos.</p>
+</section>
+
+<div class="filters-bar">
+  <div class="filters-left" id="filterBtns">
+    <button class="filter-btn active" data-filter="all">Todos (2)</button>
+    <button class="filter-btn" data-filter="inventory">Supply Chain (1)</button>
+    <button class="filter-btn" data-filter="automotive">Automotive (1)</button>
+  </div>
+  <div class="search-box">
+    <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round">
+      <circle cx="9" cy="9" r="7"/><line x1="15" y1="15" x2="19" y2="19"/>
+    </svg>
+    <input type="text" id="searchInput" placeholder="Buscar caso de uso..."/>
+  </div>
+</div>
+
+<p class="results-count" id="resultsCount"></p>
+<main class="cards-grid" id="cardsGrid"></main>
+
+<div class="modal-overlay" id="guiaModal" onclick="if(event.target===this)cerrarModal('guiaModal')">
+  <div class="modal-box" id="guiaModalBox"></div>
+</div>
+<div class="modal-overlay" id="promptsModal" onclick="if(event.target===this)cerrarModal('promptsModal')">
+  <div class="modal-box" id="promptsModalBox"></div>
+</div>
+
+<footer>
+  <p>Snowflake AI/ML Premium Use Cases &copy; 2026</p>
+</footer>
+
+<script>
+const UC_CATALOG = [
+  {
+    id: "UC01",
+    title: "Inventory Rebalancing — Control Tower con Streamlit",
+    category: "inventory",
+    categoryLabel: "Supply Chain",
+    time: "60-90 min",
+    problem: "Las organizaciones pierden millones por stock-outs, exceso de inventario y falta de visibilidad en tiempo real de su red de distribucion. Las soluciones tradicionales (Palantir, SAP IBP) cuestan millones y requieren meses de implementacion.",
+    desc: "Pipeline completo de Inventory Rebalancing: desde la generacion de datos sinteticos de una red de 30 sitios con 29 materiales, hasta una aplicacion Streamlit interactiva con Control Tower, alertas proactivas, y recomendaciones automaticas de rebalanceo — todo 100% nativo en Snowflake.",
+    features: [
+      "GENERATOR/UNIFORM para 30 sitios, 29 items, 90 dias de inventario",
+      "ML.FORECAST para proyeccion de demanda por item y sitio",
+      "ML.ANOMALY_DETECTION para alertas de stock-out y exceso",
+      "Stored Procedure para calculo de recomendaciones de rebalanceo",
+      "Dashboard Streamlit multi-tab: Control Tower, Alertas, Rebalanceo"
+    ],
+    guia: {
+      objetivos: [
+        "Construir un Inventory Control Tower con visibilidad total de la red",
+        "Detectar proactivamente alertas de inventario en riesgo (stock-outs y excesos)",
+        "Generar recomendaciones automaticas de rebalanceo entre sitios",
+        "Proyectar inventario futuro con ML.FORECAST",
+        "Crear una aplicacion Streamlit interactiva con 3 vistas principales"
+      ],
+      funcionalidades: [
+        "State of Network: KPIs agregados (inventario total, days of supply, sitios, materiales)",
+        "Inventory Value at Risk: alertas proactivas con umbral configurable",
+        "Network Deep Dive: tabla pivotada site x item x fecha con proyeccion",
+        "Rebalance Recommendations: sugerencias de transferencia entre sitios",
+        "Filtros por sitio, material, categoria y rango de fechas"
+      ],
+      datos: [
+        "SITES: 30 ubicaciones con nombre, latitud, longitud, capacidad maxima",
+        "MATERIALS: 29 productos con categoria, lead time, coste unitario, stock minimo",
+        "INVENTORY_DAILY: snapshots diarios por site x item (90 dias, ~80.000 filas)",
+        "INBOUND_ORDERS: ordenes de compra entrantes con fecha prevista y cantidad",
+        "OUTBOUND_ORDERS: pedidos de cliente con fecha compromiso y cantidad",
+        "FORECASTS: proyecciones generadas por ML.FORECAST (horizonte 30 dias)",
+        "ALERTS: alertas detectadas de stock-out y exceso",
+        "REBALANCE_ACTIONS: recomendaciones de transferencia generadas"
+      ],
+      como_usar: [
+        "Ejecuta los 10 prompts en orden en Cortex Code (Snowsight)",
+        "Cada prompt genera SQL o Python que se ejecuta directamente",
+        "El dashboard Streamlit final es una app autonoma que se despliega en Snowflake",
+        "Los datos sinteticos simulan una red de distribucion realista tipo bakery",
+        "Puedes sustituir los datos sinteticos por datos reales de tu ERP/WMS"
+      ]
+    }
+  },
+  {
+    id: "UC02",
+    title: "Automotive Part Inventory Optimization — Recalls & Distribution",
+    category: "automotive",
+    categoryLabel: "Automotive",
+    time: "60-90 min",
+    problem: "Los fabricantes de automoviles pierden millones cuando un recall genera picos de demanda imprevistos en piezas especificas. Los centros de distribucion no tienen visibilidad en tiempo real del impacto del recall sobre su inventario, provocando roturas de stock, envios urgentes costosos y retrasos en reparaciones a los concesionarios.",
+    desc: "Pipeline completo de optimizacion de inventario de piezas para automocion: deteccion de recalls, simulacion del impacto en demanda, visualizacion de inventario proyectado por centro de distribucion, y recomendaciones AI de transferencias entre centros — todo en Snowflake con una app Streamlit oscura tipo Parts Explorer.",
+    features: [
+      "GENERATOR/UNIFORM para centros de distribucion, concesionarios, piezas y recalls",
+      "ML.FORECAST para proyeccion de demanda por pieza y centro",
+      "Deteccion automatica de impacto de recalls en inventario",
+      "Simulacion de escenarios de demanda (What-If Analysis)",
+      "Dashboard Streamlit dark-theme: Alerts, Parts Explorer, Distribution Map"
+    ],
+    guia: {
+      objetivos: [
+        "Detectar automaticamente recalls que impactan piezas del inventario",
+        "Proyectar inventario por centro de distribucion con ML.FORECAST",
+        "Identificar centros con riesgo de stock-out tras un recall",
+        "Generar recomendaciones de transferencia entre centros de distribucion",
+        "Crear una aplicacion Streamlit dark-theme con visualizacion de red"
+      ],
+      funcionalidades: [
+        "Alerts Panel: recalls activos con impacto cuantificado en la red",
+        "Parts Explorer: Bill of Materials, proveedores y riesgo de suministro",
+        "Projected Inventory: grafico temporal por centro y pieza afectada",
+        "Distribution Map: mapa de centros con boundaries de mercado",
+        "Mitigate Risk: recomendaciones de rebalanceo y ordenes de transferencia"
+      ],
+      datos: [
+        "DISTRIBUTION_CENTERS: 5 centros con nombre, region, capacidad y dealers asociados",
+        "DEALERS: 60 concesionarios con ubicacion y centro de distribucion asignado",
+        "PARTS_CATALOG: 200 piezas con categoria, coste, proveedor y lead time",
+        "INVENTORY_DC: stock actual por centro x pieza (1.000 filas)",
+        "RECALLS: historico de recalls con pieza afectada, fecha y vehiculos impactados",
+        "DEMAND_HISTORY: demanda diaria por pieza y centro (180 dias, ~180.000 filas)",
+        "SUPPLIERS: 15 proveedores con fiabilidad y capacidad maxima",
+        "TRANSFER_ORDERS: recomendaciones generadas de movimiento entre centros"
+      ],
+      como_usar: [
+        "Ejecuta los 10 prompts en orden en Cortex Code (Snowsight)",
+        "Los datos simulan un OEM de automocion con 5 centros de distribucion",
+        "El recall simulado (Rear Axle Line) genera un spike de demanda de 1.1M unidades",
+        "La app Streamlit usa dark-theme para emular el estilo Parts Explorer",
+        "Puedes sustituir los datos sinteticos por datos reales de tu ERP/IMS"
+      ]
+    }
+  }
+];
+
+const PROMPTS = {
+  UC01: {
+    title: "Inventory Rebalancing — Pipeline Completo",
+    intro: "Ejecuta estos 10 prompts en Cortex Code (Snowsight). Cada prompt genera codigo SQL o Python que construye progresivamente el pipeline de Inventory Rebalancing hasta la aplicacion Streamlit final.",
+    steps: [
+      {
+        title: "Crear base de datos y esquema",
+        desc: "Configura el entorno de trabajo con la base de datos y esquemas necesarios.",
+        prompt: "/best-practices OBJETIVO\nCrear la infraestructura base para el proyecto de Inventory Rebalancing.\n\nACCIONES\nCrea la base de datos INVENTORY_REBALANCING con IF NOT EXISTS. Dentro crea dos esquemas:\n  - RAW: para los datos brutos generados\n  - ANALYTICS: para las tablas calculadas, forecasts y alertas\n\nCrea tambien un warehouse INVENTORY_WH de tamano MEDIUM si no existe, que usaremos para las operaciones de ML.\n\nVERIFICACION\nMuestra las bases de datos y esquemas creados con SHOW SCHEMAS IN DATABASE INVENTORY_REBALANCING."
+      },
+      {
+        title: "Generar red de sitios de distribucion",
+        desc: "Crea 30 ubicaciones con coordenadas y capacidad usando GENERATOR.",
+        prompt: "/best-practices OBJETIVO\nGenerar la tabla de sitios que componen la red de distribucion.\n\nTABLA: INVENTORY_REBALANCING.RAW.SITES\nGenera 30 filas usando GENERATOR(ROWCOUNT => 30) con estos campos:\n  - SITE_ID: secuencia de 1 a 30\n  - SITE_NAME: nombres de panaderia realistas (usa un ARRAY con nombres como 'Alamo Baking Facility', 'Mountain View Bakery Plant', 'Golden Gate Bakery', 'Evergreen Bakery Plant', 'Sunshine Bakery', 'Springfield Bakery Supply', etc.)\n  - LATITUDE: UNIFORM(25.0, 48.0, RANDOM()) para cubrir EEUU\n  - LONGITUDE: UNIFORM(-122.0, -73.0, RANDOM())\n  - MAX_CAPACITY: UNIFORM(500, 5000, RANDOM())::INT\n  - SITE_TYPE: valores aleatorios entre 'Production', 'Distribution Center', 'Retail'\n\nVERIFICACION\nSELECT COUNT(*), MIN(MAX_CAPACITY), MAX(MAX_CAPACITY) FROM SITES."
+      },
+      {
+        title: "Generar catalogo de materiales",
+        desc: "Crea 29 productos con categorias, lead times y costes usando GENERATOR.",
+        prompt: "/best-practices OBJETIVO\nGenerar el catalogo de materiales (productos) que se gestionan en la red.\n\nTABLA: INVENTORY_REBALANCING.RAW.MATERIALS\nGenera 29 filas usando GENERATOR(ROWCOUNT => 29) con:\n  - ITEM_ID: secuencia de 1 a 29\n  - ITEM_NAME: nombres de productos de panaderia (Bagels, Baguettes, Biscotti, Biscuits, Brownies, Bundt cakes, Challah, Cheesecakes, Ciabatta bread, Croissants, Cupcakes, Danish pastries, Donuts, Eclairs, Focaccia, Madeleines, Muffins, Pies, Pretzels, Rolls, Rye bread, Scones, Sourdough, Strudel, Tarts, Turnovers, Waffles, Wheat bread, Brioche)\n  - CATEGORY: distribuir entre 'Breads', 'Pastries', 'Cakes', 'Specialty'\n  - LEAD_TIME_DAYS: UNIFORM(1, 7, RANDOM())::INT\n  - UNIT_COST: ROUND(UNIFORM(2.0, 25.0, RANDOM()), 2)\n  - MIN_STOCK: UNIFORM(20, 200, RANDOM())::INT\n  - SHELF_LIFE_DAYS: UNIFORM(3, 30, RANDOM())::INT\n\nVERIFICACION\nSELECT CATEGORY, COUNT(*), AVG(UNIT_COST)::DECIMAL(10,2) FROM MATERIALS GROUP BY CATEGORY."
+      },
+      {
+        title: "Generar inventario historico diario",
+        desc: "Genera 90 dias de snapshots de inventario por sitio y material (~78.000 filas).",
+        prompt: "/best-practices OBJETIVO\nGenerar el historico de inventario diario para toda la red — esta es la tabla principal del sistema.\n\nTABLA: INVENTORY_REBALANCING.RAW.INVENTORY_DAILY\nGenera datos para 90 dias (desde hace 90 dias hasta hoy) cruzando los 30 sitios x 29 materiales. Usa GENERATOR(ROWCOUNT => 78300) (30 * 29 * 90) con:\n  - SNAPSHOT_DATE: distribuir uniformemente entre DATE_FROM y hoy\n  - SITE_ID: UNIFORM(1, 30, RANDOM())::INT\n  - ITEM_ID: UNIFORM(1, 29, RANDOM())::INT\n  - QUANTITY_ON_HAND: UNIFORM(0, 600, RANDOM())::INT\n  - QUANTITY_IN_TRANSIT: UNIFORM(0, 150, RANDOM())::INT\n  - QUANTITY_RESERVED: UNIFORM(0, 100, RANDOM())::INT\n\nAlternativamente, usa un CROSS JOIN entre una secuencia de fechas, SITES y MATERIALS para garantizar cobertura completa de todas las combinaciones.\n\nVERIFICACION\nSELECT COUNT(*) as TOTAL_ROWS, COUNT(DISTINCT SNAPSHOT_DATE) as DAYS, COUNT(DISTINCT SITE_ID) as SITES, COUNT(DISTINCT ITEM_ID) as ITEMS FROM INVENTORY_DAILY."
+      },
+      {
+        title: "Generar ordenes entrantes y salientes",
+        desc: "Crea las tablas de inbound (compras) y outbound (ventas) que afectan al inventario.",
+        prompt: "/best-practices OBJETIVO\nGenerar las tablas de ordenes que representan el flujo de entrada y salida de materiales.\n\nTABLA 1: INVENTORY_REBALANCING.RAW.INBOUND_ORDERS\nGenera 5.000 filas con GENERATOR(ROWCOUNT => 5000):\n  - ORDER_ID: secuencia\n  - SITE_ID: UNIFORM(1, 30, RANDOM())::INT\n  - ITEM_ID: UNIFORM(1, 29, RANDOM())::INT\n  - ORDER_DATE: fecha aleatoria en los ultimos 90 dias\n  - EXPECTED_DELIVERY_DATE: ORDER_DATE + UNIFORM(1, 14, RANDOM()) dias\n  - QUANTITY: UNIFORM(50, 500, RANDOM())::INT\n  - STATUS: valores aleatorios entre 'Pending', 'In Transit', 'Delivered', 'Delayed'\n  - SUPPLIER_RELIABILITY: UNIFORM(0.7, 1.0, RANDOM())::DECIMAL(3,2)\n\nTABLA 2: INVENTORY_REBALANCING.RAW.OUTBOUND_ORDERS\nGenera 8.000 filas con GENERATOR(ROWCOUNT => 8000):\n  - ORDER_ID: secuencia\n  - SITE_ID: UNIFORM(1, 30, RANDOM())::INT\n  - ITEM_ID: UNIFORM(1, 29, RANDOM())::INT\n  - ORDER_DATE: fecha aleatoria en los ultimos 90 dias\n  - PROMISED_DATE: ORDER_DATE + UNIFORM(0, 5, RANDOM()) dias\n  - QUANTITY: UNIFORM(10, 200, RANDOM())::INT\n  - STATUS: valores entre 'Open', 'Fulfilled', 'Backordered', 'Cancelled'\n  - PRIORITY: valores entre 'High', 'Medium', 'Low'\n\nVERIFICACION\nSELECT 'INBOUND' as TYPE, COUNT(*) as ROWS, SUM(QUANTITY) as TOTAL_QTY FROM INBOUND_ORDERS UNION ALL SELECT 'OUTBOUND', COUNT(*), SUM(QUANTITY) FROM OUTBOUND_ORDERS."
+      },
+      {
+        title: "Calcular Days of Supply y proyecciones",
+        desc: "Crea la tabla analitica con metricas de salud del inventario por sitio y material.",
+        prompt: "/best-practices OBJETIVO\nCalcular las metricas clave de salud del inventario que alimentaran el Control Tower y las alertas.\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.INVENTORY_HEALTH\nPara cada combinacion site_id + item_id, calcula:\n  - CURRENT_INVENTORY: ultimo QUANTITY_ON_HAND del snapshot mas reciente\n  - AVG_DAILY_DEMAND: media de cantidad en OUTBOUND_ORDERS de los ultimos 30 dias / 30\n  - DAYS_OF_SUPPLY: CURRENT_INVENTORY / NULLIF(AVG_DAILY_DEMAND, 0)\n  - INCOMING_QTY: suma de QUANTITY en INBOUND_ORDERS con status 'Pending' o 'In Transit'\n  - PROJECTED_INVENTORY_7D: CURRENT_INVENTORY + INCOMING_QTY - (AVG_DAILY_DEMAND * 7)\n  - PROJECTED_INVENTORY_14D: CURRENT_INVENTORY + INCOMING_QTY - (AVG_DAILY_DEMAND * 14)\n  - EXCESS_FLAG: TRUE si DAYS_OF_SUPPLY > 30 (inventario que podria expirar)\n  - STOCKOUT_RISK_FLAG: TRUE si PROJECTED_INVENTORY_7D < 0\n\nUsa JOIN con SITES y MATERIALS para incluir SITE_NAME, ITEM_NAME, CATEGORY, MIN_STOCK.\n\nVERIFICACION\nSELECT COUNT(*) as COMBINACIONES, SUM(CASE WHEN STOCKOUT_RISK_FLAG THEN 1 ELSE 0 END) as RIESGO_STOCKOUT, SUM(CASE WHEN EXCESS_FLAG THEN 1 ELSE 0 END) as EXCESOS FROM INVENTORY_HEALTH."
+      },
+      {
+        title: "Detectar alertas de stock-out y exceso",
+        desc: "Identifica las disrupciones activas que requieren accion inmediata.",
+        prompt: "/best-practices OBJETIVO\nGenerar la tabla de alertas proactivas a partir de INVENTORY_HEALTH, clasificando por severidad.\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.ALERTS\nPara cada registro en INVENTORY_HEALTH donde STOCKOUT_RISK_FLAG = TRUE o EXCESS_FLAG = TRUE, crea una alerta con:\n  - ALERT_ID: secuencia autoincremental\n  - SITE_ID, SITE_NAME, ITEM_ID, ITEM_NAME\n  - ALERT_TYPE: 'STOCKOUT_RISK' o 'EXCESS'\n  - SEVERITY: 'CRITICAL' si DAYS_OF_SUPPLY < 3, 'HIGH' si < 7, 'MEDIUM' si < 14, 'LOW' para excesos\n  - CURRENT_INVENTORY, DAYS_OF_SUPPLY\n  - PROJECTED_SHORTAGE_QTY: cantidad negativa proyectada (solo para stockout)\n  - EXCESS_QTY: cantidad por encima del maximo necesario (solo para exceso)\n  - VALUE_AT_RISK: cantidad en riesgo * UNIT_COST del material\n  - EARLIEST_IMPACT_DATE: CURRENT_DATE + DAYS_OF_SUPPLY (cuando se agotaria)\n  - CREATED_AT: CURRENT_TIMESTAMP\n\nCalcula tambien metricas agregadas:\n  - Total de alertas de stockout y su valor economico\n  - Total de alertas de exceso y su valor economico\n  - Numero de POs que podrian cancelarse (exceso)\n\nVERIFICACION\nSELECT ALERT_TYPE, SEVERITY, COUNT(*) as NUM_ALERTS, SUM(VALUE_AT_RISK)::INT as TOTAL_VALUE_AT_RISK FROM ALERTS GROUP BY 1, 2 ORDER BY 1, 2."
+      },
+      {
+        title: "Forecast de demanda con ML.FORECAST",
+        desc: "Proyecta la demanda futura 30 dias por item usando ML nativo de Snowflake.",
+        prompt: "/best-practices OBJETIVO\nUsar ML.FORECAST de Snowflake para proyectar la demanda de cada material en los proximos 30 dias.\n\nPREPARACION DE DATOS\nCrea una vista o tabla de serie temporal a partir de OUTBOUND_ORDERS:\n  - Agrupa por ITEM_ID + ORDER_DATE\n  - Calcula DAILY_DEMAND = SUM(QUANTITY)\n  - Rellena dias sin datos con 0\n  - Necesitas al menos 60 dias de historia por item\n\nENTRENAMIENTO DEL MODELO\nUsa SNOWFLAKE.ML.FORECAST con:\n  - Serie temporal por ITEM_ID\n  - Columna de timestamp: ORDER_DATE\n  - Columna de valor: DAILY_DEMAND\n  - Horizonte de prediccion: 30 dias\n  - Parametro evaluate => TRUE para generar metricas de rendimiento\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.DEMAND_FORECAST\nAlmacena las predicciones con: ITEM_ID, FORECAST_DATE, PREDICTED_DEMAND, LOWER_BOUND, UPPER_BOUND.\n\nVERIFICACION\nMuestra las metricas del modelo (MAE, MAPE). Muestra un ejemplo de forecast para 3 items diferentes."
+      },
+      {
+        title: "Generar recomendaciones de rebalanceo",
+        desc: "Calcula transferencias optimas entre sitios con exceso y sitios con deficit.",
+        prompt: "/best-practices OBJETIVO\nGenerar recomendaciones de transferencia de inventario entre sitios para resolver las alertas detectadas.\n\nLOGICA DE REBALANCEO\nPara cada alerta de tipo STOCKOUT_RISK:\n  1. Identifica sitios con EXCESS_FLAG = TRUE para el mismo ITEM_ID\n  2. De esos sitios con exceso, calcula la cantidad transferible: EXCESS_QTY disponible\n  3. Prioriza el sitio origen mas cercano (usa distancia euclidiana entre coordenadas)\n  4. Calcula la cantidad a transferir: MIN(cantidad necesaria en destino, cantidad disponible en origen)\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.REBALANCE_ACTIONS\nCada recomendacion incluye:\n  - ACTION_ID: secuencia\n  - SOURCE_SITE_ID, SOURCE_SITE_NAME (sitio con exceso)\n  - TARGET_SITE_ID, TARGET_SITE_NAME (sitio con deficit)\n  - ITEM_ID, ITEM_NAME\n  - TRANSFER_QTY: cantidad recomendada a transferir\n  - DISTANCE_KM: distancia estimada entre sitios\n  - ESTIMATED_TRANSIT_DAYS: DISTANCE_KM / 500 (velocidad media)\n  - PRIORITY: basada en la severidad de la alerta del destino\n  - STATUS: 'Recommended' (pendiente de aprobacion)\n  - ESTIMATED_SAVINGS: valor recuperado si se ejecuta la transferencia\n\nVERIFICACION\nSELECT COUNT(*) as TOTAL_RECOMMENDATIONS, SUM(TRANSFER_QTY) as TOTAL_UNITS_TO_MOVE, SUM(ESTIMATED_SAVINGS)::INT as TOTAL_POTENTIAL_SAVINGS FROM REBALANCE_ACTIONS."
+      },
+      {
+        title: "Dashboard Streamlit — Inventory Control Tower",
+        desc: "Crea la aplicacion Streamlit completa con 3 tabs: Control Tower, Alertas y Rebalanceo.",
+        prompt: "/best-practices OBJETIVO\nCrear una aplicacion Streamlit en Snowflake (Streamlit in Snowflake) que funcione como un Inventory Control Tower interactivo con 3 vistas principales.\n\nCONEXION A SNOWFLAKE\nUsa snowflake.connector.connect() para la conexion. La app debe conectar a la base de datos INVENTORY_REBALANCING.\n\nESTRUCTURA DE LA APP (3 TABS)\n\nTAB 1: STATE OF NETWORK (Control Tower)\n  - Fila de 4 KPI cards grandes: Current Inventory total, Days of Supply medio, Numero de Locations, Numero de Materials\n  - Tabla de Inventory Value at Risk con metricas: Avoidable Shortages, Value of Shortages, Excess Material count, Value of Excess\n  - Boton 'Take Action Now (Rebalance)' que navega al tab 3\n  - Tabla tipo grid: Site Name x Item Name con projected inventory por dia (proximos 7 dias)\n\nTAB 2: ALERTS (Inventory at Risk)\n  - Filtros laterales: por Site, por Material, por Severity, por Alert Type\n  - Tabla de alertas ordenada por severity con columnas: Site, Item, Alert Type, Severity, Days of Supply, Value at Risk, Earliest Impact Date\n  - Grafico de linea: proyeccion de inventario para el item seleccionado\n  - Resumen: total de alertas criticas, altas, medias\n\nTAB 3: REBALANCE (Recommendations)\n  - Lista de recomendaciones de transferencia con: Source Site, Target Site, Item, Quantity, Priority, Estimated Savings\n  - Para cada recomendacion, mostrar: distancia, dias de transito estimados\n  - Boton 'Resolve and Execute' (simulado — marca la accion como 'Accepted')\n  - Grafico de proyeccion antes/despues del rebalanceo para el par seleccionado\n\nESTILO VISUAL\n  - Usa st.metric() para los KPIs con colores segun estado (verde OK, rojo riesgo)\n  - Fondo blanco limpio, bordes sutiles en las cards\n  - Colores corporativos: azul (#1A237E) para headers, rojo (#D32F2F) para alertas criticas, verde (#2E7D32) para OK\n  - Tabs con st.tabs() para la navegacion principal\n\nVERIFICACION\nLa app debe mostrar datos reales de las tablas creadas en los pasos anteriores. Debe funcionar sin errores al ejecutarse como Streamlit in Snowflake."
+      }
+    ]
+  },
+  UC02: {
+    title: "Automotive Part Inventory Optimization — Pipeline Completo",
+    intro: "Ejecuta estos 10 prompts en Cortex Code (Snowsight). Construyen un pipeline de optimizacion de inventario de piezas de automocion con deteccion de recalls, forecast de demanda y app Streamlit dark-theme.",
+    steps: [
+      {
+        title: "Crear base de datos y esquema",
+        desc: "Configura el entorno para el proyecto de Automotive Parts.",
+        prompt: "/best-practices OBJETIVO\nCrear la infraestructura base para el proyecto de Automotive Part Inventory Optimization.\n\nACCIONES\nCrea la base de datos AUTO_PARTS_INVENTORY con IF NOT EXISTS. Dentro crea dos esquemas:\n  - RAW: datos maestros y transaccionales\n  - ANALYTICS: metricas calculadas, forecasts y alertas\n\nCrea un warehouse AUTO_PARTS_WH de tamano MEDIUM si no existe.\n\nVERIFICACION\nSHOW SCHEMAS IN DATABASE AUTO_PARTS_INVENTORY."
+      },
+      {
+        title: "Generar centros de distribucion y concesionarios",
+        desc: "Crea 5 Distribution Centers y 60 Dealers usando GENERATOR.",
+        prompt: "/best-practices OBJETIVO\nGenerar la red de distribucion del OEM de automocion.\n\nTABLA 1: AUTO_PARTS_INVENTORY.RAW.DISTRIBUTION_CENTERS\nCrea 5 centros con estos datos exactos:\n  - East Distribution Center (region: Northeast, 30 dealers, capacidad 50000)\n  - North Distribution Center (region: Great Lakes, 29 dealers, capacidad 45000)\n  - South Distribution Center (region: Southeast, 25 dealers, capacidad 40000)\n  - West Distribution Center (region: Pacific, 20 dealers, capacidad 35000)\n  - Central Distribution Center (region: Midwest, 22 dealers, capacidad 42000)\n\nTABLA 2: AUTO_PARTS_INVENTORY.RAW.DEALERS\nGenera 60 concesionarios con GENERATOR(ROWCOUNT => 60):\n  - DEALER_ID, DEALER_NAME (nombres realistas de ciudades de EEUU)\n  - DC_ID: asignar proporcionalmente a los 5 centros\n  - LATITUDE, LONGITUDE: coordenadas dentro de la region del DC asignado\n  - MONTHLY_VOLUME: UNIFORM(200, 2000, RANDOM())::INT\n\nVERIFICACION\nSELECT DC_ID, COUNT(*) as DEALERS FROM DEALERS GROUP BY DC_ID."
+      },
+      {
+        title: "Generar catalogo de piezas y proveedores",
+        desc: "Crea 200 piezas con categorias automotrices y 15 proveedores.",
+        prompt: "/best-practices OBJETIVO\nGenerar el catalogo de piezas del OEM y sus proveedores.\n\nTABLA 1: AUTO_PARTS_INVENTORY.RAW.PARTS_CATALOG\nGenera 200 piezas con GENERATOR(ROWCOUNT => 200):\n  - PART_ID, PART_NAME: nombres realistas de componentes (Rear Axle Line, Brake Pad Set, Oil Filter, Transmission Fluid, Spark Plug Kit, etc.)\n  - CATEGORY: distribuir entre 'Drivetrain', 'Brakes', 'Engine', 'Electrical', 'Body', 'Suspension', 'Fluids'\n  - UNIT_COST: UNIFORM(5.0, 500.0, RANDOM())::DECIMAL(10,2)\n  - LEAD_TIME_DAYS: UNIFORM(3, 45, RANDOM())::INT\n  - SUPPLIER_ID: UNIFORM(1, 15, RANDOM())::INT\n  - CRITICALITY: valores entre 'Safety-Critical', 'High', 'Medium', 'Low'\n  - MIN_STOCK_LEVEL: UNIFORM(50, 1000, RANDOM())::INT\n\nTABLA 2: AUTO_PARTS_INVENTORY.RAW.SUPPLIERS\nCrea 15 proveedores con GENERATOR(ROWCOUNT => 15):\n  - SUPPLIER_ID, SUPPLIER_NAME\n  - RELIABILITY_SCORE: UNIFORM(0.7, 0.99, RANDOM())::DECIMAL(3,2)\n  - MAX_MONTHLY_CAPACITY: UNIFORM(5000, 50000, RANDOM())::INT\n  - REGION: 'North America', 'Europe', 'Asia'\n\nVERIFICACION\nSELECT CATEGORY, COUNT(*), AVG(UNIT_COST)::DECIMAL(10,2) FROM PARTS_CATALOG GROUP BY CATEGORY ORDER BY 2 DESC."
+      },
+      {
+        title: "Generar inventario por centro y demanda historica",
+        desc: "Crea stock actual por DC x pieza y 180 dias de demanda historica.",
+        prompt: "/best-practices OBJETIVO\nGenerar los datos transaccionales de inventario y demanda.\n\nTABLA 1: AUTO_PARTS_INVENTORY.RAW.INVENTORY_DC\nGenera stock actual para cada combinacion DC x pieza (5 x 200 = 1.000 filas):\n  - DC_ID, PART_ID\n  - QUANTITY_ON_HAND: UNIFORM(0, 800, RANDOM())::INT\n  - QUANTITY_IN_TRANSIT: UNIFORM(0, 200, RANDOM())::INT\n  - LAST_REPLENISHMENT_DATE: fecha aleatoria en los ultimos 30 dias\n  - REORDER_POINT: campo de MIN_STOCK_LEVEL de PARTS_CATALOG\n\nTABLA 2: AUTO_PARTS_INVENTORY.RAW.DEMAND_HISTORY\nGenera 180 dias de demanda diaria. Usa CROSS JOIN entre secuencia de 180 fechas y las 200 piezas y 5 DCs, pero solo para un subconjunto (no todas las combinaciones tienen demanda). Genera ~180.000 filas con GENERATOR:\n  - DEMAND_DATE, DC_ID, PART_ID\n  - QUANTITY_DEMANDED: UNIFORM(1, 50, RANDOM())::INT\n  - ORDER_TYPE: 'Regular', 'Urgent', 'Warranty'\n\nVERIFICACION\nSELECT COUNT(*) FROM DEMAND_HISTORY; SELECT DC_ID, SUM(QUANTITY_DEMANDED) FROM DEMAND_HISTORY GROUP BY DC_ID."
+      },
+      {
+        title: "Generar recalls y simular spike de demanda",
+        desc: "Crea tabla de recalls incluyendo el recall activo de Rear Axle Line.",
+        prompt: "/best-practices OBJETIVO\nGenerar el historico de recalls del OEM, incluyendo un recall activo critico que dispara un spike de demanda.\n\nTABLA: AUTO_PARTS_INVENTORY.RAW.RECALLS\nCrea 10 recalls historicos y 1 recall activo:\n\nEl recall ACTIVO (el mas importante):\n  - RECALL_ID: 'RCL-2024-001'\n  - PART_NAME: 'Rear Axle Connection Line'\n  - PART_ID: el ID correspondiente en PARTS_CATALOG\n  - ANNOUNCEMENT_DATE: hace 5 dias\n  - AFFECTED_VEHICLES: 1131391\n  - SEVERITY: 'CRITICAL'\n  - STATUS: 'ACTIVE'\n  - DESCRIPTION: 'Accelerate Motors is recalling certain 2023-2024 Accelerate X45 vehicles to replace rear axle connection lines due to faulty manufacturing.'\n  - FORECASTED_DEMAND_SPIKE: 1131391 (1 pieza por vehiculo afectado)\n  - SUPPLIER_COUNT: 3 (proveedores disponibles para esta pieza)\n\nGenera 10 recalls historicos mas con GENERATOR (STATUS: 'CLOSED', fechas anteriores).\n\nVERIFICACION\nSELECT STATUS, COUNT(*), SUM(AFFECTED_VEHICLES) FROM RECALLS GROUP BY STATUS."
+      },
+      {
+        title: "Calcular impacto del recall en inventario",
+        desc: "Determina que centros no tienen stock suficiente para cubrir el recall.",
+        prompt: "/best-practices OBJETIVO\nCalcular el gap de inventario generado por el recall activo en cada centro de distribucion.\n\nTABLA: AUTO_PARTS_INVENTORY.ANALYTICS.RECALL_IMPACT\nPara el recall activo (RCL-2024-001), calcula por cada DC:\n  - DC_ID, DC_NAME\n  - CURRENT_STOCK: QUANTITY_ON_HAND de la pieza afectada en ese DC\n  - IN_TRANSIT: QUANTITY_IN_TRANSIT\n  - DEALERS_SERVED: numero de dealers del DC\n  - PROPORTIONAL_DEMAND: (AFFECTED_VEHICLES * DEALERS_SERVED / TOTAL_DEALERS)\n  - STOCK_GAP: PROPORTIONAL_DEMAND - (CURRENT_STOCK + IN_TRANSIT)\n  - DAYS_UNTIL_STOCKOUT: CURRENT_STOCK / (PROPORTIONAL_DEMAND / 90) estimado\n  - GAP_VALUE: STOCK_GAP * UNIT_COST de la pieza\n  - SEVERITY: 'CRITICAL' si DAYS_UNTIL_STOCKOUT < 7, 'HIGH' si < 14, 'MEDIUM' si < 30\n\nVERIFICACION\nSELECT DC_NAME, CURRENT_STOCK, PROPORTIONAL_DEMAND::INT, STOCK_GAP::INT, SEVERITY FROM RECALL_IMPACT ORDER BY STOCK_GAP DESC."
+      },
+      {
+        title: "Forecast de demanda por pieza y centro",
+        desc: "Usa ML.FORECAST para proyectar demanda 90 dias por pieza critica.",
+        prompt: "/best-practices OBJETIVO\nProyectar la demanda futura de las piezas afectadas por el recall usando ML.FORECAST.\n\nPREPARACION\nCrea una serie temporal agregada por DC_ID + PART_ID + DEMAND_DATE a partir de DEMAND_HISTORY. Filtra solo las piezas con CRITICALITY = 'Safety-Critical' o que esten en el recall activo.\n\nENTRENAMIENTO\nUsa SNOWFLAKE.ML.FORECAST con:\n  - Serie: agrupada por DC_ID y PART_ID\n  - Timestamp: DEMAND_DATE\n  - Valor: DAILY_DEMAND (SUM de QUANTITY_DEMANDED)\n  - Horizonte: 90 dias\n  - Parametro evaluate => TRUE\n\nTABLA: AUTO_PARTS_INVENTORY.ANALYTICS.DEMAND_FORECAST\nAlmacena: DC_ID, PART_ID, FORECAST_DATE, PREDICTED_DEMAND, LOWER_BOUND, UPPER_BOUND.\n\nVERIFICACION\nMuestra metricas del modelo. Muestra forecast de la pieza del recall para los 5 DCs (primeros 7 dias)."
+      },
+      {
+        title: "Generar recomendaciones de transferencia",
+        desc: "Identifica centros con exceso que pueden enviar stock a centros con deficit.",
+        prompt: "/best-practices OBJETIVO\nGenerar recomendaciones de transferencia de piezas entre centros para mitigar el impacto del recall.\n\nLOGICA\nPara la pieza afectada por el recall activo:\n  1. Identifica DCs con STOCK_GAP positivo (tienen exceso o stock suficiente)\n  2. Identifica DCs con STOCK_GAP negativo (necesitan stock)\n  3. Empareja origen (exceso) con destino (deficit) priorizando cerania y urgencia\n  4. Calcula cantidad a transferir: MIN(exceso_disponible, deficit_necesario)\n\nTABLA: AUTO_PARTS_INVENTORY.ANALYTICS.TRANSFER_ORDERS\n  - TRANSFER_ID, SOURCE_DC_ID, SOURCE_DC_NAME\n  - TARGET_DC_ID, TARGET_DC_NAME\n  - PART_ID, PART_NAME\n  - TRANSFER_QTY\n  - PRIORITY: basada en severidad del destino\n  - ESTIMATED_TRANSIT_DAYS: UNIFORM(1, 5, RANDOM())::INT\n  - STATUS: 'Recommended'\n  - COST_SAVINGS: valor recuperado al evitar envio urgente del proveedor\n\nVERIFICACION\nSELECT SOURCE_DC_NAME, TARGET_DC_NAME, TRANSFER_QTY, PRIORITY FROM TRANSFER_ORDERS ORDER BY PRIORITY."
+      },
+      {
+        title: "Crear vistas para el dashboard",
+        desc: "Materializa las vistas agregadas que alimentaran la app Streamlit.",
+        prompt: "/best-practices OBJETIVO\nCrear las vistas y tablas agregadas que el dashboard Streamlit consumira directamente.\n\nVISTA 1: AUTO_PARTS_INVENTORY.ANALYTICS.V_NETWORK_SUMMARY\nKPIs globales: inventario total en red, days of supply medio, numero de centros, numero de materiales, numero de dealers.\n\nVISTA 2: AUTO_PARTS_INVENTORY.ANALYTICS.V_ACTIVE_ALERTS\nRecalls activos con: pieza impactada, demanda forecast, proveedores disponibles, DCs afectados y su gap.\n\nVISTA 3: AUTO_PARTS_INVENTORY.ANALYTICS.V_PROJECTED_INVENTORY\nTimeline de inventario proyectado (proximos 90 dias) para la pieza del recall por cada DC, combinando stock actual + in transit + forecast de reposicion - forecast de demanda.\n\nVISTA 4: AUTO_PARTS_INVENTORY.ANALYTICS.V_DC_BOUNDARIES\nCada DC con sus dealers, region, y coordenadas para el mapa.\n\nVERIFICACION\nSELECT * FROM V_NETWORK_SUMMARY; SELECT * FROM V_ACTIVE_ALERTS LIMIT 3."
+      },
+      {
+        title: "Dashboard Streamlit — Parts Explorer (Dark Theme)",
+        desc: "Crea la app Streamlit con tema oscuro y 3 secciones: Alerts, Overview y Mitigate Risk.",
+        prompt: "/best-practices OBJETIVO\nCrear una aplicacion Streamlit en Snowflake con tema oscuro (dark-theme) que funcione como un Parts Explorer para el OEM.\n\nCONEXION\nUsa snowflake.connector.connect() para la conexion. Conecta a AUTO_PARTS_INVENTORY.\n\nESTILO\nAplica dark-theme con CSS custom: fondo #1a1d23, cards con fondo #2d3139, texto blanco, acentos azules #4A90D9. Usa st.set_page_config(layout='wide') y custom CSS inyectado con st.markdown.\n\nESTRUCTURA (Sidebar + Main)\n\nSIDEBAR (Menu lateral oscuro):\n  - Seccion RECALLS: lista de recalls activos como botones\n  - Seccion NAVIGATE: links a Overview y Mitigate Risk\n  - Al seleccionar un recall, el panel principal muestra su detalle\n\nMAIN PANEL — OVERVIEW (cuando se selecciona un recall):\n  - Header con ACTIVE ALERT: titulo del recall y descripcion completa\n  - Fila de 3 KPI cards: Impacted Part, Forecasted Demand (1,131,391), Supplier Count (3)\n  - Seccion Part Exploration: tabla de Bill of Materials de la pieza\n  - Seccion Projected Inventory Across Network: grafico de linea temporal (eje X: meses, eje Y: quantity) con filtro de DC en sidebar\n  - Seccion inferior en 2 columnas: Distribution Center Market Boundaries (mapa con pydeck o folium) + Impacted Distribution Centers (tabla con Title y Total Dealers)\n\nMAIN PANEL — MITIGATE RISK:\n  - Tabla de Transfer Orders recomendadas con: Source DC, Target DC, Part, Qty, Priority, Status\n  - Boton 'Execute Transfer' que actualiza STATUS a 'Executed'\n  - Grafico comparativo before/after del impacto en stock\n\nVERIFICACION\nLa app debe cargar datos reales de las vistas creadas. El grafico de Projected Inventory debe mostrar la curva con valores entre 4.6K y 5.2K como en la referencia."
+      }
+    ]
+  }
+};
+
+function verPrompts(ucId) {
+  const data = PROMPTS[ucId];
+  if (!data) { alert('Prompts no disponibles para ' + ucId); return; }
+  const box = document.getElementById('promptsModalBox');
+  const promptClass = 'prompt-natural';
+  let html = "<button class=\"modal-close\" onclick=\"cerrarModal('promptsModal')\">&times;</button>";
+  html += "<h2 style=\"margin-bottom:4px\">" + data.title + "</h2>";
+  html += "<p style=\"color:#555;margin-bottom:18px;font-size:13px;\">" + data.intro + "</p>";
+  data.steps.forEach(function(st, i) {
+    html += "<div style=\"margin-bottom:18px;\">";
+    html += "<h4 style=\"margin:0 0 4px;color:#1A237E;\">" + (i+1) + ". " + st.title + "</h4>";
+    html += "<p style=\"margin:0 0 8px;color:#666;font-size:12.5px;\">" + st.desc + "</p>";
+    html += "<div class=\"" + promptClass + "\">" + st.prompt.replace(/\n/g, '\n') + "<button class=\"copy-btn\" onclick=\"navigator.clipboard.writeText(this.parentElement.innerText.replace('Copiar','').trim())\" >Copiar</button></div>";
+    html += "</div>";
+  });
+  html += "<p class=\"guide-footer\">Ejecuta cada prompt en Cortex Code (Snowsight) | Premium Use Cases</p>";
+  box.innerHTML = html;
+  document.getElementById('promptsModal').classList.add('active');
+}
+
+function verGuia(ucId) {
+  const uc = UC_CATALOG.find(u => u.id === ucId);
+  if (!uc) return;
+  const box = document.getElementById('guiaModalBox');
+  let html = "<button class=\"modal-close\" onclick=\"cerrarModal('guiaModal')\">&times;</button>";
+  html += "<h2 style=\"margin-bottom:4px\">" + uc.title + "</h2>";
+  html += "<p style=\"color:#555;margin-bottom:14px;font-size:13px;\">" + uc.desc + "</p>";
+  html += "<h3>Objetivos</h3><ul>" + uc.guia.objetivos.map(o => "<li>" + o + "</li>").join("") + "</ul>";
+  html += "<h3>Funcionalidades principales</h3><ul>" + uc.guia.funcionalidades.map(f => "<li>" + f + "</li>").join("") + "</ul>";
+  html += "<h3>Modelo de datos</h3><ul>" + uc.guia.datos.map(d => "<li>" + d + "</li>").join("") + "</ul>";
+  html += "<h3>Como usar</h3><ul>" + uc.guia.como_usar.map(c => "<li>" + c + "</li>").join("") + "</ul>";
+  box.innerHTML = html;
+  document.getElementById('guiaModal').classList.add('active');
+}
+
+function cerrarModal(id) { document.getElementById(id).classList.remove('active'); }
+
+const TOTAL = UC_CATALOG.length;
+function renderCards(list) {
+  const grid = document.getElementById('cardsGrid');
+  const count = document.getElementById('resultsCount');
+  grid.innerHTML = '';
+  count.textContent = "Mostrando " + list.length + " de " + TOTAL + " casos de uso";
+  list.forEach(uc => {
+    const catClass = uc.category;
+    grid.innerHTML += `
+      <article class="card">
+        <div class="card-header">
+          <div class="card-badges">
+            <span class="badge-id">${uc.id}</span>
+            <span class="badge-cat ${catClass}">${uc.categoryLabel}</span>
+          </div>
+          <span class="card-time">
+            <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2">
+              <circle cx="10" cy="10" r="8"/><polyline points="10,5 10,10 13,13"/>
+            </svg>
+            ${uc.time}
+          </span>
+        </div>
+        <h3 class="card-title">${uc.title}</h3>
+        <div class="pain-point">
+          <div class="pain-point-label">Problema</div>
+          <p>${uc.problem}</p>
+        </div>
+        <p class="card-desc">${uc.desc}</p>
+        <ul class="card-features">
+          ${uc.features.map(f => "<li>" + f + "</li>").join('')}
+        </ul>
+        <div class="card-actions">
+          <a href="#" class="btn-secondary" onclick="verGuia('${uc.id}');return false;">Ver Guia</a>
+          <a href="#" class="btn-tertiary" onclick="verPrompts('${uc.id}');return false;">Cortex Code Prompts</a>
+        </div>
+      </article>`;
+  });
+}
+
+let activeFilter = 'all';
+document.getElementById('filterBtns').addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  activeFilter = e.target.dataset.filter;
+  applyFilters();
+});
+document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = UC_CATALOG.filter(uc => {
+    if (activeFilter !== 'all' && uc.category !== activeFilter) return false;
+    if (q && !(uc.title + uc.desc + uc.problem).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  renderCards(filtered);
+}
+
+renderCards(UC_CATALOG);
+</script>
+</body>
+</html>
