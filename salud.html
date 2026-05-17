@@ -1358,7 +1358,8 @@ const PROMPTS = {
         "title": "Pipeline de reentrenamiento",
         "desc": "Automatizar scoring y actualización.",
         "prompt": "/best-practices Crea Tasks:\n1. SCORING_DIARIO: ejecuta modelo Registry sobre altas del día\n2. EVALUAR_READMISIONES: mensual, verifica predicciones vs realidad\n3. REENTRENAR_MODELO: semestral, reentrena con nuevos datos y registra versión\n4. COMPARAR_VERSIONES: tras reentrenamiento, activa la mejor\n5. Documenta pipeline. Objetivo: AUC >0.75, reducir readmisiones evitables 25%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC02": {
@@ -1409,7 +1410,8 @@ const PROMPTS = {
         "title": "Pipeline de mantenimiento",
         "desc": "Mantener chatbot actualizado.",
         "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_CONOCIMIENTO: semanal, reindeza nuevos protocolos\n2. ANALIZAR_GAPS: semanal, identifica consultas sin respuesta\n3. METRICAS_DIARIAS: calcula métricas de rendimiento\n4. SINCRONIZAR_CITAS: diario, actualiza estado de citas\n5. Documenta. Objetivo: resolución >55%, satisfacción >4.0."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC03": {
@@ -1460,7 +1462,8 @@ const PROMPTS = {
         "title": "Pipeline de actualización",
         "desc": "Automatizar predicción.",
         "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_ACTIVIDAD: diario, carga datos de actividad\n2. ACTUALIZAR_EXOGENAS: diario, carga vigilancia epidemiológica y meteo\n3. GENERAR_PREDICCION: diario, ejecuta modelo Registry\n4. PLAN_SEMANAL: lunes, genera plan de recursos 7 días\n5. REENTRENAR: trimestral, reentrena con nuevos datos\n6. Documenta. Objetivo: MAPE <10% a 1 semana."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC04": {
@@ -1506,7 +1509,8 @@ const PROMPTS = {
         "title": "Pipeline de seguimiento",
         "desc": "Automatizar estratificación.",
         "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_CLINICOS: mensual, carga nuevas analíticas y constantes\n2. RE_ESTRATIFICAR: trimestral, recalcula niveles de riesgo\n3. ALERTAS_CAMBIO: semanal, detecta pacientes que empeoran\n4. ADHERENCIA: mensual, actualiza datos de dispensación\n5. Documenta. Objetivo: reducir ingresos urgentes crónicos 20%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC05": {
@@ -1552,7 +1556,8 @@ const PROMPTS = {
         "title": "Pipeline de monitorización",
         "desc": "Automatizar predicción.",
         "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_TELEMETRIA: diario, carga datos de equipos\n2. SCORING_EQUIPOS: semanal, ejecuta modelo de riesgo\n3. ALERTAS_CRITICAS: diario, notifica equipos en riesgo\n4. PLAN_PREVENTIVO: mensual, genera calendario de mantenimiento\n5. Documenta. Objetivo: predecir 75% averías, reducir urgentes 40%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC06": {
@@ -1598,7 +1603,8 @@ const PROMPTS = {
         "title": "Pipeline de procesamiento",
         "desc": "Automatizar extracción.",
         "prompt": "/best-practices Crea Tasks:\n1. EXTRAER_ENTIDADES: cada hora sobre nuevos documentos\n2. CODIFICAR_DIAGNOSTICOS: diario sobre entidades extraídas\n3. VERIFICAR_INTERACCIONES: continuo sobre nuevas prescripciones\n4. ACTUALIZAR_INDICE: diario, reindeza nuevos historiales\n5. Documenta. Objetivo: F1 >85% en extracción de entidades."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC07": {
@@ -1644,7 +1650,8 @@ const PROMPTS = {
         "title": "Pipeline de análisis",
         "desc": "Automatizar procesamiento.",
         "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_FEEDBACK: diario, carga nuevas encuestas y reseñas\n2. ANALIZAR_SENTIMIENTO: diario sobre nuevo feedback\n3. CLASIFICAR_TEMAS: diario\n4. DETECTAR_ALERTAS: semanal\n5. Documenta. Objetivo: análisis <24h, aumentar mejoras basadas en evidencia 40%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC08": {
@@ -1695,7 +1702,8 @@ const PROMPTS = {
         "title": "Pipeline de mantenimiento",
         "desc": "Automatizar actualización y auditoría.",
         "prompt": "/best-practices Crea Tasks:\n1. REFRESH_DEMOGRAPHICS: mensual desde sistemas de admisión\n2. REFRESH_CLINICAL: semanal desde HCE\n3. REFRESH_MEDICATIONS: semanal desde farmacia\n4. REFRESH_LAB: diario desde laboratorio\n5. MONITOR_QUALITY: semanal, verifica completitud y drift\n6. AUDIT_ACCESOS: diario, registra quién accede y con qué finalidad\n7. Documenta. Cumplimiento estricto RGPD y normativa sanitaria."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC09": {
@@ -1741,7 +1749,8 @@ const PROMPTS = {
         "title": "Pipeline de optimización",
         "desc": "Automatizar programación.",
         "prompt": "/best-practices Cra Tasks:\n1. ACTUALIZAR_LISTA: diario, sincroniza lista de espera\n2. ESTIMAR_DURACIONES: semanal, ejecuta modelo sobre programados\n3. SCORING_CANCELACION: semanal, calcula riesgo\n4. PROGRAMA_SEMANAL: viernes, genera programa de la semana siguiente\n5. Documenta. Objetivo: utilización >85%, cancelaciones <8%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC10": {
@@ -1787,7 +1796,8 @@ const PROMPTS = {
         "title": "Pipeline de auditoría",
         "desc": "Automatizar detección.",
         "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_FACTURACION: mensual con nuevas facturas\n2. SCORING_ANOMALIAS: mensual sobre nueva facturación\n3. GENERAR_ALERTAS: mensual, prioriza casos\n4. ACTUALIZAR_BENCHMARKS: anual con datos nacionales\n5. Documenta. Objetivo: detectar 60% anomalías, <8% falsos positivos."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   }
 };
@@ -1836,7 +1846,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de monitorización",
         "desc": "Automatizar alertas.",
         "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_IOT: cada hora, carga lecturas de dispositivos\n2. ACTUALIZAR_BASELINE: semanal, recalcula perfiles normales\n3. DETECTAR_ALERTAS: cada 4 horas, ejecuta modelo de clasificación\n4. NOTIFICAR: continuo, envía alertas según nivel\n5. Documenta. Objetivo: detectar 75% descompensaciones, <10% falsos positivos."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC12": {
@@ -1882,7 +1893,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de actualización",
         "desc": "Mantener evidencia actualizada.",
         "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_GUIAS: semanal, incorpora nuevas publicaciones\n2. ACTUALIZAR_FARMA: mensual, actualiza fichas técnicas y alertas\n3. VERIFICAR_PRESCRIPCIONES: continuo con cada nueva prescripción\n4. METRICAS: semanal, calcula uso y utilidad\n5. Documenta. Objetivo: cubrir 80% de consultas, detectar 40% más interacciones."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC13": {
@@ -1928,7 +1940,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de gestión",
         "desc": "Automatizar bed management.",
         "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_CENSO: cada hora, sincroniza estado de camas\n2. PREDECIR_ALTAS: cada 6 horas, genera predicciones\n3. EVALUAR_TENSION: cada 4 horas, calcula niveles\n4. REPORTE_DIARIO: resumen de flujo y tensión\n5. Documenta. Objetivo: reducir espera de cama 30%, cancelaciones 50%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC14": {
@@ -1974,7 +1987,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de mantenimiento",
         "desc": "Automatizar actualización.",
         "prompt": "/best-practices Crea Tasks:\n1. REFRESH_OUTCOMES: mensual desde CMBD\n2. REFRESH_EFFICIENCY: mensual desde admisión y quirófano\n3. REFRESH_SATISFACTION: mensual desde encuestas\n4. REFRESH_SAFETY: mensual desde calidad\n5. ALERTAR_DETERIORO: semanal, detecta tendencias negativas\n6. Documenta. Feature Store permite benchmarking near-real-time."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC15": {
@@ -2020,7 +2034,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de seguimiento",
         "desc": "Automatizar detección.",
         "prompt": "/best-practices Crea Tasks:\n1. ACTUALIZAR_DISPENSACIONES: semanal desde farmacia\n2. SCORING_ADHERENCIA: mensual, recalcula riesgo\n3. GENERAR_INTERVENCIONES: mensual, genera recomendaciones\n4. EVALUAR_IMPACTO: trimestral, mide efecto de intervenciones\n5. Documenta. Objetivo: reducir hospitalizaciones por no adherencia 20%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC16": {
@@ -2066,7 +2081,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de detección",
         "desc": "Automatizar alertas.",
         "prompt": "/best-practices Crea Tasks:\n1. INGESTAR_CONSTANTES: cada hora desde monitores\n2. INGESTAR_ANALITICAS: con cada resultado de laboratorio\n3. SCORING_SEPSIS: cada 2 horas sobre pacientes ingresados\n4. ALERTAR_CODIGO: inmediato si score > umbral\n5. Documenta. Objetivo: detectar 80% sepsis con 4-12h anticipación, mortalidad -15%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC17": {
@@ -2112,7 +2128,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline post-alta",
         "desc": "Automatizar gestión.",
         "prompt": "/best-practices Crea Tasks:\n1. GENERAR_PLAN: con cada alta, genera plan personalizado\n2. SIMPLIFICAR_INFORME: con cada alta\n3. COORDINAR_PRIMARIA: diario, envía informes a centros de salud\n4. ENVIAR_RECORDATORIOS: según calendario de cada paciente\n5. Documenta. Objetivo: comprensión 85%, seguimiento 88%, readmisión -20%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC18": {
@@ -2158,7 +2175,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de detección",
         "desc": "Automatizar vigilancia.",
         "prompt": "/best-practices Crea Tasks:\n1. ANALIZAR_NOTAS: cada 4 horas, NLP sobre nuevas notas\n2. DETECTAR_ESTRUCTURADOS: cada 6 horas sobre analíticas\n3. CONSOLIDAR_EVENTOS: diario, unifica y prioriza\n4. GENERAR_ALERTAS: inmediato para centinela\n5. Documenta. Objetivo: detectar 70% eventos, reducir tiempo detección a horas."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC19": {
@@ -2204,7 +2222,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline geriátrico",
         "desc": "Automatizar vigilancia.",
         "prompt": "/best-practices Crea Tasks:\n1. VALORAR_INGRESO: con cada ingreso de >70 años\n2. SCORING_DIA3: a las 72h del ingreso\n3. ACTIVAR_INTERVENCION: automático si alto riesgo\n4. SEGUIMIENTO_FUNCIONAL: semanal durante ingreso\n5. Documenta. Objetivo: detectar 75% deterioro en <48h, reducir deterioro 25%."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   },
   "UC20": {
@@ -2250,7 +2269,8 @@ Object.assign(PROMPTS, {
         "title": "Pipeline de anonimización",
         "desc": "Automatizar proceso.",
         "prompt": "/best-practices Crea Tasks:\n1. DETECTAR_PII: sobre nuevos documentos\n2. ANONIMIZAR_ESTRUCTURADO: bajo demanda, aplica k-anonimato\n3. ANONIMIZAR_TEXTO: bajo demanda, enmascara informes\n4. EVALUAR_RIESGO: tras cada anonimización\n5. Documenta. Objetivo: k≥5, utilidad >90%, cumplimiento RGPD estricto."
-      }
+      },
+      {"title": "Generar resumen HTML", "desc": "Genera un documento HTML completo con el resumen del caso de uso.", "prompt": "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio."}
     ]
   }
 });

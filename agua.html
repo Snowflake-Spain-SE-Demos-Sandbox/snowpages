@@ -758,6 +758,7 @@ const PROMPTS = {
       { title: "Dashboard conversacional", desc: "Interfaz de chat para operadores de planta.", prompt: "/best-practices Crea dashboard Streamlit con: sidebar con lecturas SCADA actuales (semáforos verde/amarillo/rojo), campo de texto para pregunta, botón de enviar, área de respuesta con citas de fuente, historial de preguntas de la sesión, filtro por zona de planta para acotar contexto. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Métricas de uso del asistente", desc: "Registro de preguntas y satisfacción.", prompt: "/best-practices Crea tabla 'log_consultas' para registrar cada pregunta: timestamp, operador, pregunta, respuesta, fuentes_citadas, tiempo_respuesta_ms, util (boolean). Genera consulta de resumen: preguntas por turno, temas más consultados, tasa de utilidad." },
       { title: "Limpieza (opcional)", desc: "Elimina los objetos creados al terminar.", prompt: "/best-practices Genera los comandos DROP DATABASE IF EXISTS TALK_TO_PLANT_DB y DROP WAREHOUSE IF EXISTS COMPUTE_WH comentados para limpieza opcional." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC02: {
@@ -773,6 +774,7 @@ const PROMPTS = {
       { title: "Configurar alertas regulatorias", desc: "Umbrales del RD 140/2003.", prompt: "/best-practices Crea tabla 'umbrales_regulatorios' con límites: turbidez_max=4 NTU, pH_min=6.5, pH_max=9.5, cloro_min=0.2 mg/l, conductividad_max=2500 µS/cm. Genera tabla 'alertas_proactivas' con predicciones que superan umbrales en las próximas 24h." },
       { title: "Evaluar precisión", desc: "Métricas de error por parámetro.", prompt: "/best-practices Calcula MAPE, RMSE y MAE para cada parámetro usando los últimos 30 días como test. Muestra tabla comparativa de precisión." },
       { title: "Dashboard de predicciones", desc: "Panel de tendencias y alertas proactivas.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (turbidez actual, predicción 24h, alertas activas, precisión MAPE), gráfico de líneas con valores reales + predicción + banda de confianza, tabla de alertas proactivas con horizonte temporal, selector de parámetro a visualizar. Usa snowflake.connector.connect() para ejecución local del dashboard." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC03: {
@@ -789,6 +791,7 @@ const PROMPTS = {
       { title: "Calcular impacto económico", desc: "Ahorro estimado en reactivos.", prompt: "/best-practices Crea consulta que calcule: coste_reactivo_historico (dosis_aplicada × coste_unitario), coste_recomendado (dosis_optima × coste_unitario), ahorro_mensual, ahorro_anual. Asume: coagulante 0.35€/kg, floculante 2.50€/kg, cloro 0.80€/kg." },
       { title: "Dashboard de dosificación", desc: "Panel de recomendaciones para operadores.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (ahorro mensual estimado, dosis actual vs óptima, precisión modelo), recomendación en tiempo real dado inputs de agua bruta, gráfico de ahorro acumulado, tabla de histórico de recomendaciones. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS DOSIFICACION_DB comentados para limpieza opcional." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC04: {
@@ -805,6 +808,7 @@ const PROMPTS = {
       { title: "Calcular ROI del mantenimiento predictivo", desc: "Comparar costes correctivo vs predictivo.", prompt: "/best-practices Calcula: coste_correctivo_anual (suma de correctivos históricos), coste_predictivo_estimado (intervención planificada antes de fallo), ahorro_estimado, paradas_evitadas. Muestra comparativa por tipo de equipo." },
       { title: "Dashboard de salud de equipos", desc: "Panel de monitorización con semáforos.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (equipos monitorizados, alertas activas, ahorro estimado), tabla de equipos con semáforo de salud (Verde/Amarillo/Rojo), gráfico de tendencia de vibración/temperatura por equipo seleccionable, lista de acciones de mantenimiento priorizadas. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS MANTENIMIENTO_PREDICTIVO_DB comentados." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC05: {
@@ -821,6 +825,7 @@ const PROMPTS = {
       { title: "Planificar campañas", desc: "Priorización económica de campañas de detección.", prompt: "/best-practices Crea tabla 'plan_campanas' ordenando DMAs por coste_agua_perdida descendente. Calcula: inversión campaña (coste equipo + personal), retorno estimado, plazo de amortización. Top 20 DMAs para próxima campaña." },
       { title: "Dashboard de fugas", desc: "Panel de gestión de agua no registrada.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (ANR total %, m³ perdidos/día, coste anual pérdidas, DMAs en alerta), tabla de DMAs con scoring, distribución de ANR por material de tubería, plan de campañas priorizado. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS DETECCION_FUGAS_DB comentados." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC06: {
@@ -837,6 +842,7 @@ const PROMPTS = {
       { title: "Priorizar inversiones", desc: "Zonas con mayor coste recurrente.", prompt: "/best-practices Crea tabla 'priorizacion_inversion' que identifique las 10 zonas con mayor coste acumulado y tendencia creciente. Calcula ROI estimado de renovación vs coste de mantenimiento correctivo continuado." },
       { title: "Dashboard de incidencias", desc: "Panel de inteligencia operativa.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (partes procesados, exactitud clasificación, top zona problemática), distribución por tipo y zona (bar chart), tabla de partes recientes con clasificación IA, tendencia mensual de incidencias. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS INCIDENCIAS_NLP_DB comentados." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC07: {
@@ -853,6 +859,7 @@ const PROMPTS = {
       { title: "Planificación de producción", desc: "Traducir demanda a operación de planta.", prompt: "/best-practices Crea tabla 'plan_produccion' que mapee demanda_predicha a: num_lineas_tratamiento_necesarias, caudal_produccion_m3h, horas_bombeo, reactivos_estimados_kg. Calcula margen de seguridad del 10%." },
       { title: "Dashboard de planificación", desc: "Panel de producción y demanda.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (demanda mañana, demanda 72h, MAPE, producción necesaria), gráfico de demanda real + predicción + intervalo, tabla de plan de producción por día, comparativa año actual vs anterior. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS DEMANDA_HIDRICA_DB comentados." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC08: {
@@ -869,6 +876,7 @@ const PROMPTS = {
       { title: "Análisis por zona", desc: "Zonas con más anomalías.", prompt: "/best-practices Crea consultas de agregación: anomalías por zona_dma, tipo de anomalía por zona, correlación con antigüedad de red, evolución mensual de anomalías." },
       { title: "Dashboard de anomalías", desc: "Panel para equipo comercial.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (abonados monitorizados, alertas activas, volumen anómalo diario, pérdida económica mensual), tabla de alertas priorizadas con tipo y volumen, distribución por tipo de anomalía (pie chart), filtro por zona y tipo de abonado. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS ANOMALIAS_CONSUMO_DB comentados." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC09: {
@@ -885,6 +893,7 @@ const PROMPTS = {
       { title: "Priorizar resolución", desc: "Cola inteligente de resolución.", prompt: "/best-practices Crea tabla 'cola_resolucion' priorizando: 1) Riesgo regulatorio, 2) Sentimiento muy negativo + cliente importante, 3) Corte de suministro, 4) Calidad del agua, 5) Resto. Estima SLA por prioridad." },
       { title: "Dashboard de reclamaciones", desc: "Panel de inteligencia de atención al cliente.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (reclamaciones abiertas, sentimiento medio, % riesgo regulatorio, tiempo medio resolución), distribución por categoría (bar chart), tabla de reclamaciones con filtro, alertas de riesgo regulatorio destacadas, evolución de sentimiento. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS RECLAMACIONES_AGUA_DB comentados." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
   UC10: {
@@ -902,6 +911,7 @@ const PROMPTS = {
       { title: "Calcular impacto anual", desc: "Proyección de ahorro energético.", prompt: "/best-practices Calcula: consumo_actual_kwh_anual, consumo_optimo_kwh_anual, ahorro_kwh, ahorro_euros, reduccion_co2_toneladas (factor 0.25 kg CO2/kWh). Desglose por periodo tarifario." },
       { title: "Dashboard energético", desc: "Panel de gestión energética.", prompt: "/best-practices Crea dashboard Streamlit con: KPIs (coste energético hoy, ahorro potencial, reducción CO2, eficiencia actual %), gráfico de consumo por hora con tarifa superpuesta, recomendación de configuración actual, tabla de ahorro acumulado por mes. Usa snowflake.connector.connect() para ejecución local del dashboard." },
       { title: "Limpieza (opcional)", desc: "Elimina objetos creados.", prompt: "/best-practices Genera comandos DROP DATABASE IF EXISTS OPTIMIZACION_ENERGIA_DB comentados." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." },
     ]
   },
 };

@@ -1046,6 +1046,7 @@ const PROMPTS = {
       { title: 'Puntuar pacientes', desc: 'Genera predicciones con niveles de riesgo.', prompt: '/best-practices Crea tabla ADHERENCE_PREDICTIONS usando ADHERENCE_PREDICTOR!PREDICT sobre el test. Clasifica en Alto Riesgo (>=70%), Riesgo Medio (30-70%), Bajo Riesgo (<30%). Muestra resumen por nivel.' },
       { title: 'Dashboard Streamlit', desc: 'Dashboard interactivo de riesgo.', prompt: '/best-practices Crea un dashboard Streamlit con: 4 KPIs (total pacientes, alto riesgo, exactitud, tasa no-adherencia), gráfico de barras por nivel de riesgo, tabla filtrable de pacientes con probabilidad, y recomendaciones de intervención por nivel. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
       { title: 'Limpieza (opcional)', desc: 'Elimina los objetos creados.', prompt: '/best-practices Genera los comandos DROP DATABASE IF EXISTS PATIENT_ADHERENCE_DB comentados para limpieza opcional.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC02: {
@@ -1058,6 +1059,7 @@ const PROMPTS = {
       { title: 'Atribución multi-touch', desc: 'Modelos lineal y decaimiento temporal.', prompt: '/best-practices Usando window functions (ROW_NUMBER, COUNT OVER), implementa atribución lineal (crédito igual por touchpoint) y time-decay (mayor crédito a touchpoints recientes usando DATEDIFF y ponderación exponencial). Crea tabla ATTRIBUTION_RESULTS.' },
       { title: 'Calcular ROI por canal', desc: 'Retorno de inversión por canal y mercado.', prompt: '/best-practices Calcula ROI = (revenue_attributed - budget) / budget por canal y mercado. Identifica los 10 canales/mercados con mejor y peor ROI. Genera tabla CHANNEL_ROI_SUMMARY.' },
       { title: 'Dashboard interactivo', desc: 'Visualización de rendimiento de campañas.', prompt: '/best-practices Crea dashboard Streamlit con: ROI por canal (barras), distribución de atribución lineal vs time-decay, tabla de campañas con métricas, filtro por mercado y canal. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC03: {
@@ -1071,6 +1073,7 @@ const PROMPTS = {
       { title: 'Detectar tendencias', desc: 'Series temporales de sentimiento.', prompt: '/best-practices Calcula sentimiento medio diario/semanal por producto y fuente. Usa LAG() para detectar cambios bruscos. Identifica alertas cuando el sentimiento cae más de 0.3 en 24h.' },
       { title: 'Extracción de temas con LLM', desc: 'Modelado de temas con Cortex Complete.', prompt: '/best-practices Usa SNOWFLAKE.CORTEX.COMPLETE(mistral-large2, prompt) para extraer los 3 temas principales del feedback negativo agrupado por semana. Genera tabla EMERGING_TOPICS.' },
       { title: 'Dashboard de sentimiento', desc: 'Monitorización en tiempo real.', prompt: '/best-practices Crea dashboard Streamlit con: score medio por producto, tendencia temporal, distribución por fuente, alertas activas, tabla de temas emergentes, filtros por producto y periodo. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC04: {
@@ -1084,6 +1087,7 @@ const PROMPTS = {
       { title: 'Generar predicciones', desc: 'Forecasts a 24 meses con intervalos de confianza.', prompt: '/best-practices Genera predicciones a 24 meses con intervalos de confianza al 80% y 95%. Aplica curvas de erosión de genéricos sobre el forecast base para crear escenarios optimista, base y pesimista.' },
       { title: 'Análisis de riesgo LoE', desc: 'Impacto financiero por escenario.', prompt: '/best-practices Calcula impacto total en ingresos por producto y mercado en los 3 escenarios. Identifica los mercados de mayor riesgo y el timing óptimo para acciones defensivas.' },
       { title: 'Dashboard de forecasting', desc: 'Visualización de escenarios.', prompt: '/best-practices Crea dashboard Streamlit con: gráficos de series temporales con forecast e intervalos de confianza, tabla comparativa de escenarios por mercado, waterfall de impacto en ingresos, filtros por producto y mercado. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC05: {
@@ -1097,6 +1101,7 @@ const PROMPTS = {
       { title: 'Entrenar modelo', desc: 'ML.CLASSIFICATION de propensión.', prompt: '/best-practices Divide 80/20, entrena SNOWFLAKE.ML.CLASSIFICATION PRESCRIBING_PROPENSITY con target is_high_prescriber. Muestra feature importance. Usa evaluate => TRUE para generar métricas de evaluación.' },
       { title: 'Puntuar y generar listas', desc: 'Scoring y next-best-action.', prompt: '/best-practices Puntúa todos los HCPs. Genera tabla TARGET_LIST con: hcp_id, propensity_score, recommended_channel (basado en historial de respuesta), recommended_content, priority_rank.' },
       { title: 'Dashboard de campo', desc: 'Panel para representantes de ventas.', prompt: '/best-practices Crea dashboard Streamlit con: lista priorizada de HCPs por región, propensity score con semáforo, recomendación de acción, historial de interacciones por HCP, filtros por región y tier. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC06: {
@@ -1109,6 +1114,7 @@ const PROMPTS = {
       { title: 'Crear modelo semántico', desc: 'Cortex Analyst semantic layer.', prompt: '/best-practices Define un modelo semántico YAML con las tablas, relaciones, métricas (revenue, units, market_share, growth_rate) y dimensiones (product, market, time). Esto permite consultas en lenguaje natural.' },
       { title: 'Consultas en lenguaje natural', desc: 'Probar con Cortex Analyst.', prompt: '/best-practices Ejecuta consultas como: Cual es nuestra cuota de mercado del producto principal en Alemania en Q3, Comparar ventas del producto A vs competidores en los ultimos 6 meses, Top 5 mercados por crecimiento de revenue.' },
       { title: 'Dashboard conversacional', desc: 'Interfaz de chat para ejecutivos.', prompt: '/best-practices Crea dashboard Streamlit con: campo de texto para preguntas, área de resultados con tabla y gráfico auto-generado, historial de consultas recientes, métricas KPI en sidebar. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC07: {
@@ -1121,6 +1127,7 @@ const PROMPTS = {
       { title: 'Calcular scores RFM', desc: 'Segmentación con NTILE.', prompt: '/best-practices Calcula Recency (días desde última transacción), Frequency (total transacciones), Monetary (valor total). Usa NTILE(5) para crear quintiles de cada dimensión. Asigna segmentos: Champions (R>=4,F>=4,M>=4), Loyal (F>=3), At-Risk (R<=2), Lost (R=1,F<=2).' },
       { title: 'Predecir LTV', desc: 'Forecasting de valor a 12 meses.', prompt: '/best-practices Crea serie temporal de valor mensual por paciente. Entrena SNOWFLAKE.ML.FORECAST para predecir valor de los próximos 12 meses por segmento. Genera tabla LTV_PREDICTIONS. Usa evaluate => TRUE para generar métricas de evaluación.' },
       { title: 'Dashboard de segmentación', desc: 'Visualización de segmentos y LTV.', prompt: '/best-practices Crea dashboard Streamlit con: distribución de pacientes por segmento, LTV medio por segmento, heatmap RFM, tabla de pacientes con score y segmento, filtros por segmento y período. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC08: {
@@ -1134,6 +1141,7 @@ const PROMPTS = {
       { title: 'Análisis A/B', desc: 'Significancia estadística de tests.', prompt: '/best-practices Calcula diferencia de CTR y conversion_rate entre variantes A y B. Aplica test de significancia (z-score) para determinar ganadores con p-value < 0.05.' },
       { title: 'Recomendaciones con LLM', desc: 'Generar mejoras para contenido.', prompt: '/best-practices Usa CORTEX.COMPLETE para generar recomendaciones de mejora del copy para los 20 assets con peor rendimiento. Formato: problema detectado, sugerencia específica, copy mejorado.' },
       { title: 'Dashboard de contenido', desc: 'Leaderboard y análisis.', prompt: '/best-practices Crea dashboard Streamlit con: leaderboard de assets por score compuesto, scatter plot de tono vs CTR, resultados A/B con ganadores, tabla de recomendaciones, filtros por producto y canal. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC09: {
@@ -1147,6 +1155,7 @@ const PROMPTS = {
       { title: 'Analizar resultados clínicos', desc: 'Efectividad comparativa.', prompt: '/best-practices Calcula tasas de eventos (ictus, sangrado, hospitalización) por brazo. Usa análisis de supervivencia simplificado con DATEDIFF al primer evento. Calcula NNT (Number Needed to Treat) y riesgo relativo.' },
       { title: 'Análisis coste-efectividad', desc: 'ICER y costes totales.', prompt: '/best-practices Calcula costes totales por paciente y brazo (medicación, hospitalización, consultas). Calcula ICER = (Coste_Tratamiento_A - Coste_Tratamiento_B) / (Eventos_evitados). Genera tabla COST_EFFECTIVENESS_SUMMARY.' },
       { title: 'Dashboard RWE', desc: 'Informe para pagadores.', prompt: '/best-practices Crea dashboard Streamlit con: comparativa de PDC por brazo, Kaplan-Meier simplificado, tabla de NNT y riesgo relativo, waterfall de costes, resumen ejecutivo auto-generado con CORTEX.COMPLETE. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC10: {
@@ -1160,6 +1169,7 @@ const PROMPTS = {
       { title: 'Búsqueda semántica', desc: 'Consultas de inteligencia.', prompt: '/best-practices Ejecuta búsquedas semánticas como: resultados de ensayos fase III de Eliquis, cambios de precio de Pradaxa en Europa, nuevas indicaciones aprobadas para Entresto. Muestra top 5 resultados con score de relevancia.' },
       { title: 'Análisis de posicionamiento', desc: 'Resumen competitivo con LLM.', prompt: '/best-practices Usa CORTEX.COMPLETE para generar resumen ejecutivo del panorama competitivo agrupado por competidor. Extrae: fortalezas, amenazas, movimientos recientes, implicaciones para la empresa.' },
       { title: 'Dashboard competitivo', desc: 'Panel de monitorización.', prompt: '/best-practices Crea dashboard Streamlit con: campo de búsqueda semántica, timeline de eventos por competidor, resumen ejecutivo, alertas de amenazas, distribución de fuentes, filtros por competidor y período. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC11: {
@@ -1173,6 +1183,7 @@ const PROMPTS = {
       { title: 'Análisis de cadenas de Markov', desc: 'Probabilidades de transición.', prompt: '/best-practices Calcula matriz de transición: probabilidad de pasar de canal A a canal B. Identifica las rutas de mayor conversión y los puntos de abandono (transiciones a Inactivo).' },
       { title: 'Preparar datos Sankey', desc: 'Visualización de flujos.', prompt: '/best-practices Genera tabla con formato source, target, value para diagramas Sankey mostrando el flujo de HCPs entre canales en cada paso del journey.' },
       { title: 'Dashboard de journey', desc: 'Visualización interactiva.', prompt: '/best-practices Crea dashboard Streamlit con: diagrama Sankey del journey, tabla de rutas top por conversión, matriz de transición, métricas de funnel (drop-off por etapa), filtros por segmento de HCP. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC12: {
@@ -1185,6 +1196,7 @@ const PROMPTS = {
       { title: 'Generar escenarios de precio', desc: '100 combinaciones.', prompt: '/best-practices Usa GENERATOR(ROWCOUNT => 100) para crear combinaciones de precio (80%-120% del actual) y descuento (0%-30%). Para cada escenario, calcula demanda proyectada usando POWER() con elasticidad estimada del histórico.' },
       { title: 'Análisis de impacto en ingresos', desc: 'Encontrar precio óptimo.', prompt: '/best-practices Calcula revenue = price * projected_units para cada escenario. Identifica el punto de precio que maximiza ingresos por producto y mercado. Calcula margen por escenario.' },
       { title: 'Dashboard de pricing', desc: 'Simulador interactivo.', prompt: '/best-practices Crea dashboard Streamlit con: curva de demanda vs precio, slider de precio con actualización en tiempo real de revenue proyectado, heatmap precio × descuento con revenue, tabla de escenarios top, filtros por producto y mercado. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC13: {
@@ -1198,6 +1210,7 @@ const PROMPTS = {
       { title: 'Análisis de cobertura', desc: 'Optimización geográfica.', prompt: '/best-practices Selecciona los top 15 centros maximizando cobertura geográfica (minimizando solapamiento). Calcula pacientes elegibles cubiertos y distancia media al centro más cercano.' },
       { title: 'Justificaciones con IA', desc: 'Resumen por centro.', prompt: '/best-practices Usa CORTEX.COMPLETE para generar justificación narrativa de la selección de cada centro: fortalezas, riesgos y recomendaciones.' },
       { title: 'Dashboard de selección', desc: 'Mapa interactivo de centros.', prompt: '/best-practices Crea dashboard Streamlit con: mapa de centros con color por score, tabla de ranking con métricas, panel de justificación por centro, filtros por región y capacidad mínima. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC14: {
@@ -1210,6 +1223,7 @@ const PROMPTS = {
       { title: 'Entrenar modelos FORECAST', desc: 'ML.FORECAST por mercado.', prompt: '/best-practices Entrena SNOWFLAKE.ML.FORECAST para el nuevo producto usando datos de análogos como base. Incorpora señales externas como variables exógenas. Genera forecasts a 24 meses. Usa evaluate => TRUE para generar métricas de evaluación.' },
       { title: 'Análisis de preparación', desc: 'Inventario necesario por mercado.', prompt: '/best-practices Calcula inventario necesario por mercado y mes basado en forecast + margen de seguridad (percentil 95 del intervalo de confianza). Identifica mercados prioritarios y riesgo de stock-out.' },
       { title: 'Dashboard de lanzamiento', desc: 'Planificación de supply chain.', prompt: '/best-practices Crea dashboard Streamlit con: curvas de adopción proyectadas por mercado, tabla de inventario necesario, comparación con análogos, alertas de stock-out, filtros por mercado y escenario. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC15: {
@@ -1223,6 +1237,7 @@ const PROMPTS = {
       { title: 'Scoring con IA', desc: 'Sentimiento y remediación.', prompt: '/best-practices Aplica CORTEX.SENTIMENT sobre claims para detectar exageraciones. Usa CORTEX.COMPLETE para generar briefs de remediación: qué claim viola, claim aprobado más cercano, sugerencia de corrección.' },
       { title: 'Análisis FLATTEN', desc: 'Claims multi-valor.', prompt: '/best-practices Usa FLATTEN para analizar materiales con múltiples claims. Genera tabla de compliance por material con detalle de cada claim encontrado y su estado.' },
       { title: 'Dashboard de compliance', desc: 'Panel de auditoría.', prompt: '/best-practices Crea dashboard Streamlit con: score de compliance por producto, materiales con problemas, detalle de claims no conformes, briefs de remediación, distribución por categoría de claim, filtros por producto y canal. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC16: {
@@ -1236,6 +1251,7 @@ const PROMPTS = {
       { title: 'Clasificar eventos adversos', desc: 'Detección con LLM.', prompt: '/best-practices Usa CORTEX.COMPLETE para clasificar cada post negativo: es_evento_adverso (sí/no), tipo_evento (náusea, sangrado, interacción), severidad (leve/moderado/grave). Genera tabla ADVERSE_EVENTS.' },
       { title: 'Detección de anomalías', desc: 'Z-score estadístico.', prompt: '/best-practices Calcula baseline de sentimiento (media móvil 7 días). Detecta anomalías cuando Z-score < -2 (sentimiento significativamente peor que baseline). Genera alertas con severidad: Crítica (Z<-3), Alta (Z<-2.5), Media (Z<-2).' },
       { title: 'Dashboard de crisis', desc: 'Monitorización en tiempo real.', prompt: '/best-practices Crea dashboard Streamlit con: timeline de sentimiento con zonas de crisis marcadas, contador de alertas activas por severidad, tabla de eventos adversos, posts virales negativos, filtros por plataforma y producto. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC17: {
@@ -1250,6 +1266,7 @@ const PROMPTS = {
       { title: 'Búsqueda semántica', desc: 'Consultas de inteligencia.', prompt: '/best-practices Ejecuta búsquedas: claims de superioridad de Competidor_A en la indicación principal, mensajes de seguridad de Competidor_B vs el producto propio, cambios de posicionamiento recientes.' },
       { title: 'Análisis de posicionamiento', desc: 'Evolución temporal.', prompt: '/best-practices Analiza cambios de claims por competidor y trimestre. Detecta nuevos claims, claims retirados y cambios de tono.' },
       { title: 'Dashboard competitivo', desc: 'Panel de inteligencia.', prompt: '/best-practices Crea dashboard Streamlit con: campo de búsqueda semántica, tabla de claims por competidor y categoría, timeline de evolución de mensajes, alertas de nuevos claims, filtros por competidor y período. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC18: {
@@ -1263,6 +1280,7 @@ const PROMPTS = {
       { title: 'Share of voice', desc: 'Métricas de presencia.', prompt: '/best-practices Calcula share of voice: % de menciones del producto propio vs competidores por región y período. Usa COUNT y ratio sobre total de artículos. Genera tabla SOV_METRICS.' },
       { title: 'Tendencias temporales', desc: 'Series de sentimiento.', prompt: '/best-practices Analiza tendencias semanales de sentimiento por región. Detecta cambios significativos con LAG() y alertas cuando la variación supera 0.2 en una semana.' },
       { title: 'Dashboard de medios', desc: 'Monitorización global.', prompt: '/best-practices Crea dashboard Streamlit con: mapa de calor de sentimiento por región, share of voice por competidor, tendencias temporales, tabla de artículos destacados, alertas de cambios, filtros por región y fuente. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC19: {
@@ -1275,6 +1293,7 @@ const PROMPTS = {
       { title: 'Análisis de sentimiento con IA', desc: 'Scoring de señales.', prompt: '/best-practices Aplica CORTEX.SENTIMENT a las señales textuales. Calcula métricas agregadas por fase de lanzamiento: pre-lanzamiento (-30 a 0), lanzamiento (0-7), adopción temprana (7-30), estabilización (30-90).' },
       { title: 'Forecasting con ML', desc: 'Predicción de trayectoria.', prompt: '/best-practices Entrena SNOWFLAKE.ML.FORECAST usando datos históricos. Genera predicción de sentimiento a 30/60/90 días para el nuevo lanzamiento basándose en señales tempranas (días 1-7). Usa evaluate => TRUE para generar métricas de evaluación.' },
       { title: 'Dashboard de predicción', desc: 'Proyección de recepción.', prompt: '/best-practices Crea dashboard Streamlit con: gráfico de trayectoria predicha con intervalos de confianza, comparación con lanzamientos históricos análogos, indicadores de señales tempranas, recomendaciones de ajuste de estrategia. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC20: {
@@ -1287,6 +1306,7 @@ const PROMPTS = {
       { title: 'Análisis de sentimiento', desc: 'Scoring por KOL.', prompt: '/best-practices Aplica CORTEX.SENTIMENT a cada declaración. Calcula sentimiento medio por KOL, tendencia temporal con LAG(), y volatilidad (desviación estándar). Clasifica: Advocate, Neutral, Detractor.' },
       { title: 'Métricas de influencia', desc: 'Scoring de red.', prompt: '/best-practices Calcula influence_score = 0.3*h_index_norm + 0.3*reach_norm + 0.2*connections + 0.2*statement_frequency. Identifica top 20 influencers y su sentimiento.' },
       { title: 'Dashboard de KOLs', desc: 'Panel de inteligencia.', prompt: '/best-practices Crea dashboard Streamlit con: ranking de KOLs por influencia y sentimiento, mapa de red de conexiones, tendencias temporales por KOL, alertas de cambio de sentimiento, filtros por tier e institución. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC21: {
@@ -1299,6 +1319,7 @@ const PROMPTS = {
       { title: 'Scoring de percepción', desc: 'Sentimiento por producto y atributo.', prompt: '/best-practices Aplica CORTEX.SENTIMENT por mención. Usa CORTEX.COMPLETE para clasificar cada mención en atributos (eficacia, seguridad, conveniencia, precio). Genera matriz producto × atributo con sentimiento medio.' },
       { title: 'Análisis de gaps', desc: 'Diferencias de percepción.', prompt: '/best-practices Calcula diferencias de sentimiento entre el producto propio y competidores por atributo. Identifica: gaps positivos (producto propio gana), gaps negativos (competidor gana), oportunidades de mensajería.' },
       { title: 'Dashboard de percepción', desc: 'Mapas competitivos.', prompt: '/best-practices Crea dashboard Streamlit con: radar chart de percepción por producto, tabla de gaps por atributo, tendencias temporales de percepción, menciones destacadas positivas y negativas, filtros por producto y fuente. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC22: {
@@ -1311,6 +1332,7 @@ const PROMPTS = {
       { title: 'Análisis con LLM', desc: 'Scoring multidimensional.', prompt: '/best-practices Usa CORTEX.COMPLETE para evaluar cada comunicación en: clarity_score (1-10), tone_appropriateness (1-10), persuasion_score (1-10), audience_alignment (1-10). Usa CORTEX.SUMMARIZE para extraer temas clave.' },
       { title: 'Patrones de efectividad', desc: 'Correlación tono-engagement.', prompt: '/best-practices Analiza correlación entre scores de IA y engagement real. Identifica patrones de éxito por audiencia: inversores prefieren datos concretos, empleados prefieren visión, medios prefieren noticias.' },
       { title: 'Dashboard de comunicación', desc: 'Panel de optimización.', prompt: '/best-practices Crea dashboard Streamlit con: score compuesto por comunicación, mejores prácticas por audiencia, recomendaciones de mejora generadas con LLM, tendencias de efectividad por ejecutivo, filtros por audiencia y formato. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC23: {
@@ -1323,6 +1345,7 @@ const PROMPTS = {
       { title: 'Análisis con IA', desc: 'Clasificación y resumen.', prompt: '/best-practices Aplica CORTEX.SENTIMENT a cada evento. Usa CORTEX.COMPLETE para: clasificar impacto (alto/medio/bajo), generar resumen ejecutivo por competidor y mes, detectar patrones estratégicos.' },
       { title: 'Alertas automatizadas', desc: 'Detección de amenazas.', prompt: '/best-practices Define reglas de alerta: nuevo lanzamiento en mercado clave, cambio de precio > 10%, aprobación de nueva indicación, partnership estratégico. Genera tabla THREAT_ALERTS con severidad y recomendación de acción.' },
       { title: 'Dashboard de inteligencia', desc: 'Panel automatizado.', prompt: '/best-practices Crea dashboard Streamlit con: timeline de eventos por competidor, alertas activas con severidad, resumen ejecutivo mensual auto-generado, distribución de eventos por tipo, filtros por competidor y período. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC24: {
@@ -1336,6 +1359,7 @@ const PROMPTS = {
       { title: 'Análisis de sentimiento', desc: 'Scoring unificado.', prompt: '/best-practices Aplica CORTEX.SENTIMENT tanto al texto original como al traducido. Compara scores para validar consistencia de la traducción. Calcula sentimiento medio por región, idioma y producto.' },
       { title: 'Comparación regional', desc: 'Métricas globales consolidadas.', prompt: '/best-practices Consolida sentimiento por región con ponderación por volumen. Identifica regiones con sentimiento divergente del global. Genera tabla REGIONAL_SENTIMENT_SUMMARY con alertas por región.' },
       { title: 'Dashboard multiidioma', desc: 'Vista global unificada.', prompt: '/best-practices Crea dashboard Streamlit con: mapa de calor de sentimiento por región, comparación de sentimiento por idioma, tendencias temporales globales vs regionales, tabla de contenido destacado en idioma original, filtros por idioma y región. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC25: {
@@ -1350,6 +1374,7 @@ const PROMPTS = {
       { title: 'Extraer barreras', desc: 'CORTEX.COMPLETE para pain points.', prompt: '/best-practices Usa CORTEX.COMPLETE para analizar el feedback negativo agrupado por etapa y extraer: barrera principal, impacto en adherencia, acción recomendada. Usa CORTEX.SUMMARIZE para resumir por etapa.' },
       { title: 'Clasificar riesgo', desc: 'CORTEX.CLASSIFY_TEXT para abandono.', prompt: '/best-practices Usa CORTEX.CLASSIFY_TEXT para clasificar riesgo de abandono: Alto Riesgo, Riesgo Medio, Bajo Riesgo. Basado en sentimiento, etapa actual y patrón de feedback.' },
       { title: 'Dashboard de journey', desc: 'Panel de experiencia del paciente.', prompt: '/best-practices Crea dashboard Streamlit con: funnel de 6 etapas con tasas de completitud, sentimiento por etapa (barras), barreras principales por etapa, tabla de pacientes de alto riesgo, filtros por etapa y riesgo. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC26: {
@@ -1363,6 +1388,7 @@ const PROMPTS = {
       { title: 'Análisis de sentimiento', desc: 'Trendline de tono.', prompt: '/best-practices Aplica CORTEX.SENTIMENT al feedback mensual. Crea trendline de sentimiento por paciente. Detecta pendientes negativas como predictor de abandono.' },
       { title: 'Clasificar barreras y riesgo', desc: 'IA para intervención.', prompt: '/best-practices Usa CORTEX.COMPLETE para clasificar barreras (coste, efectos secundarios, olvido, complejidad). Usa CORTEX.CLASSIFY_TEXT para etiquetar riesgo a 30/60/90 días: Alto, Medio, Bajo. Genera planes de acción automatizados.' },
       { title: 'Dashboard de adherencia', desc: 'Panel de inteligencia.', prompt: '/best-practices Crea dashboard Streamlit con: curvas de persistencia por cohorte, trendlines de sentimiento, distribución de barreras, tabla de pacientes por ventana de riesgo, planes de acción por paciente, filtros por riesgo y barrera. Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
   UC27: {
@@ -1376,6 +1402,7 @@ const PROMPTS = {
       { title: 'Extraer intención', desc: 'AI_EXTRACT para triaje.', prompt: '/best-practices Usa AI_EXTRACT(note_text, intent, urgency, next_steps, sample_request, clinical_question) para extraer campos estructurados de cada nota de texto libre. Genera tabla EXTRACTED_INSIGHTS.' },
       { title: 'Vista de priorización', desc: 'SQL para triaje rápido.', prompt: '/best-practices Crea vista PRIORITY_QUEUE que combina sentimiento, urgencia extraída y tier del HCP para generar un ranking de prioridad. Top prioridad: sentimiento negativo + urgencia alta + tier 1.' },
       { title: 'Dashboard de campo', desc: 'Panel de gestión de visitas.', prompt: '/best-practices Crea dashboard Streamlit con tabs: Cola Urgente (HCPs que necesitan follow-up en 48h), Tendencias (sentimiento por HCP a lo largo del tiempo), Insights (distribución de intenciones y solicitudes), Exportar (CSV de cola priorizada). Usa snowflake.connector.connect() para ejecución local del dashboard.' },
+      { title: 'Generar resumen HTML', desc: 'Genera un documento HTML completo con el resumen del caso de uso.', prompt: '/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio.' },
     ]
   },
 };
