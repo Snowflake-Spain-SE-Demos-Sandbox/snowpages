@@ -98,7 +98,6 @@
       <li><a href="#ejecutar">Ejecutar un Caso de Uso Paso a Paso</a></li>
       <li><a href="#revisar">Revisar y Validar el C&oacute;digo Generado</a></li>
       <li><a href="#streamlit">Desplegar Dashboards Streamlit</a></li>
-      <li><a href="#tasks">Automatizar con Tasks y Pipelines</a></li>
       <li><a href="#costes">Comprobar Gasto Utilizado</a></li>
       <li><a href="#tips">Consejos y Buenas Pr&aacute;cticas</a></li>
       <li><a href="#faq">Preguntas Frecuentes</a></li>
@@ -131,8 +130,16 @@
     <p>Antes de empezar, aseg&uacute;rate de tener lo siguiente configurado:</p>
 
     <h3>Cuenta de Snowflake</h3>
+    <p>Crea tu cuenta trial gratuita de Snowflake desde el siguiente enlace (30 d&iacute;as, sin tarjeta de cr&eacute;dito):</p>
+    <p style="margin:16px 0;">
+      <a href="https://signup.snowflake.com/?t=f3fe2eca3592062cd8ae2575002590aa02797648b67da48fbe72eaadeae99495" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#29B5E8;color:#fff;font-size:16px;font-weight:700;border-radius:80px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#1199CC'" onmouseout="this.style.background='#29B5E8'">
+        Crear cuenta Trial de Snowflake &rarr;
+      </a>
+    </p>
+    <p>Al registrarte, selecciona las siguientes opciones para asegurar compatibilidad con todas las funciones de Cortex AI:</p>
+    <img src="trial_region.jpg" alt="Opciones recomendadas para la cuenta trial de Snowflake" style="display:block;max-width:800px;width:100%;margin:16px auto;border-radius:12px;border:1px solid #e0e0e0;box-shadow:0 4px 20px rgba(0,0,0,0.1);" />
     <div class="callout">
-      <p><strong>Importante:</strong> Solicita a tu representante de Snowflake la creaci&oacute;n de las cuentas necesarias para tu equipo. De esta forma aseguramos que est&aacute;n soportadas todas las funciones de Cortex Code y Cortex AI: ML.CLASSIFICATION, ML.FORECAST, CORTEX.COMPLETE, CORTEX.SENTIMENT, Cortex Search y Feature Store.</p>
+      <p><strong>Importante:</strong> Aseg&uacute;rate de elegir la edici&oacute;n <strong>Enterprise</strong> y la regi&oacute;n <strong>AWS &mdash; US West (Oregon)</strong> para disponer de todas las funciones de Cortex Code y Cortex AI: ML.CLASSIFICATION, ML.FORECAST, CORTEX.COMPLETE, CORTEX.SENTIMENT, Cortex Search y Feature Store.</p>
     </div>
 
     <h3>Acceder a Cortex Code en Snowsight</h3>
@@ -368,39 +375,9 @@ with col1:
   </div>
 
   <!-- SECTION 9 -->
-  <div class="section" id="tasks">
-    <h2><span class="step-num">9</span> Automatizar con Tasks y Pipelines</h2>
-    <p>El &uacute;ltimo prompt de cada caso de uso crea Tasks de Snowflake para automatizar el pipeline:</p>
-
-    <h3>Qu&eacute; se automatiza</h3>
-    <ul>
-      <li><strong>Ingesta de datos:</strong> Carga peri&oacute;dica desde fuentes (diaria, semanal)</li>
-      <li><strong>Actualizaci&oacute;n de features:</strong> Recalcular indicadores y m&eacute;tricas</li>
-      <li><strong>Scoring ML:</strong> Ejecutar modelos sobre nuevos datos</li>
-      <li><strong>Alertas:</strong> Notificaciones cuando se superan umbrales</li>
-      <li><strong>Reentrenamiento:</strong> Actualizar modelos peri&oacute;dicamente</li>
-    </ul>
-
-    <h3>Estructura t&iacute;pica de Tasks</h3>
-    <div class="code-block"><span class="lang-tag">SQL</span>-- Task de scoring semanal
-CREATE OR REPLACE TASK scoring_semanal
-  WAREHOUSE = MI_WH
-  SCHEDULE = 'USING CRON 0 6 * * 1 Europe/Madrid'
-  COMMENT = 'Scoring ML semanal sobre datos activos'
-AS
-  CALL ejecutar_scoring();
-
--- Activar
-ALTER TASK scoring_semanal RESUME;</div>
-
-    <div class="callout">
-      <p><strong>DAG de Tasks:</strong> Los casos de uso avanzados crean DAGs (Directed Acyclic Graphs) donde unas Tasks dependen de otras. Cortex Code genera las dependencias autom&aacute;ticamente con <code>AFTER</code>.</p>
-    </div>
-  </div>
-
-  <!-- SECTION 10 -->
+  <!-- SECTION 9 -->
   <div class="section" id="costes">
-    <h2><span class="step-num">10</span> Comprobar Gasto Utilizado</h2>
+    <h2><span class="step-num">9</span> Comprobar Gasto Utilizado</h2>
     <p>Tras ejecutar uno o varios casos de uso, utiliza este prompt en Cortex Code para obtener un resumen consolidado de todos los cr&eacute;ditos y tokens consumidos en el d&iacute;a actual: warehouses, funciones Cortex AI, modelos ML y Cortex Code en Snowsight.</p>
 
     <h3>Prompt &mdash; Resumen de costes del d&iacute;a</h3>
@@ -453,7 +430,7 @@ A&ntilde;ade comentarios explicando cada CTE.</div>
 
   <!-- SECTION 11 -->
   <div class="section" id="tips">
-    <h2><span class="step-num">11</span> Consejos y Buenas Pr&aacute;cticas</h2>
+    <h2><span class="step-num">10</span> Consejos y Buenas Pr&aacute;cticas</h2>
 
     <h3>Desarrollo</h3>
     <ul>
@@ -483,7 +460,7 @@ A&ntilde;ade comentarios explicando cada CTE.</div>
 
   <!-- SECTION 12 -->
   <div class="section" id="faq">
-    <h2><span class="step-num">12</span> Preguntas Frecuentes</h2>
+    <h2><span class="step-num">11</span> Preguntas Frecuentes</h2>
 
     <div class="faq-item">
       <div class="faq-q">&iquest;Necesito saber SQL para usar los prompts?</div>

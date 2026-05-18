@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <title>Snowflake — Premium Use Cases</title>
+  <title>Snowflake — End-to-End Use Cases</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -446,13 +446,13 @@
   <div class="hero-left">
     <div class="logos"></div>
     <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,0.75);text-decoration:none;margin-bottom:8px;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.75)'"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="12,4 6,10 12,16"/></svg>Volver al Indice de Industrias</a>
-    <p class="hero-eyebrow">Premium Use Cases</p>
-    <h1 class="hero-title">Premium Use Cases</h1>
-    <p class="hero-subtitle">Casos de uso complejos y end-to-end con aplicaciones Streamlit completas que replican soluciones empresariales reales sobre Snowflake</p>
-    <p class="hero-tagline">ML.FORECAST · ML.ANOMALY_DETECTION · Streamlit · Stored Procedures | Soluciones Enterprise</p>
+    <p class="hero-eyebrow">End-to-End Use Cases</p>
+    <h1 class="hero-title">End-to-End</h1>
+    <p class="hero-subtitle">Pipelines completos de principio a fin: conexión a repo GitHub, ingesta de datos JSON, arquitectura medallón, transformaciones dbt, agentes y aplicación Streamlit — todo 100% en Snowflake</p>
+    <p class="hero-tagline">GitHub · JSON · Medallion · dbt · Cortex Agents · Streamlit | Soluciones End-to-End</p>
   </div>
   <div class="stats-box">
-    <div class="stat-number">2</div>
+    <div class="stat-number">10</div>
     <div class="stat-label">Casos de Uso</div>
     <hr class="stats-divider"/>
     <div class="stat-time">60-90 min</div>
@@ -461,15 +461,23 @@
 </header>
 
 <section class="intro">
-  <h2>Soluciones Empresariales Complejas — 100% en Snowflake</h2>
-  <p>Cada caso de uso Premium replica funcionalidades que tradicionalmente requieren plataformas externas costosas (Palantir, SAP IBP, o]Kinaxis). Aqui demostramos que Snowflake, con sus capacidades nativas de ML, Stored Procedures y Streamlit, puede resolver los mismos problemas sin salir del ecosistema de datos.</p>
+  <h2>Pipelines End-to-End — 100% en Snowflake</h2>
+  <p>Cada caso de uso cubre el ciclo completo: desde la conexión a un repositorio GitHub y la ingesta de datos JSON, pasando por la arquitectura medallón (Bronze, Silver, Gold) con transformaciones dbt, hasta agentes inteligentes y aplicaciones Streamlit desplegadas en Snowflake.</p>
 </section>
 
 <div class="filters-bar">
   <div class="filters-left" id="filterBtns">
-    <button class="filter-btn active" data-filter="all">Todos (2)</button>
-    <button class="filter-btn" data-filter="inventory">Supply Chain (1)</button>
-    <button class="filter-btn" data-filter="automotive">Automotive (1)</button>
+    <button class="filter-btn active" data-filter="all">Todos (10)</button>
+    <button class="filter-btn" data-filter="insurance">Insurance (1)</button>
+    <button class="filter-btn" data-filter="telco">Telco (1)</button>
+    <button class="filter-btn" data-filter="fsi">Banca (1)</button>
+    <button class="filter-btn" data-filter="retail">Retail (1)</button>
+    <button class="filter-btn" data-filter="manufacturing">Manufactura (1)</button>
+    <button class="filter-btn" data-filter="healthcare">Salud (1)</button>
+    <button class="filter-btn" data-filter="media">Medios (1)</button>
+    <button class="filter-btn" data-filter="logistics">Logistica (1)</button>
+    <button class="filter-btn" data-filter="public_sector">Sector Publico (1)</button>
+    <button class="filter-btn" data-filter="utilities">Energia (1)</button>
   </div>
   <div class="search-box">
     <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round">
@@ -490,227 +498,526 @@
 </div>
 
 <footer>
-  <p>Snowflake AI/ML Premium Use Cases &copy; 2026</p>
+  <p>Snowflake AI/ML End-to-End Use Cases &copy; 2026</p>
 </footer>
 
 <script>
 const UC_CATALOG = [
   {
     id: "UC01",
-    title: "Inventory Rebalancing — Control Tower con Streamlit",
-    category: "inventory",
-    categoryLabel: "Supply Chain",
+    title: "Insurance Call Center Copilot \u2014 Pipeline End-to-End",
+    category: "insurance",
+    categoryLabel: "Insurance",
     time: "60-90 min",
-    problem: "Las organizaciones pierden millones por stock-outs, exceso de inventario y falta de visibilidad en tiempo real de su red de distribucion. Las soluciones tradicionales (Palantir, SAP IBP) cuestan millones y requieren meses de implementacion.",
-    desc: "Pipeline completo de Inventory Rebalancing: desde la generacion de datos sinteticos de una red de 30 sitios con 29 materiales, hasta una aplicacion Streamlit interactiva con Control Tower, alertas proactivas, y recomendaciones automaticas de rebalanceo — todo 100% nativo en Snowflake.",
+    problem: "Las aseguradoras gestionan miles de llamadas diarias sin visibilidad sobre sentimiento del cliente, calidad de los agentes, senales de churn ni routing inteligente. Los datos estan dispersos en sistemas aislados y no existe una capa analitica unificada.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (clientes, llamadas, siniestros, agentes), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI para NLP, modelo ML de prediccion de churn, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
     features: [
-      "GENERATOR/UNIFORM para 30 sitios, 29 items, 90 dias de inventario",
-      "ML.FORECAST para proyeccion de demanda por item y sitio",
-      "ML.ANOMALY_DETECTION para alertas de stock-out y exceso",
-      "Stored Procedure para calculo de recomendaciones de rebalanceo",
-      "Dashboard Streamlit multi-tab: Control Tower, Alertas, Rebalanceo"
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt (7 modelos)",
+      "5 casos de uso Cortex COMPLETE (resumen, routing, QA, CX, churn)",
+      "ML.CLASSIFICATION para prediccion de churn de clientes",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con 4 tabs: KPIs, Llamadas, Churn Risk, Agentes"
     ],
     guia: {
       objetivos: [
-        "Construir un Inventory Control Tower con visibilidad total de la red",
-        "Detectar proactivamente alertas de inventario en riesgo (stock-outs y excesos)",
-        "Generar recomendaciones automaticas de rebalanceo entre sitios",
-        "Proyectar inventario futuro con ML.FORECAST",
-        "Crear una aplicacion Streamlit interactiva con 3 vistas principales"
+        "Construir un pipeline de datos completo desde GitHub hasta dashboard",
+        "Implementar arquitectura medallon (Bronze, Silver, Gold) con dbt",
+        "Aplicar 5 funciones de IA con Cortex COMPLETE sobre transcripciones",
+        "Entrenar modelo ML de prediccion de churn con ML.CLASSIFICATION",
+        "Crear Semantic View y Cortex Agent para analisis en lenguaje natural",
+        "Desplegar aplicacion Streamlit interactiva en Snowflake"
       ],
       funcionalidades: [
-        "State of Network: KPIs agregados (inventario total, days of supply, sitios, materiales)",
-        "Inventory Value at Risk: alertas proactivas con umbral configurable",
-        "Network Deep Dive: tabla pivotada site x item x fecha con proyeccion",
-        "Rebalance Recommendations: sugerencias de transferencia entre sitios",
-        "Filtros por sitio, material, categoria y rango de fechas"
+        "Bronze: ingesta automatica de JSON desde Git Repository",
+        "Silver: flatten y tipado de datos con dbt (customers, calls, claims, agents)",
+        "Gold: vistas 360 de cliente, inteligencia de llamadas y performance de agentes",
+        "AI: resumen de llamadas, clasificacion/routing, QA automatico, CX insights, deteccion churn",
+        "ML: modelo de clasificacion de churn con features engineering",
+        "Agent: asistente conversacional para consultas sobre el call center"
       ],
       datos: [
-        "SITES: 30 ubicaciones con nombre, latitud, longitud, capacidad maxima",
-        "MATERIALS: 29 productos con categoria, lead time, coste unitario, stock minimo",
-        "INVENTORY_DAILY: snapshots diarios por site x item (90 dias, ~80.000 filas)",
-        "INBOUND_ORDERS: ordenes de compra entrantes con fecha prevista y cantidad",
-        "OUTBOUND_ORDERS: pedidos de cliente con fecha compromiso y cantidad",
-        "FORECASTS: proyecciones generadas por ML.FORECAST (horizonte 30 dias)",
-        "ALERTS: alertas detectadas de stock-out y exceso",
-        "REBALANCE_ACTIONS: recomendaciones de transferencia generadas"
+        "RAW_CUSTOMERS: 350 clientes de seguros auto y hogar",
+        "RAW_CALLS: 500 transcripciones de llamadas al call center",
+        "RAW_CLAIMS: 1.000 siniestros con importes y estados",
+        "RAW_AGENTS: 50 agentes con metricas de rendimiento",
+        "CUSTOMER_RISK_360: vista 360 del cliente con metricas agregadas",
+        "CHURN_PREDICTIONS: predicciones ML por cliente con probabilidad"
       ],
       como_usar: [
-        "Ejecuta los 10 prompts en orden en Cortex Code (Snowsight)",
-        "Cada prompt genera SQL o Python que se ejecuta directamente",
-        "El dashboard Streamlit final es una app autonoma que se despliega en Snowflake",
-        "Los datos sinteticos simulan una red de distribucion realista tipo bakery",
-        "Puedes sustituir los datos sinteticos por datos reales de tu ERP/WMS"
+        "Ejecuta los prompts en orden en Cortex Code (Snowsight)",
+        "Las fases dbt requieren estar en Projects > Workspaces",
+        "Los datos se cargan desde un repositorio GitHub publico",
+        "El modelo ML entrena en segundos con ML.CLASSIFICATION",
+        "El agente se prueba desde Snowflake Intelligence en Snowsight"
       ]
+    }
+  }
+,
+  {
+    id: "UC02",
+    title: "Telco Operations Copilot \u2014 Pipeline End-to-End",
+    category: "telco",
+    categoryLabel: "Telecomunicaciones",
+    time: "60-90 min",
+    problem: "Los operadores de telecomunicaciones gestionan millones de eventos de red, tickets de soporte y datos de facturacion sin una vision unificada. La deteccion de problemas de red, churn de clientes y fraude depende de sistemas aislados sin capacidad analitica en tiempo real.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (eventos de red, tickets de soporte y facturacion de clientes), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
     }
   },
   {
-    id: "UC02",
-    title: "Automotive Part Inventory Optimization — Recalls & Distribution",
-    category: "automotive",
-    categoryLabel: "Automotive",
+    id: "UC03",
+    title: "FSI Risk & Compliance Copilot \u2014 Pipeline End-to-End",
+    category: "fsi",
+    categoryLabel: "Banca",
     time: "60-90 min",
-    problem: "Los fabricantes de automoviles pierden millones cuando un recall genera picos de demanda imprevistos en piezas especificas. Los centros de distribucion no tienen visibilidad en tiempo real del impacto del recall sobre su inventario, provocando roturas de stock, envios urgentes costosos y retrasos en reparaciones a los concesionarios.",
-    desc: "Pipeline completo de optimizacion de inventario de piezas para automocion: deteccion de recalls, simulacion del impacto en demanda, visualizacion de inventario proyectado por centro de distribucion, y recomendaciones AI de transferencias entre centros — todo en Snowflake con una app Streamlit oscura tipo Parts Explorer.",
+    problem: "Las entidades financieras gestionan miles de transacciones y alertas de riesgo diarias sin visibilidad unificada sobre fraude, cumplimiento normativo y riesgo crediticio. Los datos estan fragmentados entre sistemas legacy sin capacidad analitica integrada con IA.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (clientes, transacciones, alertas de riesgo y cuentas bancarias), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
     features: [
-      "GENERATOR/UNIFORM para centros de distribucion, concesionarios, piezas y recalls",
-      "ML.FORECAST para proyeccion de demanda por pieza y centro",
-      "Deteccion automatica de impacto de recalls en inventario",
-      "Simulacion de escenarios de demanda (What-If Analysis)",
-      "Dashboard Streamlit dark-theme: Alerts, Parts Explorer, Distribution Map"
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
     ],
     guia: {
-      objetivos: [
-        "Detectar automaticamente recalls que impactan piezas del inventario",
-        "Proyectar inventario por centro de distribucion con ML.FORECAST",
-        "Identificar centros con riesgo de stock-out tras un recall",
-        "Generar recomendaciones de transferencia entre centros de distribucion",
-        "Crear una aplicacion Streamlit dark-theme con visualizacion de red"
-      ],
-      funcionalidades: [
-        "Alerts Panel: recalls activos con impacto cuantificado en la red",
-        "Parts Explorer: Bill of Materials, proveedores y riesgo de suministro",
-        "Projected Inventory: grafico temporal por centro y pieza afectada",
-        "Distribution Map: mapa de centros con boundaries de mercado",
-        "Mitigate Risk: recomendaciones de rebalanceo y ordenes de transferencia"
-      ],
-      datos: [
-        "DISTRIBUTION_CENTERS: 5 centros con nombre, region, capacidad y dealers asociados",
-        "DEALERS: 60 concesionarios con ubicacion y centro de distribucion asignado",
-        "PARTS_CATALOG: 200 piezas con categoria, coste, proveedor y lead time",
-        "INVENTORY_DC: stock actual por centro x pieza (1.000 filas)",
-        "RECALLS: historico de recalls con pieza afectada, fecha y vehiculos impactados",
-        "DEMAND_HISTORY: demanda diaria por pieza y centro (180 dias, ~180.000 filas)",
-        "SUPPLIERS: 15 proveedores con fiabilidad y capacidad maxima",
-        "TRANSFER_ORDERS: recomendaciones generadas de movimiento entre centros"
-      ],
-      como_usar: [
-        "Ejecuta los 10 prompts en orden en Cortex Code (Snowsight)",
-        "Los datos simulan un OEM de automocion con 5 centros de distribucion",
-        "El recall simulado (Rear Axle Line) genera un spike de demanda de 1.1M unidades",
-        "La app Streamlit usa dark-theme para emular el estilo Parts Explorer",
-        "Puedes sustituir los datos sinteticos por datos reales de tu ERP/IMS"
-      ]
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
     }
-  }
-];
+  },
+  {
+    id: "UC04",
+    title: "Retail Customer Intelligence Copilot \u2014 Pipeline End-to-End",
+    category: "retail",
+    categoryLabel: "Retail",
+    time: "60-90 min",
+    problem: "Los retailers gestionan millones de transacciones, casos de soporte e inventario sin una vision 360 del cliente. La personalizacion, prediccion de demanda y deteccion de problemas de experiencia dependen de equipos aislados sin herramientas de IA accesibles.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (clientes, pedidos, casos de soporte e inventario), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
+    }
+  },
+  {
+    id: "UC05",
+    title: "Smart Factory Copilot \u2014 Pipeline End-to-End",
+    category: "manufacturing",
+    categoryLabel: "Manufactura",
+    time: "60-90 min",
+    problem: "Las fabricas gestionan cientos de equipos con miles de lecturas de sensores, ordenes de trabajo y lotes de produccion sin una plataforma unificada de mantenimiento predictivo ni control de calidad basado en IA.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (equipos, lecturas de sensores, ordenes de trabajo y lotes de produccion), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
+    }
+  },
+  {
+    id: "UC06",
+    title: "Healthcare Clinical Copilot \u2014 Pipeline End-to-End",
+    category: "healthcare",
+    categoryLabel: "Salud",
+    time: "60-90 min",
+    problem: "Los hospitales gestionan miles de pacientes, visitas clinicas y resultados de laboratorio sin una vision integrada que permita prediccion de readmisiones, deteccion temprana de deterioro clinico y optimizacion de recursos con IA.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (pacientes, visitas clinicas, resultados de laboratorio y notas medicas), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
+    }
+  },
+  {
+    id: "UC07",
+    title: "Media Content Intelligence Copilot \u2014 Pipeline End-to-End",
+    category: "media",
+    categoryLabel: "Medios",
+    time: "60-90 min",
+    problem: "Las empresas de medios gestionan miles de contenidos, interacciones de usuarios y campanas publicitarias sin una plataforma unificada de recomendacion, analisis de engagement y optimizacion de contenido con IA.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (contenidos, interacciones de usuarios, suscripciones y campanas publicitarias), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
+    }
+  },
+  {
+    id: "UC08",
+    title: "Logistics Operations Copilot \u2014 Pipeline End-to-End",
+    category: "logistics",
+    categoryLabel: "Logistica",
+    time: "60-90 min",
+    problem: "Las empresas de logistica gestionan miles de envios, rutas y vehiculos sin visibilidad en tiempo real sobre retrasos, optimizacion de rutas ni prediccion de demanda. Los datos estan dispersos entre sistemas de tracking, ERP y flota.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (envios, rutas, vehiculos y almacenes), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
+    }
+  },
+  {
+    id: "UC09",
+    title: "Public Sector Citizen Services Copilot \u2014 Pipeline End-to-End",
+    category: "public_sector",
+    categoryLabel: "Sector Publico",
+    time: "60-90 min",
+    problem: "Las administraciones publicas gestionan miles de solicitudes ciudadanas, expedientes y presupuestos sin una plataforma unificada de atencion al ciudadano, deteccion de fraude en subvenciones ni optimizacion de recursos con IA.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (ciudadanos, solicitudes, expedientes y presupuestos), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
+    }
+  },
+  {
+    id: "UC10",
+    title: "Utilities Grid Intelligence Copilot \u2014 Pipeline End-to-End",
+    category: "utilities",
+    categoryLabel: "Energia",
+    time: "60-90 min",
+    problem: "Las utilities gestionan millones de lecturas de contadores, eventos de red electrica e incidencias sin una plataforma unificada de prediccion de demanda, deteccion de fraude energetico ni optimizacion de la red con IA.",
+    desc: "Pipeline completo end-to-end: conexion a repositorio GitHub, ingesta de datos JSON (contadores, lecturas de consumo, eventos de red e incidencias), arquitectura medallon con dbt (Bronze-Silver-Gold), funciones Cortex AI, modelo ML, Semantic View, Cortex Agent y aplicacion Streamlit \u2014 todo 100% en Snowflake.",
+    features: [
+      "Integracion Git + ingesta JSON desde repositorio publico GitHub",
+      "Arquitectura medallon Bronze-Silver-Gold con dbt",
+      "Funciones Cortex COMPLETE para analisis con LLM",
+      "ML.CLASSIFICATION para prediccion y scoring",
+      "Semantic View + Cortex Agent para consultas en lenguaje natural",
+      "App Streamlit con dashboard interactivo en Workspaces"
+    ],
+    guia: {
+      objetivos: ["Construir pipeline end-to-end desde GitHub hasta dashboard", "Implementar arquitectura medallon con dbt", "Aplicar funciones Cortex AI", "Entrenar modelo ML", "Crear Semantic View y Cortex Agent", "Desplegar app Streamlit"],
+      funcionalidades: ["Bronze: ingesta JSON desde Git", "Silver: flatten con dbt", "Gold: vistas analiticas", "AI: analisis con LLM", "ML: modelo predictivo", "Agent: consultas lenguaje natural"],
+      datos: ["Datos JSON desde repositorio GitHub publico", "4 tablas Bronze con datos sinteticos", "Modelos Silver y Gold con dbt", "Vistas AI con Cortex COMPLETE", "Predicciones ML"],
+      como_usar: ["Ejecuta los prompts en orden en Cortex Code", "Las fases dbt requieren Workspaces", "Los datos se cargan desde GitHub", "El agente se prueba en Snowflake Intelligence"]
+    }
+  }];
 
 const PROMPTS = {
   UC01: {
-    title: "Inventory Rebalancing — Pipeline Completo",
-    intro: "Ejecuta estos 10 prompts en Cortex Code (Snowsight). Cada prompt genera codigo SQL o Python que construye progresivamente el pipeline de Inventory Rebalancing hasta la aplicacion Streamlit final.",
+    title: "Insurance Call Center Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
     steps: [
-      {
-        title: "Crear base de datos y esquema",
-        desc: "Configura el entorno de trabajo con la base de datos y esquemas necesarios.",
-        prompt: "/best-practices OBJETIVO\nCrear la infraestructura base para el proyecto de Inventory Rebalancing.\n\nACCIONES\nCrea la base de datos INVENTORY_REBALANCING con IF NOT EXISTS. Dentro crea dos esquemas:\n  - RAW: para los datos brutos generados\n  - ANALYTICS: para las tablas calculadas, forecasts y alertas\n\nCrea tambien un warehouse INVENTORY_WH de tamano MEDIUM si no existe, que usaremos para las operaciones de ML.\n\nVERIFICACION\nMuestra las bases de datos y esquemas creados con SHOW SCHEMAS IN DATABASE INVENTORY_REBALANCING."
-      },
-      {
-        title: "Generar red de sitios de distribucion",
-        desc: "Crea 30 ubicaciones con coordenadas y capacidad usando GENERATOR.",
-        prompt: "/best-practices OBJETIVO\nGenerar la tabla de sitios que componen la red de distribucion.\n\nTABLA: INVENTORY_REBALANCING.RAW.SITES\nGenera 30 filas usando GENERATOR(ROWCOUNT => 30) con estos campos:\n  - SITE_ID: secuencia de 1 a 30\n  - SITE_NAME: nombres de panaderia realistas (usa un ARRAY con nombres como 'Alamo Baking Facility', 'Mountain View Bakery Plant', 'Golden Gate Bakery', 'Evergreen Bakery Plant', 'Sunshine Bakery', 'Springfield Bakery Supply', etc.)\n  - LATITUDE: UNIFORM(25.0, 48.0, RANDOM()) para cubrir EEUU\n  - LONGITUDE: UNIFORM(-122.0, -73.0, RANDOM())\n  - MAX_CAPACITY: UNIFORM(500, 5000, RANDOM())::INT\n  - SITE_TYPE: valores aleatorios entre 'Production', 'Distribution Center', 'Retail'\n\nVERIFICACION\nSELECT COUNT(*), MIN(MAX_CAPACITY), MAX(MAX_CAPACITY) FROM SITES."
-      },
-      {
-        title: "Generar catalogo de materiales",
-        desc: "Crea 29 productos con categorias, lead times y costes usando GENERATOR.",
-        prompt: "/best-practices OBJETIVO\nGenerar el catalogo de materiales (productos) que se gestionan en la red.\n\nTABLA: INVENTORY_REBALANCING.RAW.MATERIALS\nGenera 29 filas usando GENERATOR(ROWCOUNT => 29) con:\n  - ITEM_ID: secuencia de 1 a 29\n  - ITEM_NAME: nombres de productos de panaderia (Bagels, Baguettes, Biscotti, Biscuits, Brownies, Bundt cakes, Challah, Cheesecakes, Ciabatta bread, Croissants, Cupcakes, Danish pastries, Donuts, Eclairs, Focaccia, Madeleines, Muffins, Pies, Pretzels, Rolls, Rye bread, Scones, Sourdough, Strudel, Tarts, Turnovers, Waffles, Wheat bread, Brioche)\n  - CATEGORY: distribuir entre 'Breads', 'Pastries', 'Cakes', 'Specialty'\n  - LEAD_TIME_DAYS: UNIFORM(1, 7, RANDOM())::INT\n  - UNIT_COST: ROUND(UNIFORM(2.0, 25.0, RANDOM()), 2)\n  - MIN_STOCK: UNIFORM(20, 200, RANDOM())::INT\n  - SHELF_LIFE_DAYS: UNIFORM(3, 30, RANDOM())::INT\n\nVERIFICACION\nSELECT CATEGORY, COUNT(*), AVG(UNIT_COST)::DECIMAL(10,2) FROM MATERIALS GROUP BY CATEGORY."
-      },
-      {
-        title: "Generar inventario historico diario",
-        desc: "Genera 90 dias de snapshots de inventario por sitio y material (~78.000 filas).",
-        prompt: "/best-practices OBJETIVO\nGenerar el historico de inventario diario para toda la red — esta es la tabla principal del sistema.\n\nTABLA: INVENTORY_REBALANCING.RAW.INVENTORY_DAILY\nGenera datos para 90 dias (desde hace 90 dias hasta hoy) cruzando los 30 sitios x 29 materiales. Usa GENERATOR(ROWCOUNT => 78300) (30 * 29 * 90) con:\n  - SNAPSHOT_DATE: distribuir uniformemente entre DATE_FROM y hoy\n  - SITE_ID: UNIFORM(1, 30, RANDOM())::INT\n  - ITEM_ID: UNIFORM(1, 29, RANDOM())::INT\n  - QUANTITY_ON_HAND: UNIFORM(0, 600, RANDOM())::INT\n  - QUANTITY_IN_TRANSIT: UNIFORM(0, 150, RANDOM())::INT\n  - QUANTITY_RESERVED: UNIFORM(0, 100, RANDOM())::INT\n\nAlternativamente, usa un CROSS JOIN entre una secuencia de fechas, SITES y MATERIALS para garantizar cobertura completa de todas las combinaciones.\n\nVERIFICACION\nSELECT COUNT(*) as TOTAL_ROWS, COUNT(DISTINCT SNAPSHOT_DATE) as DAYS, COUNT(DISTINCT SITE_ID) as SITES, COUNT(DISTINCT ITEM_ID) as ITEMS FROM INVENTORY_DAILY."
-      },
-      {
-        title: "Generar ordenes entrantes y salientes",
-        desc: "Crea las tablas de inbound (compras) y outbound (ventas) que afectan al inventario.",
-        prompt: "/best-practices OBJETIVO\nGenerar las tablas de ordenes que representan el flujo de entrada y salida de materiales.\n\nTABLA 1: INVENTORY_REBALANCING.RAW.INBOUND_ORDERS\nGenera 5.000 filas con GENERATOR(ROWCOUNT => 5000):\n  - ORDER_ID: secuencia\n  - SITE_ID: UNIFORM(1, 30, RANDOM())::INT\n  - ITEM_ID: UNIFORM(1, 29, RANDOM())::INT\n  - ORDER_DATE: fecha aleatoria en los ultimos 90 dias\n  - EXPECTED_DELIVERY_DATE: ORDER_DATE + UNIFORM(1, 14, RANDOM()) dias\n  - QUANTITY: UNIFORM(50, 500, RANDOM())::INT\n  - STATUS: valores aleatorios entre 'Pending', 'In Transit', 'Delivered', 'Delayed'\n  - SUPPLIER_RELIABILITY: UNIFORM(0.7, 1.0, RANDOM())::DECIMAL(3,2)\n\nTABLA 2: INVENTORY_REBALANCING.RAW.OUTBOUND_ORDERS\nGenera 8.000 filas con GENERATOR(ROWCOUNT => 8000):\n  - ORDER_ID: secuencia\n  - SITE_ID: UNIFORM(1, 30, RANDOM())::INT\n  - ITEM_ID: UNIFORM(1, 29, RANDOM())::INT\n  - ORDER_DATE: fecha aleatoria en los ultimos 90 dias\n  - PROMISED_DATE: ORDER_DATE + UNIFORM(0, 5, RANDOM()) dias\n  - QUANTITY: UNIFORM(10, 200, RANDOM())::INT\n  - STATUS: valores entre 'Open', 'Fulfilled', 'Backordered', 'Cancelled'\n  - PRIORITY: valores entre 'High', 'Medium', 'Low'\n\nVERIFICACION\nSELECT 'INBOUND' as TYPE, COUNT(*) as ROWS, SUM(QUANTITY) as TOTAL_QTY FROM INBOUND_ORDERS UNION ALL SELECT 'OUTBOUND', COUNT(*), SUM(QUANTITY) FROM OUTBOUND_ORDERS."
-      },
-      {
-        title: "Calcular Days of Supply y proyecciones",
-        desc: "Crea la tabla analitica con metricas de salud del inventario por sitio y material.",
-        prompt: "/best-practices OBJETIVO\nCalcular las metricas clave de salud del inventario que alimentaran el Control Tower y las alertas.\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.INVENTORY_HEALTH\nPara cada combinacion site_id + item_id, calcula:\n  - CURRENT_INVENTORY: ultimo QUANTITY_ON_HAND del snapshot mas reciente\n  - AVG_DAILY_DEMAND: media de cantidad en OUTBOUND_ORDERS de los ultimos 30 dias / 30\n  - DAYS_OF_SUPPLY: CURRENT_INVENTORY / NULLIF(AVG_DAILY_DEMAND, 0)\n  - INCOMING_QTY: suma de QUANTITY en INBOUND_ORDERS con status 'Pending' o 'In Transit'\n  - PROJECTED_INVENTORY_7D: CURRENT_INVENTORY + INCOMING_QTY - (AVG_DAILY_DEMAND * 7)\n  - PROJECTED_INVENTORY_14D: CURRENT_INVENTORY + INCOMING_QTY - (AVG_DAILY_DEMAND * 14)\n  - EXCESS_FLAG: TRUE si DAYS_OF_SUPPLY > 30 (inventario que podria expirar)\n  - STOCKOUT_RISK_FLAG: TRUE si PROJECTED_INVENTORY_7D < 0\n\nUsa JOIN con SITES y MATERIALS para incluir SITE_NAME, ITEM_NAME, CATEGORY, MIN_STOCK.\n\nVERIFICACION\nSELECT COUNT(*) as COMBINACIONES, SUM(CASE WHEN STOCKOUT_RISK_FLAG THEN 1 ELSE 0 END) as RIESGO_STOCKOUT, SUM(CASE WHEN EXCESS_FLAG THEN 1 ELSE 0 END) as EXCESOS FROM INVENTORY_HEALTH."
-      },
-      {
-        title: "Detectar alertas de stock-out y exceso",
-        desc: "Identifica las disrupciones activas que requieren accion inmediata.",
-        prompt: "/best-practices OBJETIVO\nGenerar la tabla de alertas proactivas a partir de INVENTORY_HEALTH, clasificando por severidad.\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.ALERTS\nPara cada registro en INVENTORY_HEALTH donde STOCKOUT_RISK_FLAG = TRUE o EXCESS_FLAG = TRUE, crea una alerta con:\n  - ALERT_ID: secuencia autoincremental\n  - SITE_ID, SITE_NAME, ITEM_ID, ITEM_NAME\n  - ALERT_TYPE: 'STOCKOUT_RISK' o 'EXCESS'\n  - SEVERITY: 'CRITICAL' si DAYS_OF_SUPPLY < 3, 'HIGH' si < 7, 'MEDIUM' si < 14, 'LOW' para excesos\n  - CURRENT_INVENTORY, DAYS_OF_SUPPLY\n  - PROJECTED_SHORTAGE_QTY: cantidad negativa proyectada (solo para stockout)\n  - EXCESS_QTY: cantidad por encima del maximo necesario (solo para exceso)\n  - VALUE_AT_RISK: cantidad en riesgo * UNIT_COST del material\n  - EARLIEST_IMPACT_DATE: CURRENT_DATE + DAYS_OF_SUPPLY (cuando se agotaria)\n  - CREATED_AT: CURRENT_TIMESTAMP\n\nCalcula tambien metricas agregadas:\n  - Total de alertas de stockout y su valor economico\n  - Total de alertas de exceso y su valor economico\n  - Numero de POs que podrian cancelarse (exceso)\n\nVERIFICACION\nSELECT ALERT_TYPE, SEVERITY, COUNT(*) as NUM_ALERTS, SUM(VALUE_AT_RISK)::INT as TOTAL_VALUE_AT_RISK FROM ALERTS GROUP BY 1, 2 ORDER BY 1, 2."
-      },
-      {
-        title: "Forecast de demanda con ML.FORECAST",
-        desc: "Proyecta la demanda futura 30 dias por item usando ML nativo de Snowflake.",
-        prompt: "/best-practices OBJETIVO\nUsar ML.FORECAST de Snowflake para proyectar la demanda de cada material en los proximos 30 dias.\n\nPREPARACION DE DATOS\nCrea una vista o tabla de serie temporal a partir de OUTBOUND_ORDERS:\n  - Agrupa por ITEM_ID + ORDER_DATE\n  - Calcula DAILY_DEMAND = SUM(QUANTITY)\n  - Rellena dias sin datos con 0\n  - Necesitas al menos 60 dias de historia por item\n\nENTRENAMIENTO DEL MODELO\nUsa SNOWFLAKE.ML.FORECAST con:\n  - Serie temporal por ITEM_ID\n  - Columna de timestamp: ORDER_DATE\n  - Columna de valor: DAILY_DEMAND\n  - Horizonte de prediccion: 30 dias\n  - Parametro evaluate => TRUE para generar metricas de rendimiento\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.DEMAND_FORECAST\nAlmacena las predicciones con: ITEM_ID, FORECAST_DATE, PREDICTED_DEMAND, LOWER_BOUND, UPPER_BOUND.\n\nVERIFICACION\nMuestra las metricas del modelo (MAE, MAPE). Muestra un ejemplo de forecast para 3 items diferentes."
-      },
-      {
-        title: "Generar recomendaciones de rebalanceo",
-        desc: "Calcula transferencias optimas entre sitios con exceso y sitios con deficit.",
-        prompt: "/best-practices OBJETIVO\nGenerar recomendaciones de transferencia de inventario entre sitios para resolver las alertas detectadas.\n\nLOGICA DE REBALANCEO\nPara cada alerta de tipo STOCKOUT_RISK:\n  1. Identifica sitios con EXCESS_FLAG = TRUE para el mismo ITEM_ID\n  2. De esos sitios con exceso, calcula la cantidad transferible: EXCESS_QTY disponible\n  3. Prioriza el sitio origen mas cercano (usa distancia euclidiana entre coordenadas)\n  4. Calcula la cantidad a transferir: MIN(cantidad necesaria en destino, cantidad disponible en origen)\n\nTABLA: INVENTORY_REBALANCING.ANALYTICS.REBALANCE_ACTIONS\nCada recomendacion incluye:\n  - ACTION_ID: secuencia\n  - SOURCE_SITE_ID, SOURCE_SITE_NAME (sitio con exceso)\n  - TARGET_SITE_ID, TARGET_SITE_NAME (sitio con deficit)\n  - ITEM_ID, ITEM_NAME\n  - TRANSFER_QTY: cantidad recomendada a transferir\n  - DISTANCE_KM: distancia estimada entre sitios\n  - ESTIMATED_TRANSIT_DAYS: DISTANCE_KM / 500 (velocidad media)\n  - PRIORITY: basada en la severidad de la alerta del destino\n  - STATUS: 'Recommended' (pendiente de aprobacion)\n  - ESTIMATED_SAVINGS: valor recuperado si se ejecuta la transferencia\n\nVERIFICACION\nSELECT COUNT(*) as TOTAL_RECOMMENDATIONS, SUM(TRANSFER_QTY) as TOTAL_UNITS_TO_MOVE, SUM(ESTIMATED_SAVINGS)::INT as TOTAL_POTENTIAL_SAVINGS FROM REBALANCE_ACTIONS."
-      },
-      {
-        title: "Dashboard Streamlit — Inventory Control Tower",
-        desc: "Crea la aplicacion Streamlit completa con 3 tabs: Control Tower, Alertas y Rebalanceo.",
-        prompt: "/best-practices OBJETIVO\nCrear una aplicacion Streamlit en Snowflake (Streamlit in Snowflake) que funcione como un Inventory Control Tower interactivo con 3 vistas principales.\n\nCONEXION A SNOWFLAKE\nUsa snowflake.connector.connect() para la conexion. La app debe conectar a la base de datos INVENTORY_REBALANCING.\n\nESTRUCTURA DE LA APP (3 TABS)\n\nTAB 1: STATE OF NETWORK (Control Tower)\n  - Fila de 4 KPI cards grandes: Current Inventory total, Days of Supply medio, Numero de Locations, Numero de Materials\n  - Tabla de Inventory Value at Risk con metricas: Avoidable Shortages, Value of Shortages, Excess Material count, Value of Excess\n  - Boton 'Take Action Now (Rebalance)' que navega al tab 3\n  - Tabla tipo grid: Site Name x Item Name con projected inventory por dia (proximos 7 dias)\n\nTAB 2: ALERTS (Inventory at Risk)\n  - Filtros laterales: por Site, por Material, por Severity, por Alert Type\n  - Tabla de alertas ordenada por severity con columnas: Site, Item, Alert Type, Severity, Days of Supply, Value at Risk, Earliest Impact Date\n  - Grafico de linea: proyeccion de inventario para el item seleccionado\n  - Resumen: total de alertas criticas, altas, medias\n\nTAB 3: REBALANCE (Recommendations)\n  - Lista de recomendaciones de transferencia con: Source Site, Target Site, Item, Quantity, Priority, Estimated Savings\n  - Para cada recomendacion, mostrar: distancia, dias de transito estimados\n  - Boton 'Resolve and Execute' (simulado — marca la accion como 'Accepted')\n  - Grafico de proyeccion antes/despues del rebalanceo para el par seleccionado\n\nESTILO VISUAL\n  - Usa st.metric() para los KPIs con colores segun estado (verde OK, rojo riesgo)\n  - Fondo blanco limpio, bordes sutiles en las cards\n  - Colores corporativos: azul (#1A237E) para headers, rojo (#D32F2F) para alertas criticas, verde (#2E7D32) para OK\n  - Tabs con st.tabs() para la navegacion principal\n\nVERIFICACION\nLa app debe mostrar datos reales de las tablas creadas en los pasos anteriores. Debe funcionar sin errores al ejecutarse como Streamlit in Snowflake."
-      },
-      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
-    ]
-  },
-  UC02: {
-    title: "Automotive Part Inventory Optimization — Pipeline Completo",
-    intro: "Ejecuta estos 10 prompts en Cortex Code (Snowsight). Construyen un pipeline de optimizacion de inventario de piezas de automocion con deteccion de recalls, forecast de demanda y app Streamlit dark-theme.",
-    steps: [
-      {
-        title: "Crear base de datos y esquema",
-        desc: "Configura el entorno para el proyecto de Automotive Parts.",
-        prompt: "/best-practices OBJETIVO\nCrear la infraestructura base para el proyecto de Automotive Part Inventory Optimization.\n\nACCIONES\nCrea la base de datos AUTO_PARTS_INVENTORY con IF NOT EXISTS. Dentro crea dos esquemas:\n  - RAW: datos maestros y transaccionales\n  - ANALYTICS: metricas calculadas, forecasts y alertas\n\nCrea un warehouse AUTO_PARTS_WH de tamano MEDIUM si no existe.\n\nVERIFICACION\nSHOW SCHEMAS IN DATABASE AUTO_PARTS_INVENTORY."
-      },
-      {
-        title: "Generar centros de distribucion y concesionarios",
-        desc: "Crea 5 Distribution Centers y 60 Dealers usando GENERATOR.",
-        prompt: "/best-practices OBJETIVO\nGenerar la red de distribucion del OEM de automocion.\n\nTABLA 1: AUTO_PARTS_INVENTORY.RAW.DISTRIBUTION_CENTERS\nCrea 5 centros con estos datos exactos:\n  - East Distribution Center (region: Northeast, 30 dealers, capacidad 50000)\n  - North Distribution Center (region: Great Lakes, 29 dealers, capacidad 45000)\n  - South Distribution Center (region: Southeast, 25 dealers, capacidad 40000)\n  - West Distribution Center (region: Pacific, 20 dealers, capacidad 35000)\n  - Central Distribution Center (region: Midwest, 22 dealers, capacidad 42000)\n\nTABLA 2: AUTO_PARTS_INVENTORY.RAW.DEALERS\nGenera 60 concesionarios con GENERATOR(ROWCOUNT => 60):\n  - DEALER_ID, DEALER_NAME (nombres realistas de ciudades de EEUU)\n  - DC_ID: asignar proporcionalmente a los 5 centros\n  - LATITUDE, LONGITUDE: coordenadas dentro de la region del DC asignado\n  - MONTHLY_VOLUME: UNIFORM(200, 2000, RANDOM())::INT\n\nVERIFICACION\nSELECT DC_ID, COUNT(*) as DEALERS FROM DEALERS GROUP BY DC_ID."
-      },
-      {
-        title: "Generar catalogo de piezas y proveedores",
-        desc: "Crea 200 piezas con categorias automotrices y 15 proveedores.",
-        prompt: "/best-practices OBJETIVO\nGenerar el catalogo de piezas del OEM y sus proveedores.\n\nTABLA 1: AUTO_PARTS_INVENTORY.RAW.PARTS_CATALOG\nGenera 200 piezas con GENERATOR(ROWCOUNT => 200):\n  - PART_ID, PART_NAME: nombres realistas de componentes (Rear Axle Line, Brake Pad Set, Oil Filter, Transmission Fluid, Spark Plug Kit, etc.)\n  - CATEGORY: distribuir entre 'Drivetrain', 'Brakes', 'Engine', 'Electrical', 'Body', 'Suspension', 'Fluids'\n  - UNIT_COST: UNIFORM(5.0, 500.0, RANDOM())::DECIMAL(10,2)\n  - LEAD_TIME_DAYS: UNIFORM(3, 45, RANDOM())::INT\n  - SUPPLIER_ID: UNIFORM(1, 15, RANDOM())::INT\n  - CRITICALITY: valores entre 'Safety-Critical', 'High', 'Medium', 'Low'\n  - MIN_STOCK_LEVEL: UNIFORM(50, 1000, RANDOM())::INT\n\nTABLA 2: AUTO_PARTS_INVENTORY.RAW.SUPPLIERS\nCrea 15 proveedores con GENERATOR(ROWCOUNT => 15):\n  - SUPPLIER_ID, SUPPLIER_NAME\n  - RELIABILITY_SCORE: UNIFORM(0.7, 0.99, RANDOM())::DECIMAL(3,2)\n  - MAX_MONTHLY_CAPACITY: UNIFORM(5000, 50000, RANDOM())::INT\n  - REGION: 'North America', 'Europe', 'Asia'\n\nVERIFICACION\nSELECT CATEGORY, COUNT(*), AVG(UNIT_COST)::DECIMAL(10,2) FROM PARTS_CATALOG GROUP BY CATEGORY ORDER BY 2 DESC."
-      },
-      {
-        title: "Generar inventario por centro y demanda historica",
-        desc: "Crea stock actual por DC x pieza y 180 dias de demanda historica.",
-        prompt: "/best-practices OBJETIVO\nGenerar los datos transaccionales de inventario y demanda.\n\nTABLA 1: AUTO_PARTS_INVENTORY.RAW.INVENTORY_DC\nGenera stock actual para cada combinacion DC x pieza (5 x 200 = 1.000 filas):\n  - DC_ID, PART_ID\n  - QUANTITY_ON_HAND: UNIFORM(0, 800, RANDOM())::INT\n  - QUANTITY_IN_TRANSIT: UNIFORM(0, 200, RANDOM())::INT\n  - LAST_REPLENISHMENT_DATE: fecha aleatoria en los ultimos 30 dias\n  - REORDER_POINT: campo de MIN_STOCK_LEVEL de PARTS_CATALOG\n\nTABLA 2: AUTO_PARTS_INVENTORY.RAW.DEMAND_HISTORY\nGenera 180 dias de demanda diaria. Usa CROSS JOIN entre secuencia de 180 fechas y las 200 piezas y 5 DCs, pero solo para un subconjunto (no todas las combinaciones tienen demanda). Genera ~180.000 filas con GENERATOR:\n  - DEMAND_DATE, DC_ID, PART_ID\n  - QUANTITY_DEMANDED: UNIFORM(1, 50, RANDOM())::INT\n  - ORDER_TYPE: 'Regular', 'Urgent', 'Warranty'\n\nVERIFICACION\nSELECT COUNT(*) FROM DEMAND_HISTORY; SELECT DC_ID, SUM(QUANTITY_DEMANDED) FROM DEMAND_HISTORY GROUP BY DC_ID."
-      },
-      {
-        title: "Generar recalls y simular spike de demanda",
-        desc: "Crea tabla de recalls incluyendo el recall activo de Rear Axle Line.",
-        prompt: "/best-practices OBJETIVO\nGenerar el historico de recalls del OEM, incluyendo un recall activo critico que dispara un spike de demanda.\n\nTABLA: AUTO_PARTS_INVENTORY.RAW.RECALLS\nCrea 10 recalls historicos y 1 recall activo:\n\nEl recall ACTIVO (el mas importante):\n  - RECALL_ID: 'RCL-2024-001'\n  - PART_NAME: 'Rear Axle Connection Line'\n  - PART_ID: el ID correspondiente en PARTS_CATALOG\n  - ANNOUNCEMENT_DATE: hace 5 dias\n  - AFFECTED_VEHICLES: 1131391\n  - SEVERITY: 'CRITICAL'\n  - STATUS: 'ACTIVE'\n  - DESCRIPTION: 'Accelerate Motors is recalling certain 2023-2024 Accelerate X45 vehicles to replace rear axle connection lines due to faulty manufacturing.'\n  - FORECASTED_DEMAND_SPIKE: 1131391 (1 pieza por vehiculo afectado)\n  - SUPPLIER_COUNT: 3 (proveedores disponibles para esta pieza)\n\nGenera 10 recalls historicos mas con GENERATOR (STATUS: 'CLOSED', fechas anteriores).\n\nVERIFICACION\nSELECT STATUS, COUNT(*), SUM(AFFECTED_VEHICLES) FROM RECALLS GROUP BY STATUS."
-      },
-      {
-        title: "Calcular impacto del recall en inventario",
-        desc: "Determina que centros no tienen stock suficiente para cubrir el recall.",
-        prompt: "/best-practices OBJETIVO\nCalcular el gap de inventario generado por el recall activo en cada centro de distribucion.\n\nTABLA: AUTO_PARTS_INVENTORY.ANALYTICS.RECALL_IMPACT\nPara el recall activo (RCL-2024-001), calcula por cada DC:\n  - DC_ID, DC_NAME\n  - CURRENT_STOCK: QUANTITY_ON_HAND de la pieza afectada en ese DC\n  - IN_TRANSIT: QUANTITY_IN_TRANSIT\n  - DEALERS_SERVED: numero de dealers del DC\n  - PROPORTIONAL_DEMAND: (AFFECTED_VEHICLES * DEALERS_SERVED / TOTAL_DEALERS)\n  - STOCK_GAP: PROPORTIONAL_DEMAND - (CURRENT_STOCK + IN_TRANSIT)\n  - DAYS_UNTIL_STOCKOUT: CURRENT_STOCK / (PROPORTIONAL_DEMAND / 90) estimado\n  - GAP_VALUE: STOCK_GAP * UNIT_COST de la pieza\n  - SEVERITY: 'CRITICAL' si DAYS_UNTIL_STOCKOUT < 7, 'HIGH' si < 14, 'MEDIUM' si < 30\n\nVERIFICACION\nSELECT DC_NAME, CURRENT_STOCK, PROPORTIONAL_DEMAND::INT, STOCK_GAP::INT, SEVERITY FROM RECALL_IMPACT ORDER BY STOCK_GAP DESC."
-      },
-      {
-        title: "Forecast de demanda por pieza y centro",
-        desc: "Usa ML.FORECAST para proyectar demanda 90 dias por pieza critica.",
-        prompt: "/best-practices OBJETIVO\nProyectar la demanda futura de las piezas afectadas por el recall usando ML.FORECAST.\n\nPREPARACION\nCrea una serie temporal agregada por DC_ID + PART_ID + DEMAND_DATE a partir de DEMAND_HISTORY. Filtra solo las piezas con CRITICALITY = 'Safety-Critical' o que esten en el recall activo.\n\nENTRENAMIENTO\nUsa SNOWFLAKE.ML.FORECAST con:\n  - Serie: agrupada por DC_ID y PART_ID\n  - Timestamp: DEMAND_DATE\n  - Valor: DAILY_DEMAND (SUM de QUANTITY_DEMANDED)\n  - Horizonte: 90 dias\n  - Parametro evaluate => TRUE\n\nTABLA: AUTO_PARTS_INVENTORY.ANALYTICS.DEMAND_FORECAST\nAlmacena: DC_ID, PART_ID, FORECAST_DATE, PREDICTED_DEMAND, LOWER_BOUND, UPPER_BOUND.\n\nVERIFICACION\nMuestra metricas del modelo. Muestra forecast de la pieza del recall para los 5 DCs (primeros 7 dias)."
-      },
-      {
-        title: "Generar recomendaciones de transferencia",
-        desc: "Identifica centros con exceso que pueden enviar stock a centros con deficit.",
-        prompt: "/best-practices OBJETIVO\nGenerar recomendaciones de transferencia de piezas entre centros para mitigar el impacto del recall.\n\nLOGICA\nPara la pieza afectada por el recall activo:\n  1. Identifica DCs con STOCK_GAP positivo (tienen exceso o stock suficiente)\n  2. Identifica DCs con STOCK_GAP negativo (necesitan stock)\n  3. Empareja origen (exceso) con destino (deficit) priorizando cerania y urgencia\n  4. Calcula cantidad a transferir: MIN(exceso_disponible, deficit_necesario)\n\nTABLA: AUTO_PARTS_INVENTORY.ANALYTICS.TRANSFER_ORDERS\n  - TRANSFER_ID, SOURCE_DC_ID, SOURCE_DC_NAME\n  - TARGET_DC_ID, TARGET_DC_NAME\n  - PART_ID, PART_NAME\n  - TRANSFER_QTY\n  - PRIORITY: basada en severidad del destino\n  - ESTIMATED_TRANSIT_DAYS: UNIFORM(1, 5, RANDOM())::INT\n  - STATUS: 'Recommended'\n  - COST_SAVINGS: valor recuperado al evitar envio urgente del proveedor\n\nVERIFICACION\nSELECT SOURCE_DC_NAME, TARGET_DC_NAME, TRANSFER_QTY, PRIORITY FROM TRANSFER_ORDERS ORDER BY PRIORITY."
-      },
-      {
-        title: "Crear vistas para el dashboard",
-        desc: "Materializa las vistas agregadas que alimentaran la app Streamlit.",
-        prompt: "/best-practices OBJETIVO\nCrear las vistas y tablas agregadas que el dashboard Streamlit consumira directamente.\n\nVISTA 1: AUTO_PARTS_INVENTORY.ANALYTICS.V_NETWORK_SUMMARY\nKPIs globales: inventario total en red, days of supply medio, numero de centros, numero de materiales, numero de dealers.\n\nVISTA 2: AUTO_PARTS_INVENTORY.ANALYTICS.V_ACTIVE_ALERTS\nRecalls activos con: pieza impactada, demanda forecast, proveedores disponibles, DCs afectados y su gap.\n\nVISTA 3: AUTO_PARTS_INVENTORY.ANALYTICS.V_PROJECTED_INVENTORY\nTimeline de inventario proyectado (proximos 90 dias) para la pieza del recall por cada DC, combinando stock actual + in transit + forecast de reposicion - forecast de demanda.\n\nVISTA 4: AUTO_PARTS_INVENTORY.ANALYTICS.V_DC_BOUNDARIES\nCada DC con sus dealers, region, y coordenadas para el mapa.\n\nVERIFICACION\nSELECT * FROM V_NETWORK_SUMMARY; SELECT * FROM V_ACTIVE_ALERTS LIMIT 3."
-      },
-      {
-        title: "Dashboard Streamlit — Parts Explorer (Dark Theme)",
-        desc: "Crea la app Streamlit con tema oscuro y 3 secciones: Alerts, Overview y Mitigate Risk.",
-        prompt: "/best-practices OBJETIVO\nCrear una aplicacion Streamlit en Snowflake con tema oscuro (dark-theme) que funcione como un Parts Explorer para el OEM.\n\nCONEXION\nUsa snowflake.connector.connect() para la conexion. Conecta a AUTO_PARTS_INVENTORY.\n\nESTILO\nAplica dark-theme con CSS custom: fondo #1a1d23, cards con fondo #2d3139, texto blanco, acentos azules #4A90D9. Usa st.set_page_config(layout='wide') y custom CSS inyectado con st.markdown.\n\nESTRUCTURA (Sidebar + Main)\n\nSIDEBAR (Menu lateral oscuro):\n  - Seccion RECALLS: lista de recalls activos como botones\n  - Seccion NAVIGATE: links a Overview y Mitigate Risk\n  - Al seleccionar un recall, el panel principal muestra su detalle\n\nMAIN PANEL — OVERVIEW (cuando se selecciona un recall):\n  - Header con ACTIVE ALERT: titulo del recall y descripcion completa\n  - Fila de 3 KPI cards: Impacted Part, Forecasted Demand (1,131,391), Supplier Count (3)\n  - Seccion Part Exploration: tabla de Bill of Materials de la pieza\n  - Seccion Projected Inventory Across Network: grafico de linea temporal (eje X: meses, eje Y: quantity) con filtro de DC en sidebar\n  - Seccion inferior en 2 columnas: Distribution Center Market Boundaries (mapa con pydeck o folium) + Impacted Distribution Centers (tabla con Title y Total Dealers)\n\nMAIN PANEL — MITIGATE RISK:\n  - Tabla de Transfer Orders recomendadas con: Source DC, Target DC, Part, Qty, Priority, Status\n  - Boton 'Execute Transfer' que actualiza STATUS a 'Executed'\n  - Grafico comparativo before/after del impacto en stock\n\nVERIFICACION\nLa app debe cargar datos reales de las vistas creadas. El grafico de Projected Inventory debe mostrar la curva con valores entre 4.6K y 5.2K como en la referencia."
-      },
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los 5 esquemas de la arquitectura medallon + AI + ML.", prompt: "/best-practices Crea una base de datos llamada INSURANCE_COPILOT con cinco esquemas: BRONZE, SILVER, GOLD, AI y ML. Usa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration git_https_api llamada GIT_HACKATHON_INTEGRATION y un Git Repository en INSURANCE_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a: https://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git No requiere autenticacion (repositorio publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los 4 ficheros JSON desde el repo Git.", prompt: "/best-practices En INSURANCE_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT y cargalas desde el repo Git con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_CUSTOMERS da data/insurance/customers.json\n- RAW_CALLS da data/insurance/call_transcripts.json\n- RAW_CLAIMS da data/insurance/claims.json\n- RAW_AGENTS da data/insurance/agents.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado insurance_copilot conectado a INSURANCE_COPILOT. models/staging/ -> schema SILVER | models/marts/ -> schema GOLD | warehouse COMPUTE_WH. Crea models/staging/sources.yml con las tablas Bronze: RAW_CUSTOMERS, RAW_CALLS, RAW_CLAIMS, RAW_AGENTS." },
+      { title: "FASE 2: Silver - STG_CUSTOMERS", desc: "Flatten de clientes con datos demograficos, polizas y primas.", prompt: "/best-practices Crea models/staging/stg_customers.sql que haga el flatten de RAW_CUSTOMERS. Campos: clientes de seguro (customer_id, full_name, age, region, insurance_types, vehicle_brand, vehicle_model, vehicle_year, hogar_type, auto_premium_eur, hogar_premium_eur, total_premium_eur, years_as_customer, num_policies, num_claims_last_2y, payment_status, renewal_date, nps_score, status). Materializa como table en SILVER." },
+      { title: "FASE 2: Silver - STG_CALLS", desc: "Flatten de transcripciones con metadatos de llamada.", prompt: "/best-practices Crea models/staging/stg_calls.sql que haga el flatten de RAW_CALLS. Campos: llamadas al call center (call_id, customer_id, agent_id, call_datetime, duration_seconds, insurance_type, call_type, routing_department, transcript TEXTO COMPLETO, channel, fcr, csat_score, churn_signal_detected, sentiment_label, topics ARRAY). Materializa como table en SILVER." },
+      { title: "FASE 2: Silver - STG_CLAIMS + STG_AGENTS", desc: "Flatten de siniestros y agentes del call center.", prompt: "/best-practices Crea models/staging/stg_claims.sql que haga el flatten de RAW_CLAIMS. Campos: siniestros (claim_id, customer_id, insurance_type, claim_type, claim_date, amount_requested_eur, amount_approved_eur, franchise_eur, status, resolution_days, perito_assigned, involves_third_party). Materializa como table en SILVER. Crea tambien models/staging/stg_agents.sql con campos: agent_id, full_name, team, experience_years, calls_per_day_avg, fcr_rate, avg_handle_time_seconds, qa_score_avg, active. Materializa como table en SILVER. Ejecuta dbt run --select staging." },
+      { title: "FASE 2: Gold - Vistas 360", desc: "Modelos Gold: Customer Risk 360, Call Intelligence 360, Agent Performance.", prompt: "/best-practices Crea models/marts/customer_risk_360.sql: Vista 360 del cliente con total_calls, total_complaints, num_churn_calls, total_claims_eur, avg_csat_score, days_since_last_call, days_to_renewal, fcr_rate. JOIN de todas las Silver. Materializa en GOLD. Crea call_intelligence_360.sql y agent_performance.sql con metricas por llamada y por agente. Ejecuta dbt run --select marts." },
+      { title: "FASE 3: AI - Resumen + Routing", desc: "Cortex COMPLETE para resumenes y clasificacion/routing de llamadas.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con llama3.1-70b sobre STG_CALLS. Analiza transcript y devuelve JSON con: resumen, puntos_clave, resultado_llamada, proxima_accion. Crea vista INSURANCE_COPILOT.AI.VW_CALL_SUMMARY (500 registros). Luego crea VW_CALL_ROUTING que clasifique: categoria_llamada, subcategoria, departamento_optimo, urgencia, requiere_escalado." },
+      { title: "FASE 3: AI - QA + CX + Churn", desc: "Evaluacion de agentes, sentimiento y deteccion de churn con LLM.", prompt: "/best-practices Sobre STG_CALLS, crea 3 vistas AI con CORTEX.COMPLETE (llama3.1-70b):\n1. VW_AGENT_QA: score_empatia, score_resolucion, score_protocolo, score_qa_total, fortalezas, areas_mejora\n2. VW_CX_INSIGHTS: sentimiento_cliente, score_satisfaccion, temas_principales, mencion_competidor\n3. VW_CHURN_SIGNALS: riesgo_churn, intencion_cancelacion, senales_detectadas, accion_recomendada\nLimita a 500 registros. Esquema INSURANCE_COPILOT.AI." },
+      { title: "FASE 4: ML - Prediccion de Churn", desc: "Feature engineering y ML.CLASSIFICATION para predecir cancelaciones.", prompt: "/best-practices Crea vista INSURANCE_COPILOT.ML.CHURN_FEATURES combinando GOLD.CUSTOMER_RISK_360 con senales de churn AI. Features: age, years_as_customer, num_policies, total_premium_eur, num_claims_last_2y, total_calls, num_complaint_calls, avg_csat_score, payment_status_encoded, days_to_renewal, nps_score. Target: will_churn. Divide 80/20, entrena ML.CLASSIFICATION como CHURN_MODEL con evaluate TRUE, genera predicciones y muestra top 20 por probabilidad." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea Semantic View en INSURANCE_COPILOT.GOLD llamada SV_INSURANCE_COPILOT sobre tablas Silver y Gold. Contexto: seguros auto y hogar en Espana (Seguros Meridian). Incluye dimensiones, metricas y AI_SQL_GENERATION. Luego crea Cortex Agent INSURANCE_COPILOT_AGENT con claude-4-sonnet, respondiendo en espanol. Concede acceso PUBLIC." },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo con 4 tabs: KPIs, Llamadas, Churn Risk, Agentes.", prompt: "/best-practices Crea app Streamlit in Snowflake en Workspaces en INSURANCE_COPILOT.AI llamada INSURANCE_APP. 4 tabs:\n1. KPIs: total llamadas, duracion media, tasa FCR, NPS, revenue en riesgo\n2. Llamadas: bar_chart por tipo y sentimiento, tabla filtrable\n3. Churn Risk: top 20 clientes por churn_probability, color rojo si > 0.7\n4. Performance Agentes: QA score, FCR, CSAT por agente\nTema Snowflake." },
       { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
     ]
   }
-};
+,
+  UC02: {
+    title: "Telco Operations Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada TELCO_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en TELCO_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En TELCO_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_CUSTOMERS desde data/telco/customers.json\n- RAW_NETWORK_EVENTS desde data/telco/network_events.json\n- RAW_TICKETS desde data/telco/tickets.json\n- RAW_BILLING_USAGE desde data/telco/billing_usage.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado telco_copilot conectado a TELCO_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_CUSTOMERS, RAW_NETWORK_EVENTS, RAW_TICKETS, RAW_BILLING_USAGE" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_customers.sql que haga flatten de RAW_CUSTOMERS.\nCampos: clientes telco (customer_id, company_name, plan, region, segment, monthly_revenue_eur, nps_score, status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_network_events.sql que haga flatten de RAW_NETWORK_EVENTS.\nCampos: eventos de red (event_id, customer_id, event_type, severity, cell_tower_id, duration_ms, metadata)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_tickets.sql que haga flatten de RAW_TICKETS.\nCampos: tickets de soporte (ticket_id, customer_id, category, priority, description, sla_breached, satisfaction_score)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_billing_usage.sql que haga flatten de RAW_BILLING_USAGE.\nCampos: registros de facturacion (billing_id, customer_id, service_type, amount_eur, payment_status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/customer_360.sql:\nVista 360 de cada cliente: datos basicos + total_tickets + open_tickets + avg_satisfaction + sla_breach_rate + total_network_events + critical_events + total_billed_eur. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/network_health.sql:\nSalud de red por cell_tower_id y dia: total_events, critical_events, high_events, avg_duration_ms, distinct_customers_affected, top_event_type.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/revenue_at_risk.sql:\nRevenue en riesgo por cliente: monthly_revenue_eur + total_tickets_last_90d + sla_breaches_last_90d + unpaid_amount + risk_score (0-100 basado en status, SLA, tickets, impagos, NPS).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla TELCO_COPILOT.SILVER.STG_TICKETS.\nAnaliza el campo \"description\" y devuelve un JSON con: clasificacion_tecnica (conectividad|hardware|software|cobertura|facturacion|comercial), severidad_estimada (critica|alta|media|baja), departamento_responsable (ingenieria_red|soporte_nivel2|facturacion|comercial|campo), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion de tickets de soporte de una empresa de telecomunicaciones.\"\nCrea la vista TELCO_COPILOT.AI.VW_TICKET_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla TELCO_COPILOT.GOLD.CUSTOMER_360.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: company_name, plan, region, segment, monthly_revenue_eur, total_tickets, open_tickets, avg_satisfaction, sla_breach_rate, critical_events, total_billed_eur\nPrompt del sistema: \"Eres un analista de cuentas de una empresa de telecomunicaciones. Genera un resumen ejecutivo en espanol (3-4 frases) de este cliente.\"\nCrea la vista TELCO_COPILOT.AI.VW_ACCOUNT_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla TELCO_COPILOT.GOLD.REVENUE_AT_RISK.\nDevuelve un JSON con: nivel_urgencia (alta|media|baja), accion_principal, acciones_complementarias (array 2-3), oferta_sugerida, canal_contacto (telefono|email|visita_presencial), mensaje_personalizado\nPrompt del sistema: \"Eres un experto en retencion de clientes de telecomunicaciones. Analiza este cliente en riesgo y devuelve SOLO un JSON valido.\"\nFiltra WHERE risk_score >= 30.\nCrea la vista TELCO_COPILOT.AI.VW_RETENTION_RECOMMENDATIONS. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en TELCO_COPILOT.GOLD llamada SV_TELCO_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren clientes, tickets de soporte, eventos de red (incidencias tecnicas) y facturacion. Las regiones son ciudades espanolas.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Telecomunicaciones.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente TELCO_COPILOT_AGENT conectado a la Semantic View TELCO_COPILOT.GOLD.SV_TELCO_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: empresa de telecomunicaciones en Espana\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos TELCO_COPILOT, schema AI, llamada TELCO_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de CUSTOMER_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde NETWORK_HEALTH\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde REVENUE_AT_RISK\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC03: {
+    title: "FSI Risk & Compliance Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada FSI_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en FSI_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En FSI_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_CLIENTS desde data/fsi/clients.json\n- RAW_TRANSACTIONS desde data/fsi/transactions.json\n- RAW_RISK_ALERTS desde data/fsi/risk_alerts.json\n- RAW_ACCOUNTS desde data/fsi/accounts.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado fsi_copilot conectado a FSI_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_CLIENTS, RAW_TRANSACTIONS, RAW_RISK_ALERTS, RAW_ACCOUNTS" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_clients.sql que haga flatten de RAW_CLIENTS.\nCampos: clientes financieros (client_id, company_name, segment, product_type, monthly_volume_eur, risk_profile, kyc_status, aml_score)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_transactions.sql que haga flatten de RAW_TRANSACTIONS.\nCampos: transacciones (transaction_id, client_id, transaction_type, amount_eur, channel, status, country)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_risk_alerts.sql que haga flatten de RAW_RISK_ALERTS.\nCampos: alertas de riesgo/fraude (alert_id, client_id, category, severity, description, rule_triggered, regulatory_report_required)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_accounts.sql que haga flatten de RAW_ACCOUNTS.\nCampos: cuentas y productos (account_id, client_id, account_type, balance_eur, interest_rate_pct, status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/client_360.sql:\nVista 360 del cliente financiero: datos basicos + total_accounts + total_balance_eur + total_transactions + avg_transaction_amount + total_alerts + open_alerts + kyc_status + aml_score. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/transaction_health.sql:\nSalud transaccional por tipo y dia: total_transactions, total_volume_eur, rejected_count, avg_amount, distinct_clients, top_channel.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/risk_exposure.sql:\nExposicion al riesgo por cliente: monthly_volume_eur + total_alerts_last_90d + critical_alerts + accounts_in_mora + kyc_expired + compliance_score (0-100).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla FSI_COPILOT.SILVER.STG_RISK_ALERTS.\nAnaliza el campo \"description\" y devuelve un JSON con: tipo_riesgo (fraude|blanqueo|compliance|credito|operacional|ciber), urgencia (critica|alta|media|baja), departamento (fraude|compliance|riesgos|ciberseguridad|legal), requiere_reporte_regulatorio (si|no), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un analista de riesgos de una entidad financiera.\"\nCrea la vista FSI_COPILOT.AI.VW_RISK_ALERT_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla FSI_COPILOT.GOLD.CLIENT_360.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: company_name, segment, product_type, monthly_volume_eur, total_accounts, total_balance_eur, total_alerts, aml_score, kyc_status\nPrompt del sistema: \"Eres un analista de banca privada. Genera un resumen ejecutivo en espanol (3-4 frases) del perfil financiero de este cliente.\"\nCrea la vista FSI_COPILOT.AI.VW_CLIENT_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla FSI_COPILOT.GOLD.RISK_EXPOSURE.\nDevuelve un JSON con: nivel_riesgo (alto|medio|bajo), accion_principal, acciones_regulatorias (array 2-3), requiere_SAR (si|no), plazo_maximo_dias (numero), recomendacion_kyc\nPrompt del sistema: \"Eres un experto en compliance financiero (KYC/AML). Analiza este cliente y devuelve SOLO un JSON valido.\"\nFiltra WHERE compliance_score >= 40.\nCrea la vista FSI_COPILOT.AI.VW_COMPLIANCE_RECOMMENDATIONS. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en FSI_COPILOT.GOLD llamada SV_FSI_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren clientes financieros, transacciones, alertas de riesgo/fraude/AML y cuentas/productos. Entidad financiera en Espana.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Servicios Financieros.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente FSI_COPILOT_AGENT conectado a la Semantic View FSI_COPILOT.GOLD.SV_FSI_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: entidad financiera en Espana (banca, inversiones, seguros)\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos FSI_COPILOT, schema AI, llamada FSI_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de CLIENT_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde TRANSACTION_HEALTH\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde RISK_EXPOSURE\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC04: {
+    title: "Retail Customer Intelligence Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada RETAIL_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en RETAIL_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En RETAIL_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_CUSTOMERS desde data/retail/customers.json\n- RAW_ORDERS desde data/retail/orders.json\n- RAW_SUPPORT_CASES desde data/retail/support_cases.json\n- RAW_INVENTORY desde data/retail/inventory_movements.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado retail_copilot conectado a RETAIL_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_CUSTOMERS, RAW_ORDERS, RAW_SUPPORT_CASES, RAW_INVENTORY" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_customers.sql que haga flatten de RAW_CUSTOMERS.\nCampos: clientes (customer_id, full_name, region, loyalty_tier, channel_preference, avg_order_value_eur, total_lifetime_value_eur, preferred_category, status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_orders.sql que haga flatten de RAW_ORDERS.\nCampos: pedidos (order_id, customer_id, order_type, total_amount_eur, items_count, store_id, payment_method, product_category)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_support_cases.sql que haga flatten de RAW_SUPPORT_CASES.\nCampos: casos de soporte (case_id, customer_id, category, priority, description, sla_breached, satisfaction_score)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_inventory.sql que haga flatten de RAW_INVENTORY.\nCampos: movimientos de inventario (movement_id, product_id, store_id, movement_type, quantity, unit_cost_eur, product_category)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/customer_360.sql:\nVista 360 del cliente retail: datos basicos + total_orders + total_spent_eur + avg_order_value + total_returns + open_cases + avg_satisfaction + loyalty_tier + days_since_last_purchase. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/sales_performance.sql:\nPerformance de ventas por store_id, product_category y dia: total_orders, total_revenue_eur, avg_basket_size, return_rate, distinct_customers, top_payment_method.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/churn_risk.sql:\nRiesgo de churn por cliente: total_lifetime_value_eur + days_since_last_purchase + support_cases_last_90d + sla_breaches + return_rate + churn_score (0-100).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla RETAIL_COPILOT.SILVER.STG_SUPPORT_CASES.\nAnaliza el campo \"description\" y devuelve un JSON con: tipo_incidencia (devolucion|envio|producto|facturacion|fidelidad|cuenta|tecnologia), urgencia (critica|alta|media|baja), departamento (logistica|atencion_cliente|facturacion|marketing|IT), impacto_cliente (alto|medio|bajo), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion de incidencias de una empresa de retail.\"\nCrea la vista RETAIL_COPILOT.AI.VW_CASE_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla RETAIL_COPILOT.GOLD.CUSTOMER_360.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: full_name, loyalty_tier, region, total_orders, total_spent_eur, avg_order_value, preferred_category, days_since_last_purchase, open_cases\nPrompt del sistema: \"Eres un analista de CRM de una empresa retail. Genera un resumen ejecutivo en espanol (3-4 frases) del perfil de compra de este cliente.\"\nCrea la vista RETAIL_COPILOT.AI.VW_CUSTOMER_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla RETAIL_COPILOT.GOLD.CHURN_RISK.\nDevuelve un JSON con: segmento_comportamental (fiel|en_riesgo|dormido|nuevo), oferta_principal (descuento o producto), canal_contacto (email|push|sms|correo_postal), momento_optimo (dia/hora), mensaje_personalizado\nPrompt del sistema: \"Eres un experto en marketing personalizado de retail. Analiza este cliente y devuelve SOLO un JSON valido.\"\nFiltra WHERE churn_score >= 30.\nCrea la vista RETAIL_COPILOT.AI.VW_PERSONALIZATION_RECOMMENDATIONS. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en RETAIL_COPILOT.GOLD llamada SV_RETAIL_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren clientes retail, pedidos/compras, casos de soporte/devoluciones e inventario. Cadena de retail en Espana.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Retail y Consumer Goods.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente RETAIL_COPILOT_AGENT conectado a la Semantic View RETAIL_COPILOT.GOLD.SV_RETAIL_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: empresa de retail/comercio en Espana\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos RETAIL_COPILOT, schema AI, llamada RETAIL_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de CUSTOMER_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde SALES_PERFORMANCE\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde CHURN_RISK\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC05: {
+    title: "Smart Factory Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada MANUFACTURING_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en MANUFACTURING_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En MANUFACTURING_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_EQUIPMENT desde data/manufacturing/equipment.json\n- RAW_SENSOR_READINGS desde data/manufacturing/sensor_readings.json\n- RAW_WORK_ORDERS desde data/manufacturing/work_orders.json\n- RAW_PRODUCTION_BATCHES desde data/manufacturing/production_batches.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado manufacturing_copilot conectado a MANUFACTURING_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_EQUIPMENT, RAW_SENSOR_READINGS, RAW_WORK_ORDERS, RAW_PRODUCTION_BATCHES" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_equipment.sql que haga flatten de RAW_EQUIPMENT.\nCampos: equipos/maquinas (equipment_id, name, type, plant, production_line, manufacturer, status, criticality, hours_operated)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_sensor_readings.sql que haga flatten de RAW_SENSOR_READINGS.\nCampos: lecturas de sensores IoT (reading_id, equipment_id, sensor_type, value, threshold_min, threshold_max, is_anomaly)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_work_orders.sql que haga flatten de RAW_WORK_ORDERS.\nCampos: ordenes de trabajo (work_order_id, equipment_id, category, priority, description, estimated_hours, spare_parts_cost_eur)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_production_batches.sql que haga flatten de RAW_PRODUCTION_BATCHES.\nCampos: lotes de produccion (batch_id, product_name, production_line, planned_quantity, actual_quantity, defect_count, material_cost_eur, quality_grade)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/equipment_360.sql:\nVista 360 de cada equipo: datos basicos + total_sensor_anomalies + total_work_orders + open_work_orders + total_maintenance_cost_eur + avg_production_quality + hours_operated + days_since_last_maintenance. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/production_health.sql:\nSalud de produccion por production_line, plant y dia: total_batches, total_produced, total_defects, defect_rate_pct, avg_quality_grade, total_material_cost, total_energy_cost.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/maintenance_risk.sql:\nRiesgo de mantenimiento por equipo: hours_operated + anomaly_count_last_90d + pending_work_orders + avg_sensor_deviation + maintenance_risk_score (0-100).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla MANUFACTURING_COPILOT.SILVER.STG_WORK_ORDERS.\nAnaliza el campo \"description\" y devuelve un JSON con: tipo_mantenimiento (correctivo|preventivo|predictivo|mejora|inspeccion|calibracion), urgencia (critica|alta|media|baja), especialidad_requerida (mecanica|electrica|instrumentacion|automatizacion|general), impacto_produccion (alto|medio|bajo|nulo), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion de ordenes de trabajo de una planta industrial.\"\nCrea la vista MANUFACTURING_COPILOT.AI.VW_WORK_ORDER_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla MANUFACTURING_COPILOT.GOLD.EQUIPMENT_360.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: name, type, plant, production_line, status, criticality, hours_operated, total_sensor_anomalies, total_work_orders, total_maintenance_cost_eur\nPrompt del sistema: \"Eres un ingeniero de fiabilidad industrial. Genera un resumen ejecutivo en espanol (3-4 frases) del estado de este equipo.\"\nCrea la vista MANUFACTURING_COPILOT.AI.VW_EQUIPMENT_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla MANUFACTURING_COPILOT.GOLD.MAINTENANCE_RISK.\nDevuelve un JSON con: nivel_riesgo_fallo (alto|medio|bajo), accion_recomendada (sustitucion|reparacion|inspeccion|monitorizacion), componente_sospechoso, plazo_maximo_dias (numero), impacto_si_falla (linea_parada|produccion_reducida|calidad_degradada), coste_estimado_eur\nPrompt del sistema: \"Eres un experto en mantenimiento predictivo industrial. Analiza este equipo y devuelve SOLO un JSON valido.\"\nFiltra WHERE maintenance_risk_score >= 30.\nCrea la vista MANUFACTURING_COPILOT.AI.VW_PREDICTIVE_MAINTENANCE. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en MANUFACTURING_COPILOT.GOLD llamada SV_MANUFACTURING_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren equipos industriales, lecturas de sensores IoT, ordenes de trabajo/mantenimiento y lotes de produccion. Planta industrial en Espana.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Manufacturing e Industria.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente MANUFACTURING_COPILOT_AGENT conectado a la Semantic View MANUFACTURING_COPILOT.GOLD.SV_MANUFACTURING_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: empresa manufacturera/industrial en Espana\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos MANUFACTURING_COPILOT, schema AI, llamada MANUFACTURING_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de EQUIPMENT_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde PRODUCTION_HEALTH\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde MAINTENANCE_RISK\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC06: {
+    title: "Healthcare Clinical Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada HEALTHCARE_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en HEALTHCARE_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En HEALTHCARE_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_PATIENTS desde data/healthcare/patients.json\n- RAW_ENCOUNTERS desde data/healthcare/encounters.json\n- RAW_CLINICAL_NOTES desde data/healthcare/clinical_notes.json\n- RAW_CLAIMS desde data/healthcare/claims.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado healthcare_copilot conectado a HEALTHCARE_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_PATIENTS, RAW_ENCOUNTERS, RAW_CLINICAL_NOTES, RAW_CLAIMS" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_patients.sql que haga flatten de RAW_PATIENTS.\nCampos: pacientes (patient_id, full_name, age, gender, region, insurance_type, chronic_conditions, department, risk_level)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_encounters.sql que haga flatten de RAW_ENCOUNTERS.\nCampos: encuentros clinicos (encounter_id, patient_id, encounter_type, department, diagnosis_code, duration_minutes)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_clinical_notes.sql que haga flatten de RAW_CLINICAL_NOTES.\nCampos: notas clinicas (note_id, patient_id, category, priority, description, requires_followup)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_claims.sql que haga flatten de RAW_CLAIMS.\nCampos: reclamaciones/facturacion (claim_id, patient_id, claim_type, amount_eur, insurance_response, status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/patient_360.sql:\nVista 360 del paciente: datos basicos + total_encounters + emergency_visits + total_claims_eur + pending_claims + active_conditions + followup_notes + last_encounter_date. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/clinical_health.sql:\nSalud clinica por department y dia: total_encounters, avg_duration_minutes, emergency_rate, readmission_count, distinct_patients, top_diagnosis_code.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/readmission_risk.sql:\nRiesgo de reingreso por paciente: age + chronic_conditions + emergency_visits_last_90d + pending_followups + claim_rejections + readmission_risk_score (0-100).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla HEALTHCARE_COPILOT.SILVER.STG_CLINICAL_NOTES.\nAnaliza el campo \"description\" y devuelve un JSON con: especialidad_principal (cardiologia|traumatologia|oncologia|medicina_interna|urgencias|neurologia|neumologia), urgencia (critica|alta|media|baja), tipo_atencion (diagnostico|seguimiento|interconsulta|alta|urgencia), requiere_seguimiento (si|no), resumen_clinico (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion clinica de un hospital.\"\nCrea la vista HEALTHCARE_COPILOT.AI.VW_CLINICAL_NOTE_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla HEALTHCARE_COPILOT.GOLD.PATIENT_360.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: full_name, age, gender, chronic_conditions, total_encounters, emergency_visits, active_conditions, total_claims_eur, risk_level\nPrompt del sistema: \"Eres un medico internista. Genera un resumen clinico ejecutivo en espanol (3-4 frases) de este paciente.\"\nCrea la vista HEALTHCARE_COPILOT.AI.VW_PATIENT_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla HEALTHCARE_COPILOT.GOLD.READMISSION_RISK.\nDevuelve un JSON con: nivel_riesgo_reingreso (alto|medio|bajo), accion_principal (cita_preferente|teleconsulta|hospitalizacion_domiciliaria|monitorizacion), especialidad_derivacion, plazo_dias (numero), plan_seguimiento (array 2-3 acciones), mensaje_para_medico\nPrompt del sistema: \"Eres un especialista en gestion clinica. Analiza este paciente y devuelve SOLO un JSON valido.\"\nFiltra WHERE readmission_risk_score >= 30.\nCrea la vista HEALTHCARE_COPILOT.AI.VW_FOLLOWUP_RECOMMENDATIONS. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en HEALTHCARE_COPILOT.GOLD llamada SV_HEALTHCARE_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren pacientes, encuentros clinicos, notas clinicas y reclamaciones de seguro. Hospital/clinica en Espana.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Healthcare y Life Sciences.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente HEALTHCARE_COPILOT_AGENT conectado a la Semantic View HEALTHCARE_COPILOT.GOLD.SV_HEALTHCARE_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: organizacion sanitaria en Espana (hospital/clinica)\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos HEALTHCARE_COPILOT, schema AI, llamada HEALTHCARE_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de PATIENT_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde CLINICAL_HEALTH\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde READMISSION_RISK\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC07: {
+    title: "Media Content Intelligence Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada MEDIA_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en MEDIA_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En MEDIA_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_AUDIENCES desde data/media/audiences.json\n- RAW_ENGAGEMENT desde data/media/engagement_events.json\n- RAW_FEEDBACK desde data/media/content_feedback.json\n- RAW_CAMPAIGNS desde data/media/campaigns.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado media_copilot conectado a MEDIA_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_AUDIENCES, RAW_ENGAGEMENT, RAW_FEEDBACK, RAW_CAMPAIGNS" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_audiences.sql que haga flatten de RAW_AUDIENCES.\nCampos: perfiles de audiencia (audience_id, username, region, subscription_type, preferred_genre, age_group, watch_hours_monthly, status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_engagement.sql que haga flatten de RAW_ENGAGEMENT.\nCampos: eventos de engagement (event_id, audience_id, event_type, content_id, content_type, genre, duration_seconds, platform)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_feedback.sql que haga flatten de RAW_FEEDBACK.\nCampos: feedback de contenido (feedback_id, audience_id, category, priority, description, sla_breached, satisfaction_score)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_campaigns.sql que haga flatten de RAW_CAMPAIGNS.\nCampos: campanas publicitarias (campaign_id, advertiser_name, channel, budget_eur, spend_eur, impressions, clicks, conversions, cpm_eur)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/audience_360.sql:\nVista 360 de audiencia: datos basicos + total_events + watch_hours + likes + shares + total_feedback + open_feedback + avg_satisfaction + days_since_last_activity. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/content_performance.sql:\nPerformance de contenido por content_type, genre y dia: total_plays, total_duration_hours, completion_rate, like_rate, share_rate, distinct_audiences, top_platform.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/audience_churn_risk.sql:\nRiesgo de churn por audiencia: subscription_type + days_since_last_activity + feedback_count + avg_watch_hours + engagement_trend + churn_score (0-100).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla MEDIA_COPILOT.SILVER.STG_FEEDBACK.\nAnaliza el campo \"description\" y devuelve un JSON con: tipo_problema (calidad_video|audio|subtitulos|contenido|error_tecnico|cuenta|sugerencia), urgencia (critica|alta|media|baja), equipo_responsable (ingenieria|contenido|soporte|producto|legal), impacto_experiencia (alto|medio|bajo), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion de incidencias de una plataforma de streaming.\"\nCrea la vista MEDIA_COPILOT.AI.VW_FEEDBACK_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla MEDIA_COPILOT.GOLD.CONTENT_PERFORMANCE.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: content_type, genre, total_plays, total_duration_hours, completion_rate, like_rate, distinct_audiences\nPrompt del sistema: \"Eres un analista de medios digitales. Genera un resumen ejecutivo en espanol (3-4 frases) del rendimiento de este contenido/campana.\"\nCrea la vista MEDIA_COPILOT.AI.VW_CAMPAIGN_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla MEDIA_COPILOT.GOLD.AUDIENCE_CHURN_RISK.\nDevuelve un JSON con: segmento_audiencia (superfan|regular|casual|dormido), contenido_recomendado (genero + tipo), canal_reengagement (push|email|in_app|home_banner), momento_optimo, mensaje_personalizado\nPrompt del sistema: \"Eres un experto en personalizacion de contenido digital. Analiza este usuario y devuelve SOLO un JSON valido.\"\nFiltra WHERE churn_score >= 30.\nCrea la vista MEDIA_COPILOT.AI.VW_CONTENT_RECOMMENDATIONS. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en MEDIA_COPILOT.GOLD llamada SV_MEDIA_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren audiencias/suscriptores, eventos de engagement, feedback de contenido y campanas publicitarias. Plataforma de streaming/media en Espana.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Media, Entertainment y Advertising.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente MEDIA_COPILOT_AGENT conectado a la Semantic View MEDIA_COPILOT.GOLD.SV_MEDIA_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: plataforma de contenido digital y publicidad en Espana\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos MEDIA_COPILOT, schema AI, llamada MEDIA_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de AUDIENCE_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde CONTENT_PERFORMANCE\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde AUDIENCE_CHURN_RISK\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC08: {
+    title: "Logistics Operations Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada LOGISTICS_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en LOGISTICS_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En LOGISTICS_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_FLEET desde data/logistics/fleet_vehicles.json\n- RAW_ROUTE_EVENTS desde data/logistics/route_events.json\n- RAW_DELIVERY_TICKETS desde data/logistics/delivery_tickets.json\n- RAW_SHIPMENTS desde data/logistics/shipments.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado logistics_copilot conectado a LOGISTICS_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_FLEET, RAW_ROUTE_EVENTS, RAW_DELIVERY_TICKETS, RAW_SHIPMENTS" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_fleet.sql que haga flatten de RAW_FLEET.\nCampos: vehiculos de flota (vehicle_id, plate_number, type, brand, base_location, max_payload_kg, fuel_type, km_total, status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_route_events.sql que haga flatten de RAW_ROUTE_EVENTS.\nCampos: eventos de ruta (event_id, vehicle_id, shipment_id, event_type, location, gps_lat, gps_lon, speed_kmh)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_delivery_tickets.sql que haga flatten de RAW_DELIVERY_TICKETS.\nCampos: tickets de incidencias (ticket_id, shipment_id, vehicle_id, category, priority, description, sla_breached, estimated_cost_eur)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_shipments.sql que haga flatten de RAW_SHIPMENTS.\nCampos: envios (shipment_id, client_name, origin, destination, service_type, amount_eur, weight_kg, status)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/vehicle_360.sql:\nVista 360 de vehiculo: datos basicos + total_shipments + total_route_events + incidents_count + total_km_last_90d + total_revenue_eur + avg_delivery_time_hours + days_until_maintenance. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/route_health.sql:\nSalud de rutas por origin, destination y dia: total_shipments, total_events, delay_events, avg_delivery_hours, on_time_rate, total_revenue_eur, distinct_vehicles.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/delivery_risk.sql:\nRiesgo de incidencias por vehiculo/ruta: pending_tickets + sla_breaches_last_90d + delay_count + damage_claims + km_since_maintenance + delivery_risk_score (0-100).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla LOGISTICS_COPILOT.SILVER.STG_DELIVERY_TICKETS.\nAnaliza el campo \"description\" y devuelve un JSON con: tipo_incidencia (retraso|dano|direccion|vehiculo|documentacion|rechazo|temperatura|peso), urgencia (critica|alta|media|baja), departamento (operaciones|flota|calidad|atencion_cliente|legal), impacto_servicio (alto|medio|bajo), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion de incidencias de una empresa de transporte y logistica.\"\nCrea la vista LOGISTICS_COPILOT.AI.VW_DELIVERY_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla LOGISTICS_COPILOT.GOLD.VEHICLE_360.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: plate_number, type, base_location, km_total, total_shipments, incidents_count, total_revenue_eur, days_until_maintenance\nPrompt del sistema: \"Eres un gestor de flota de transporte. Genera un resumen ejecutivo en espanol (3-4 frases) del estado de este vehiculo.\"\nCrea la vista LOGISTICS_COPILOT.AI.VW_FLEET_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla LOGISTICS_COPILOT.GOLD.DELIVERY_RISK.\nDevuelve un JSON con: nivel_riesgo (alto|medio|bajo), accion_principal (cambio_ruta|mantenimiento_vehiculo|refuerzo_capacidad|formacion_conductor), mejora_estimada_pct, plazo_implementacion_dias, impacto_coste_eur, recomendacion_detallada\nPrompt del sistema: \"Eres un experto en optimizacion logistica. Analiza esta ruta/vehiculo y devuelve SOLO un JSON valido.\"\nFiltra WHERE delivery_risk_score >= 30.\nCrea la vista LOGISTICS_COPILOT.AI.VW_ROUTE_OPTIMIZATION. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en LOGISTICS_COPILOT.GOLD llamada SV_LOGISTICS_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren vehiculos de flota, eventos de ruta, tickets de incidencias de entrega y envios. Empresa de transporte/logistica en Espana.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Transporte, Logistica y Travel.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente LOGISTICS_COPILOT_AGENT conectado a la Semantic View LOGISTICS_COPILOT.GOLD.SV_LOGISTICS_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: empresa de transporte y logistica en Espana\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos LOGISTICS_COPILOT, schema AI, llamada LOGISTICS_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de VEHICLE_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde ROUTE_HEALTH\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde DELIVERY_RISK\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC09: {
+    title: "Public Sector Citizen Services Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada PUBLIC_SECTOR_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en PUBLIC_SECTOR_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En PUBLIC_SECTOR_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_CITIZENS desde data/public_sector/citizens.json\n- RAW_SERVICE_REQUESTS desde data/public_sector/service_requests.json\n- RAW_INSPECTIONS desde data/public_sector/inspection_reports.json\n- RAW_BUDGET desde data/public_sector/budget_items.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado public_sector_copilot conectado a PUBLIC_SECTOR_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_CITIZENS, RAW_SERVICE_REQUESTS, RAW_INSPECTIONS, RAW_BUDGET" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_citizens.sql que haga flatten de RAW_CITIZENS.\nCampos: ciudadanos (citizen_id, full_name, age, district, municipality, profile_type, preferred_channel, digital_literacy)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_service_requests.sql que haga flatten de RAW_SERVICE_REQUESTS.\nCampos: solicitudes de servicio (request_id, citizen_id, request_type, department, channel, status, priority, response_days)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_inspections.sql que haga flatten de RAW_INSPECTIONS.\nCampos: informes de inspeccion (report_id, inspector_id, category, severity, description, fine_amount_eur, follow_up_required)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_budget.sql que haga flatten de RAW_BUDGET.\nCampos: partidas presupuestarias (item_id, department, fiscal_year, budget_line, approved_amount_eur, executed_amount_eur, execution_pct)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/citizen_360.sql:\nVista 360 del ciudadano: datos basicos + total_requests + resolved_requests + avg_response_days + total_complaints + digital_channel_usage_pct + days_since_last_interaction. JOIN de Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/service_health.sql:\nSalud de servicios por department y periodo: total_requests, resolved_count, avg_response_days, overdue_count, citizen_satisfaction_proxy, top_request_type.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/budget_execution.sql:\nEjecucion presupuestaria por department y quarter: approved_total_eur, executed_total_eur, execution_pct, pending_eur, overbudget_items, underexecuted_items.\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla PUBLIC_SECTOR_COPILOT.SILVER.STG_INSPECTIONS.\nAnaliza el campo \"description\" y devuelve un JSON con: ambito (urbanismo|sanidad|medio_ambiente|seguridad_laboral|accesibilidad|actividades|obra_publica|ruido), gravedad (leve|grave|muy_grave), organo_competente (urbanismo|sanidad|medio_ambiente|policia_local|bomberos|juzgado), requiere_sancion (si|no), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion de inspecciones de una administracion publica.\"\nCrea la vista PUBLIC_SECTOR_COPILOT.AI.VW_INSPECTION_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla PUBLIC_SECTOR_COPILOT.GOLD.SERVICE_HEALTH.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: department, total_requests, resolved_count, avg_response_days, overdue_count, top_request_type\nPrompt del sistema: \"Eres un analista de gestion publica. Genera un resumen ejecutivo en espanol (3-4 frases) del estado de este servicio/departamento.\"\nCrea la vista PUBLIC_SECTOR_COPILOT.AI.VW_SERVICE_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla PUBLIC_SECTOR_COPILOT.GOLD.SERVICE_HEALTH.\nDevuelve un JSON con: nivel_eficiencia (bueno|mejorable|deficiente), accion_principal (digitalizacion|formacion|reasignacion_recursos|simplificacion_proceso), areas_mejora (array 2-3), ahorro_estimado_pct, plazo_implementacion_meses, impacto_ciudadano (alto|medio|bajo)\nPrompt del sistema: \"Eres un consultor de transformacion digital del sector publico. Analiza este departamento y devuelve SOLO un JSON valido.\"\nFiltra WHERE avg_response_days > 15.\nCrea la vista PUBLIC_SECTOR_COPILOT.AI.VW_SERVICE_IMPROVEMENT. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en PUBLIC_SECTOR_COPILOT.GOLD llamada SV_PUBLIC_SECTOR_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren ciudadanos, solicitudes de servicio, informes de inspeccion y presupuestos. Administracion publica / ayuntamiento en Espana.\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Sector Publico.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente PUBLIC_SECTOR_COPILOT_AGENT conectado a la Semantic View PUBLIC_SECTOR_COPILOT.GOLD.SV_PUBLIC_SECTOR_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: administracion publica / ayuntamiento en Espana\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos PUBLIC_SECTOR_COPILOT, schema AI, llamada PUBLIC_SECTOR_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de CITIZEN_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde SERVICE_HEALTH\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde BUDGET_EXECUTION\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  },
+  UC10: {
+    title: "Utilities Grid Intelligence Copilot \u2014 Pipeline Completo",
+    intro: "Ejecuta estos prompts en Cortex Code (Snowsight). Construyen un pipeline end-to-end: desde la conexion a GitHub y la ingesta de JSON, pasando por dbt (medallon), Cortex AI, ML y Agent, hasta la app Streamlit final.",
+    steps: [
+      { title: "FASE 0: Configuracion del entorno", desc: "Crea la base de datos con los esquemas de la arquitectura medallon.", prompt: "/best-practices Crea una base de datos llamada UTILITIES_COPILOT con cuatro esquemas: BRONZE, SILVER, GOLD y AI.\nUsa el warehouse COMPUTE_WH." },
+      { title: "FASE 1: Integracion Git", desc: "Conecta con el repositorio GitHub publico que contiene los datos JSON.", prompt: "/best-practices Crea una API Integration de tipo git_https_api llamada GIT_HACKATHON_INTEGRATION\nque permita acceder a https://github.com/Snowflake-Spain-SE-Demos-Sandbox\ny un Git Repository en UTILITIES_COPILOT.PUBLIC llamado HACKATHON_REPO apuntando a:\nhttps://github.com/Snowflake-Spain-SE-Demos-Sandbox/Cortex_Code_Hackathon.git\nNo necesita autenticacion (repo publico)." },
+      { title: "FASE 1: Ingesta Bronze (JSON)", desc: "Crea tablas VARIANT y carga los ficheros JSON desde el repo Git.", prompt: "/best-practices En UTILITIES_COPILOT.BRONZE crea las siguientes tablas con columna SRC VARIANT\ny cargalas desde el Git repo con COPY INTO (FILE_FORMAT JSON, STRIP_OUTER_ARRAY=TRUE):\n- RAW_PLANTS desde data/utilities/plants.json\n- RAW_SENSOR_EVENTS desde data/utilities/sensor_events.json\n- RAW_INCIDENTS desde data/utilities/incidents.json\n- RAW_WATER_QUALITY desde data/utilities/water_quality.json" },
+      { title: "FASE 2: Init dbt", desc: "Crea el proyecto dbt con staging (Silver) y marts (Gold).", prompt: "/best-practices Crea un proyecto dbt llamado utilities_copilot conectado a UTILITIES_COPILOT.\nmodels/staging/ -> esquema SILVER | models/marts/ -> esquema GOLD | warehouse COMPUTE_WH.\nCrea models/staging/sources.yml con las tablas Bronze: RAW_PLANTS, RAW_SENSOR_EVENTS, RAW_INCIDENTS, RAW_WATER_QUALITY" },
+      { title: "FASE 2: dbt Silver/Gold (1)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_plants.sql que haga flatten de RAW_PLANTS.\nCampos: plantas/instalaciones (plant_id, plant_name, plant_type, operator, region, zone, capacity_m3_day, current_flow_m3_day, status, criticality, annual_budget_eur)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (2)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_sensor_events.sql que haga flatten de RAW_SENSOR_EVENTS.\nCampos: eventos de sensores SCADA (event_id, plant_id, sensor_type, value, alarm_min, alarm_max, is_alarm, subsystem)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (3)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_incidents.sql que haga flatten de RAW_INCIDENTS.\nCampos: incidencias operacionales (incident_id, plant_id, category, priority, description, affected_population, regulatory_notification_required, repair_cost_eur)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (4)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices Crea models/staging/stg_water_quality.sql que haga flatten de RAW_WATER_QUALITY.\nCampos: muestras de calidad del agua (sample_id, plant_id, parameter, value, legal_min, legal_max, compliant, sample_point, reported_to_authority)\nMaterializa como table en SILVER." },
+      { title: "FASE 2: dbt Silver/Gold (5)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select staging" },
+      { title: "Paso 10", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/plant_360.sql:\nVista 360 de cada planta: datos basicos + total_sensor_alarms + alarm_rate_pct + total_incidents + open_incidents + avg_repair_cost_eur + quality_non_compliant_count + regulatory_notifications + days_since_last_inspection. JOIN de todas las Silver.\nMaterializa como table en GOLD." },
+      { title: "Paso 11", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/operational_health.sql:\nSalud operacional por planta y dia: total_sensor_events, alarm_count, alarm_rate_pct, top_alarm_sensor, subsystems_affected, avg_flow_m3h, energy_consumption_kWh.\nMaterializa como table en GOLD." },
+      { title: "Paso 12", desc: "Ejecuta el siguiente prompt en Cortex Code.", prompt: "/best-practices Crea models/marts/compliance_risk.sql:\nRiesgo de compliance por planta: non_compliant_samples_last_90d + regulatory_notifications + open_critical_incidents + alarm_rate + days_overdue_inspection + compliance_risk_score (0-100).\nMaterializa como table en GOLD." },
+      { title: "FASE 2: dbt Silver/Gold (9)", desc: "Modelos dbt para transformacion de datos.", prompt: "/best-practices dbt run --select marts" },
+      { title: "FASE 4: ML - Modelo predictivo", desc: "Feature engineering y ML.CLASSIFICATION.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla UTILITIES_COPILOT.SILVER.STG_INCIDENTS.\nAnaliza el campo \"description\" y devuelve un JSON con: tipo_incidencia (averia_bomba|calidad_agua|fuga_red|fallo_cloracion|alarma_deposito|rotura_tuberia|fallo_scada|contaminacion), urgencia (critica|alta|media|baja), equipo_responsable (operaciones|calidad|mantenimiento|laboratorio|regulatorio|emergencias), notificacion_regulatoria (si|no), resumen_corto (max 15 palabras)\nPrompt del sistema: \"Eres un sistema de clasificacion de incidencias de una empresa de gestion del agua (utilities). Clasifica la incidencia descrita.\"\nCrea la vista UTILITIES_COPILOT.AI.VW_INCIDENT_CLASSIFICATION. Limita a 50 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (11)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla UTILITIES_COPILOT.GOLD.PLANT_360.\nGenera un resumen ejecutivo en espanol (3-4 frases) con los campos: plant_name, plant_type, operator, region, status, criticality, total_sensor_alarms, total_incidents, open_incidents, quality_non_compliant_count, regulatory_notifications\nPrompt del sistema: \"Eres un director de operaciones de una planta de tratamiento de agua. Genera un resumen ejecutivo en espanol (3-4 frases) del estado operacional de esta instalacion.\"\nCrea la vista UTILITIES_COPILOT.AI.VW_PLANT_EXECUTIVE_SUMMARY. Limita a 20 registros." },
+      { title: "FASE 3: AI - Analisis con LLM (12)", desc: "Cortex COMPLETE para analisis automatico con LLM.", prompt: "/best-practices Escribe una query SQL que use SNOWFLAKE.CORTEX.COMPLETE con el modelo \'llama3.1-70b\'\nsobre la tabla UTILITIES_COPILOT.GOLD.COMPLIANCE_RISK.\nDevuelve un JSON con: nivel_riesgo_regulatorio (alto|medio|bajo), accion_principal (inspeccion_urgente|ajuste_tratamiento|mantenimiento_preventivo|notificacion_autoridad|monitorizacion_intensiva), parametros_criticos (array 2-3), plazo_maximo_horas (numero), impacto_poblacion (numero_personas), recomendacion_tecnica\nPrompt del sistema: \"Eres un experto en gestion de utilities y compliance regulatorio del agua. Analiza esta planta y devuelve SOLO un JSON valido.\"\nFiltra WHERE compliance_risk_score >= 30.\nCrea la vista UTILITIES_COPILOT.AI.VW_OPERATIONAL_RECOMMENDATIONS. Limita a 25 registros." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea una Semantic View en UTILITIES_COPILOT.GOLD llamada SV_UTILITIES_COPILOT\nsobre las tablas Silver y Gold para consultas en lenguaje natural.\nContexto del negocio: Los datos cubren plantas de tratamiento de agua (ETAP/EDAR/bombeo), eventos de sensores SCADA, incidencias operacionales y muestras de calidad del agua. Empresa de utilities/gestion del agua en Espana (Veolia, Aguas de Barcelona, Canal de Isabel II, EMASESA).\nIncluye dimensiones con comentarios en espanol, metricas con sinonimos\ne instrucciones AI_SQL_GENERATION con el contexto de negocio." },
+      { title: "FASE 5: Semantic View + Agent", desc: "Semantic View y Cortex Agent para consultas en lenguaje natural.", prompt: "/best-practices Crea un Cortex Agent en Snowflake Intelligence para Utilities y Gestion del Agua.\n- Crea el objeto Snowflake Intelligence predeterminado si no existe\n- Crea la base de datos SNOWFLAKE_INTELLIGENCE y el schema AGENTS\n- Crea el agente UTILITIES_COPILOT_AGENT conectado a la Semantic View UTILITIES_COPILOT.GOLD.SV_UTILITIES_COPILOT\n  con modelo de orquestacion claude-4-sonnet, respondiendo siempre en espanol\n  y contexto de negocio: empresa de gestion del agua y utilities en Espana (Veolia, Aguas de Barcelona, Canal de Isabel II, EMASESA)\n- Concede acceso al rol PUBLIC al agente y a la Semantic View" },
+      { title: "FASE 6: App Streamlit", desc: "Dashboard interactivo desplegado en Workspaces.", prompt: "/best-practices Crea una app Streamlit en Workspaces en la base de datos UTILITIES_COPILOT, schema AI, llamada UTILITIES_APP.\nIncluye 4 secciones usando st.tabs:\n1. KPI — tarjetas con st.metric con los totales y ratios principales de PLANT_360\n2. Distribucion — grafico de barras (st.bar_chart) por categoria/region desde OPERATIONAL_HEALTH\n3. Top 20 — tabla interactiva (st.dataframe) ordenada por score de riesgo desde COMPLIANCE_RISK\n4. Tendencia — grafico de lineas (st.line_chart) con evolucion temporal de los eventos principales\nUsa titulos y etiquetas descriptivos en espanol. Tema Snowflake. Streamlit en Workspaces." },
+      { title: "Generar resumen HTML", desc: "Genera un documento HTML completo con el resumen del caso de uso.", prompt: "/best-practices Genera un fichero HTML con el resumen de todo lo que se ha construido en Snowflake: las tablas, vistas, funciones de IA, servicios de busqueda y la aplicacion Streamlit.\n\nExplica el caso de uso de negocio, el beneficio de cada pagina, los prompts usadas paso a paso, un diagrama de arquitectura y las conclusiones sobre el valor de Cortex Code para analistas de negocio." }
+    ]
+  }};
 
 function verPrompts(ucId) {
   const data = PROMPTS[ucId];
@@ -727,7 +1034,7 @@ function verPrompts(ucId) {
     html += "<div class=\"" + promptClass + "\">" + st.prompt.replace(/\n/g, '\n') + "<button class=\"copy-btn\" onclick=\"navigator.clipboard.writeText(this.parentElement.innerText.replace('Copiar','').trim())\" >Copiar</button></div>";
     html += "</div>";
   });
-  html += "<p class=\"guide-footer\">Ejecuta cada prompt en Cortex Code (Snowsight) | Premium Use Cases</p>";
+  html += "<p class=\"guide-footer\">Ejecuta cada prompt en Cortex Code (Snowsight) | End-to-End</p>";
   box.innerHTML = html;
   document.getElementById('promptsModal').classList.add('active');
 }

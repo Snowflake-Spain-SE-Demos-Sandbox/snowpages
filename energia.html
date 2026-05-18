@@ -1352,7 +1352,7 @@ const PROMPTS = {
       {
         "title": "Crear dashboard de planificación",
         "desc": "Construir un dashboard Streamlit que muestre predicciones, accuracy y plan de compras.",
-        "prompt": "/best-practices Genera el código para un dashboard Streamlit de planificación de demanda con:\n1. Selector de zona y horizonte temporal\n2. Gráfico de demanda real vs predicha con intervalos de confianza\n3. Métricas de accuracy: MAPE, RMSE por zona\n4. Plan de compras para mercado OMIE del día siguiente\n5. Alertas de desvío >5% respecto a predicción\n6. Tabla de variables exógenas que más influyen en cada zona. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera el código para un dashboard Streamlit de planificación de demanda con:\n1. Selector de zona y horizonte temporal\n2. Gráfico de demanda real vs predicha con intervalos de confianza\n3. Métricas de accuracy: MAPE, RMSE por zona\n4. Plan de compras para mercado OMIE del día siguiente\n5. Alertas de desvío >5% respecto a predicción\n6. Tabla de variables exógenas que más influyen en cada zona. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Automatización y limpieza",
@@ -1404,7 +1404,7 @@ const PROMPTS = {
       {
         "title": "Crear dashboard de gestión solar",
         "desc": "Dashboard Streamlit de monitorización de generación y ofertas.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de plantas solares con producción actual vs prevista\n2. Gráfico de generación real vs forecast con bandas de confianza\n3. Tabla de ofertas para mercado diario e intradiario\n4. Métricas de accuracy por planta (MAPE, sesgo)\n5. Alertas de desvío >10% y plantas con baja disponibilidad\n6. Resumen de ingresos estimados por planta y portfolio. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de plantas solares con producción actual vs prevista\n2. Gráfico de generación real vs forecast con bandas de confianza\n3. Tabla de ofertas para mercado diario e intradiario\n4. Métricas de accuracy por planta (MAPE, sesgo)\n5. Alertas de desvío >10% y plantas con baja disponibilidad\n6. Resumen de ingresos estimados por planta y portfolio. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de actualización y limpieza",
@@ -1461,7 +1461,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de gestión eólica",
         "desc": "Streamlit de monitorización de generación eólica.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de parques con producción actual y prevista (% de nominal)\n2. Gráfico de generación real vs forecast con bandas de confianza\n3. Rosa de vientos por parque con frecuencia y producción\n4. Métricas de accuracy del Model Registry: MAPE por parque y horizonte\n5. Tabla de ofertas para trading desk\n6. Comparativa de versiones del modelo en Model Registry. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de parques con producción actual y prevista (% de nominal)\n2. Gráfico de generación real vs forecast con bandas de confianza\n3. Rosa de vientos por parque con frecuencia y producción\n4. Métricas de accuracy del Model Registry: MAPE por parque y horizonte\n5. Tabla de ofertas para trading desk\n6. Comparativa de versiones del modelo en Model Registry. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Automatización y limpieza",
@@ -1513,7 +1513,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de gestión BESS",
         "desc": "Streamlit de monitorización de baterías y optimización.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Estado de cada BESS: SoC, SoH, temperatura, potencia\n2. Gráfico de precios previstos vs reales con señales de arbitraje\n3. Comparativa de ROI por estrategia y por instalación\n4. Proyección de vida útil y degradación\n5. Plan operativo para las próximas 24h\n6. Métricas financieras: ingresos acumulados, coste de degradación. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Estado de cada BESS: SoC, SoH, temperatura, potencia\n2. Gráfico de precios previstos vs reales con señales de arbitraje\n3. Comparativa de ROI por estrategia y por instalación\n4. Proyección de vida útil y degradación\n5. Plan operativo para las próximas 24h\n6. Métricas financieras: ingresos acumulados, coste de degradación. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Automatización y limpieza",
@@ -1565,7 +1565,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de gestión de pérdidas",
         "desc": "Streamlit de monitorización y gestión de inspecciones.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de CTs coloreados por ratio de pérdidas\n2. Balance de energía: inyectada vs medida vs pérdidas por zona\n3. Lista de inspecciones priorizadas con scoring y ROI esperado\n4. Perfil de cliente sospechoso: consumo, comparativa, alertas\n5. Métricas de campañas de inspección: tasa de éxito, fraude recuperado\n6. Tendencia de pérdidas mensuales y efecto de las acciones. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de CTs coloreados por ratio de pérdidas\n2. Balance de energía: inyectada vs medida vs pérdidas por zona\n3. Lista de inspecciones priorizadas con scoring y ROI esperado\n4. Perfil de cliente sospechoso: consumo, comparativa, alertas\n5. Métricas de campañas de inspección: tasa de éxito, fraude recuperado\n6. Tendencia de pérdidas mensuales y efecto de las acciones. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Automatización y limpieza",
@@ -1612,7 +1612,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de gestión de congestiones",
         "desc": "Streamlit de monitorización y gestión de red.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de red con nodos coloreados por nivel de carga (verde/amarillo/rojo)\n2. Predicción de congestiones para próximas 24h\n3. Lista de acciones de flexibilidad recomendadas con coste y efecto\n4. Simulación de escenarios de crecimiento GD/EV\n5. Métricas: horas de congestión evitadas, coste de flexibilidad, refuerzos diferidos\n6. Ranking de nodos críticos para inversión. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de red con nodos coloreados por nivel de carga (verde/amarillo/rojo)\n2. Predicción de congestiones para próximas 24h\n3. Lista de acciones de flexibilidad recomendadas con coste y efecto\n4. Simulación de escenarios de crecimiento GD/EV\n5. Métricas: horas de congestión evitadas, coste de flexibilidad, refuerzos diferidos\n6. Ranking de nodos críticos para inversión. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de gestión y limpieza",
@@ -1664,7 +1664,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de salud de flota",
         "desc": "Streamlit de monitorización de turbinas y mantenimiento.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de parques con turbinas coloreadas por estado (verde/amarillo/rojo)\n2. Panel de señales SCADA en tiempo real por turbina seleccionada\n3. Tendencias de degradación: temperatura, vibración, eficiencia\n4. Plan de mantenimiento priorizado con ventanas óptimas\n5. Métricas de flota: disponibilidad, fallos detectados, falsos positivos\n6. ROI del mantenimiento predictivo vs calendario. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de parques con turbinas coloreadas por estado (verde/amarillo/rojo)\n2. Panel de señales SCADA en tiempo real por turbina seleccionada\n3. Tendencias de degradación: temperatura, vibración, eficiencia\n4. Plan de mantenimiento priorizado con ventanas óptimas\n5. Métricas de flota: disponibilidad, fallos detectados, falsos positivos\n6. ROI del mantenimiento predictivo vs calendario. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de predicción y limpieza",
@@ -1721,7 +1721,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de Feature Store",
         "desc": "Streamlit de monitorización del Feature Store.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen del Feature Store: 5 FeatureViews, features totales, último refresh\n2. Buscador de cliente con perfil 360 completo\n3. Distribución de segmentos de clientes\n4. Métricas de calidad de features: completitud, freshness, drift\n5. Uso de features por caso de uso downstream\n6. Top features más consultadas y tendencias. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen del Feature Store: 5 FeatureViews, features totales, último refresh\n2. Buscador de cliente con perfil 360 completo\n3. Distribución de segmentos de clientes\n4. Métricas de calidad de features: completitud, freshness, drift\n5. Uso de features por caso de uso downstream\n6. Top features más consultadas y tendencias. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de mantenimiento",
@@ -1768,7 +1768,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de segmentación",
         "desc": "Streamlit de gestión de programas de eficiencia.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Distribución de clientes por segmento (pie chart)\n2. Perfil detallado por segmento: consumo medio, potencial ahorro, demografía\n3. Buscador de cliente con recomendaciones personalizadas\n4. ROI de programas de eficiencia por segmento y acción\n5. Mapa de calor de potencial de ahorro por zona geográfica\n6. Métricas de campañas: enviadas, convertidas, ahorro real conseguido. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Distribución de clientes por segmento (pie chart)\n2. Perfil detallado por segmento: consumo medio, potencial ahorro, demografía\n3. Buscador de cliente con recomendaciones personalizadas\n4. ROI de programas de eficiencia por segmento y acción\n5. Mapa de calor de potencial de ahorro por zona geográfica\n6. Métricas de campañas: enviadas, convertidas, ahorro real conseguido. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
@@ -1820,7 +1820,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de trading",
         "desc": "Streamlit de trading desk para portfolio renovable.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen de portfolio: potencia por tecnología, mapa de plantas\n2. Predicción de generación por hora y tecnología con bandas\n3. Ofertas para mercado diario: volumen, precio, ingreso estimado\n4. Estado de PPAs: cumplimiento, exposición, alertas\n5. Backtesting de estrategias con comparativa de P&L\n6. Métricas: ingreso neto, desvíos, Sharpe ratio, coste de oportunidad. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen de portfolio: potencia por tecnología, mapa de plantas\n2. Predicción de generación por hora y tecnología con bandas\n3. Ofertas para mercado diario: volumen, precio, ingreso estimado\n4. Estado de PPAs: cumplimiento, exposición, alertas\n5. Backtesting de estrategias con comparativa de P&L\n6. Métricas: ingreso neto, desvíos, Sharpe ratio, coste de oportunidad. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de trading y limpieza",

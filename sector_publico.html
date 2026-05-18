@@ -1352,7 +1352,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de control de subvenciones",
         "desc": "Streamlit de monitorización de fraude.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de sospecha por CCAA y tipo de subvención\n2. Lista de investigaciones priorizadas con scoring y ROI\n3. Grafo de red de beneficiarios vinculados para caso seleccionado\n4. Métricas del modelo: precision, recall, F1 por versión de Registry\n5. Tendencia de fraude detectado por año y tipo\n6. Resumen financiero: importe en riesgo, recuperado, coste de control. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de sospecha por CCAA y tipo de subvención\n2. Lista de investigaciones priorizadas con scoring y ROI\n3. Grafo de red de beneficiarios vinculados para caso seleccionado\n4. Métricas del modelo: precision, recall, F1 por versión de Registry\n5. Tendencia de fraude detectado por año y tipo\n6. Resumen financiero: importe en riesgo, recuperado, coste de control. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de reentrenamiento",
@@ -1399,7 +1399,7 @@ const PROMPTS = {
       {
         "title": "Dashboard del chatbot",
         "desc": "Streamlit de operación.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Demo de chat multilingüe con perfil de ciudadano\n2. Métricas: resolución, satisfacción, escalados por idioma\n3. Consultas más frecuentes y no resueltas\n4. Comparativa coste: chatbot vs presencial\n5. Base de conocimiento: búsqueda y gestión\n6. Tendencias por canal y tipo de consulta. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Demo de chat multilingüe con perfil de ciudadano\n2. Métricas: resolución, satisfacción, escalados por idioma\n3. Consultas más frecuentes y no resueltas\n4. Comparativa coste: chatbot vs presencial\n5. Base de conocimiento: búsqueda y gestión\n6. Tendencias por canal y tipo de consulta. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
@@ -1451,7 +1451,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de planificación",
         "desc": "Streamlit de gestión de servicios sociales.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de municipios con demanda prevista vs capacidad\n2. Predicción por tipo de servicio con bandas de confianza\n3. Plan de recursos: necesidades vs disponibles\n4. Accuracy del modelo: MAPE por municipio y servicio\n5. Alertas de incremento de demanda >20% previsto\n6. Comparativa de versiones en Model Registry. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de municipios con demanda prevista vs capacidad\n2. Predicción por tipo de servicio con bandas de confianza\n3. Plan de recursos: necesidades vs disponibles\n4. Accuracy del modelo: MAPE por municipio y servicio\n5. Alertas de incremento de demanda >20% previsto\n6. Comparativa de versiones en Model Registry. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de actualización",
@@ -1498,7 +1498,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de expedientes",
         "desc": "Streamlit de gestión.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Feed de expedientes nuevos con clasificación automática\n2. Sugerencia de resolución para expediente seleccionado\n3. Métricas: accuracy, reasignaciones, tiempo resolución\n4. Búsqueda de precedentes similares\n5. Tendencia de expedientes por tipo y materia\n6. Backlog por unidad tramitadora y prioridad. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Feed de expedientes nuevos con clasificación automática\n2. Sugerencia de resolución para expediente seleccionado\n3. Métricas: accuracy, reasignaciones, tiempo resolución\n4. Búsqueda de precedentes similares\n5. Tendencia de expedientes por tipo y materia\n6. Backlog por unidad tramitadora y prioridad. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
@@ -1545,7 +1545,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de fondos",
         "desc": "Streamlit de control de fondos europeos.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen por componente: asignación, ejecución, hitos\n2. Semáforo de hitos: cumplido/en progreso/retrasado/no iniciado\n3. Alertas de anomalías priorizadas por severidad\n4. Trazabilidad: drill-down de asignación a pago final\n5. Predicción de ritmo de ejecución vs objetivo\n6. Generador de informes para la Comisión Europea. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen por componente: asignación, ejecución, hitos\n2. Semáforo de hitos: cumplido/en progreso/retrasado/no iniciado\n3. Alertas de anomalías priorizadas por severidad\n4. Trazabilidad: drill-down de asignación a pago final\n5. Predicción de ritmo de ejecución vs objetivo\n6. Generador de informes para la Comisión Europea. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
@@ -1592,7 +1592,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de movilidad",
         "desc": "Streamlit de centro de control.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de tráfico en tiempo real con nivel de servicio por tramo\n2. Predicción de congestión próximas 4h\n3. Panel de optimización semafórica por corredor\n4. Alternativas de transporte para corredores congestionados\n5. Métricas: tiempo medio desplazamiento, uso TP, emisiones\n6. Histórico de impacto de optimizaciones aplicadas. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de tráfico en tiempo real con nivel de servicio por tramo\n2. Predicción de congestión próximas 4h\n3. Panel de optimización semafórica por corredor\n4. Alternativas de transporte para corredores congestionados\n5. Métricas: tiempo medio desplazamiento, uso TP, emisiones\n6. Histórico de impacto de optimizaciones aplicadas. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
@@ -1639,7 +1639,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de evaluación",
         "desc": "Streamlit de evidencia para decisores.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Catálogo de políticas evaluadas con impacto resumido\n2. Comparativa pre/post tratamiento vs control por indicador\n3. Mapa de impacto diferencial por territorio\n4. Ranking de políticas por coste-efectividad\n5. Generador de informes de evaluación\n6. Recomendaciones para planificación presupuestaria. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Catálogo de políticas evaluadas con impacto resumido\n2. Comparativa pre/post tratamiento vs control por indicador\n3. Mapa de impacto diferencial por territorio\n4. Ranking de políticas por coste-efectividad\n5. Generador de informes de evaluación\n6. Recomendaciones para planificación presupuestaria. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
@@ -1691,7 +1691,7 @@ const PROMPTS = {
       {
         "title": "Dashboard del Feature Store",
         "desc": "Streamlit de monitorización.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen: 5 FeatureViews, features totales, último refresh\n2. Buscador de ciudadano con perfil (con enmascaramiento RGPD)\n3. Distribución de perfiles por zona y segmento\n4. Métricas de calidad: completitud, freshness, drift\n5. Audit log de accesos al Feature Store\n6. Cumplimiento RGPD: finalidad, minimización, consentimiento. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Resumen: 5 FeatureViews, features totales, último refresh\n2. Buscador de ciudadano con perfil (con enmascaramiento RGPD)\n3. Distribución de perfiles por zona y segmento\n4. Métricas de calidad: completitud, freshness, drift\n5. Audit log de accesos al Feature Store\n6. Cumplimiento RGPD: finalidad, minimización, consentimiento. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline de mantenimiento",
@@ -1743,7 +1743,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de contratación",
         "desc": "Streamlit de inteligencia.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Predicción de riesgo de desierto para licitaciones activas\n2. Recomendaciones de mejora: lotes, precios, plazos\n3. Benchmarking de precios por CPV y territorio\n4. Métricas: tasa de desierto, competencia media, ahorro estimado\n5. Análisis de concentración por sector\n6. Comparativa PYME vs gran empresa por tipo de contrato. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Predicción de riesgo de desierto para licitaciones activas\n2. Recomendaciones de mejora: lotes, precios, plazos\n3. Benchmarking de precios por CPV y territorio\n4. Métricas: tasa de desierto, competencia media, ahorro estimado\n5. Análisis de concentración por sector\n6. Comparativa PYME vs gran empresa por tipo de contrato. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
@@ -1790,7 +1790,7 @@ const PROMPTS = {
       {
         "title": "Dashboard de eficiencia",
         "desc": "Streamlit de gestión energética.",
-        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de edificios coloreados por eficiencia vs benchmark\n2. Consumo real vs baseline con anomalías marcadas\n3. Ranking de edificios por potencial de ahorro\n4. Recomendaciones priorizadas por ROI\n5. Métricas: anomalías detectadas, ahorro conseguido, emisiones evitadas\n6. Comparativa entre edificios del mismo tipo. Usa snowflake.connector.connect() para ejecución local del dashboard."
+        "prompt": "/best-practices Genera código Streamlit con:\n1. Mapa de edificios coloreados por eficiencia vs benchmark\n2. Consumo real vs baseline con anomalías marcadas\n3. Ranking de edificios por potencial de ahorro\n4. Recomendaciones priorizadas por ROI\n5. Métricas: anomalías detectadas, ahorro conseguido, emisiones evitadas\n6. Comparativa entre edificios del mismo tipo. Despliega la app en Streamlit en Workspaces. Tema Snowflake."
       },
       {
         "title": "Pipeline y limpieza",
